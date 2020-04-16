@@ -1,0 +1,17 @@
+﻿  PlayScence.cpp
+c:\users\thanh\source\repos\gamefinal\gamefinal\game.h(86): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\thanh\source\repos\gamefinal\gamefinal\game.h(87): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\thanh\source\repos\gamefinal\gamefinal\playscence.cpp(92): warning C4018: '<': signed/unsigned mismatch
+c:\users\thanh\source\repos\gamefinal\gamefinal\playscence.cpp(114): warning C4018: '<': signed/unsigned mismatch
+c:\users\thanh\source\repos\gamefinal\gamefinal\playscence.cpp(137): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\thanh\source\repos\gamefinal\gamefinal\playscence.cpp(138): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\thanh\source\repos\gamefinal\gamefinal\playscence.cpp(164): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\thanh\source\repos\gamefinal\gamefinal\playscence.cpp(165): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\thanh\source\repos\gamefinal\gamefinal\playscence.cpp(172): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\thanh\source\repos\gamefinal\gamefinal\playscence.cpp(173): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\thanh\source\repos\gamefinal\gamefinal\playscence.cpp(205): warning C4018: '<': signed/unsigned mismatch
+c:\users\thanh\source\repos\gamefinal\gamefinal\playscence.cpp(298): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\thanh\source\repos\gamefinal\gamefinal\playscence.cpp(342): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\thanh\source\repos\gamefinal\gamefinal\playscence.cpp(346): warning C4018: '<': signed/unsigned mismatch
+c:\users\thanh\source\repos\gamefinal\gamefinal\playscence.cpp(355): warning C4018: '<': signed/unsigned mismatch
+  GameFinal.vcxproj -> C:\Users\Thanh\source\repos\GameFinal\Debug\GameFinal.exe
