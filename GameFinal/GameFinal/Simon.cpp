@@ -18,6 +18,8 @@ CSimon::CSimon(float x, float y)
 	this->x = x;
 	this->y = y;
 
+	whip = new CWhip(x, y, nx);
+
 	isJump = false;
 	isAttack = false;
 	isSit = false;
@@ -77,7 +79,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 		if (nx != 0) vx = 0;
 		if (ny != 0) vy = 0;
-
+		
 
 		//
 		// Collision logic with other objects
@@ -115,6 +117,12 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				CPortal *p = dynamic_cast<CPortal *>(e->obj);
 				CGame::GetInstance()->SwitchScene(p->GetSceneId());
 			}
+			else if (dynamic_cast<CItem *>(e->obj)) // if e->obj is Goomba 
+			{
+				CItem *item = dynamic_cast<CItem *>(e->obj);
+
+				item->isDie = true;
+			}
 		}
 	}
 
@@ -131,14 +139,41 @@ void CSimon::Render()
 		ani = SIMON_ANI_DIE;
 	else if (state == SIMON_STATE_SIT)
 	{
-		ani = SIMON_ANI_SIT_RIGHT;
+		if (nx > 0)
+		{
+			if (isAttack)
+				ani = SIMON_ANI_SIT_ATTACK_RIGHT;
+			else
+				ani = SIMON_ANI_SIT_RIGHT;
+		}
+		else
+		{
+			if (isAttack)
+				ani = SIMON_ANI_SIT_ATTACK_LEFT;
+			else
+				ani = SIMON_ANI_SIT_LEFT;
+		}
+		
 		isSit = false;
 	}
 	else if (state == SIMON_STATE_JUMP)
 	{
 		if (isJump)
 		{
-			ani = SIMON_ANI_JUMP_RIGHT;
+			if (nx > 0)
+			{
+				if (isAttack)
+					ani = SIMON_ANI_ATTACK_RIGHT;
+				else
+					ani = SIMON_ANI_JUMP_RIGHT;
+			}
+			else
+			{
+				if (isAttack)
+					ani = SIMON_ANI_ATTACK_LEFT;
+				else
+					ani = SIMON_ANI_JUMP_LEFT;
+			}
 		}
 		else return;
 	}
@@ -148,24 +183,41 @@ void CSimon::Render()
 		{
 			if (isAttack)
 			{
-				ani = SIMON_ANI_ATTACK_RIGHT;
+				if (nx > 0)
+					ani = SIMON_ANI_ATTACK_RIGHT;
+				else ani = SIMON_ANI_ATTACK_LEFT;
 			}
 			else
 			{
-				ani = SIMON_ANI_IDLE_RIGHT;
+				if (nx > 0)
+					ani = SIMON_ANI_IDLE_RIGHT;
+				else ani = SIMON_ANI_IDLE_LEFT;
 			}
 
 		}
 		else if (vx > 0)
 			ani = SIMON_ANI_WALKING_RIGHT;
-		else ani = SIMON_ANI_WALKING_RIGHT;
+		else ani = SIMON_ANI_WALKING_LEFT;
 	}
-
-	ani += (nx > 0) ? 0 : 1;
 
 	int alpha = 255;
 	if (untouchable) alpha = 128;
 	animation_set->at(ani)->Render(x, y, alpha);
+
+	if (isAttack)
+	{
+		whip->SetDirection(nx);
+		if (whip->GetDirection() > 0)
+		{
+			whip->SetPosition(x - 15, y + 2);
+			whip->Render();
+		}
+		else
+		{
+			whip->SetPosition(x - 20, y + 2);
+			whip->Render();
+		}
+	}
 
 	RenderBoundingBox();
 }

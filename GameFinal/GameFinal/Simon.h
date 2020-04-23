@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObject.h"
+#include "Item.h"
+#include "Whip.h"
 
 #define SIMON_WALKING_SPEED		0.1f 
 //0.1f
@@ -34,6 +36,9 @@
 
 #define SIMON_ANI_DIE				10
 
+#define SIMON_ANI_SIT_ATTACK_RIGHT	11
+#define SIMON_ANI_SIT_ATTACK_LEFT	12
+
 #define SIMON_BBOX_WIDTH  16
 #define SIMON_BBOX_HEIGHT 30
 #define SIMON_BBOX_HEIGHT_SIT 23
@@ -50,6 +55,8 @@ class CSimon : public CGameObject
 	float start_y;
 
 	int ani;
+
+	CWhip * whip;
 
 public:
 	// check active

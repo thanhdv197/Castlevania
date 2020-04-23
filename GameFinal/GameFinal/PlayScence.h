@@ -8,6 +8,7 @@
 #include "Koopas.h"
 #include "Simon.h"
 #include "Bricks.h"
+#include "Item.h"
 
 
 class CPlayScene: public CScene
