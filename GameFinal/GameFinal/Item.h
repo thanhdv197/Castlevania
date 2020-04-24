@@ -2,19 +2,24 @@
 #include "GameObject.h"
 
 #define ITEM_STATE_NONE	0
-#define ITEM_STATE_DIE	1
-#define ITEM_STATE_DEAD	2
-#define ITEM_STATE_ENABLE	3
+#define ITEM_STATE_DESTROY	1
+#define ITEM_STATE_ITEM_WHIP	2
+#define ITEM_STATE_ITEM_KNIFE	3
 
 class CItem : public CGameObject
 {
+	int state;
+
+	int randomItem;
+
 public:
-	bool isDie;
+	bool isDead;
 	bool isEnable;
-	bool isItem;
 
 	CItem();
 	virtual void Render();
 	virtual void GetBoundingBox(float &l, float &t, float &r, float &b);
+
+	void SetState(int state);
 };
 

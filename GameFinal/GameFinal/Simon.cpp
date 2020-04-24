@@ -54,6 +54,9 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		untouchable = 0;
 	}
 
+	//update weapon
+	whip->Update(dt, coObjects);
+
 	// No collision occured, proceed normally
 	if (coEvents.size() == 0)
 	{
@@ -121,10 +124,12 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				CItem *item = dynamic_cast<CItem *>(e->obj);
 
-				item->isDie = true;
+				item->isEnable = true;
 			}
 		}
 	}
+
+	
 
 	// clean up collision events
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];

@@ -67,6 +67,8 @@
 30005	236	57	244	73	10
 #item whip
 30006	1	1	17	17	10
+#item knife
+30007	2	87	18	103	10
 
 #TILEMAP
 20000	0	0	32	32	30
@@ -131,8 +133,12 @@
 # ==== ITEM ======
 #none1
 800	30001	100	30002	100
+#die
 899	30003	100	30004	100	30005	100
+#whip lv 2
 801	30006	100
+#knife
+802	30007	100
 
 #
 # id	ani1	ani2	ani3
@@ -145,7 +151,7 @@
 # QUESTION BRICK 
 22	602
 # ITEM
-2	800	899	801
+2	800	899	801	802
 
 [OBJECTS]
 # type	x	y	ani_set_id	extra_settings per object type
