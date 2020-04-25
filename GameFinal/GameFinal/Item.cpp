@@ -14,19 +14,6 @@ void CItem::Render()
 {
 	if (!isEnable)
 	{
-		/*switch (state)
-		{
-		case ITEM_STATE_NONE:
-			animation_set->at(0)->Render(x, y);
-			RenderBoundingBox();
-			break;
-		case ITEM_STATE_ITEM_WHIP:
-			animation_set->at(2)->Render(x, y + 15);
-			break;
-		default:
-			break;
-		}*/
-
 		if (this->state == ITEM_STATE_NONE)
 		{
 			animation_set->at(0)->Render(x, y);
@@ -34,16 +21,11 @@ void CItem::Render()
 		}
 		else
 		{
-			if (randomItem == 2)
-			{
-				SetState(ITEM_STATE_ITEM_WHIP);
-			}
-			else if (randomItem == 3)
-			{
-				SetState(ITEM_STATE_ITEM_KNIFE);
-			}
 			animation_set->at(randomItem)->Render(x, y + 15);
+			
 		}
+
+		
 	}
 	
 }
@@ -56,6 +38,7 @@ void CItem::GetBoundingBox(float &l, float &t, float &r, float &b)
 		t = y;
 		r = x + 16;
 		b = y + 32;
+		
 	}
 }
 
@@ -73,7 +56,7 @@ void CItem::SetState(int state)
 		this->state = ITEM_STATE_ITEM_KNIFE;
 		break;
 	case ITEM_STATE_DESTROY:
-		this->state = ITEM_STATE_DESTROY;
+		this->state = randomItem;
 		break;
 	default:
 		break;

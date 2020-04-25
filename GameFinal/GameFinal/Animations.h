@@ -16,6 +16,7 @@ class CAnimationFrame
 public:
 	CAnimationFrame(LPSPRITE sprite, int time) { this->sprite = sprite; this->time = time; }
 	DWORD GetTime() { return time; }
+	void SetTime(DWORD time) { this -> time = time; }
 	LPSPRITE GetSprite() { return sprite; }
 };
 
@@ -32,6 +33,9 @@ public:
 	void Add(int spriteId, DWORD time = 0);
 
 	int GetCurrentFrame() { return this->currentFrame; }
+	void SetCurrentFrame(int frame) { this->currentFrame = frame; }
+
+	LPANIMATION_FRAME GetFrame(int frame) { return frames[frame]; }
 
 	void Render(float x, float y, int alpha = 255);
 };

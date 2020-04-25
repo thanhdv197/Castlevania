@@ -30,9 +30,14 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	// Calculate dx, dy 
 	CGameObject::Update(dt);
 
-	if (isAttack && animation_set->at(ani)->GetCurrentFrame() >= 2)
+	if (isAttack && animation_set->at(ani)->GetCurrentFrame() == 2)
 	{
-		isAttack = false;
+		if(whip->GetCurrentFrame() == 2)
+			isAttack = false;
+		else
+		{
+			whip->SetCurrentFrame(2);
+		}
 	}
 
 	// Simple fall down
@@ -124,7 +129,17 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				CItem *item = dynamic_cast<CItem *>(e->obj);
 
+				if (item->GetState() == ITEM_STATE_ITEM_WHIP)
+				{
+					whip->LevelUp();
+				}
+				else if (item->GetState() == ITEM_STATE_ITEM_KNIFE)
+				{
+
+				}
+
 				item->isEnable = true;
+				
 			}
 		}
 	}
@@ -211,17 +226,53 @@ void CSimon::Render()
 
 	if (isAttack)
 	{
-		whip->SetDirection(nx);
-		if (whip->GetDirection() > 0)
+		if (state == SIMON_STATE_SIT || state == SIMON_STATE_JUMP)
 		{
-			whip->SetPosition(x - 15, y + 2);
-			whip->Render();
+			whip->SetDirection(nx);
+			if (whip->GetDirection() > 0)
+			{
+				whip->SetPosition(x - 15, y + 10);
+				whip->Render();
+			}
+			else
+			{
+				if (whip->GetLevel() > 1)
+				{
+					whip->SetPosition(x - 40, y + 10);
+					whip->Render();
+				}
+				else
+				{
+					whip->SetPosition(x - 20, y + 10);
+					whip->Render();
+				}
+				
+			}
 		}
 		else
 		{
-			whip->SetPosition(x - 20, y + 2);
-			whip->Render();
+			whip->SetDirection(nx);
+			if (whip->GetDirection() > 0)
+			{
+				whip->SetPosition(x - 15, y + 2);
+				whip->Render();
+			}
+			else
+			{
+				if (whip->GetLevel() > 1)
+				{
+					whip->SetPosition(x - 40, y + 2);
+					whip->Render();
+				}
+				else
+				{
+					whip->SetPosition(x - 20, y + 2);
+					whip->Render();
+				}
+				
+			}
 		}
+		
 	}
 
 	RenderBoundingBox();
@@ -265,16 +316,8 @@ void CSimon::GetBoundingBox(float &left, float &top, float &right, float &bottom
 	left = x;
 	top = y;
 
-	if (state == SIMON_STATE_SIT || state == SIMON_STATE_JUMP)
-	{
-		right = x + SIMON_BBOX_WIDTH;
-		bottom = y + SIMON_BBOX_HEIGHT - 7;
-	}
-	else
-	{
-		right = x + SIMON_BBOX_WIDTH;
-		bottom = y + SIMON_BBOX_HEIGHT;
-	}
+	right = x + SIMON_BBOX_WIDTH;
+	bottom = y + SIMON_BBOX_HEIGHT;
 
 }
 
