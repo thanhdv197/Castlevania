@@ -1,4 +1,30 @@
-﻿  Simon.cpp
+﻿  Game.cpp
 f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(86): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(87): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  Item.cpp
+  PlayScence.cpp
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(86): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(87): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(93): warning C4018: '<': signed/unsigned mismatch
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(115): warning C4018: '<': signed/unsigned mismatch
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(138): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(139): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(175): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(176): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(183): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(184): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(216): warning C4018: '<': signed/unsigned mismatch
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(309): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(353): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(357): warning C4018: '<': signed/unsigned mismatch
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(366): warning C4018: '<': signed/unsigned mismatch
+  Simon.cpp
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(86): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(87): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  Source.cpp
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(86): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(87): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  Weapon.cpp
+  Whip.cpp
+  Generating Code...
   GameFinal.vcxproj -> F:\Github\FinalProjectGame\Castlevania\GameFinal\Debug\GameFinal.exe

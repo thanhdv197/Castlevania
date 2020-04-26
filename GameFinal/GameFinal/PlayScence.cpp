@@ -152,15 +152,24 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 			//DebugOut(L"[ERROR] MARIO object was created before!\n");
 			return;
 		}
-		obj = new CSimon(x,y); 
-		player = (CSimon*)obj;  
+		//obj = CSimon::GetInstance();
+		////obj->SetPosition(x, y);
+		//player = CSimon::GetInstance();
+
+		obj = new CSimon(x, y);
+		player = (CSimon*)obj;
 
 		//DebugOut(L"[INFO] Player object created!\n");
 		break;
 	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(); break;
 	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
 	case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
-	case OBJECT_TYPE_ITEM: obj = new CItem(); break;
+	case OBJECT_TYPE_ITEM: 
+		{
+			int itemType = atoi(tokens[4].c_str());
+			obj = new CItem(itemType); 
+			break;
+		}
 	case OBJECT_TYPE_PORTAL:
 		{	
 			float r = atof(tokens[4].c_str());

@@ -98,6 +98,23 @@
 30007	2	87	18	103	10
 #--left
 30008	1	18	17	34	10
+#item axe
+#--right
+30009	2	105	18	121	10
+#--left
+30010	18	18	34	34	10
+#item bomerang
+30011	52	18	68	34	10
+30012	69	18	85	34	10
+30013	86	18	102	34	10
+#item heart
+#--small
+30014	18	1	26	17	10
+#--bigger
+30015	27	1	43	17	10
+#item fire
+30016	35	18	51	34	10
+
 
 #TILEMAP
 20000	0	0	32	32	30
@@ -184,6 +201,20 @@
 802	30007	100
 #--left
 803	30008	100
+#axe
+#--right
+804	30009	100
+#--left
+805	30010	100
+#bomerang
+810	30011	100
+806	30011	100	30012	100	30013	100
+#small heart
+807	30014	100
+#big heart
+808	30015	100
+#fire
+809	30016	100
 
 #
 # id	ani1	ani2	ani3
@@ -194,22 +225,24 @@
 # WHIP
 49	750	751	752	753	754	755	756	757	758	759
 # ITEM
-2	800	899	801	802
+2	800	899	801	802	804	810	807	808	809
 # WEAPON
-48	802	803
+48	802	803	804	805	806	809
 
 [OBJECTS]
 # type	x	y	ani_set_id	extra_settings per object type
 # type: 0 = Simon , 99 = Bricks, 2 = Goomba, 3 = Koopas, 4 = item
 # SIMON
+# type	x	y	ani_set_id
 0	17	115	1
 
 # ITEM
-4	82	128	2
-4	220	128	2
-4	344	128	2
-4	474	128	2
-4	602	128	2
+# type	x	y	ani_set_id	itemType
+4	82	128	2	0
+4	220	128	2	0
+4	344	128	2	0
+4	474	128	2	0
+4	602	128	2	4
 
 # --- SCENE PORTAL ----
 # type	l	t	ani_set_id	r	b	scene_id

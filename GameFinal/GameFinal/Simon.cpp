@@ -8,6 +8,33 @@
 #include "Goomba.h"
 #include "Portal.h"
 
+//CSimon* CSimon::__instance = NULL;
+//
+//CSimon* CSimon::GetInstance()
+//{
+//	if (__instance == NULL) __instance = new CSimon();
+//	return __instance;
+//}
+//
+//CSimon::CSimon()
+//{
+//	untouchable = 0;
+//	SetState(SIMON_STATE_IDLE);
+//
+//	whip = new CWhip(x, y, nx);
+//
+//	isJump = false;
+//	isAttack = false;
+//	isSit = false;
+//	usingWhip = false;
+//	usingWeapon = false;
+//	isFlyingWeapon = false;
+//
+//	float xSimon, ySimon;
+//	GetPosition(xSimon, ySimon);
+//	weapon = new CWeapon(xSimon, ySimon, GetDirection());
+//}
+
 CSimon::CSimon(float x, float y)
 {
 	untouchable = 0;
@@ -20,14 +47,16 @@ CSimon::CSimon(float x, float y)
 
 	whip = new CWhip(x, y, nx);
 
-	weapon = new CWeapon(x, y, nx);
-
 	isJump = false;
 	isAttack = false;
 	isSit = false;
 	usingWhip = false;
 	usingWeapon = false;
 	isFlyingWeapon = false;
+
+	float xSimon, ySimon;
+	GetPosition(xSimon, ySimon);
+	weapon = new CWeapon(xSimon, ySimon, GetDirection());
 }
 
 void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
@@ -306,7 +335,7 @@ void CSimon::Render()
 	}
 	if (isFlyingWeapon)
 	{
-		weapon->SetDirection(nx);
+		/*weapon->SetDirection(nx);
 		
 		if (weapon->GetDirection() > 0)
 		{
@@ -317,7 +346,8 @@ void CSimon::Render()
 		{
 			weapon->SetPosition(x - 17, y+4);
 			weapon->Render();
-		}
+		}*/
+		weapon->Render();
 		
 	}
 
@@ -372,5 +402,13 @@ void CSimon::Reset()
 	SetState(SIMON_STATE_IDLE);
 	SetPosition(start_x, start_y);
 	SetSpeed(0, 0);
+}
+
+void CSimon::SetPosition(float x, float y)
+{
+	start_x = x;
+	start_y = y;
+	this->x = x;
+	this->y = y;
 }
 

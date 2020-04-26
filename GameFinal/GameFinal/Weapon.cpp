@@ -2,9 +2,9 @@
 
 CWeapon::CWeapon(float x, float y, int nx) : CGameObject()
 {
-	x = x;
-	y = y;
-	nx = nx;
+	this->x = x;
+	this->y = y;
+	this->nx = nx;
 
 	this->isEnable = true;
 
