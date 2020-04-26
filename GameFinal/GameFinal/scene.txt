@@ -94,7 +94,10 @@
 #item whip
 30006	1	1	17	17	10
 #item knife
+#--right
 30007	2	87	18	103	10
+#--left
+30008	1	18	17	34	10
 
 #TILEMAP
 20000	0	0	32	32	30
@@ -177,7 +180,10 @@
 #whip lv 2
 801	30006	100
 #knife
+#--right
 802	30007	100
+#--left
+803	30008	100
 
 #
 # id	ani1	ani2	ani3
@@ -189,6 +195,8 @@
 49	750	751	752	753	754	755	756	757	758	759
 # ITEM
 2	800	899	801	802
+# WEAPON
+48	802	803
 
 [OBJECTS]
 # type	x	y	ani_set_id	extra_settings per object type

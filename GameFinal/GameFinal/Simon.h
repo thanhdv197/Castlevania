@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "Item.h"
 #include "Whip.h"
+#include "Weapon.h"
 
 #define SIMON_WALKING_SPEED		0.1f 
 //0.1f
@@ -58,11 +59,16 @@ class CSimon : public CGameObject
 
 	CWhip * whip;
 
+	CWeapon * weapon;
+
 public:
 	// check active
 	bool isAttack;
 	bool isJump;
 	bool isSit;
+	bool usingWhip;
+	bool usingWeapon;
+	bool isFlyingWeapon;
 
 	CSimon(float x = 0.0f, float y = 0.0f);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *colliable_objects = NULL);

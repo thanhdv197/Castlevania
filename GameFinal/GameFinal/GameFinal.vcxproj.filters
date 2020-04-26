@@ -76,6 +76,9 @@
     <Filter Include="Objects\Whip">
       <UniqueIdentifier>{400f4d4e-1471-42bb-9547-170e0f22cfe3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\Weapon">
+      <UniqueIdentifier>{f17add08-7f28-4fdd-b8f7-0b02c15de277}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animations.cpp">
@@ -131,6 +134,9 @@
     </ClCompile>
     <ClCompile Include="Whip.cpp">
       <Filter>Objects\Whip</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Objects\Weapon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +196,9 @@
     </ClInclude>
     <ClInclude Include="Whip.h">
       <Filter>Objects\Whip</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Objects\Weapon</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

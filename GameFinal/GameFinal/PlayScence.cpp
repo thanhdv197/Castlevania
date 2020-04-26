@@ -378,6 +378,11 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 		break;
 	case DIK_S:
 		simon->SetState(SIMON_STATE_ATTACK);
+		simon->usingWhip = true;
+		break;
+	case DIK_D:
+		simon->SetState(SIMON_STATE_ATTACK);
+		simon->usingWeapon = true;
 		break;
 	}
 }

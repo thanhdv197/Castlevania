@@ -20,9 +20,14 @@ CSimon::CSimon(float x, float y)
 
 	whip = new CWhip(x, y, nx);
 
+	weapon = new CWeapon(x, y, nx);
+
 	isJump = false;
 	isAttack = false;
 	isSit = false;
+	usingWhip = false;
+	usingWeapon = false;
+	isFlyingWeapon = false;
 }
 
 void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
@@ -32,12 +37,27 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 	if (isAttack && animation_set->at(ani)->GetCurrentFrame() == 2)
 	{
-		if(whip->GetCurrentFrame() == 2)
-			isAttack = false;
-		else
+		if (usingWhip)
 		{
-			whip->SetCurrentFrame(2);
+			if (whip->GetCurrentFrame() == 2)
+			{
+				usingWhip = false;
+				isAttack = false;
+
+				// test fly weapon
+				isFlyingWeapon = false;
+			}
+			else
+			{
+				whip->SetCurrentFrame(2);
+			}
 		}
+		else if (usingWeapon)
+		{
+			isAttack = false;
+			usingWeapon = false;
+		}
+		
 	}
 
 	// Simple fall down
@@ -59,8 +79,11 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		untouchable = 0;
 	}
 
-	//update weapon
+	// update whip
 	whip->Update(dt, coObjects);
+
+	// update weapon
+	weapon->Update(dt, coObjects);
 
 	// No collision occured, proceed normally
 	if (coEvents.size() == 0)
@@ -224,7 +247,8 @@ void CSimon::Render()
 	if (untouchable) alpha = 128;
 	animation_set->at(ani)->Render(x, y, alpha);
 
-	if (isAttack)
+	// using whip for attack
+	if (isAttack && usingWhip)
 	{
 		if (state == SIMON_STATE_SIT || state == SIMON_STATE_JUMP)
 		{
@@ -271,6 +295,28 @@ void CSimon::Render()
 				}
 				
 			}
+		}
+		
+	}
+
+	// using weapon for attack
+	if (isAttack && usingWeapon && animation_set->at(ani)->GetCurrentFrame()==2)
+	{
+		isFlyingWeapon = true;
+	}
+	if (isFlyingWeapon)
+	{
+		weapon->SetDirection(nx);
+		
+		if (weapon->GetDirection() > 0)
+		{
+			weapon->SetPosition(x + 17, y+4);
+			weapon->Render();
+		}
+		else
+		{
+			weapon->SetPosition(x - 17, y+4);
+			weapon->Render();
 		}
 		
 	}
