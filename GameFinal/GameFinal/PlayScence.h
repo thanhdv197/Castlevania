@@ -9,6 +9,7 @@
 #include "Simon.h"
 #include "Bricks.h"
 #include "Item.h"
+#include "Map.h"
 
 
 class CPlayScene: public CScene
@@ -18,8 +19,7 @@ protected:
 
 	vector<LPGAMEOBJECT> objects;
 
-	vector<vector<LPSPRITE>> tilemap;
-	int width, height;
+	CMap *map;
 
 	void _ParseSection_TEXTURES(string line);
 	void _ParseSection_SPRITES(string line);

@@ -13,6 +13,7 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 	CScene(id, filePath)
 {
 	key_handler = new CPlayScenceKeyHandler(this);
+	map = new CMap();
 }
 
 /*
@@ -203,22 +204,26 @@ void CPlayScene::_ParseSection_MAP(string line)
 {
 	vector<string> tokens = split(line);
 
-	vector<LPSPRITE> spriteline;
-
 	if (tokens.size() < 2) return; // skip invalid lines
 	else if (tokens.size() == 2)
 	{
-		this->width = atoi(tokens[0].c_str());
-		this->height = atoi(tokens[1].c_str());
+		map->SetWidth(atoi(tokens[0].c_str()));
+		map->SetHeight(atoi(tokens[1].c_str()));
+
+		int colNumber = map->GetWidth() / 32;
+		int rowNumber = map->GetHeight() / 32;
+
+		map->SetColNumber(colNumber);
+		map->SetRowNumber(rowNumber);
 	}
 	else
 	{
 		for (int i = 0; i < tokens.size(); i++)
 		{
-			int ID = 20000 + atoi(tokens[i].c_str());
-			spriteline.push_back(CSprites::GetInstance()->Get(ID));
+			int ID = atoi(tokens[i].c_str());
+			map->Add(i, map->GetRowCurrent(), ID);
 		}
-		tilemap.push_back(spriteline);
+		map->NextRow();
 	}
 }
 
@@ -304,9 +309,9 @@ void CPlayScene::Update(DWORD dt)
 		cx = 0;
 		cy = 0;
 	}
-	else if (this->width - cx < game->GetScreenWidth() / 2)
+	else if (map->GetWidth() - cx < game->GetScreenWidth() / 2)
 	{
-		cx = this->width - game->GetScreenWidth();
+		cx = map->GetWidth() - game->GetScreenWidth();
 		cy -= game->GetScreenHeight() / 2;
 	}
 	else
@@ -324,35 +329,8 @@ void CPlayScene::Render()
 	CGame *game = CGame::GetInstance();
 
 	int camX = game->GetCamPosX();
-	if (camX < 0)
-	{
-		camX = 0;
-	}
-	else if (this->width - camX < game->GetScreenWidth() / 2)
-	{
-		camX = this->width - game->GetScreenWidth();
-	}
 
-	int startCol = camX / 32;
-	int endCol = startCol + game->GetScreenWidth() / 32;
-
-	if (endCol < this->width / 32 - 1)
-	{
-		endCol += 1;
-	}
-
-	int row = tilemap.size(); 
-
-	for (int i = 0; i < row; i++)
-	{
-		for (int j = startCol; j <= endCol; j++)
-		{
-			int x = 32 * (j - startCol) + camX - (int)camX % 32;
-			int y = 32 * i ;
-
-			tilemap[i][j]->Draw(x, y);
-		}
-	}
+	map->Render(camX, 0);
 
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();

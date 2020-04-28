@@ -79,6 +79,9 @@
     <Filter Include="Objects\Weapon">
       <UniqueIdentifier>{f17add08-7f28-4fdd-b8f7-0b02c15de277}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components\Map">
+      <UniqueIdentifier>{b36e2cac-a4a4-4db3-bfda-32a256a98f76}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animations.cpp">
@@ -137,6 +140,9 @@
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
       <Filter>Objects\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Components\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +205,9 @@
     </ClInclude>
     <ClInclude Include="Weapon.h">
       <Filter>Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Components\Map</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
