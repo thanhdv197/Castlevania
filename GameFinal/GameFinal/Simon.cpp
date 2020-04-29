@@ -47,16 +47,18 @@ CSimon::CSimon(float x, float y)
 
 	whip = new CWhip(x, y, nx);
 
+	this->stateWeapon = WEAPON_STATE_NONE;
+
 	isJump = false;
 	isAttack = false;
 	isSit = false;
-	usingWhip = false;
 	usingWeapon = false;
+	usingWhip = false;
 	isFlyingWeapon = false;
 
-	float xSimon, ySimon;
+	/*float xSimon, ySimon;
 	GetPosition(xSimon, ySimon);
-	weapon = new CWeapon(xSimon, ySimon, GetDirection());
+	weapon = new CWeapon(xSimon, ySimon, GetDirection());*/
 }
 
 void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
@@ -72,9 +74,6 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				usingWhip = false;
 				isAttack = false;
-
-				// test fly weapon
-				isFlyingWeapon = false;
 			}
 			else
 			{
@@ -86,7 +85,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			isAttack = false;
 			usingWeapon = false;
 		}
-		
+
 	}
 
 	// Simple fall down
@@ -112,7 +111,19 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	whip->Update(dt, coObjects);
 
 	// update weapon
-	weapon->Update(dt, coObjects);
+	if (weapon)
+	{
+		weapon->Update(dt, coObjects);
+		
+		float xWeapon, yWeapon;
+		weapon->GetPosition(xWeapon, yWeapon);
+
+		if (xWeapon - this->x > 100)
+		{
+			isFlyingWeapon = false;
+			weapon->isEnable = false;
+		}
+	}
 
 	// No collision occured, proceed normally
 	if (coEvents.size() == 0)
@@ -187,7 +198,11 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				}
 				else if (item->GetState() == ITEM_STATE_ITEM_KNIFE)
 				{
-
+					this->stateWeapon = WEAPON_STATE_KNIFE;
+				}
+				else if (item->GetState() == ITEM_STATE_ITEM_AXE)
+				{
+					this->stateWeapon = WEAPON_STATE_AXE;
 				}
 
 				item->isEnable = true;
@@ -195,8 +210,6 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			}
 		}
 	}
-
-	
 
 	// clean up collision events
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
@@ -329,26 +342,17 @@ void CSimon::Render()
 	}
 
 	// using weapon for attack
-	if (isAttack && usingWeapon && animation_set->at(ani)->GetCurrentFrame()==2)
+	if (weapon)
 	{
-		isFlyingWeapon = true;
-	}
-	if (isFlyingWeapon)
-	{
-		/*weapon->SetDirection(nx);
-		
-		if (weapon->GetDirection() > 0)
+		if (isAttack && usingWeapon && animation_set->at(ani)->GetCurrentFrame() == 2)
 		{
-			weapon->SetPosition(x + 17, y+4);
+			isFlyingWeapon = true;
+		}
+
+		if (isFlyingWeapon)
+		{
 			weapon->Render();
 		}
-		else
-		{
-			weapon->SetPosition(x - 17, y+4);
-			weapon->Render();
-		}*/
-		weapon->Render();
-		
 	}
 
 	RenderBoundingBox();
@@ -380,6 +384,14 @@ void CSimon::SetState(int state)
 		break;
 	case SIMON_STATE_ATTACK:
 		isAttack = true;
+
+		if (usingWeapon)
+		{
+			float xSimon, ySimon;
+			GetPosition(xSimon, ySimon);
+			weapon = new CWeapon(xSimon, ySimon, GetDirection(), this->stateWeapon);
+		}
+		
 		break;
 	case SIMON_STATE_SIT:
 		isSit = true;

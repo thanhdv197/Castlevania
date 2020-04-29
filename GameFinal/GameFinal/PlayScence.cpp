@@ -326,11 +326,7 @@ void CPlayScene::Update(DWORD dt)
 
 void CPlayScene::Render()
 {
-	CGame *game = CGame::GetInstance();
-
-	int camX = game->GetCamPosX();
-
-	map->Render(camX, 0);
+	map->Render(CGame::GetInstance()->GetCamPosX(), 0);
 
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
@@ -364,12 +360,12 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 		simon->Reset();
 		break;
 	case DIK_S:
-		simon->SetState(SIMON_STATE_ATTACK);
 		simon->usingWhip = true;
+		simon->SetState(SIMON_STATE_ATTACK);
 		break;
 	case DIK_D:
-		simon->SetState(SIMON_STATE_ATTACK);
 		simon->usingWeapon = true;
+		simon->SetState(SIMON_STATE_ATTACK);
 		break;
 	}
 }

@@ -1,6 +1,6 @@
 #include "Weapon.h"
 
-CWeapon::CWeapon(float x, float y, int nx) : CGameObject()
+CWeapon::CWeapon(float x, float y, int nx, int state) : CGameObject()
 {
 	this->x = x;
 	this->y = y;
@@ -8,7 +8,7 @@ CWeapon::CWeapon(float x, float y, int nx) : CGameObject()
 
 	this->isEnable = true;
 
-	SetState(WEAPON_STATE_KNIFE);
+	this->state = state;
 
 	SetAnimationSet(CAnimationSets::GetInstance()->Get(48));
 }
@@ -17,15 +17,11 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	CGameObject::Update(dt, coObjects);
 
-	x += dx;
-
-	/*if (vx < 0 && x < 0) {
-		x = 0; vx = -vx;
+	if (isEnable)
+	{
+		x += dx;
+		//y += 0.01f*dt;
 	}
-
-	if (vx > 0 && x > 290) {
-		x = 290; vx = -vx;
-	}*/
 
 	for (UINT i = 0; i < coObjects->size(); i++)
 	{
@@ -50,28 +46,55 @@ void CWeapon::Render()
 {
 	if (isEnable)
 	{
-		if (nx > 0)
+		if (this->state == WEAPON_STATE_NONE)
 		{
-			vx = WEAPON_FLY_SPEED;
-			ani = WEAPON_ANI_KNIFE_RIGHT;
+
 		}
 		else
 		{
-			vx = - WEAPON_FLY_SPEED;
-			ani = WEAPON_ANI_KNIFE_LEFT;
-		}
+			if (this->state == WEAPON_STATE_KNIFE)
+			{
+				if (nx > 0)
+				{
+					vx = WEAPON_FLY_SPEED;
+					ani = WEAPON_ANI_KNIFE_RIGHT;
+				}
+				else
+				{
+					vx = -WEAPON_FLY_SPEED;
+					ani = WEAPON_ANI_KNIFE_LEFT;
+				}
+			}
+			else if (this->state == WEAPON_STATE_AXE)
+			{
+				if (nx > 0)
+				{
+					vx = WEAPON_FLY_SPEED;
+					ani = WEAPON_ANI_AXE_RIGHT;
+				}
+				else
+				{
+					vx = -WEAPON_FLY_SPEED;
+					ani = WEAPON_ANI_AXE_LEFT;
+				}
+			}
 
-		animation_set->at(ani)->Render(x, y);
-		RenderBoundingBox();
+			animation_set->at(ani)->Render(x, y);
+			RenderBoundingBox();
+		}
 	}
+	
 }
 
 void CWeapon::GetBoundingBox(float & left, float & top, float & right, float & bottom)
 {
-	left = x;
-	top = y;
-	right = left + 16;
-	bottom = top + 16;
+	if (this->state != WEAPON_STATE_NONE)
+	{
+		left = x;
+		top = y;
+		right = left + 16;
+		bottom = top + 16;
+	}
 
 }
 
@@ -79,6 +102,11 @@ void CWeapon::SetPosition(float x, float y)
 {
 	this->x = x;
 	this->y = y;
+}
+
+void CWeapon::GetPosition(float &x, float &y) {
+	x = this->x;
+	y = this->y;
 }
 
 void CWeapon::SetDirection(int nx)
@@ -89,4 +117,21 @@ void CWeapon::SetDirection(int nx)
 int CWeapon::GetDirection()
 {
 	return this->nx;
+}
+
+void CWeapon::SetState(int state)
+{
+	CGameObject::SetState(state);
+
+	switch (state)
+	{
+	case WEAPON_STATE_KNIFE:
+		vy = 0;
+		break;
+	case WEAPON_STATE_AXE:
+		vy = 0.001f;
+		break;
+	default:
+		break;
+	}
 }

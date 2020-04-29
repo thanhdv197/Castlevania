@@ -30,7 +30,7 @@ public:
 
 	bool isEnable;
 
-	CWeapon(float x, float y, int nx);
+	CWeapon(float x, float y, int nx, int state);
 
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
 	virtual void Render();
@@ -38,12 +38,14 @@ public:
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 
 	void SetPosition(float x, float y);
+	void GetPosition(float &x, float &y);
 	void SetDirection(int nx);
 	int GetDirection();
 	int GetCurrentFrame() { return animation_set->at(ani)->GetCurrentFrame(); }
 	void SetCurrentFrame(int frame) { animation_set->at(ani)->SetCurrentFrame(frame); }
 
 	int GetState() { return this->state; }
+	virtual void SetState(int state);
 
 };
 

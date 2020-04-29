@@ -61,6 +61,8 @@ class CSimon : public CGameObject
 
 	CWhip * whip;
 
+	int stateWeapon;
+
 	CWeapon * weapon;
 
 public:
