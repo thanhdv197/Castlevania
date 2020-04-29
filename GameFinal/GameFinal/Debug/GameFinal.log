@@ -1,4 +1,2 @@
-﻿  Simon.cpp
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(86): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(87): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+﻿  Weapon.cpp
   GameFinal.vcxproj -> F:\Github\FinalProjectGame\Castlevania\GameFinal\Debug\GameFinal.exe

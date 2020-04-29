@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "Item.h"
 
-#define WEAPON_FLY_SPEED 0.05f;
+#define WEAPON_FLY_SPEED 0.1f;
 
 #define WEAPON_STATE_NONE	100
 #define WEAPON_STATE_KNIFE	200

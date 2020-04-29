@@ -19,8 +19,9 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 	if (isEnable)
 	{
+		SetState(state);
 		x += dx;
-		//y += 0.01f*dt;
+		y += dy;
 	}
 
 	for (UINT i = 0; i < coObjects->size(); i++)
@@ -56,12 +57,10 @@ void CWeapon::Render()
 			{
 				if (nx > 0)
 				{
-					vx = WEAPON_FLY_SPEED;
 					ani = WEAPON_ANI_KNIFE_RIGHT;
 				}
 				else
 				{
-					vx = -WEAPON_FLY_SPEED;
 					ani = WEAPON_ANI_KNIFE_LEFT;
 				}
 			}
@@ -69,12 +68,10 @@ void CWeapon::Render()
 			{
 				if (nx > 0)
 				{
-					vx = WEAPON_FLY_SPEED;
 					ani = WEAPON_ANI_AXE_RIGHT;
 				}
 				else
 				{
-					vx = -WEAPON_FLY_SPEED;
 					ani = WEAPON_ANI_AXE_LEFT;
 				}
 			}
@@ -126,10 +123,20 @@ void CWeapon::SetState(int state)
 	switch (state)
 	{
 	case WEAPON_STATE_KNIFE:
+		if (nx > 0)
+		{
+			vx = WEAPON_FLY_SPEED;
+		}
+		else vx = -WEAPON_FLY_SPEED;
 		vy = 0;
 		break;
 	case WEAPON_STATE_AXE:
-		vy = 0.001f;
+		if (nx > 0)
+		{
+			vx = WEAPON_FLY_SPEED;
+		}
+		else vx = -WEAPON_FLY_SPEED;
+		vy = 0.01f;
 		break;
 	default:
 		break;
