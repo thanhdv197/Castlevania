@@ -21,18 +21,26 @@
 //	untouchable = 0;
 //	SetState(SIMON_STATE_IDLE);
 //
+//	start_x = x;
+//	start_y = y;
+//	this->x = x;
+//	this->y = y;
+//
 //	whip = new CWhip(x, y, nx);
+//
+//	this->stateWeapon = WEAPON_STATE_AXE;
 //
 //	isJump = false;
 //	isAttack = false;
 //	isSit = false;
+//
 //	usingWhip = false;
-//	usingWeapon = false;
 //	isFlyingWeapon = false;
 //
-//	float xSimon, ySimon;
-//	GetPosition(xSimon, ySimon);
-//	weapon = new CWeapon(xSimon, ySimon, GetDirection());
+//	this->blood = 10;
+//	this->alive = 4;
+//	this->heart = 0;
+//	this->score = 0;
 //}
 
 CSimon::CSimon(float x, float y)
@@ -67,6 +75,26 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	// Calculate dx, dy 
 	CGameObject::Update(dt);
 
+	// Simple fall down
+	vy += SIMON_GRAVITY * dt;
+
+	vector<LPCOLLISIONEVENT> coEvents;
+	vector<LPCOLLISIONEVENT> coEventsResult;
+
+	coEvents.clear();
+
+	// turn off collision when die 
+	if (state != SIMON_STATE_DIE)
+		CalcPotentialCollisions(coObjects, coEvents);
+
+	// reset untouchable timer if untouchable time has passed
+	if (GetTickCount() - untouchable_start > SIMON_UNTOUCHABLE_TIME)
+	{
+		untouchable_start = 0;
+		untouchable = 0;
+	}
+
+	// stop with last frame of attack state
 	if (isAttack && animation_set->at(ani)->GetCurrentFrame() == 2)
 	{
 		if (usingWhip)
@@ -86,25 +114,6 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			isAttack = false;
 		}
 
-	}
-
-	// Simple fall down
-	vy += SIMON_GRAVITY * dt;
-
-	vector<LPCOLLISIONEVENT> coEvents;
-	vector<LPCOLLISIONEVENT> coEventsResult;
-
-	coEvents.clear();
-
-	// turn off collision when die 
-	if (state != SIMON_STATE_DIE)
-		CalcPotentialCollisions(coObjects, coEvents);
-
-	// reset untouchable timer if untouchable time has passed
-	if (GetTickCount() - untouchable_start > SIMON_UNTOUCHABLE_TIME)
-	{
-		untouchable_start = 0;
-		untouchable = 0;
 	}
 
 	// update whip

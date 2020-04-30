@@ -136,7 +136,7 @@ void CWeapon::SetState(int state)
 			vx = WEAPON_FLY_SPEED;
 		}
 		else vx = -WEAPON_FLY_SPEED;
-		vy = 0.01f;
+		vy = -0.04f;
 		break;
 	default:
 		break;
