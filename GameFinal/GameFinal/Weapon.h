@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Item.h"
+#include "Torch.h"
 
 #define WEAPON_FLY_SPEED 0.1f;
 

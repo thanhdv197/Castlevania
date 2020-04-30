@@ -10,6 +10,7 @@
 #include "Bricks.h"
 #include "Item.h"
 #include "Map.h"
+#include "Torch.h"
 
 
 class CPlayScene: public CScene

@@ -84,7 +84,7 @@
 10096	0	638	40	658	0
 
 #ITEM
-#none1
+#torch
 30001	175	1	191	33	10
 30002	192	1	208	33	10
 #die
@@ -189,11 +189,12 @@
 # attack left lv5
 759	10094	100	10095	100	10096	100
 
-# ==== ITEM ======
-#none1
+# ==== TORCH =====
 800	30001	100	30002	100
 #die
 899	30003	100	30004	100	30005	100
+
+# ==== ITEM ======
 #whip lv 2
 801	30006	100
 #knife
@@ -224,25 +225,27 @@
 1	400	401	500	501	600	601	600	601	700	701	599	702	703
 # WHIP
 49	750	751	752	753	754	755	756	757	758	759
-# ITEM
-2	800	899	801	802	804	810	807	808	809
+# TORCH
+2	800
 # WEAPON
 48	802	803	804	805	806	809
+# ITEM
+47	801	802	804	810	807	808	809
 
 [OBJECTS]
 # type	x	y	ani_set_id	extra_settings per object type
-# type: 0 = Simon , 99 = Bricks, 2 = Goomba, 3 = Koopas, 4 = item
+# type: 0 = Simon , 99 = Bricks, 2 = Goomba, 3 = Koopas, 4 = torch
 # SIMON
 # type	x	y	ani_set_id
 0	17	115	1
 
-# ITEM
+# TORCH
 # type	x	y	ani_set_id	itemType
-4	82	128	2	3
-4	220	128	2	2
-4	344	128	2	6
-4	474	128	2	6
-4	602	128	2	4
+4	82	128	2	0
+4	220	128	2	1
+4	344	128	2	2
+4	474	128	2	3
+4	602	128	2	7
 
 # --- SCENE PORTAL ----
 # type	l	t	ani_set_id	r	b	scene_id

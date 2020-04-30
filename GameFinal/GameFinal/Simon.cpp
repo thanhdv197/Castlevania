@@ -47,18 +47,19 @@ CSimon::CSimon(float x, float y)
 
 	whip = new CWhip(x, y, nx);
 
-	this->stateWeapon = WEAPON_STATE_NONE;
+	this->stateWeapon = WEAPON_STATE_AXE;
 
 	isJump = false;
 	isAttack = false;
 	isSit = false;
-	usingWeapon = false;
+
 	usingWhip = false;
 	isFlyingWeapon = false;
 
-	/*float xSimon, ySimon;
-	GetPosition(xSimon, ySimon);
-	weapon = new CWeapon(xSimon, ySimon, GetDirection());*/
+	this->blood = 10;
+	this->alive = 4;
+	this->heart = 0;
+	this->score = 0;
 }
 
 void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
@@ -80,10 +81,9 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				whip->SetCurrentFrame(2);
 			}
 		}
-		else if (usingWeapon)
+		else
 		{
 			isAttack = false;
-			usingWeapon = false;
 		}
 
 	}
@@ -113,16 +113,16 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	// update weapon
 	if (weapon)
 	{
-		weapon->Update(dt, coObjects);
-		
 		float xWeapon, yWeapon;
 		weapon->GetPosition(xWeapon, yWeapon);
 
-		if (xWeapon - this->x > 100)
+		if (abs(xWeapon - this->x) > 50)
 		{
 			isFlyingWeapon = false;
 			weapon->isEnable = false;
 		}
+
+		weapon->Update(dt, coObjects);
 	}
 
 	// No collision occured, proceed normally
@@ -188,24 +188,11 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				CPortal *p = dynamic_cast<CPortal *>(e->obj);
 				CGame::GetInstance()->SwitchScene(p->GetSceneId());
 			}
-			else if (dynamic_cast<CItem *>(e->obj)) // if e->obj is Goomba 
+			else if (dynamic_cast<CItem *>(e->obj)) 
 			{
 				CItem *item = dynamic_cast<CItem *>(e->obj);
 
-				if (item->GetState() == ITEM_STATE_ITEM_WHIP)
-				{
-					whip->LevelUp();
-				}
-				else if (item->GetState() == ITEM_STATE_ITEM_KNIFE)
-				{
-					this->stateWeapon = WEAPON_STATE_KNIFE;
-				}
-				else if (item->GetState() == ITEM_STATE_ITEM_AXE)
-				{
-					this->stateWeapon = WEAPON_STATE_AXE;
-				}
-
-				item->isEnable = true;
+				item->isEnable = false;
 				
 			}
 		}
@@ -298,21 +285,17 @@ void CSimon::Render()
 			if (whip->GetDirection() > 0)
 			{
 				whip->SetPosition(x - 15, y + 10);
-				whip->Render();
 			}
 			else
 			{
 				if (whip->GetLevel() > 1)
 				{
 					whip->SetPosition(x - 40, y + 10);
-					whip->Render();
 				}
 				else
 				{
 					whip->SetPosition(x - 20, y + 10);
-					whip->Render();
 				}
-				
 			}
 		}
 		else
@@ -321,30 +304,29 @@ void CSimon::Render()
 			if (whip->GetDirection() > 0)
 			{
 				whip->SetPosition(x - 15, y + 2);
-				whip->Render();
 			}
 			else
 			{
 				if (whip->GetLevel() > 1)
 				{
 					whip->SetPosition(x - 40, y + 2);
-					whip->Render();
 				}
 				else
 				{
 					whip->SetPosition(x - 20, y + 2);
-					whip->Render();
 				}
 				
 			}
 		}
+
+		whip->Render();
 		
 	}
 
 	// using weapon for attack
 	if (weapon)
 	{
-		if (isAttack && usingWeapon && animation_set->at(ani)->GetCurrentFrame() == 2)
+		if (isAttack && !usingWhip && animation_set->at(ani)->GetCurrentFrame() == 2)
 		{
 			isFlyingWeapon = true;
 		}
@@ -385,7 +367,7 @@ void CSimon::SetState(int state)
 	case SIMON_STATE_ATTACK:
 		isAttack = true;
 
-		if (usingWeapon)
+		if (!usingWhip)
 		{
 			float xSimon, ySimon;
 			GetPosition(xSimon, ySimon);

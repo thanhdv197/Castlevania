@@ -65,6 +65,11 @@ class CSimon : public CGameObject
 
 	CWeapon * weapon;
 
+	int blood;
+	int alive;
+	int heart;
+	int score;
+
 public:
 	//static CSimon* GetInstance();
 
@@ -72,8 +77,9 @@ public:
 	bool isAttack;
 	bool isJump;
 	bool isSit;
+
+	// check type attack
 	bool usingWhip;
-	bool usingWeapon;
 	bool isFlyingWeapon;
 
 	//CSimon();

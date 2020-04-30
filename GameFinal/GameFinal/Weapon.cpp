@@ -26,17 +26,17 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 	for (UINT i = 0; i < coObjects->size(); i++)
 	{
-		if (dynamic_cast<CItem*>(coObjects->at(i))) {
-			CItem* item = dynamic_cast<CItem*>(coObjects->at(i));
+		if (dynamic_cast<CTorch*>(coObjects->at(i))) {
+			CTorch* torch = dynamic_cast<CTorch*>(coObjects->at(i));
 
 			float l1, t1, r1, b1, l2, t2, r2, b2;
 			GetBoundingBox(l1, t1, r1, b1);
-			item->GetBoundingBox(l2, t2, r2, b2);
+			torch->GetBoundingBox(l2, t2, r2, b2);
 
 			if (t1 <= b2 && b1 >= t2 && l1 <= r2 && r1 >= l2)
 			{
-				item->SetState(ITEM_STATE_DESTROY);
-				//item->isEnable = true;
+				torch->isEnable = false;
+				torch->isDead = true;
 			}
 		}
 
