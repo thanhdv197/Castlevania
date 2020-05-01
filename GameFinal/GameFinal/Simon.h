@@ -95,5 +95,4 @@ public:
 
 	int GetDirection() { return this->nx; }
 
-	void SetPosition(float x, float y);
 };

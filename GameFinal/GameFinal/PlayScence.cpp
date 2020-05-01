@@ -34,6 +34,7 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 #define OBJECT_TYPE_GOOMBA	2
 #define OBJECT_TYPE_KOOPAS	3
 #define OBJECT_TYPE_TORCH	4
+#define OBJECT_TYPE_ITEM	5
 
 #define OBJECT_TYPE_PORTAL	50
 
@@ -153,6 +154,9 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 			//DebugOut(L"[ERROR] MARIO object was created before!\n");
 			return;
 		}
+		/*obj = CSimon::GetInstance();
+		obj->SetPosition(x, y);
+		player = CSimon::GetInstance();*/
 
 		obj = new CSimon(x, y);
 		player = (CSimon*)obj;
@@ -162,10 +166,11 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(); break;
 	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
 	case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
-	case OBJECT_TYPE_TORCH: 
+	case OBJECT_TYPE_TORCH: obj = new CTorch(); break;
+	case OBJECT_TYPE_ITEM: 
 		{
 			int item = atoi(tokens[4].c_str());
-			obj = new CTorch(item); 
+			obj = new CItem(item); 
 			break;
 		}
 	case OBJECT_TYPE_PORTAL:
@@ -177,11 +182,11 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		}
 		break;
 	case OBJECT_TYPE_BRICKS:
-	{
-		float r = atof(tokens[4].c_str());
-		float b = atof(tokens[5].c_str());
-		obj = new CBricks(x, y, r, b);
-	}
+		{
+			float r = atof(tokens[4].c_str());
+			float b = atof(tokens[5].c_str());
+			obj = new CBricks(x, y, r, b);
+		}
 	break;
 	default:
 		//DebugOut(L"[ERR] Invalid object type: %d\n", object_type);
@@ -280,7 +285,6 @@ void CPlayScene::Update(DWORD dt)
 {
 	// We know that Mario is the first object in the list hence we won't add him into the colliable object list
 	// TO-DO: This is a "dirty" way, need a more organized way 
-
 	vector<LPGAMEOBJECT> coObjects;
 	for (size_t i = 1; i < objects.size(); i++)
 	{

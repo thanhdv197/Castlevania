@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Bricks.h"
+#include "Torch.h"
 
 #define ITEM_STATE_NONE	7
 #define ITEM_STATE_ITEM_WHIP	0

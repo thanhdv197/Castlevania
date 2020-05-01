@@ -23,8 +23,6 @@
 //
 //	start_x = x;
 //	start_y = y;
-//	this->x = x;
-//	this->y = y;
 //
 //	whip = new CWhip(x, y, nx);
 //
@@ -55,7 +53,7 @@ CSimon::CSimon(float x, float y)
 
 	whip = new CWhip(x, y, nx);
 
-	this->stateWeapon = WEAPON_STATE_AXE;
+	this->stateWeapon = WEAPON_STATE_NONE;
 
 	isJump = false;
 	isAttack = false;
@@ -102,18 +100,14 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			if (whip->GetCurrentFrame() == 2)
 			{
 				usingWhip = false;
-				isAttack = false;
 			}
 			else
 			{
 				whip->SetCurrentFrame(2);
 			}
 		}
-		else
-		{
-			isAttack = false;
-		}
 
+		isAttack = false;
 	}
 
 	// update whip
@@ -197,12 +191,38 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				CPortal *p = dynamic_cast<CPortal *>(e->obj);
 				CGame::GetInstance()->SwitchScene(p->GetSceneId());
 			}
-			else if (dynamic_cast<CItem *>(e->obj)) 
+			else if (dynamic_cast<CTorch *>(e->obj)) 
+			{
+				CTorch *torch = dynamic_cast<CTorch *>(e->obj);
+
+				torch->isEnable = false;
+			}
+			else if (dynamic_cast<CItem *>(e->obj))
 			{
 				CItem *item = dynamic_cast<CItem *>(e->obj);
 
+				if (item->GetState() == ITEM_STATE_ITEM_WHIP)
+				{
+					whip->LevelUp();
+				}
+				else if (item->GetState() == ITEM_STATE_ITEM_SMALL_HEART)
+				{
+					this->heart += 1;
+				}
+				else if (item->GetState() == ITEM_STATE_ITEM_BIG_HEART)
+				{
+					this->heart += 3;
+				}
+				else if (item->GetState() == ITEM_STATE_ITEM_KNIFE)
+				{
+					this->stateWeapon = WEAPON_STATE_KNIFE;
+				}
+				else if (item->GetState() == ITEM_STATE_ITEM_AXE)
+				{
+					this->stateWeapon = WEAPON_STATE_AXE;
+				}
+
 				item->isEnable = false;
-				
 			}
 		}
 	}
@@ -407,11 +427,4 @@ void CSimon::Reset()
 	SetSpeed(0, 0);
 }
 
-void CSimon::SetPosition(float x, float y)
-{
-	start_x = x;
-	start_y = y;
-	this->x = x;
-	this->y = y;
-}
 

@@ -31,6 +31,8 @@ public:
 
 	bool isEnable;
 
+	CWeapon(int state);
+
 	CWeapon(float x, float y, int nx, int state);
 
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);

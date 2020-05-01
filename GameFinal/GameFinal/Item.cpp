@@ -2,25 +2,62 @@
 
 CItem::CItem(int itemType)
 {
-	isEnable = false;
-
-	SetAnimationSet(CAnimationSets::GetInstance()->Get(47));
+	isEnable = true;
 
 	RanDom(itemType);
 }
 
 void CItem::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
-	// Calculate dx, dy 
-	//CGameObject::Update(dt);
-	x += dx;
-	y += 0.5f*dt;
+	CGameObject::Update(dt, coObjects);
+
+	vy += 0.001f * dt;
+
+	vector<LPCOLLISIONEVENT> coEvents;
+	vector<LPCOLLISIONEVENT> coEventsResult;
+
+	coEvents.clear();
+
+	CalcPotentialCollisions(coObjects, coEvents);
+
+	if (coEvents.size() == 0)
+	{
+		x += dx;
+		y += dy;
+	}
+	else
+	{
+		float min_tx, min_ty, nx = 0, ny;
+		float rdx = 0;
+		float rdy = 0;
+
+		// TODO: This is a very ugly designed function!!!!
+		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
+
+		for (UINT i = 0; i < coEventsResult.size(); i++)
+		{
+			LPCOLLISIONEVENT e = coEventsResult[i];
+			if (dynamic_cast<CBricks*>(e->obj))
+			{
+				if (e->ny < 0)
+				{
+					x += min_tx * dx + nx * 0.4f;
+					y += min_ty * dy + ny * 0.4f;
+
+					if (nx != 0) vx = 0;
+					if (ny != 0) vy = 0;
+				}
+			}
+
+		}
+	}
+	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 
 }
 
 void CItem::Render()
 {
-	if (!isEnable)
+	if (isEnable)
 	{
 		if (this->state != ITEM_STATE_NONE)
 		{
@@ -34,7 +71,7 @@ void CItem::Render()
 
 void CItem::GetBoundingBox(float &l, float &t, float &r, float &b)
 {
-	if (!isEnable)
+	if (isEnable)
 	{
 		l = x;
 		t = y;

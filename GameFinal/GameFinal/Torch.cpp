@@ -1,16 +1,13 @@
 #include "Torch.h"
 
-CTorch::CTorch(int itemState)
+CTorch::CTorch()
 {
-	this->isDead = false;
 	this->isEnable = true;
-
-	item = new CItem(itemState);
 }
 
 void CTorch::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 {
-	if (isEnable && !isDead)
+	if (isEnable)
 	{
 		left = x;
 		top = y;
@@ -23,24 +20,15 @@ void CTorch::GetBoundingBox(float &left, float &top, float &right, float &bottom
 void CTorch::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	CGameObject::Update(dt, coObjects);
-
-	item->Update(dt, coObjects);
 }
 
 void CTorch::Render()
 {
 	if (isEnable)
 	{
-		if (!isDead)
-		{
-			animation_set->at(0)->Render(x, y);
-			RenderBoundingBox();
-		}
-		else
-		{
-			item->SetPosition(x, y);
-			item->Render();
-		}
+		animation_set->at(0)->Render(x, y);
+		RenderBoundingBox();
+
 	}
 }
 

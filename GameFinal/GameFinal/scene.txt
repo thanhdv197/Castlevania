@@ -234,18 +234,26 @@
 
 [OBJECTS]
 # type	x	y	ani_set_id	extra_settings per object type
-# type: 0 = Simon , 99 = Bricks, 2 = Goomba, 3 = Koopas, 4 = torch
+# type: 0 = Simon , 99 = Bricks, 2 = Goomba, 3 = Koopas, 4 = torch, 5 = item
 # SIMON
 # type	x	y	ani_set_id
 0	17	115	1
 
+# ITEM
+# type	x	y	ani_set_id	item
+5	82	128	47	0
+5	220	128	47	1
+5	344	128	47	5
+5	474	128	47	4
+5	602	128	47	2
+
 # TORCH
-# type	x	y	ani_set_id	itemType
-4	82	128	2	0
-4	220	128	2	1
-4	344	128	2	2
-4	474	128	2	3
-4	602	128	2	7
+# type	x	y	ani_set_id
+4	82	128	2
+4	220	128	2
+4	344	128	2
+4	474	128	2
+4	602	128	2
 
 # --- SCENE PORTAL ----
 # type	l	t	ani_set_id	r	b	scene_id

@@ -1,5 +1,14 @@
 #include "Weapon.h"
 
+CWeapon::CWeapon(int state) : CGameObject()
+{
+	this->isEnable = true;
+
+	this->state = state;
+
+	SetAnimationSet(CAnimationSets::GetInstance()->Get(48));
+}
+
 CWeapon::CWeapon(float x, float y, int nx, int state) : CGameObject()
 {
 	this->x = x;
@@ -36,7 +45,6 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			if (t1 <= b2 && b1 >= t2 && l1 <= r2 && r1 >= l2)
 			{
 				torch->isEnable = false;
-				torch->isDead = true;
 			}
 		}
 
@@ -136,7 +144,7 @@ void CWeapon::SetState(int state)
 			vx = WEAPON_FLY_SPEED;
 		}
 		else vx = -WEAPON_FLY_SPEED;
-		vy = -0.04f;
+		vy = 0;
 		break;
 	default:
 		break;
