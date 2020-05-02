@@ -116,15 +116,6 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	// update weapon
 	if (weapon)
 	{
-		float xWeapon, yWeapon;
-		weapon->GetPosition(xWeapon, yWeapon);
-
-		if (abs(xWeapon - this->x) > 50)
-		{
-			isFlyingWeapon = false;
-			weapon->isEnable = false;
-		}
-
 		weapon->Update(dt, coObjects);
 	}
 

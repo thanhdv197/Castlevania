@@ -27,6 +27,8 @@ class CWeapon : public CGameObject
 	int ani;
 	int state;
 
+	DWORD timeAttack;
+
 public:
 
 	bool isEnable;

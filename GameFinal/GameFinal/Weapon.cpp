@@ -6,6 +6,8 @@ CWeapon::CWeapon(int state) : CGameObject()
 
 	this->state = state;
 
+	this->timeAttack = 0.0f;
+
 	SetAnimationSet(CAnimationSets::GetInstance()->Get(48));
 }
 
@@ -28,9 +30,26 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 	if (isEnable)
 	{
-		SetState(state);
-		x += dx;
-		y += dy;
+		timeAttack += dt;
+
+		if (timeAttack > 1000)
+		{
+			this->isEnable = false;
+		}
+		else
+		{
+			SetState(state);
+
+			if (timeAttack < 500)
+			{
+				vy = -vy;
+			}
+			else vy += vy;
+
+			x += dx;
+			y += dy;
+		}
+		
 	}
 
 	for (UINT i = 0; i < coObjects->size(); i++)
@@ -144,7 +163,7 @@ void CWeapon::SetState(int state)
 			vx = WEAPON_FLY_SPEED;
 		}
 		else vx = -WEAPON_FLY_SPEED;
-		vy = 0;
+		vy = 0.04f;
 		break;
 	default:
 		break;
