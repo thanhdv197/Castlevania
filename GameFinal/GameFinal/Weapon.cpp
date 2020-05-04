@@ -63,7 +63,7 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 			if (t1 <= b2 && b1 >= t2 && l1 <= r2 && r1 >= l2)
 			{
-				torch->isEnable = false;
+				torch->isDead = true;
 			}
 		}
 

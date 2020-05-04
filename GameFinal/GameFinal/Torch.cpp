@@ -3,6 +3,8 @@
 CTorch::CTorch()
 {
 	this->isEnable = true;
+
+	this->isDead = false;
 }
 
 void CTorch::GetBoundingBox(float &left, float &top, float &right, float &bottom)
@@ -20,15 +22,30 @@ void CTorch::GetBoundingBox(float &left, float &top, float &right, float &bottom
 void CTorch::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	CGameObject::Update(dt, coObjects);
+
+	if (isDead)
+	{
+		timeDisplay += dt;
+
+		if (timeDisplay > 300)
+			this->isEnable = false;
+	}
+		
 }
 
 void CTorch::Render()
 {
 	if (isEnable)
 	{
-		animation_set->at(0)->Render(x, y);
-		RenderBoundingBox();
-
+		if (!isDead)
+		{
+			animation_set->at(0)->Render(x, y);
+			RenderBoundingBox();
+		}
+		else
+		{
+			animation_set->at(1)->Render(x+2, y+8);
+		}
 	}
 }
 

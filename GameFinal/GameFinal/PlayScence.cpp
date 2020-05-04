@@ -154,15 +154,15 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 			//DebugOut(L"[ERROR] MARIO object was created before!\n");
 			return;
 		}
-		/*obj = CSimon::GetInstance();
-		obj->SetPosition(x, y);
-		player = CSimon::GetInstance();*/
+		/*player = CSimon::GetInstance();
+		player->SetPosition(x, y);
+		player->SetAnimationSet(animation_sets->Get(ani_set_id));*/
 
 		obj = new CSimon(x, y);
 		player = (CSimon*)obj;
 
 		//DebugOut(L"[INFO] Player object created!\n");
-		break;
+		break ;
 	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(); break;
 	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
 	case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
@@ -299,9 +299,18 @@ void CPlayScene::Update(DWORD dt)
 	// skip the rest if scene was already unloaded (Mario::Update might trigger PlayScene::Unload)
 	if (player == NULL) return; 
 
+	/*if (player != NULL)
+	{
+		player->Update(dt, &coObjects);
+	}*/
+
 	// Update camera to follow mario
-	float cx, cy;
-	player->GetPosition(cx, cy);
+	float cx = 0, cy = 0;
+
+	if (player != NULL)
+	{
+		player->GetPosition(cx, cy);
+	}
 
 	CGame *game = CGame::GetInstance();
 
@@ -328,6 +337,11 @@ void CPlayScene::Update(DWORD dt)
 void CPlayScene::Render()
 {
 	map->Render(CGame::GetInstance()->GetCamPosX(), 0);
+
+	/*if (player != NULL)
+	{
+		player->Render();
+	}*/
 
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();

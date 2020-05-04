@@ -3,8 +3,10 @@
 
 class CTorch : public CGameObject
 {
+	DWORD timeDisplay = 0;
 public:
 	bool isEnable;
+	bool isDead;
 
 	CTorch();
 

@@ -229,7 +229,7 @@
 # type: 0 = Simon , 99 = Bricks, 2 = Goomba, 3 = Koopas, 4 = torch, 5 = item
 # SIMON
 # type	x	y	ani_set_id
-0	17	115	1
+0	17	100	1
 
 # --- SCENE PORTAL ----
 # type	l	t	ani_set_id	r	b	scene_id

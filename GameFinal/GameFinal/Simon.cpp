@@ -21,12 +21,9 @@
 //	untouchable = 0;
 //	SetState(SIMON_STATE_IDLE);
 //
-//	start_x = x;
-//	start_y = y;
-//
 //	whip = new CWhip(x, y, nx);
 //
-//	this->stateWeapon = WEAPON_STATE_AXE;
+//	this->stateWeapon = WEAPON_STATE_NONE;
 //
 //	isJump = false;
 //	isAttack = false;
@@ -389,7 +386,8 @@ void CSimon::SetState(int state)
 
 		if (!usingWhip)
 		{
-			float xSimon, ySimon;
+			float xSimon = 0, ySimon = 0;
+			//if(CSimon::GetInstance()!=NULL)
 			GetPosition(xSimon, ySimon);
 			weapon = new CWeapon(xSimon, ySimon, GetDirection(), this->stateWeapon);
 		}
@@ -409,6 +407,15 @@ void CSimon::GetBoundingBox(float &left, float &top, float &right, float &bottom
 	right = x + SIMON_BBOX_WIDTH;
 	bottom = y + SIMON_BBOX_HEIGHT;
 
+	if (state == SIMON_STATE_JUMP)
+	{
+		left = x;
+		top = y+7;
+
+		right = x + SIMON_BBOX_WIDTH;
+		bottom = y + 23;
+	}
+
 }
 
 void CSimon::Reset()
@@ -416,6 +423,14 @@ void CSimon::Reset()
 	SetState(SIMON_STATE_IDLE);
 	SetPosition(start_x, start_y);
 	SetSpeed(0, 0);
+}
+
+void CSimon::SetPosition(float x, float y)
+{
+	CGameObject::SetPosition(x, y);
+
+	this->start_x = x;
+	this->start_y = y;
 }
 
 
