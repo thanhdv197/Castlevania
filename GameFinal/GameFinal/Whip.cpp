@@ -1,11 +1,7 @@
 #include "Whip.h"
 
-CWhip::CWhip(float x, float y, int nx) : CGameObject()
+CWhip::CWhip() : CGameObject()
 {
-	x = x;
-	y = y;
-	nx = nx;
-
 	this->level = 1;
 
 	SetAnimationSet(CAnimationSets::GetInstance()->Get(49));

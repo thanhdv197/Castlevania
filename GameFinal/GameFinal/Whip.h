@@ -24,7 +24,7 @@ class CWhip : public CGameObject
 	int level;
 
 public:
-	CWhip(float x, float y, int nx);
+	CWhip();
 
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
 	virtual void Render();

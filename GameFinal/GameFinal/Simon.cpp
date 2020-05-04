@@ -21,7 +21,7 @@
 //	untouchable = 0;
 //	SetState(SIMON_STATE_IDLE);
 //
-//	whip = new CWhip(x, y, nx);
+//	whip = new CWhip();
 //
 //	this->stateWeapon = WEAPON_STATE_NONE;
 //
@@ -48,7 +48,7 @@ CSimon::CSimon(float x, float y)
 	this->x = x;
 	this->y = y;
 
-	whip = new CWhip(x, y, nx);
+	whip = new CWhip();
 
 	this->stateWeapon = WEAPON_STATE_NONE;
 

@@ -22,6 +22,7 @@ void CMap::Render(int xCam, int yCam)
 	}
 
 	int numOfRow = this->rowNumber;
+
 	for (int i = 0; i < numOfRow; i++)
 	{
 		for (int j = startCol; j <= endCol; j++)
@@ -29,7 +30,11 @@ void CMap::Render(int xCam, int yCam)
 			float x = 32 * (j - startCol) + xCam - (int)xCam % 32;
 			float y = 32 * i;
 
-			CSprites::GetInstance()->Get(tileMap[j][i])->Draw(x, y);
+			if (tileMap[j][i] != NULL)
+			{
+				CSprites::GetInstance()->Get(tileMap[j][i])->Draw(x, y);
+			}
+			
 		}
 	}
 
