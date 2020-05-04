@@ -93,14 +93,7 @@ void CWeapon::Render()
 			}
 			else if (this->state == WEAPON_STATE_AXE)
 			{
-				if (nx > 0)
-				{
-					ani = WEAPON_ANI_AXE_RIGHT;
-				}
-				else
-				{
-					ani = WEAPON_ANI_AXE_LEFT;
-				}
+				ani = WEAPON_ANI_AXE;
 			}
 
 			animation_set->at(ani)->Render(x, y);

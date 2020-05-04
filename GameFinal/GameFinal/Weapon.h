@@ -14,12 +14,11 @@
 #define WEAPON_ANI_KNIFE_RIGHT	0
 #define WEAPON_ANI_KNIFE_LEFT	1
 
-#define WEAPON_ANI_AXE_RIGHT	2
-#define WEAPON_ANI_AXE_LEFT	3
+#define WEAPON_ANI_AXE	2
 
-#define WEAPON_ANI_BOMERANG	4
+#define WEAPON_ANI_BOMERANG	3
 
-#define WEAPON_ANI_FIRE	5
+#define WEAPON_ANI_FIRE	4
 
 
 class CWeapon : public CGameObject
