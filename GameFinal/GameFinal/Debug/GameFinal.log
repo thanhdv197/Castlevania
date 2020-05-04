@@ -1,7 +1,4 @@
-﻿  Game.cpp
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(86): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(87): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  PlayScence.cpp
+﻿  PlayScence.cpp
 f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(86): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(87): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(95): warning C4018: '<': signed/unsigned mismatch
@@ -13,16 +10,6 @@ f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(179): 
 f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(186): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(187): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(223): warning C4018: '<': signed/unsigned mismatch
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(324): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(346): warning C4018: '<': signed/unsigned mismatch
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(355): warning C4018: '<': signed/unsigned mismatch
-  Simon.cpp
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(86): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(87): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  Source.cpp
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(86): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(87): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  Weapon.cpp
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\weapon.cpp(9): warning C4244: '=': conversion from 'float' to 'DWORD', possible loss of data
-  Generating Code...
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(347): warning C4018: '<': signed/unsigned mismatch
+f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(356): warning C4018: '<': signed/unsigned mismatch
   GameFinal.vcxproj -> F:\Github\FinalProjectGame\Castlevania\GameFinal\Debug\GameFinal.exe
