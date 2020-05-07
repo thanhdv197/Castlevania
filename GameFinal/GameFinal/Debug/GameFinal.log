@@ -1,15 +1,4 @@
-﻿  PlayScence.cpp
+﻿  Simon.cpp
 f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(86): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\game.h(87): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(95): warning C4018: '<': signed/unsigned mismatch
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(117): warning C4018: '<': signed/unsigned mismatch
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(140): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(141): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(178): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(179): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(186): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(187): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(223): warning C4018: '<': signed/unsigned mismatch
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(347): warning C4018: '<': signed/unsigned mismatch
-f:\github\finalprojectgame\castlevania\gamefinal\gamefinal\playscence.cpp(356): warning C4018: '<': signed/unsigned mismatch
   GameFinal.vcxproj -> F:\Github\FinalProjectGame\Castlevania\GameFinal\Debug\GameFinal.exe

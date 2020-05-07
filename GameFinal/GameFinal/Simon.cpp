@@ -55,6 +55,9 @@ CSimon::CSimon(float x, float y)
 	isJump = false;
 	isAttack = false;
 	isSit = false;
+	isLevelUp = false;
+
+	timeLevelUp = 0;
 
 	usingWhip = false;
 	isFlyingWeapon = false;
@@ -87,6 +90,14 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	{
 		untouchable_start = 0;
 		untouchable = 0;
+	}
+
+	// level up finish
+	if (isLevelUp)
+	{
+		timeLevelUp += dt;
+		if (timeLevelUp > 500)
+			isLevelUp = false;
 	}
 
 	// stop with last frame of attack state
@@ -191,6 +202,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				if (item->GetState() == ITEM_STATE_ITEM_WHIP)
 				{
+					isLevelUp = true;
 					whip->LevelUp();
 				}
 				else if (item->GetState() == ITEM_STATE_ITEM_SMALL_HEART)
@@ -275,6 +287,12 @@ void CSimon::Render()
 				if (nx > 0)
 					ani = SIMON_ANI_ATTACK_RIGHT;
 				else ani = SIMON_ANI_ATTACK_LEFT;
+			}
+			else if (isLevelUp)
+			{
+				if (nx > 0)
+					ani = SIMON_ANI_LEVELUP_RIGHT;
+				else ani = SIMON_ANI_LEVELUP_LEFT;
 			}
 			else
 			{

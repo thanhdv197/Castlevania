@@ -40,6 +40,9 @@
 #define SIMON_ANI_SIT_ATTACK_RIGHT	11
 #define SIMON_ANI_SIT_ATTACK_LEFT	12
 
+#define SIMON_ANI_LEVELUP_RIGHT	13
+#define SIMON_ANI_LEVELUP_LEFT	14
+
 #define SIMON_BBOX_WIDTH  16
 #define SIMON_BBOX_HEIGHT 30
 #define SIMON_BBOX_HEIGHT_SIT 23
@@ -70,6 +73,8 @@ class CSimon : public CGameObject
 	int heart;
 	int score;
 
+	DWORD timeLevelUp;
+
 public:
 	//static CSimon* GetInstance();
 
@@ -77,6 +82,7 @@ public:
 	bool isAttack;
 	bool isJump;
 	bool isSit;
+	bool isLevelUp;
 
 	// check type attack
 	bool usingWhip;
