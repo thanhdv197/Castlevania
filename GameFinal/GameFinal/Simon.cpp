@@ -96,7 +96,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	if (isLevelUp)
 	{
 		timeLevelUp += dt;
-		if (timeLevelUp > 500)
+		if (timeLevelUp > 1000)
 			isLevelUp = false;
 	}
 

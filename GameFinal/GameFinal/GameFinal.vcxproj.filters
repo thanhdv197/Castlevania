@@ -85,6 +85,9 @@
     <Filter Include="Objects\Torch">
       <UniqueIdentifier>{48400277-9ca2-4b38-a1db-263cbfefbcaf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\HitEffect">
+      <UniqueIdentifier>{3d4bca32-a406-4fc2-8926-2103ec358a42}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animations.cpp">
@@ -149,6 +152,9 @@
     </ClCompile>
     <ClCompile Include="Torch.cpp">
       <Filter>Objects\Torch</Filter>
+    </ClCompile>
+    <ClCompile Include="WhipEffect.cpp">
+      <Filter>Objects\HitEffect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +223,9 @@
     </ClInclude>
     <ClInclude Include="Torch.h">
       <Filter>Objects\Torch</Filter>
+    </ClInclude>
+    <ClInclude Include="WhipEffect.h">
+      <Filter>Objects\HitEffect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

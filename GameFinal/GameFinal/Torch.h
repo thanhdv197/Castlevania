@@ -1,12 +1,16 @@
 #pragma once
 #include "GameObject.h"
+#include "WhipEffect.h"
 
 class CTorch : public CGameObject
 {
 	DWORD timeDisplay = 0;
+
+	CWhipEffect * whipEffect;
 public:
 	bool isEnable;
 	bool isDead;
+	bool isAttacking;
 
 	CTorch();
 

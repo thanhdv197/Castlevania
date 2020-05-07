@@ -5,6 +5,10 @@ CTorch::CTorch()
 	this->isEnable = true;
 
 	this->isDead = false;
+
+	this->isAttacking = false;
+
+	whipEffect = new CWhipEffect();
 }
 
 void CTorch::GetBoundingBox(float &left, float &top, float &right, float &bottom)
@@ -45,6 +49,13 @@ void CTorch::Render()
 		else
 		{
 			animation_set->at(1)->Render(x+2, y+8);
+		}
+
+		// render hit attack of whip 
+		if (isAttacking)
+		{
+			whipEffect->SetPosition(x + 3, y + 10);
+			whipEffect->Render();
 		}
 	}
 }
