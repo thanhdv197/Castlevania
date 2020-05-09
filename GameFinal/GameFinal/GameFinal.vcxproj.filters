@@ -70,9 +70,6 @@
     <Filter Include="Objects\Bricks">
       <UniqueIdentifier>{cae76c3f-3cd0-4fc4-aeb3-48a28e20f74a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Objects\Item">
-      <UniqueIdentifier>{3dfe133e-f110-4615-b85d-c102dc46d883}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Objects\Whip">
       <UniqueIdentifier>{400f4d4e-1471-42bb-9547-170e0f22cfe3}</UniqueIdentifier>
     </Filter>
@@ -140,9 +137,6 @@
     </ClCompile>
     <ClCompile Include="Bricks.cpp">
       <Filter>Objects\Bricks</Filter>
-    </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>Objects\Item</Filter>
     </ClCompile>
     <ClCompile Include="Whip.cpp">
       <Filter>Objects\Whip</Filter>
@@ -214,9 +208,6 @@
     </ClInclude>
     <ClInclude Include="Bricks.h">
       <Filter>Objects\Bricks</Filter>
-    </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Objects\Item</Filter>
     </ClInclude>
     <ClInclude Include="Whip.h">
       <Filter>Objects\Whip</Filter>
