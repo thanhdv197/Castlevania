@@ -136,6 +136,10 @@
 30019	59	102	75	118	10
 30020	76	102	92	118	10
 
+#CANDLE
+30021	157	1	165	17	10
+30022	166	1	174	17	10
+
 
 #TILEMAP
 20000	0	0	32	32	30
@@ -245,6 +249,9 @@
 #fire
 809	30016	100
 
+# ==== CANDLE =====
+810	30021	100	30022	100
+
 #
 # id	ani1	ani2	ani3
 #
@@ -256,34 +263,32 @@
 # HIT EFFECT
 46	760
 # TORCH
-2	800	899
+2	801	802	804	810	807	808	809	800
 # WEAPON
 48	802	803	805	806	809	
 # ITEM
-47	801	802	804	810	807	808	809
+#47	801	802	804	810	807	808	809
+# CANDLE
+45	801	802	804	810	807	808	809	810
 
 [OBJECTS]
 # type	x	y	ani_set_id	extra_settings per object type
-# type: 0 = Simon , 99 = Bricks, 2 = Goomba, 3 = Koopas, 4 = torch, 5 = item
+# type: 0 = Simon , 99 = Bricks, 2 = Goomba, 3 = Koopas, 4 = torch, 5 = ?, 6 = candle
 # SIMON
 # type	x	y	ani_set_id
 0	17	115	1
 
-# ITEM
-# type	x	y	ani_set_id	item
-5	82	128	47	0
-5	220	128	47	1
-5	344	128	47	5
-5	474	128	47	4
-5	602	128	47	2
-
 # TORCH
-# type	x	y	ani_set_id
-4	82	128	2
-4	220	128	2
-4	344	128	2
-4	474	128	2
-4	602	128	2
+# type	x	y	ani_set_id	item
+4	82	128	2	0
+4	220	128	2	1
+4	344	128	2	5
+4	474	128	2	4
+4	602	128	2	2
+
+# CANDLE
+# type	x	y	ani_set_id	item
+6	102	128	45	0
 
 # --- SCENE PORTAL ----
 # type	l	t	ani_set_id	r	b	scene_id
@@ -293,8 +298,6 @@
 # BRICKS
 # type	l	t	ani_set_id	r	b
 99	0	160	0	768	320
-99	0	0	0	1	320
-99	767	0	0	760	320
 
 [MAP]
 # width height

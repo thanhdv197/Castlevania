@@ -4,16 +4,11 @@ CWhipEffect::CWhipEffect()
 {
 	isEnable = true;
 
-	this->timeDisplay = 0;
-
 	SetAnimationSet(CAnimationSets::GetInstance()->Get(46));
 }
 
 void CWhipEffect::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
-	timeDisplay += dt;
-	if (timeDisplay > 50)
-		isEnable = false;
 }
 
 void CWhipEffect::Render()

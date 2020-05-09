@@ -11,6 +11,7 @@
 #include "Item.h"
 #include "Map.h"
 #include "Torch.h"
+#include "Candle.h"
 
 
 class CPlayScene: public CScene

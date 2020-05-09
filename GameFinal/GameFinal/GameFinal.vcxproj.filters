@@ -88,6 +88,9 @@
     <Filter Include="Objects\HitEffect">
       <UniqueIdentifier>{3d4bca32-a406-4fc2-8926-2103ec358a42}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\Candle">
+      <UniqueIdentifier>{62bfeda3-2bfd-45ed-b1e7-77a0a8cddc0a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animations.cpp">
@@ -155,6 +158,9 @@
     </ClCompile>
     <ClCompile Include="WhipEffect.cpp">
       <Filter>Objects\HitEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="Candle.cpp">
+      <Filter>Objects\Candle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +232,9 @@
     </ClInclude>
     <ClInclude Include="WhipEffect.h">
       <Filter>Objects\HitEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="Candle.h">
+      <Filter>Objects\Candle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

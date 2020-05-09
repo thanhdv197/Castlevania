@@ -3,7 +3,6 @@
 
 class CWhipEffect : public CGameObject
 {
-	DWORD timeDisplay;
 public:
 	bool isEnable;
 

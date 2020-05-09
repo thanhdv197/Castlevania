@@ -194,35 +194,25 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				CTorch *torch = dynamic_cast<CTorch *>(e->obj);
 
-				torch->isEnable = false;
+				if (torch->GetState() == STATE_CANDLE)
+					torch->SetState(STATE_ITEM);
+				else
+				{
+					CollisionItem(torch->GetItem());
+					torch->isEnable = false;
+				}
 			}
-			else if (dynamic_cast<CItem *>(e->obj))
+			else if (dynamic_cast<CCandle *>(e->obj))
 			{
-				CItem *item = dynamic_cast<CItem *>(e->obj);
+				CCandle *candle = dynamic_cast<CCandle *>(e->obj);
 
-				if (item->GetState() == ITEM_STATE_ITEM_WHIP)
+				if(candle->GetState()==STATE_CANDLE)
+					candle->SetState(STATE_ITEM);
+				else
 				{
-					isLevelUp = true;
-					whip->LevelUp();
+					CollisionItem(candle->GetItem());
+					candle->isEnable = false;
 				}
-				else if (item->GetState() == ITEM_STATE_ITEM_SMALL_HEART)
-				{
-					this->heart += 1;
-				}
-				else if (item->GetState() == ITEM_STATE_ITEM_BIG_HEART)
-				{
-					this->heart += 3;
-				}
-				else if (item->GetState() == ITEM_STATE_ITEM_KNIFE)
-				{
-					this->stateWeapon = WEAPON_STATE_KNIFE;
-				}
-				else if (item->GetState() == ITEM_STATE_ITEM_AXE)
-				{
-					this->stateWeapon = WEAPON_STATE_AXE;
-				}
-
-				item->isEnable = false;
 			}
 		}
 	}
@@ -449,6 +439,46 @@ void CSimon::SetPosition(float x, float y)
 
 	this->start_x = x;
 	this->start_y = y;
+}
+
+void CSimon::CollisionItem(int item)
+{
+	/*
+		0: whip item
+		1: knife item
+		2: axe item
+		3: bomerang item
+		4: small heart
+		5: big heart
+		6: fire
+	*/
+	if (item == 0)
+	{
+		isLevelUp = true;
+		whip->LevelUp();
+	}
+	else if (item == 1)
+	{
+		stateWeapon = WEAPON_STATE_KNIFE;
+	}
+	else if (item == 2)
+	{
+		stateWeapon = WEAPON_STATE_AXE;
+	}
+	else if (item == 3)
+	{
+		stateWeapon = WEAPON_STATE_BOMERANG;
+	}
+	else if (item == 4)
+	{
+		heart += 1;
+	}
+	else if (item == 5)
+	{
+		heart += 3;
+	}
+	else
+		stateWeapon = WEAPON_STATE_FIRE;
 }
 
 
