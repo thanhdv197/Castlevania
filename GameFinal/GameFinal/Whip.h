@@ -1,6 +1,5 @@
 #pragma once
 #include "GameObject.h"
-#include "Item.h"
 #include "Torch.h"
 #include "Candle.h"
 

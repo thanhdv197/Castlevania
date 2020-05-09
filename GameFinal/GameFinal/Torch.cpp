@@ -21,8 +21,8 @@ void CTorch::GetBoundingBox(float &left, float &top, float &right, float &bottom
 		{
 			left = x;
 			top = y;
-			right = left + 8;
-			bottom = top + 8;
+			right = left + 16;
+			bottom = top + 32;
 		}
 		else
 		{

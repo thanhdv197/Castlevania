@@ -288,7 +288,7 @@
 
 # CANDLE
 # type	x	y	ani_set_id	item
-6	102	128	45	0
+6	152	128	45	0
 
 # --- SCENE PORTAL ----
 # type	l	t	ani_set_id	r	b	scene_id

@@ -195,7 +195,9 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				CTorch *torch = dynamic_cast<CTorch *>(e->obj);
 
 				if (torch->GetState() == STATE_CANDLE)
-					torch->SetState(STATE_ITEM);
+				{
+
+				}
 				else
 				{
 					CollisionItem(torch->GetItem());
@@ -206,8 +208,10 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				CCandle *candle = dynamic_cast<CCandle *>(e->obj);
 
-				if(candle->GetState()==STATE_CANDLE)
-					candle->SetState(STATE_ITEM);
+				if (candle->GetState() == STATE_CANDLE)
+				{
+
+				}
 				else
 				{
 					CollisionItem(candle->GetItem());
