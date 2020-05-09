@@ -8,7 +8,6 @@
 #include "Koopas.h"
 #include "Simon.h"
 #include "Bricks.h"
-#include "Item.h"
 #include "Map.h"
 #include "Torch.h"
 #include "Candle.h"

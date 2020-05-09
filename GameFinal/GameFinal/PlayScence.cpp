@@ -34,7 +34,6 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 #define OBJECT_TYPE_GOOMBA	2
 #define OBJECT_TYPE_KOOPAS	3
 #define OBJECT_TYPE_TORCH	4
-#define OBJECT_TYPE_ITEM	5
 #define OBJECT_TYPE_CANDLE	6
 
 #define OBJECT_TYPE_PORTAL	50
@@ -173,12 +172,6 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		obj = new CTorch(item);
 		break;
 	}
-	case OBJECT_TYPE_ITEM: 
-		{
-			int item = atoi(tokens[4].c_str());
-			obj = new CItem(item); 
-			break;
-		}
 	case OBJECT_TYPE_CANDLE:
 	{
 		int item = atoi(tokens[4].c_str());
