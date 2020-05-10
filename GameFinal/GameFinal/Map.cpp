@@ -28,7 +28,7 @@ void CMap::Render(int xCam, int yCam)
 		for (int j = startCol; j <= endCol; j++)
 		{
 			float x = 32 * (j - startCol) + xCam - (int)xCam % 32;
-			float y = 32 * i;
+			float y = 32 * i + 20;	// edit to fit scores bar
 
 			if (tileMap[j][i] != NULL)
 			{

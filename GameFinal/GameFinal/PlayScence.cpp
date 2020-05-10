@@ -14,6 +14,7 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 {
 	key_handler = new CPlayScenceKeyHandler(this);
 	map = new CMap();
+	scores = new CScores();
 }
 
 /*
@@ -324,11 +325,6 @@ void CPlayScene::Update(DWORD dt)
 		cx = 0;
 		cy = 0;
 	}
-	/*else if (map->GetWidth() - cx < game->GetScreenWidth() / 2)
-	{
-		cx = map->GetWidth() - game->GetScreenWidth();
-		cy -= game->GetScreenHeight() / 2;
-	}*/
 	else
 	{
 		cx -= game->GetScreenWidth() / 2;
@@ -338,10 +334,15 @@ void CPlayScene::Update(DWORD dt)
 	if(cx + game->GetScreenWidth() <= map->GetWidth())
 		CGame::GetInstance()->SetCamPos(cx, 0.0f /*cy*/);
 
+	// update Scores bar
+	if(player!=NULL)
+		scores->Update(player->GetScores(), 1, player->GetHeart(), player->GetAlive(), player->GetBlood(), dt);
+
 }
 
 void CPlayScene::Render()
 {
+	// render map follow camera
 	map->Render(CGame::GetInstance()->GetCamPosX(), 0);
 
 	/*if (player != NULL)
@@ -351,6 +352,9 @@ void CPlayScene::Render()
 
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
+
+	// render scores bar
+	scores->Render();
 }
 
 /*

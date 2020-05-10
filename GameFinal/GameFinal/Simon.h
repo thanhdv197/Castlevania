@@ -106,4 +106,9 @@ public:
 
 	void CollisionItem(int item);
 
+	int GetBlood() { return this->blood; }
+	int GetAlive() { return this->alive; }
+	int GetHeart() { return this->heart; }
+	int GetScores() { return this->score; }
+
 };

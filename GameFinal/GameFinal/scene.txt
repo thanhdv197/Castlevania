@@ -4,6 +4,8 @@
 20	textures\misc.png	176	224	248
 30	textures\map\tilemap.png	176	224	248
 10	textures\item.png	116	116	116
+40	textures\scores.png	176	224	248
+50	textures\blood.png	176	224	248
 
 # id	left	top	right	bottom	texture_id
 [SPRITES]
@@ -166,6 +168,15 @@
 20021	96	96	128	128	30
 20022	128	96	160	128	30
 
+#SCORES
+20099	0	0	320	40	40
+# blood simon
+20098	0	0	5	7	50
+# blood boss
+20097	0	7	5	14	50
+# blood
+20096	5	0	10	7	50
+
 # ani_id	sprite1_id	time1	sprite2_id	time2	...
 [ANIMATIONS]
 # ====SIMON========
@@ -280,11 +291,11 @@
 
 # TORCH
 # type	x	y	ani_set_id	item
-4	82	128	2	0
-4	220	128	2	1
-4	344	128	2	5
-4	474	128	2	4
-4	602	128	2	2
+4	82	148	2	0
+4	220	148	2	1
+4	344	148	2	5
+4	474	148	2	4
+4	602	148	2	2
 
 # CANDLE
 # type	x	y	ani_set_id	item
@@ -297,7 +308,7 @@
 
 # BRICKS
 # type	l	t	ani_set_id	r	b
-99	0	160	0	768	320
+99	0	180	0	768	320
 
 [MAP]
 # width height

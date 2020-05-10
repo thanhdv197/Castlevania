@@ -11,6 +11,7 @@
 #include "Map.h"
 #include "Torch.h"
 #include "Candle.h"
+#include "Scores.h"
 
 
 class CPlayScene: public CScene
@@ -21,6 +22,8 @@ protected:
 	vector<LPGAMEOBJECT> objects;
 
 	CMap *map;
+
+	CScores * scores;
 
 	void _ParseSection_TEXTURES(string line);
 	void _ParseSection_SPRITES(string line);

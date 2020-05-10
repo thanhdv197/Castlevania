@@ -62,7 +62,7 @@ CSimon::CSimon(float x, float y)
 	usingWhip = false;
 	isFlyingWeapon = false;
 
-	this->blood = 10;
+	this->blood = 16;
 	this->alive = 4;
 	this->heart = 0;
 	this->score = 0;

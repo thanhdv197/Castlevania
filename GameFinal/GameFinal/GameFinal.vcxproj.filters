@@ -88,6 +88,9 @@
     <Filter Include="Objects\Candle">
       <UniqueIdentifier>{62bfeda3-2bfd-45ed-b1e7-77a0a8cddc0a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\Scores">
+      <UniqueIdentifier>{8fa1bc24-38b9-407e-ae90-04119c680ed9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animations.cpp">
@@ -155,6 +158,9 @@
     </ClCompile>
     <ClCompile Include="Candle.cpp">
       <Filter>Objects\Candle</Filter>
+    </ClCompile>
+    <ClCompile Include="Scores.cpp">
+      <Filter>Objects\Scores</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +232,9 @@
     </ClInclude>
     <ClInclude Include="Candle.h">
       <Filter>Objects\Candle</Filter>
+    </ClInclude>
+    <ClInclude Include="Scores.h">
+      <Filter>Objects\Scores</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
