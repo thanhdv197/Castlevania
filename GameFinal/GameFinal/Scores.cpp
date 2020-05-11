@@ -19,13 +19,14 @@ CScores::CScores()
 	);
 }
 
-void CScores::Update(int _scores, int _stage, int _heart, int _alive, int _blood, DWORD dt)
+void CScores::Update(int _scores, int _stage, int _heart, int _alive, int _blood, int _stateWeapon, DWORD dt)
 {
 	this->scores = _scores;
 	this->stage = _stage;
 	this->heart = _heart;
 	this->alive = _alive;
 	this->bloodSimon = _blood;
+	this->stateWeapon = _stateWeapon;
 
 	timeLimit += dt;
 	if (timeLimit > 1000)
@@ -131,6 +132,15 @@ void CScores::Render()
 		int y = 24;
 
 		spriteBloodBoss->Draw(x, y);
+	}
+
+	// draw weapon
+	if (stateWeapon != WEAPON_STATE_NONE)
+	{
+		if (stateWeapon == WEAPON_STATE_KNIFE)
+			CSprites::GetInstance()->Get(30007)->Draw(camX + 163, 19);
+		else if(stateWeapon == WEAPON_STATE_AXE)
+			CSprites::GetInstance()->Get(30017)->Draw(camX + 163, 19);
 	}
 
 }

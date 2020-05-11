@@ -110,5 +110,5 @@ public:
 	int GetAlive() { return this->alive; }
 	int GetHeart() { return this->heart; }
 	int GetScores() { return this->score; }
-
+	int GetWeapon() { return this->stateWeapon; }
 };

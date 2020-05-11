@@ -3,6 +3,7 @@
 #include "Game.h"
 #include <iostream>  
 #include <string>  
+#include "Weapon.h"
 
 using namespace std;
 
@@ -44,11 +45,13 @@ class CScores
 	CSprite * spriteBloodBoss;
 	int bloodBoss = 12;
 
+	int stateWeapon;
+
 public:
 	CScores();
 	~CScores();
 
-	void Update(int _scores, int _stage, int _heart, int _alive, int _blood, DWORD dt);
+	void Update(int _scores, int _stage, int _heart, int _alive, int _blood, int _stateWeapon, DWORD dt);
 	void Render();
 
 	void CheckLength(string &text, int max);

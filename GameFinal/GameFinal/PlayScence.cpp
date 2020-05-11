@@ -336,7 +336,7 @@ void CPlayScene::Update(DWORD dt)
 
 	// update Scores bar
 	if(player!=NULL)
-		scores->Update(player->GetScores(), 1, player->GetHeart(), player->GetAlive(), player->GetBlood(), dt);
+		scores->Update(player->GetScores(), 1, player->GetHeart(), player->GetAlive(), player->GetBlood(), player->GetWeapon(), dt);
 
 }
 
