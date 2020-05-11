@@ -2,7 +2,13 @@
 
 CMap::CMap()
 {
+	this->width = 0;
+	this->height = 0;
 
+	this->rowCurrent = 0;
+
+	this->colNumber = 0;
+	this->rowNumber = 0;
 }
 
 void CMap::Add(int col, int row, int idTile)

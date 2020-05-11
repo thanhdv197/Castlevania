@@ -13,7 +13,7 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 	CScene(id, filePath)
 {
 	key_handler = new CPlayScenceKeyHandler(this);
-	map = new CMap();
+	
 	scores = new CScores();
 }
 
@@ -210,6 +210,9 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 void CPlayScene::_ParseSection_MAP(string line)
 {
+	if(map == NULL)
+		map = new CMap();
+
 	vector<string> tokens = split(line);
 
 	if (tokens.size() < 2) return; // skip invalid lines
@@ -367,6 +370,9 @@ void CPlayScene::Unload()
 
 	objects.clear();
 	player = NULL;
+
+	delete map;
+	map = NULL;
 
 	//DebugOut(L"[INFO] Scene %s unloaded! \n", sceneFilePath);
 }

@@ -7,13 +7,13 @@
 
 class CMap
 {
-	int width = 0;
-	int height = 0;
+	int width;
+	int height;
 
 	int colNumber;
 	int rowNumber;
 
-	int rowCurrent = 0;
+	int rowCurrent;
 
 	int tileMap[500][500];
 
