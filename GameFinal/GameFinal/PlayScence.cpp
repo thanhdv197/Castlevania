@@ -313,6 +313,8 @@ void CPlayScene::Update(DWORD dt)
 		player->Update(dt, &coObjects);
 	}*/
 
+	CGame *game = CGame::GetInstance();
+
 	// Update camera to follow mario
 	float cx = 0, cy = 0;
 
@@ -321,7 +323,7 @@ void CPlayScene::Update(DWORD dt)
 		player->GetPosition(cx, cy);
 	}
 
-	CGame *game = CGame::GetInstance();
+	
 
 	if (cx < game->GetScreenWidth() / 2)
 	{
@@ -340,6 +342,13 @@ void CPlayScene::Update(DWORD dt)
 	// update Scores bar
 	if(player!=NULL)
 		scores->Update(player->GetScores(), 1, player->GetHeart(), player->GetAlive(), player->GetBlood(), player->GetWeapon(), dt);
+
+	// change scene
+	if (game->GetIsNextMap()== true)
+	{
+		game->SwitchScene(game->GetSceneId());
+		game->SetIsNextMap(false);
+	}
 
 }
 

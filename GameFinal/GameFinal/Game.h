@@ -47,6 +47,10 @@ class CGame
 	void _ParseSection_SETTINGS(string line);
 	void _ParseSection_SCENES(string line);
 
+	// next map
+	bool isNextMap = false;	// check allow change scene
+	int sceneId;			// sceneId will change
+
 public:
 	void InitKeyboard();
 	void SetKeyHandler(LPKEYEVENTHANDLER handler) { keyHandler = handler; }
@@ -85,6 +89,11 @@ public:
 	void SetCamPos(float x, float y) { cam_x = x; cam_y = y; }
 	int GetCamPosX() { return cam_x; }
 	int GetCamPosY() { return cam_y; }
+
+	bool GetIsNextMap() { return this->isNextMap; }
+	void SetIsNextMap(bool flag) { this->isNextMap = flag; }
+	void SetSceneId(int _sceneId) { this->sceneId = _sceneId; }
+	int GetSceneId() { return this->sceneId; }
 
 	static CGame * GetInstance();
 
