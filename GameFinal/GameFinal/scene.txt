@@ -304,7 +304,6 @@
 # --- SCENE PORTAL ----
 # type	l	t	ani_set_id	r	b	scene_id
 50	685	140	0	710	180	1
-# 115 98 0 148 160
 
 # BRICKS
 # type	l	t	ani_set_id	r	b

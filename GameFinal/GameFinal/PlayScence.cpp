@@ -15,6 +15,8 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 	key_handler = new CPlayScenceKeyHandler(this);
 	
 	scores = new CScores();
+
+	map = new CMap();
 }
 
 /*
@@ -210,8 +212,8 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 void CPlayScene::_ParseSection_MAP(string line)
 {
-	if(map == NULL)
-		map = new CMap();
+	/*if(map == NULL)
+		map = new CMap();*/
 
 	vector<string> tokens = split(line);
 
@@ -315,6 +317,17 @@ void CPlayScene::Update(DWORD dt)
 
 	CGame *game = CGame::GetInstance();
 
+	// update Scores bar
+	if (player != NULL)
+		scores->Update(player->GetScores(), 1, player->GetHeart(), player->GetAlive(), player->GetBlood(), player->GetWeapon(), dt);
+
+	// change scene
+	if (game->GetIsNextMap() == true)
+	{
+		game->SwitchScene(game->GetSceneId());
+		game->SetIsNextMap(false);
+	}
+
 	// Update camera to follow mario
 	float cx = 0, cy = 0;
 
@@ -322,8 +335,6 @@ void CPlayScene::Update(DWORD dt)
 	{
 		player->GetPosition(cx, cy);
 	}
-
-	
 
 	if (cx < game->GetScreenWidth() / 2)
 	{
@@ -338,24 +349,14 @@ void CPlayScene::Update(DWORD dt)
 	
 	if(cx + game->GetScreenWidth() <= map->GetWidth())
 		CGame::GetInstance()->SetCamPos(cx, 0.0f /*cy*/);
-
-	// update Scores bar
-	if(player!=NULL)
-		scores->Update(player->GetScores(), 1, player->GetHeart(), player->GetAlive(), player->GetBlood(), player->GetWeapon(), dt);
-
-	// change scene
-	if (game->GetIsNextMap()== true)
-	{
-		game->SwitchScene(game->GetSceneId());
-		game->SetIsNextMap(false);
-	}
-
+	
+	
 }
 
 void CPlayScene::Render()
 {
 	// render map follow camera
-	map->Render(CGame::GetInstance()->GetCamPosX(), 0);
+	map->Render();
 
 	/*if (player != NULL)
 	{
@@ -380,8 +381,8 @@ void CPlayScene::Unload()
 	objects.clear();
 	player = NULL;
 
-	delete map;
-	map = NULL;
+	/*delete map;
+	map = NULL;*/
 
 	//DebugOut(L"[INFO] Scene %s unloaded! \n", sceneFilePath);
 }

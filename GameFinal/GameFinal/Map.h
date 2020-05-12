@@ -20,7 +20,7 @@ class CMap
 public:
 	CMap();
 	void Add(int col, int row, int idTile);
-	void Render(int xCam, int yCam);
+	void Render();
 
 	void SetWidth(int width) { this->width = width; }
 	int GetWidth() { return this->width; }
