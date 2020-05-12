@@ -1,5 +1,13 @@
 ﻿#include "Map.h"
 
+//CMap* CMap::__instance = NULL;
+//
+//CMap* CMap::GetInstance()
+//{
+//	if (__instance == NULL) __instance = new CMap();
+//	return __instance;
+//}
+
 CMap::CMap()
 {
 	this->width = 0;
@@ -24,9 +32,7 @@ void CMap::Render()
 	int yCam = game->GetCamPosY();
 
 	int startCol = (int)xCam / 32;
-	int endCol = this->width / 32;
-	if((xCam + game->GetScreenWidth()) < this->width)
-		endCol = startCol + game->GetScreenWidth() / 32;
+	int endCol = startCol + game->GetScreenWidth() / 32;
 
 	// xử lí trạng thái thiếu map khi simon di chuyển
 	if (endCol < this->width / 32 - 1)

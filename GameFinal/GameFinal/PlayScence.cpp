@@ -212,8 +212,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 void CPlayScene::_ParseSection_MAP(string line)
 {
-	/*if(map == NULL)
-		map = new CMap();*/
+	//map = CMap::GetInstance();
 
 	vector<string> tokens = split(line);
 
@@ -341,14 +340,18 @@ void CPlayScene::Update(DWORD dt)
 		cx = 0;
 		cy = 0;
 	}
+	else if (map->GetWidth() - cx < game->GetScreenWidth() / 2)
+	{
+		cx = map->GetWidth() - game->GetScreenWidth();
+	}
 	else
 	{
 		cx -= game->GetScreenWidth() / 2;
 		cy -= game->GetScreenHeight() / 2;
 	}
 	
-	if(cx + game->GetScreenWidth() <= map->GetWidth())
-		CGame::GetInstance()->SetCamPos(cx, 0.0f /*cy*/);
+	//if(cx + game->GetScreenWidth() <= map->GetWidth())
+	CGame::GetInstance()->SetCamPos(cx, 0.0f /*cy*/);
 	
 	
 }
@@ -380,9 +383,6 @@ void CPlayScene::Unload()
 
 	objects.clear();
 	player = NULL;
-
-	/*delete map;
-	map = NULL;*/
 
 	//DebugOut(L"[INFO] Scene %s unloaded! \n", sceneFilePath);
 }
