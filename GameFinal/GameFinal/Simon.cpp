@@ -227,7 +227,8 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				if (army->GetState() == STATE_ARMY)
 				{
-
+					LostBlood();
+					SetPosition(x + 20, y);
 				}
 				else
 				{
@@ -410,6 +411,8 @@ void CSimon::SetState(int state)
 		break;
 	case SIMON_STATE_DIE:
 		vy = -SIMON_DIE_DEFLECT_SPEED;
+		if(this->alive > 0)
+			Reset();
 		break;
 	case SIMON_STATE_ATTACK:
 		isAttack = true;
@@ -454,14 +457,15 @@ void CSimon::Reset()
 	SetState(SIMON_STATE_IDLE);
 	SetPosition(start_x, start_y);
 	SetSpeed(0, 0);
+	this->blood = 16;
 }
 
 void CSimon::SetPosition(float x, float y)
 {
 	CGameObject::SetPosition(x, y);
 
-	this->start_x = x;
-	this->start_y = y;
+	/*this->start_x = x;
+	this->start_y = y;*/
 }
 
 void CSimon::CollisionItem(int item)
@@ -502,6 +506,25 @@ void CSimon::CollisionItem(int item)
 	}
 	else
 		stateWeapon = WEAPON_STATE_FIRE;
+}
+
+void CSimon::LostBlood()
+{
+	if (this->alive > 0)
+	{
+		if (this->blood > 0)
+		{
+			this->blood -= 1;
+		}
+		else
+		{
+			this->alive -= 1;
+			SetState(SIMON_STATE_DIE);
+		}
+	}
+	else
+		SetState(SIMON_STATE_DIE);
+	
 }
 
 
