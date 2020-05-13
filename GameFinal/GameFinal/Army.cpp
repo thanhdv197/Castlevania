@@ -56,6 +56,7 @@ void CArmy::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			timeChangeDirection = 0;
 		}
 		x += dx;
+
 	}
 	
 	// set time hit
