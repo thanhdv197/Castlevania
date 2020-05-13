@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "Candle.h"
 #include "Torch.h"
+#include "Army.h"
 
 #define WEAPON_FLY_SPEED 0.1f;
 
@@ -29,6 +30,7 @@ class CWeapon : public CGameObject
 	DWORD timeAttack;
 
 public:
+	bool isAttack = false;
 
 	bool isEnable;
 

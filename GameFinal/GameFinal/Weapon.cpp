@@ -35,6 +35,7 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		if (timeAttack > 1000)
 		{
 			this->isEnable = false;
+			this->isAttack = false;
 		}
 		else
 		{
@@ -52,36 +53,55 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		
 	}
 
-	for (UINT i = 0; i < coObjects->size(); i++)
+	if (isAttack)
 	{
-		if (dynamic_cast<CTorch*>(coObjects->at(i))) {
-			CTorch* torch = dynamic_cast<CTorch*>(coObjects->at(i));
+		for (UINT i = 0; i < coObjects->size(); i++)
+		{
+			if (dynamic_cast<CTorch*>(coObjects->at(i))) {
+				CTorch* torch = dynamic_cast<CTorch*>(coObjects->at(i));
 
-			float l1, t1, r1, b1, l2, t2, r2, b2;
-			GetBoundingBox(l1, t1, r1, b1);
-			torch->GetBoundingBox(l2, t2, r2, b2);
+				float l1, t1, r1, b1, l2, t2, r2, b2;
+				GetBoundingBox(l1, t1, r1, b1);
+				torch->GetBoundingBox(l2, t2, r2, b2);
 
-			if (t1 <= b2 && b1 >= t2 && l1 <= r2 && r1 >= l2)
-			{
-				torch->isAttacking = true;
-				torch->SetState(STATE_ITEM);
+				if (t1 <= b2 && b1 >= t2 && l1 <= r2 && r1 >= l2)
+				{
+					torch->isAttacking = true;
+					torch->SetState(STATE_ITEM);
+				}
+			}
+			else if (dynamic_cast<CCandle*>(coObjects->at(i))) {
+				CCandle* candle = dynamic_cast<CCandle*>(coObjects->at(i));
+
+				float l1, t1, r1, b1, l2, t2, r2, b2;
+				GetBoundingBox(l1, t1, r1, b1);
+				candle->GetBoundingBox(l2, t2, r2, b2);
+
+				if (t1 <= b2 && b1 >= t2 && l1 <= r2 && r1 >= l2)
+				{
+					candle->isAttacking = true;
+					candle->SetState(STATE_ITEM);
+				}
+			}
+			else if (dynamic_cast<CArmy*>(coObjects->at(i))) {
+				CArmy* army = dynamic_cast<CArmy*>(coObjects->at(i));
+
+				float l1, t1, r1, b1, l2, t2, r2, b2;
+				GetBoundingBox(l1, t1, r1, b1);
+				army->GetBoundingBox(l2, t2, r2, b2);
+
+				if (t1 <= b2 && b1 >= t2 && l1 <= r2 && r1 >= l2)
+				{
+					army->isAttacking = true;
+					army->LostBlood();
+					if (army->GetBlood() < 1)
+						army->SetState(STATE_ITEM);
+					this->isAttack = false;
+				}
 			}
 		}
-		if (dynamic_cast<CCandle*>(coObjects->at(i))) {
-			CCandle* candle = dynamic_cast<CCandle*>(coObjects->at(i));
-
-			float l1, t1, r1, b1, l2, t2, r2, b2;
-			GetBoundingBox(l1, t1, r1, b1);
-			candle->GetBoundingBox(l2, t2, r2, b2);
-
-			if (t1 <= b2 && b1 >= t2 && l1 <= r2 && r1 >= l2)
-			{
-				candle->isAttacking = true;
-				candle->SetState(STATE_ITEM);
-			}
-		}
-
 	}
+	
 }
 
 void CWeapon::Render()

@@ -353,6 +353,7 @@ void CSimon::Render()
 
 		whip->Render();
 		
+		whip->isAttack = true;
 	}
 
 	// using weapon for attack
@@ -405,6 +406,7 @@ void CSimon::SetState(int state)
 			//if(CSimon::GetInstance()!=NULL)
 			GetPosition(xSimon, ySimon);
 			weapon = new CWeapon(xSimon, ySimon, GetDirection(), this->stateWeapon);
+			weapon->isAttack = true;
 		}
 		
 		break;

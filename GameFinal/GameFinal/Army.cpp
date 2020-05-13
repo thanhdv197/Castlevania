@@ -54,7 +54,7 @@ void CArmy::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		if (timeHit > 100)
 		{
 			isAttacking = false;
-			LostBlood();
+			timeHit = 0;
 		}	
 	}
 

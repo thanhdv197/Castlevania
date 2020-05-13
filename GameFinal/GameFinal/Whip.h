@@ -25,6 +25,8 @@ class CWhip : public CGameObject
 	int level;
 
 public:
+	bool isAttack = false;
+
 	CWhip();
 
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects = NULL);
