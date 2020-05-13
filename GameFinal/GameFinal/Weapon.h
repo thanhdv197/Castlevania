@@ -3,6 +3,7 @@
 #include "Candle.h"
 #include "Torch.h"
 #include "Army.h"
+#include "Game.h"
 
 #define WEAPON_FLY_SPEED 0.1f;
 

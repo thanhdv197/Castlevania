@@ -10,6 +10,7 @@ CWhip::CWhip() : CGameObject()
 void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	CGameObject::Update(dt);
+	CGame * game = CGame::GetInstance();
 	if (isAttack)
 	{
 		for (UINT i = 0; i < coObjects->size(); i++)
@@ -21,7 +22,7 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				GetBoundingBox(l1, t1, r1, b1);
 				torch->GetBoundingBox(l2, t2, r2, b2);
 
-				if (t1 <= b2 && b1 >= t2 && l1 <= r2 && r1 >= l2)
+				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
 					torch->isAttacking = true;
 					torch->SetState(STATE_ITEM);
@@ -35,7 +36,7 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				GetBoundingBox(l1, t1, r1, b1);
 				candle->GetBoundingBox(l2, t2, r2, b2);
 
-				if (t1 <= b2 && b1 >= t2 && l1 <= r2 && r1 >= l2)
+				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
 					candle->isAttacking = true;
 					candle->SetState(STATE_ITEM);
@@ -49,7 +50,7 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				GetBoundingBox(l1, t1, r1, b1);
 				army->GetBoundingBox(l2, t2, r2, b2);
 
-				if (t1 <= b2 && b1 >= t2 && l1 <= r2 && r1 >= l2)
+				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2)==true)
 				{
 					army->isAttacking = true;
 					army->LostBlood();

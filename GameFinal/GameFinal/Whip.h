@@ -3,6 +3,7 @@
 #include "Torch.h"
 #include "Candle.h"
 #include "Army.h"
+#include "Game.h"
 
 #define WHIP_ANI_RIGHT_LV1	0
 #define WHIP_ANI_LEFT_LV1	1
