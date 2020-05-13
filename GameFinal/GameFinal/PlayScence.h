@@ -12,6 +12,7 @@
 #include "Torch.h"
 #include "Candle.h"
 #include "Scores.h"
+#include "Army.h"
 
 
 class CPlayScene: public CScene

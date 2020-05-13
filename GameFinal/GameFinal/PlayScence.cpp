@@ -39,6 +39,8 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 #define OBJECT_TYPE_TORCH	4
 #define OBJECT_TYPE_CANDLE	6
 
+#define OBJECT_TYPE_ENEMY_ARMY	10
+
 #define OBJECT_TYPE_PORTAL	50
 
 #define OBJECT_TYPE_BRICKS	99
@@ -176,11 +178,17 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		break;
 	}
 	case OBJECT_TYPE_CANDLE:
-	{
-		int item = atoi(tokens[4].c_str());
-		obj = new CCandle(item);
-		break;
-	}
+		{
+			int item = atoi(tokens[4].c_str());
+			obj = new CCandle(item);
+			break;
+		}
+	case OBJECT_TYPE_ENEMY_ARMY:
+		{
+			int item = atoi(tokens[4].c_str());
+			obj = new CArmy(item);
+			break;
+		}
 	case OBJECT_TYPE_PORTAL:
 		{	
 			float r = atof(tokens[4].c_str());

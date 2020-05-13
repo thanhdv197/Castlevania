@@ -1,7 +1,7 @@
 # id	file_path	transparent_color_r	g	b
 [TEXTURES]
 0	textures\castlevaniaEdit.png	176	224	248
-20	textures\misc.png	176	224	248
+20	textures\enemies.png	116	116	116
 30	textures\map1\tilemap1.png	176	224	248
 10	textures\item.png	116	116	116
 40	textures\scores.png	176	224	248
@@ -142,6 +142,17 @@
 30021	157	1	165	17	10
 30022	166	1	174	17	10
 
+#ENEMIES
+#====ARMY=====
+#left
+30030	433	28	449	60	20
+30031	416	28	432	60	20
+30032	399	28	415	60	20
+#right
+30033	481	29	499	61	20
+30034	498	29	514	61	20
+30035	515	29	531	61	20
+
 #TILEMAP
 20000	0	0	32	32	30
 20001	32	0	64	32	30
@@ -224,11 +235,6 @@
 # hit effect
 760	10097	100
 
-# ==== TORCH =====
-800	30001	100	30002	100
-#die
-899	30003	100	30004	100	30005	100
-
 # ==== ITEM ======
 #whip lv 2
 801	30006	100
@@ -252,8 +258,20 @@
 #fire
 809	30016	100
 
+# ==== TORCH =====
+800	30001	100	30002	100
+#die
+899	30003	100	30004	100	30005	100
+
 # ==== CANDLE =====
 810	30021	100	30022	100
+
+# ==== ENEMIES =====
+# army
+# walk left
+811	30030	100	30031	100	30032	100
+# walk right
+812	30033	100	30034	100	30035	100
 
 #
 # id	ani1	ani2	ani3
@@ -273,6 +291,9 @@
 #47	801	802	804	810	807	808	809
 # CANDLE
 45	801	802	804	810	807	808	809	810
+# ENEMIES
+# ARMY
+39	801	802	804	810	807	808	809	811	812
 
 [OBJECTS]
 # type	x	y	ani_set_id	extra_settings per object type
@@ -293,6 +314,11 @@
 99	0	0	0	14	83
 99	224	20	0	255	211
 99	177	134	0	224	147
+
+# ENEMIES
+# type	x	y	ani_set_id	item
+# --ARMY
+10	50	70	39	0
 
 [MAP]
 # width height

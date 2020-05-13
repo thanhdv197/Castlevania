@@ -26,7 +26,7 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				torch->SetState(STATE_ITEM);
 			}
 		}
-		if (dynamic_cast<CCandle*>(coObjects->at(i))) {
+		else if (dynamic_cast<CCandle*>(coObjects->at(i))) {
 			CCandle* candle = dynamic_cast<CCandle*>(coObjects->at(i));
 
 			float l1, t1, r1, b1, l2, t2, r2, b2;
@@ -39,7 +39,20 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				candle->SetState(STATE_ITEM);
 			}
 		}
-		
+		else if (dynamic_cast<CArmy*>(coObjects->at(i))) {
+			CArmy* army = dynamic_cast<CArmy*>(coObjects->at(i));
+
+			float l1, t1, r1, b1, l2, t2, r2, b2;
+			GetBoundingBox(l1, t1, r1, b1);
+			army->GetBoundingBox(l2, t2, r2, b2);
+
+			if (t1 <= b2 && b1 >= t2 && l1 <= r2 && r1 >= l2)
+			{
+				army->isAttacking = true;
+				if(army->GetBlood()==0)
+					army->SetState(STATE_ITEM);
+			}
+		}
 	}
 }
 
