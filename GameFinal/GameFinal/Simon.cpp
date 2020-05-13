@@ -221,6 +221,20 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					candle->isEnable = false;
 				}
 			}
+			else if (dynamic_cast<CArmy *>(e->obj))
+			{
+				CArmy *army = dynamic_cast<CArmy *>(e->obj);
+
+				if (army->GetState() == STATE_ARMY)
+				{
+
+				}
+				else
+				{
+					CollisionItem(army->GetItem());
+					army->isEnable = false;
+				}
+			}
 		}
 	}
 

@@ -68,6 +68,7 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				{
 					torch->isAttacking = true;
 					torch->SetState(STATE_ITEM);
+					this->isAttack = false;
 				}
 			}
 			else if (dynamic_cast<CCandle*>(coObjects->at(i))) {
@@ -81,6 +82,7 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				{
 					candle->isAttacking = true;
 					candle->SetState(STATE_ITEM);
+					this->isAttack = false;
 				}
 			}
 			else if (dynamic_cast<CArmy*>(coObjects->at(i))) {

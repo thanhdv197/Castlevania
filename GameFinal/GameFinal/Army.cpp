@@ -7,6 +7,8 @@ CArmy::CArmy(int item)
 
 	this->blood = 2;
 
+	this->timeChangeDirection = 0;
+
 	whipEffect = new CWhipEffect();
 	this->timeHit = 0;
 
@@ -41,10 +43,20 @@ void CArmy::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	CGameObject::Update(dt, coObjects);
 
-	/*if (state == STATE_ARMY)
+	if (state == STATE_ARMY)
 	{
+		timeChangeDirection += dt;
+
+		if (timeChangeDirection > 3000)
+		{
+			nx = -nx;
+			if (nx > 0)
+				vx = 0.02f;
+			else vx = -0.02f;
+			timeChangeDirection = 0;
+		}
 		x += dx;
-	}*/
+	}
 	
 	// set time hit
 	if (isAttacking==true)

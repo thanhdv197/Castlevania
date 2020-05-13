@@ -25,6 +25,8 @@ class CArmy : public CGameObject
 
 	int blood;
 
+	DWORD timeChangeDirection;
+
 	CWhipEffect * whipEffect;
 	DWORD timeHit;
 public:

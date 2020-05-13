@@ -4,6 +4,7 @@
 #include "Whip.h"
 #include "Weapon.h"
 #include "Candle.h"
+#include "Army.h"
 
 #define SIMON_WALKING_SPEED		0.1f 
 //0.1f
