@@ -47,7 +47,7 @@ public:
 
 	int GetItem() { return this->item; }
 
-	void LostBlood() { this->blood -= 1; }
+	void LostBlood(int _blood) { this->blood -= _blood; }
 	int GetBlood() { return this->blood; }
 };
 

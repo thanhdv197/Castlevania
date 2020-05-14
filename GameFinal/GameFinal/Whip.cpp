@@ -4,6 +4,8 @@ CWhip::CWhip() : CGameObject()
 {
 	this->level = 1;
 
+	this->dame = 1;
+
 	SetAnimationSet(CAnimationSets::GetInstance()->Get(49));
 }
 
@@ -25,7 +27,7 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
 					torch->isAttacked = true;
-					torch->SetBlood(1);
+					torch->SetBlood(GetDame());
 					if(torch->GetBlood() < 1)
 						torch->SetState(STATE_ITEM);
 					isAttack = false;
@@ -41,7 +43,7 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
 					candle->isAttacked = true;
-					candle->SetBlood(1);
+					candle->SetBlood(GetDame());
 					if (candle->GetBlood() < 1)
 						candle->SetState(STATE_ITEM);
 					isAttack = false;
@@ -57,7 +59,7 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2)==true)
 				{
 					army->isAttacked = true;
-					army->LostBlood();
+					army->LostBlood(GetDame());
 					if (army->GetBlood() < 1)
 						army->SetState(STATE_ITEM);
 					isAttack = false;
@@ -156,4 +158,14 @@ void CWhip::SetDirection(int nx)
 int CWhip::GetDirection()
 {
 	return this->nx;
+}
+
+void CWhip::LevelUp()
+{
+	if (this->level < 5)
+	{
+		this->level += 1;
+	}
+
+	this->dame = this->level;
 }

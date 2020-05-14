@@ -69,7 +69,7 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
 					torch->isAttacked = true;
-					torch->SetBlood(1);
+					torch->SetBlood(GetDame());
 					if (torch->GetBlood() < 1)
 						torch->SetState(STATE_ITEM);
 					this->isAttack = false;
@@ -85,7 +85,7 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
 					candle->isAttacked = true;
-					candle->SetBlood(1);
+					candle->SetBlood(GetDame());
 					if (candle->GetBlood() < 1)
 						candle->SetState(STATE_ITEM);
 					isAttack = false;
@@ -101,7 +101,7 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
 					army->isAttacked = true;
-					army->LostBlood();
+					army->LostBlood(GetDame());
 					if (army->GetBlood() < 1)
 						army->SetState(STATE_ITEM);
 					this->isAttack = false;
@@ -191,6 +191,7 @@ void CWeapon::SetState(int state)
 		}
 		else vx = -WEAPON_FLY_SPEED;
 		vy = 0;
+		this->dame = 1;
 		break;
 	case WEAPON_STATE_AXE:
 		if (nx > 0)
@@ -199,6 +200,7 @@ void CWeapon::SetState(int state)
 		}
 		else vx = -WEAPON_FLY_SPEED;
 		vy = 0.04f;
+		this->dame = 2;
 		break;
 	default:
 		break;

@@ -24,6 +24,7 @@ class CWhip : public CGameObject
 {
 	int ani;
 	int level;
+	int dame;
 
 public:
 	bool isAttack = false;
@@ -42,13 +43,9 @@ public:
 	void SetCurrentFrame(int frame) { animation_set->at(ani)->SetCurrentFrame(frame); }
 
 	int GetLevel() { return this->level; }
-	void LevelUp()
-	{
-		if (this->level < 5)
-		{
-			this->level += 1;
-		}
-	}
+	void LevelUp();
+
+	int GetDame() { return this->dame; }
 
 };
 

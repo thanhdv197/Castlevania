@@ -27,6 +27,7 @@ class CWeapon : public CGameObject
 {
 	int ani;
 	int state;
+	int dame = 0;
 
 	DWORD timeAttack;
 
@@ -53,6 +54,8 @@ public:
 
 	int GetState() { return this->state; }
 	virtual void SetState(int state);
+
+	int GetDame() { return this->dame; }
 
 };
 
