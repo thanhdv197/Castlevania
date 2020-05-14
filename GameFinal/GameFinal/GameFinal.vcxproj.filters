@@ -82,9 +82,6 @@
     <Filter Include="Objects\Torch">
       <UniqueIdentifier>{48400277-9ca2-4b38-a1db-263cbfefbcaf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Objects\HitEffect">
-      <UniqueIdentifier>{3d4bca32-a406-4fc2-8926-2103ec358a42}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Objects\Candle">
       <UniqueIdentifier>{62bfeda3-2bfd-45ed-b1e7-77a0a8cddc0a}</UniqueIdentifier>
     </Filter>
@@ -96,6 +93,15 @@
     </Filter>
     <Filter Include="Objects\Enemies\Army">
       <UniqueIdentifier>{f92b1dc4-ea43-4446-934b-806a76c4b020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Effects">
+      <UniqueIdentifier>{8c8ff9c7-b831-4914-9fc7-564d1d5314ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Effects\HitEffect">
+      <UniqueIdentifier>{3d4bca32-a406-4fc2-8926-2103ec358a42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Effects\DieEffect">
+      <UniqueIdentifier>{62ce638a-bbf3-4c6e-a3cc-037497963480}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -160,7 +166,7 @@
       <Filter>Objects\Torch</Filter>
     </ClCompile>
     <ClCompile Include="WhipEffect.cpp">
-      <Filter>Objects\HitEffect</Filter>
+      <Filter>Objects\Effects\HitEffect</Filter>
     </ClCompile>
     <ClCompile Include="Candle.cpp">
       <Filter>Objects\Candle</Filter>
@@ -170,6 +176,9 @@
     </ClCompile>
     <ClCompile Include="Army.cpp">
       <Filter>Objects\Enemies\Army</Filter>
+    </ClCompile>
+    <ClCompile Include="DieEffect.cpp">
+      <Filter>Objects\Effects\DieEffect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -237,7 +246,7 @@
       <Filter>Objects\Torch</Filter>
     </ClInclude>
     <ClInclude Include="WhipEffect.h">
-      <Filter>Objects\HitEffect</Filter>
+      <Filter>Objects\Effects\HitEffect</Filter>
     </ClInclude>
     <ClInclude Include="Candle.h">
       <Filter>Objects\Candle</Filter>
@@ -247,6 +256,9 @@
     </ClInclude>
     <ClInclude Include="Army.h">
       <Filter>Objects\Enemies\Army</Filter>
+    </ClInclude>
+    <ClInclude Include="DieEffect.h">
+      <Filter>Objects\Effects\DieEffect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "WhipEffect.h"
+#include "DieEffect.h"
 #include "Bricks.h"
 
 #define STATE_TORCH	100
@@ -22,7 +23,11 @@ class CTorch : public CGameObject
 
 	int item;
 
+	int blood;
+
 	CWhipEffect * whipEffect;
+
+	CDieEffect * dieEffect;
 public:
 
 	bool isEnable;
@@ -38,5 +43,9 @@ public:
 	void RanDom(int r);
 
 	int GetItem() { return this->item; }
+
+	void SetBlood(int _blood) { this->blood -= _blood; }
+
+	int GetBlood() { return this->blood; }
 };
 

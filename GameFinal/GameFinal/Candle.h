@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "WhipEffect.h"
+#include "DieEffect.h"
 #include "Bricks.h"
 
 #define STATE_CANDLE	100
@@ -22,7 +23,11 @@ class CCandle : public CGameObject
 
 	int item;
 
+	int blood;
+
 	CWhipEffect * whipEffect;
+
+	CDieEffect * dieEffect;
 
 public:
 
@@ -39,5 +44,9 @@ public:
 	void RanDom(int r);
 
 	int GetItem() { return this->item; }
+
+	void SetBlood(int _blood){ this->blood -= _blood; }
+
+	int GetBlood() { return this->blood; }
 };
 

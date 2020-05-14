@@ -25,7 +25,9 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
 					torch->isAttacked = true;
-					torch->SetState(STATE_ITEM);
+					torch->SetBlood(1);
+					if(torch->GetBlood() < 1)
+						torch->SetState(STATE_ITEM);
 					isAttack = false;
 				}
 			}
@@ -39,7 +41,9 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
 					candle->isAttacked = true;
-					candle->SetState(STATE_ITEM);
+					candle->SetBlood(1);
+					if (candle->GetBlood() < 1)
+						candle->SetState(STATE_ITEM);
 					isAttack = false;
 				}
 			}

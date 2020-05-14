@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "WhipEffect.h"
+#include "DieEffect.h"
 #include "Bricks.h"
 
 #define STATE_ARMY	100
@@ -28,6 +29,8 @@ class CArmy : public CGameObject
 	DWORD timeChangeDirection;
 
 	CWhipEffect * whipEffect;
+
+	CDieEffect * dieEffect;
 public:
 
 	bool isEnable;

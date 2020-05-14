@@ -11,6 +11,8 @@ CArmy::CArmy(int item)
 
 	whipEffect = new CWhipEffect();
 
+	dieEffect = new CDieEffect();
+
 	SetState(STATE_ARMY);
 
 	RanDom(item);
@@ -61,6 +63,12 @@ void CArmy::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	// check whip attack
 	if (isAttacked)
 		whipEffect->Update(dt, coObjects);
+
+	// update die effect
+	if (this->blood < 1)
+	{
+		dieEffect->Update(dt, coObjects);
+	}
 
 	// set collision of item state
 	if (this->state == STATE_ITEM)
@@ -131,6 +139,13 @@ void CArmy::Render()
 		{
 			whipEffect->SetPosition(x, y);
 			whipEffect->Render();
+		}
+
+		// render die effect
+		if (this->blood < 1)
+		{
+			dieEffect->SetPosition(x, y);
+			dieEffect->Render();
 		}
 	}
 
