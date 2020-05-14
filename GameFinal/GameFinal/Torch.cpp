@@ -3,10 +3,9 @@
 CTorch::CTorch(int item)
 {
 	this->isEnable = true;
-	this->isAttacking = false;
+	this->isAttacked = false;
 
 	whipEffect = new CWhipEffect();
-	this->timeHit = 0;
 
 	SetState(STATE_TORCH);
 
@@ -39,13 +38,9 @@ void CTorch::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	CGameObject::Update(dt, coObjects);
 
-	// set time hit
-	if (isAttacking)
-	{
-		timeHit += dt;
-		if (timeHit > 100)
-			isAttacking = false;
-	}
+	// check whip attack
+	if(isAttacked)
+		whipEffect->Update(dt, coObjects);
 
 	// set collision of item state
 	if (this->state == STATE_ITEM)
@@ -110,7 +105,7 @@ void CTorch::Render()
 		RenderBoundingBox();
 
 		// render hit attack of whip 
-		if (isAttacking)
+		if (isAttacked)
 		{
 			whipEffect->SetPosition(x, y);
 			whipEffect->Render();

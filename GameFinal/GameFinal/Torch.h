@@ -23,11 +23,10 @@ class CTorch : public CGameObject
 	int item;
 
 	CWhipEffect * whipEffect;
-	DWORD timeHit;
 public:
 
 	bool isEnable;
-	bool isAttacking;
+	bool isAttacked;
 
 	CTorch(int item);
 

@@ -512,7 +512,7 @@ void CSimon::LostBlood()
 {
 	if (this->alive > 0)
 	{
-		if (this->blood > 0)
+		if (this->blood > 1)
 		{
 			this->blood -= 1;
 		}

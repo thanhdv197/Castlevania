@@ -3,14 +3,13 @@
 CArmy::CArmy(int item)
 {
 	this->isEnable = true;
-	this->isAttacking = false;
+	this->isAttacked = false;
 
 	this->blood = 2;
 
 	this->timeChangeDirection = 0;
 
 	whipEffect = new CWhipEffect();
-	this->timeHit = 0;
 
 	SetState(STATE_ARMY);
 
@@ -59,17 +58,9 @@ void CArmy::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 	}
 	
-	// set time hit
-	if (isAttacking==true)
-	{
-		timeHit += dt;
-		
-		if (timeHit > 100)
-		{
-			isAttacking = false;
-			timeHit = 0;
-		}	
-	}
+	// check whip attack
+	if (isAttacked)
+		whipEffect->Update(dt, coObjects);
 
 	// set collision of item state
 	if (this->state == STATE_ITEM)
@@ -136,7 +127,7 @@ void CArmy::Render()
 		RenderBoundingBox();
 
 		// render hit attack of whip 
-		if (isAttacking)
+		if (isAttacked)
 		{
 			whipEffect->SetPosition(x, y);
 			whipEffect->Render();

@@ -68,7 +68,7 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
-					torch->isAttacking = true;
+					torch->isAttacked = true;
 					torch->SetState(STATE_ITEM);
 					this->isAttack = false;
 				}
@@ -82,7 +82,7 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
-					candle->isAttacking = true;
+					candle->isAttacked = true;
 					candle->SetState(STATE_ITEM);
 					this->isAttack = false;
 				}
@@ -96,7 +96,7 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
-					army->isAttacking = true;
+					army->isAttacked = true;
 					army->LostBlood();
 					if (army->GetBlood() < 1)
 						army->SetState(STATE_ITEM);

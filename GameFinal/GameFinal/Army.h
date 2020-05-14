@@ -28,11 +28,10 @@ class CArmy : public CGameObject
 	DWORD timeChangeDirection;
 
 	CWhipEffect * whipEffect;
-	DWORD timeHit;
 public:
 
 	bool isEnable;
-	bool isAttacking;
+	bool isAttacked;
 
 	CArmy(int item);
 

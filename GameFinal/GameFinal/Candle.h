@@ -23,11 +23,11 @@ class CCandle : public CGameObject
 	int item;
 
 	CWhipEffect * whipEffect;
-	DWORD timeHit;
+
 public:
 
 	bool isEnable;
-	bool isAttacking;
+	bool isAttacked;
 
 	CCandle(int item);
 
