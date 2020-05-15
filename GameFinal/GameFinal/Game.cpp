@@ -389,7 +389,7 @@ void CGame::Load(LPCWSTR gameFile)
 	SwitchScene(current_scene);
 }
 
-void CGame::SwitchScene(int scene_id)
+void CGame::SwitchScene(int scene_id, int _level, int _blood, int _heart, int _alive, int _scores, int _weapon)
 {
 	//DebugOut(L"[INFO] Switching to scene %d\n", scene_id);
 
@@ -402,5 +402,5 @@ void CGame::SwitchScene(int scene_id)
 	current_scene = scene_id;
 	LPSCENE s = scenes[scene_id];
 	CGame::GetInstance()->SetKeyHandler(s->GetKeyEventHandler());
-	s->Load();	
+	s->Load(_level, _blood, _heart, _alive, _scores, _weapon);
 }

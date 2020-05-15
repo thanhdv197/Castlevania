@@ -37,7 +37,7 @@ protected:
 public: 
 	CPlayScene(int id, LPCWSTR filePath);
 
-	virtual void Load();
+	virtual void Load(int _level = 1, int _blood = 16, int _heart = 0, int _alive = 4, int _scores = 0, int _weapon = 0);
 	virtual void Update(DWORD dt);
 	virtual void Render();
 	virtual void Unload();

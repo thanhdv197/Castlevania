@@ -247,7 +247,7 @@ void CPlayScene::_ParseSection_MAP(string line)
 	}
 }
 
-void CPlayScene::Load()
+void CPlayScene::Load(int _level, int _blood, int _heart, int _alive, int _scores, int _weapon)
 {
 	//DebugOut(L"[INFO] Start loading scene resources from : %s \n", sceneFilePath);
 
@@ -296,6 +296,16 @@ void CPlayScene::Load()
 
 	CTextures::GetInstance()->Add(ID_TEX_BBOX, L"textures\\bbox.png", D3DCOLOR_XRGB(255, 255, 255));
 
+	if (player != NULL)
+	{
+		player->SetWhip(_level);
+		player->SetBlood(_blood);
+		player->SetHeart(_heart);
+		player->SetAlive(_alive);
+		player->SetScores(_scores);
+		player->SetWeapon(_weapon);
+	}
+
 	//DebugOut(L"[INFO] Done loading scene resources %s\n", sceneFilePath);
 }
 
@@ -331,7 +341,16 @@ void CPlayScene::Update(DWORD dt)
 	// change scene
 	if (game->GetIsNextMap() == true)
 	{
-		game->SwitchScene(game->GetSceneId());
+		// get value of simon
+		int level = player->GetLevelWhip();
+		int blood = player->GetBlood();
+		int heart = player->GetHeart();
+		int alive = player->GetAlive();
+		int scores = player->GetScores();
+		int weapon = player->GetWeapon();
+
+		// switch scene
+		game->SwitchScene(game->GetSceneId(), level, blood, heart, alive, scores, weapon);
 		game->SetIsNextMap(false);
 	}
 

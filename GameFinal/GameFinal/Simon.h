@@ -108,10 +108,22 @@ public:
 	void CollisionItem(int item);
 
 	int GetBlood() { return this->blood; }
+	void SetBlood(int _blood) { this->blood = _blood; }
+
 	int GetAlive() { return this->alive; }
+	void SetAlive(int _alive) { this->alive = _alive; }
+
 	int GetHeart() { return this->heart; }
+	void SetHeart(int _heart) { this->heart = _heart; }
+
 	int GetScores() { return this->score; }
+	void SetScores(int _scores) { this->score = _scores; }
+
 	int GetWeapon() { return this->stateWeapon; }
+	void SetWeapon(int _weapon) { this->stateWeapon = _weapon; }
+	
+	void SetWhip(int _level) { whip->SetLevel(_level); }
+	int GetLevelWhip() { return whip->GetLevel(); }
 
 	void LostBlood();
 };

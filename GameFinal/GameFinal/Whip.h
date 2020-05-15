@@ -44,6 +44,7 @@ public:
 
 	int GetLevel() { return this->level; }
 	void LevelUp();
+	void SetLevel(int _level) { this->level = _level; }
 
 	int GetDame() { return this->dame; }
 
