@@ -54,8 +54,6 @@
 
 class CSimon : public CGameObject
 {
-	//static CSimon* __instance;
-
 	int untouchable;
 	DWORD untouchable_start;
 
@@ -78,8 +76,6 @@ class CSimon : public CGameObject
 	DWORD timeLevelUp;
 
 public:
-	//static CSimon* GetInstance();
-
 	// check active
 	bool isAttack;
 	bool isJump;
@@ -90,7 +86,6 @@ public:
 	bool usingWhip;
 	bool isFlyingWeapon;
 
-	//CSimon();
 	CSimon(float x = 0.0f, float y = 0.0f);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *colliable_objects = NULL);
 	virtual void Render();
@@ -102,8 +97,6 @@ public:
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 
 	int GetDirection() { return this->nx; }
-
-	virtual void SetPosition(float x, float y);
 
 	void CollisionItem(int item);
 

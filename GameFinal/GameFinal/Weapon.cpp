@@ -116,11 +116,7 @@ void CWeapon::Render()
 {
 	if (isEnable)
 	{
-		if (this->state == WEAPON_STATE_NONE)
-		{
-
-		}
-		else
+		if (this->state != WEAPON_STATE_NONE)
 		{
 			if (this->state == WEAPON_STATE_KNIFE)
 			{

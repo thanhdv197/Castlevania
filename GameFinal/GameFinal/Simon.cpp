@@ -8,36 +8,6 @@
 #include "Goomba.h"
 #include "Portal.h"
 
-//CSimon* CSimon::__instance = NULL;
-//
-//CSimon* CSimon::GetInstance()
-//{
-//	if (__instance == NULL) __instance = new CSimon();
-//	return __instance;
-//}
-//
-//CSimon::CSimon()
-//{
-//	untouchable = 0;
-//	SetState(SIMON_STATE_IDLE);
-//
-//	whip = new CWhip();
-//
-//	this->stateWeapon = WEAPON_STATE_NONE;
-//
-//	isJump = false;
-//	isAttack = false;
-//	isSit = false;
-//
-//	usingWhip = false;
-//	isFlyingWeapon = false;
-//
-//	this->blood = 10;
-//	this->alive = 4;
-//	this->heart = 0;
-//	this->score = 0;
-//}
-
 CSimon::CSimon(float x, float y)
 {
 	untouchable = 0;
@@ -458,14 +428,6 @@ void CSimon::Reset()
 	SetPosition(start_x, start_y);
 	SetSpeed(0, 0);
 	this->blood = 16;
-}
-
-void CSimon::SetPosition(float x, float y)
-{
-	CGameObject::SetPosition(x, y);
-
-	/*this->start_x = x;
-	this->start_y = y;*/
 }
 
 void CSimon::CollisionItem(int item)

@@ -159,10 +159,6 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 			//DebugOut(L"[ERROR] MARIO object was created before!\n");
 			return;
 		}
-		/*player = CSimon::GetInstance();
-		player->SetPosition(x, y);
-		player->SetAnimationSet(animation_sets->Get(ani_set_id));*/
-
 		obj = new CSimon(x, y);
 		player = (CSimon*)obj;
 
@@ -327,11 +323,6 @@ void CPlayScene::Update(DWORD dt)
 	// skip the rest if scene was already unloaded (Mario::Update might trigger PlayScene::Unload)
 	if (player == NULL) return; 
 
-	/*if (player != NULL)
-	{
-		player->Update(dt, &coObjects);
-	}*/
-
 	CGame *game = CGame::GetInstance();
 
 	// update Scores bar
@@ -387,11 +378,6 @@ void CPlayScene::Render()
 {
 	// render map follow camera
 	map->Render();
-
-	/*if (player != NULL)
-	{
-		player->Render();
-	}*/
 
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
