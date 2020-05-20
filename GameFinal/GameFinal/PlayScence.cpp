@@ -17,6 +17,8 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 	scores = new CScores();
 
 	map = new CMap();
+
+	grid = new CGrid();
 }
 
 /*
@@ -212,6 +214,9 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 	obj->SetAnimationSet(ani_set);
 	objects.push_back(obj);
+
+	// add objects to grid
+	// grid->Add(obj, x, y);
 }
 
 void CPlayScene::_ParseSection_MAP(string line)
@@ -320,6 +325,11 @@ void CPlayScene::Update(DWORD dt)
 		objects[i]->Update(dt, &coObjects);
 	}
 
+	// grid object update
+	/*coObjects = grid->GetList();
+	for (int i = 0; i < coObjects.size(); i++)
+		coObjects[i]->Update(dt, &coObjects);*/
+
 	// skip the rest if scene was already unloaded (Mario::Update might trigger PlayScene::Unload)
 	if (player == NULL) return; 
 
@@ -382,6 +392,13 @@ void CPlayScene::Render()
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
 
+	//// grid render
+	//vector<LPGAMEOBJECT> objs = grid->GetList();
+	//for (int i = 0; i < objs.size(); i++)
+	//{
+	//	objs[i]->Render();
+	//}
+
 	// render scores bar
 	scores->Render();
 }
@@ -396,6 +413,9 @@ void CPlayScene::Unload()
 
 	objects.clear();
 	player = NULL;
+
+	// grid unload
+	// grid->Unload();
 
 	//DebugOut(L"[INFO] Scene %s unloaded! \n", sceneFilePath);
 }

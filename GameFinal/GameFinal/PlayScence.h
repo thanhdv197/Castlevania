@@ -13,6 +13,7 @@
 #include "Candle.h"
 #include "Scores.h"
 #include "Army.h"
+#include "Grid.h"
 
 
 class CPlayScene: public CScene
@@ -25,6 +26,8 @@ protected:
 	CMap *map;
 
 	CScores * scores;
+
+	CGrid * grid;
 
 	void _ParseSection_TEXTURES(string line);
 	void _ParseSection_SPRITES(string line);

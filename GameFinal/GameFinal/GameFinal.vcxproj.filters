@@ -103,6 +103,9 @@
     <Filter Include="Objects\Effects\DieEffect">
       <UniqueIdentifier>{62ce638a-bbf3-4c6e-a3cc-037497963480}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components\Grid">
+      <UniqueIdentifier>{88cf4595-2cfb-4c0e-ae06-bd058d2e9d2e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animations.cpp">
@@ -144,9 +147,6 @@
     <ClCompile Include="Utils.cpp">
       <Filter>Components\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Source.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="Simon.cpp">
       <Filter>Objects\Simon</Filter>
     </ClCompile>
@@ -179,6 +179,12 @@
     </ClCompile>
     <ClCompile Include="DieEffect.cpp">
       <Filter>Objects\Effects\DieEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Components\Grid</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +265,9 @@
     </ClInclude>
     <ClInclude Include="DieEffect.h">
       <Filter>Objects\Effects\DieEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Components\Grid</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
