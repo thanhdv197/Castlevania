@@ -169,3 +169,9 @@ void CWhip::LevelUp()
 
 	this->dame = this->level;
 }
+
+void CWhip::SetLevel(int _level)
+{
+	this->level = _level;
+	this->dame = _level;
+}
