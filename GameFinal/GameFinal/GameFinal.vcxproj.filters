@@ -106,6 +106,9 @@
     <Filter Include="Components\Grid">
       <UniqueIdentifier>{88cf4595-2cfb-4c0e-ae06-bd058d2e9d2e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\Fly Brick">
+      <UniqueIdentifier>{d665a411-3978-4596-afd0-a9ea5fe8d51a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animations.cpp">
@@ -185,6 +188,9 @@
     </ClCompile>
     <ClCompile Include="Grid.cpp">
       <Filter>Components\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="FlyBrick.cpp">
+      <Filter>Objects\Fly Brick</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -268,6 +274,9 @@
     </ClInclude>
     <ClInclude Include="Grid.h">
       <Filter>Components\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="FlyBrick.h">
+      <Filter>Objects\Fly Brick</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,6 +11,7 @@
 #include "Map.h"
 #include "Torch.h"
 #include "Candle.h"
+#include "FlyBrick.h"
 #include "Scores.h"
 #include "Army.h"
 #include "Grid.h"

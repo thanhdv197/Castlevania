@@ -9,7 +9,7 @@
 
 # id	left	top	right	bottom	texture_id
 [SPRITES]
-# SIMON
+# ====SIMON====
 # idle right
 10001	164	41	180	71	0
 # walk right
@@ -55,7 +55,7 @@
 10034	124	163	140	193	0
 10035	11	84	27	114	0
 
-# WHIP
+# ====WHIP====
 # right attack lv1
 10051	148	245	164	271	0
 10052	196	245	212	263	0
@@ -97,19 +97,20 @@
 10095	140	640	207	660	0
 10096	0	638	40	658	0
 
-# WHIP EFFECT
+# ====EFFECTS====
+# whip effect
 10097	139	1	147	17	10
 
-# DIE EFFECT
+# die effect
 30003	218	57	226	73	10
 30004	227	57	235	73	10
 30005	236	57	244	73	10
 
-#TORCH
+# ====TORCH====
 30001	175	1	191	33	10
 30002	192	1	208	33	10
 
-#ITEM
+# ====ITEM====
 #item whip
 30006	1	1	17	17	10
 #item knife
@@ -139,22 +140,25 @@
 30019	59	102	75	118	10
 30020	76	102	92	118	10
 
-#CANDLE
+# ====CANDLE====
 30021	157	1	165	17	10
 30022	166	1	174	17	10
 
-#ENEMIES
-#====ARMY=====
-#left
+# ====FLY BRICKS====
+30036	64	69	96	85	10
+
+# ====ENEMIES====
+#ARMY
+#--left
 30030	433	28	449	60	20
 30031	416	28	432	60	20
 30032	399	28	415	60	20
-#right
+#--right
 30033	481	29	499	61	20
 30034	498	29	514	61	20
 30035	515	29	531	61	20
 
-#TILEMAP
+# ====TILEMAP====
 20000	0	0	32	32	30
 20001	32	0	64	32	30
 20002	64	0	96	32	30
@@ -172,7 +176,7 @@
 20014	64	64	96	96	30
 
 						
-#SCORES
+# ====SCORES====
 20099	0	0	320	40	40
 # blood simon
 20098	0	0	5	7	50
@@ -183,7 +187,7 @@
 
 # ani_id	sprite1_id	time1	sprite2_id	time2	...
 [ANIMATIONS]
-# ====SIMON========
+# ====SIMON====
 # idle right
 400	10001	100
 # idle left
@@ -211,7 +215,7 @@
 # level up left
 705	10031	100	10032	100	10033	100	10034	100	10035	100
 
-# ====WHIP=======
+# ====WHIP====
 # attack right lv1
 750	10051	100	10052	100	10053	100
 # attack left lv1
@@ -233,7 +237,7 @@
 # attack left lv5
 759	10094	100	10095	100	10096	100
 
-# EFFECT
+# ==== EFFECT ====
 # hit effect
 898	10097	100
 # die effect
@@ -268,47 +272,55 @@
 # ==== CANDLE =====
 810	30021	100	30022	100
 
+# ==== FLY BRICKS ====
+813	30036	100
+
 # ==== ENEMIES =====
 # army
-# walk left
+# --walk left
 811	30030	100	30031	100	30032	100
-# walk right
+# --walk right
 812	30033	100	30034	100	30035	100
 
 #
 # id	ani1	ani2	ani3
 #
 [ANIMATION_SETS]
-# SIMON
+# ==== SIMON ====
 1	400	401	500	501	600	601	600	601	700	701	599	702	703	704	705
-# WHIP
+# ==== WHIP ====
 49	750	751	752	753	754	755	756	757	758	759
-# EFFECT
+# ==== EFFECT ====
 46	898	899
-# TORCH
+# ==== TORCH ====
 2	801	802	804	810	807	808	809	800
-# WEAPON
+# ==== WEAPON ====
 48	802	803	805	806	809	
-# ITEM
+# ==== ITEM ====
 #47	801	802	804	810	807	808	809
-# CANDLE
+# ==== CANDLE ====
 45	801	802	804	810	807	808	809	810
-# ENEMIES
+# ==== FLY BRICKS ====
+44	813
+# ==== ENEMIES ====
 # ARMY
 39	801	802	804	810	807	808	809	811	812
 
 [OBJECTS]
 # type	x	y	ani_set_id	extra_settings per object type
-# type: 0 = Simon , 99 = Bricks, 2 = Goomba, 3 = Koopas, 4 = torch, 5 = item
-# SIMON
+# type: 0 = Simon , 99 = Bricks, 2 = Goomba, 3 = fly brick, 4 = torch, 5 = item
+# ==== SIMON ====
 # type	x	y	ani_set_id
 0	17	100	1
 
-# --- SCENE PORTAL ----
+# ==== FLY BRICKS ====
+3	162	102	44
+
+# ==== SCENE PORTAL ====
 # type	l	t	ani_set_id	r	b	scene_id
 50	36	49	0	55	72	2
 
-# BRICKS
+# ==== BRICKS ====
 # type	l	t	ani_set_id	r	b
 99	0	197	0	240	190
 99	0	84	0	32	148
@@ -317,9 +329,9 @@
 99	224	20	0	255	211
 99	177	134	0	224	147
 
-# ENEMIES
+# ==== ENEMIES ====
 # type	x	y	ani_set_id	item
-# --ARMY
+# ARMY
 10	50	70	39	0
 
 [MAP]
