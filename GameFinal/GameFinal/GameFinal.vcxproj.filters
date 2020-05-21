@@ -109,6 +109,9 @@
     <Filter Include="Objects\Fly Brick">
       <UniqueIdentifier>{d665a411-3978-4596-afd0-a9ea5fe8d51a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\Enemies\Zombie">
+      <UniqueIdentifier>{931f00f0-a94a-4d9d-9795-076f9cc6b9ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animations.cpp">
@@ -191,6 +194,9 @@
     </ClCompile>
     <ClCompile Include="FlyBrick.cpp">
       <Filter>Objects\Fly Brick</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Objects\Enemies\Zombie</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +283,9 @@
     </ClInclude>
     <ClInclude Include="FlyBrick.h">
       <Filter>Objects\Fly Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Objects\Enemies\Zombie</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@
 #include "Weapon.h"
 #include "Candle.h"
 #include "Army.h"
+#include "Zombie.h"
 
 #define SIMON_WALKING_SPEED		0.1f 
 //0.1f
@@ -117,5 +118,5 @@ public:
 	void SetWhip(int _level) { whip->SetLevel(_level); }
 	int GetLevelWhip() { return whip->GetLevel(); }
 
-	void LostBlood();
+	void LostBlood(int _blood);
 };

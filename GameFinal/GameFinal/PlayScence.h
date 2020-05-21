@@ -14,6 +14,7 @@
 #include "FlyBrick.h"
 #include "Scores.h"
 #include "Army.h"
+#include "Zombie.h"
 #include "Grid.h"
 
 

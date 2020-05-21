@@ -4,6 +4,7 @@
 #include "Torch.h"
 #include "Army.h"
 #include "Game.h"
+#include "Zombie.h"
 
 #define WEAPON_FLY_SPEED 0.1f;
 

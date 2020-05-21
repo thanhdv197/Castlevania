@@ -197,13 +197,28 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				if (army->GetState() == STATE_ARMY)
 				{
-					LostBlood();
+					LostBlood(4);
 					SetPosition(x + 20, y);
 				}
 				else
 				{
 					CollisionItem(army->GetItem());
 					army->isEnable = false;
+				}
+			}
+			else if (dynamic_cast<CZombie *>(e->obj))
+			{
+				CZombie *zombie = dynamic_cast<CZombie *>(e->obj);
+
+				if (zombie->GetState() == STATE_ARMY)
+				{
+					LostBlood(4);
+					SetPosition(x + 20, y);
+				}
+				else
+				{
+					CollisionItem(zombie->GetItem());
+					zombie->isEnable = false;
 				}
 			}
 		}
@@ -470,13 +485,13 @@ void CSimon::CollisionItem(int item)
 		stateWeapon = WEAPON_STATE_FIRE;
 }
 
-void CSimon::LostBlood()
+void CSimon::LostBlood(int _blood)
 {
 	if (this->alive > 0)
 	{
 		if (this->blood > 1)
 		{
-			this->blood -= 1;
+			this->blood -= _blood;
 		}
 		else
 		{

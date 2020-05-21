@@ -65,6 +65,22 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 					isAttack = false;
 				}
 			}
+			else if (dynamic_cast<CZombie*>(coObjects->at(i))) {
+				CZombie* zombie = dynamic_cast<CZombie*>(coObjects->at(i));
+
+				float l1, t1, r1, b1, l2, t2, r2, b2;
+				GetBoundingBox(l1, t1, r1, b1);
+				zombie->GetBoundingBox(l2, t2, r2, b2);
+
+				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
+				{
+					zombie->isAttacked = true;
+					zombie->LostBlood(GetDame());
+					if (zombie->GetBlood() < 1)
+						zombie->SetState(STATE_ITEM);
+					isAttack = false;
+				}
+			}
 		}
 	}
 	
