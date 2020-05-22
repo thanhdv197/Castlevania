@@ -354,6 +354,14 @@
 # --right
 815	30046	100	30047	100
 
+# bat
+# --stand
+816	30037	100
+# --fly left
+817	30038	100	30039	100	30040	100
+# --fly right
+818	30041	100	30042	100	30043	100
+
 #
 # id	ani1	ani2	ani3
 #
@@ -379,10 +387,12 @@
 39	801	802	804	810	807	808	809	811	812
 # ZOMBIE
 38	801	802	804	810	807	808	809	814	815
+# BAT
+37	801	802	804	810	807	808	809	816	817	818
 
 [OBJECTS]
 # type	x	y	ani_set_id	extra_settings per object type
-# type: 0 = Simon , 99 = Bricks, 2 = zombie, 3 = fly brick, 4 = torch, 5 = item
+# type: 0 = Simon , 99 = Bricks, 3 = fly brick, 4 = torch, 6 = candle, 10 = army, 11 = zombie, 12 = bat
 # ==== SIMON ====
 # type	x	y	ani_set_id
 0	17	100	1
@@ -409,7 +419,10 @@
 10	50	70	39	0
 
 # ==== ZOMBIE ====
-2	162	120	38	0
+#11	162	120	38	0
+
+# ==== BAT ====
+12	162	120	37	0
 
 [MAP]
 # width height

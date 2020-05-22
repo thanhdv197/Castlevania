@@ -49,9 +49,6 @@
     <Filter Include="Components\Scene">
       <UniqueIdentifier>{4cc189e8-1106-4527-bf22-f8c0d8f1fe6e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Objects\Portal">
-      <UniqueIdentifier>{d04cf6bd-6aab-4ee2-93dc-8fd54065898e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\Header">
       <UniqueIdentifier>{e6616d6a-0107-4e7f-8280-869312b557d2}</UniqueIdentifier>
     </Filter>
@@ -111,6 +108,12 @@
     </Filter>
     <Filter Include="Objects\Enemies\Zombie">
       <UniqueIdentifier>{931f00f0-a94a-4d9d-9795-076f9cc6b9ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Enemies\Bat">
+      <UniqueIdentifier>{2dd68cb6-d46f-4114-81a4-bcf14872f14d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Portal">
+      <UniqueIdentifier>{d04cf6bd-6aab-4ee2-93dc-8fd54065898e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +200,9 @@
     </ClCompile>
     <ClCompile Include="Zombie.cpp">
       <Filter>Objects\Enemies\Zombie</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>Objects\Enemies\Bat</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +292,9 @@
     </ClInclude>
     <ClInclude Include="Zombie.h">
       <Filter>Objects\Enemies\Zombie</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat.h">
+      <Filter>Objects\Enemies\Bat</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

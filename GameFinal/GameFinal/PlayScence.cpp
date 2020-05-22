@@ -36,12 +36,13 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 
 #define OBJECT_TYPE_SIMON	0
 #define OBJECT_TYPE_BRICK	1
-#define OBJECT_TYPE_ZOMBIE	2
 #define OBJECT_TYPE_FLYBRICK	3
 #define OBJECT_TYPE_TORCH	4
 #define OBJECT_TYPE_CANDLE	6
 
 #define OBJECT_TYPE_ENEMY_ARMY	10
+#define OBJECT_TYPE_ENEMY_ZOMBIE	11
+#define OBJECT_TYPE_ENEMY_BAT	12
 
 #define OBJECT_TYPE_PORTAL	50
 
@@ -166,12 +167,6 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 		//DebugOut(L"[INFO] Player object created!\n");
 		break ;
-	case OBJECT_TYPE_ZOMBIE:
-		{
-			int item = atoi(tokens[4].c_str());
-			obj = new CZombie(item);
-			break;
-		}
 	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
 	case OBJECT_TYPE_FLYBRICK: obj = new CFlyBrick(); break;
 	case OBJECT_TYPE_TORCH:
@@ -192,6 +187,18 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 			obj = new CArmy(item);
 			break;
 		}
+	case OBJECT_TYPE_ENEMY_ZOMBIE:
+		{
+			int item = atoi(tokens[4].c_str());
+			obj = new CZombie(item);
+			break;
+		}
+	case OBJECT_TYPE_ENEMY_BAT:
+	{
+		int item = atoi(tokens[4].c_str());
+		obj = new CBat(item);
+		break;
+	}
 	case OBJECT_TYPE_PORTAL:
 		{	
 			float r = atof(tokens[4].c_str());

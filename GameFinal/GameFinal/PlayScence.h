@@ -15,6 +15,7 @@
 #include "Scores.h"
 #include "Army.h"
 #include "Zombie.h"
+#include "Bat.h"
 #include "Grid.h"
 
 
