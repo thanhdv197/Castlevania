@@ -37,9 +37,6 @@ void CBat::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	CGameObject::Update(dt, coObjects);
 
-	x += dx;
-	y += dy;
-
 	// check simon position and change state bat
 	if (abs(this->x - this->xSimon) < 80 && abs(this->y - this->ySimon) < 30)
 		SetState(STATE_BAT_DOWN);
@@ -86,25 +83,33 @@ void CBat::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			// TODO: This is a very ugly designed function!!!!
 			FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
 
+			/*x += min_tx * dx + nx * 0.4f;
+			y += min_ty * dy + ny * 0.4f;
+
+			if (nx != 0) vx = 0;
+			if (ny != 0) vy = 0;*/
+
 			for (UINT i = 0; i < coEventsResult.size(); i++)
 			{
 				LPCOLLISIONEVENT e = coEventsResult[i];
 				if (dynamic_cast<CBricks*>(e->obj))
 				{
-					if (e->ny < 0)
-					{
-						x += min_tx * dx + nx * 0.4f;
-						y += min_ty * dy + ny * 0.4f;
+					x += min_tx * dx + nx * 0.4f;
+					y += min_ty * dy + ny * 0.4f;
 
-						if (nx != 0) vx = 0;
-						if (ny != 0) vy = 0;
-					}
+					if (nx != 0) vx = 0;
+					if (ny != 0) vy = 0;
 
 				}
 
 			}
 		}
 		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+	}
+	else
+	{
+		x += dx;
+		y += dy;
 	}
 
 }
