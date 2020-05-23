@@ -50,6 +50,7 @@ void CTorch::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	if (this->blood < 1)
 	{
 		dieEffect->Update(dt, coObjects);
+		SetState(STATE_ITEM);
 	}
 
 	// set collision of item state

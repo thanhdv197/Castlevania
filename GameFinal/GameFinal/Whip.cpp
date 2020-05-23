@@ -28,8 +28,6 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				{
 					torch->isAttacked = true;
 					torch->SetBlood(GetDame());
-					if(torch->GetBlood() < 1)
-						torch->SetState(STATE_ITEM);
 					isAttack = false;
 				}
 			}
@@ -44,8 +42,6 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				{
 					candle->isAttacked = true;
 					candle->SetBlood(GetDame());
-					if (candle->GetBlood() < 1)
-						candle->SetState(STATE_ITEM);
 					isAttack = false;
 				}
 			}
@@ -60,8 +56,6 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				{
 					army->isAttacked = true;
 					army->LostBlood(GetDame());
-					if (army->GetBlood() < 1)
-						army->SetState(STATE_ITEM);
 					isAttack = false;
 				}
 			}
@@ -76,8 +70,6 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				{
 					zombie->isAttacked = true;
 					zombie->LostBlood(GetDame());
-					if (zombie->GetBlood() < 1)
-						zombie->SetState(STATE_ITEM);
 					isAttack = false;
 				}
 			}
@@ -92,8 +84,6 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				{
 					bat->isAttacked = true;
 					bat->LostBlood(GetDame());
-					if (bat->GetBlood() < 1)
-						bat->SetState(STATE_ITEM);
 					isAttack = false;
 				}
 			}

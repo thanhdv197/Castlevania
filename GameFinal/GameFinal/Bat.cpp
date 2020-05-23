@@ -41,14 +41,14 @@ void CBat::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	y += dy;
 
 	// check simon position and change state bat
-	if (abs(this->x - this->xSimon) < 50 && abs(this->y - this->ySimon) < 30)
+	if (abs(this->x - this->xSimon) < 80 && abs(this->y - this->ySimon) < 30)
 		SetState(STATE_BAT_DOWN);
 
 	// change state to fly 
 	if (this->state == STATE_BAT_DOWN)
 	{
 		timeDown += dt;
-		if (timeDown > 300)
+		if (timeDown > 250)
 			SetState(STATE_BAT_FLY);
 	}
 
@@ -60,6 +60,7 @@ void CBat::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	if (this->blood < 1)
 	{
 		dieEffect->Update(dt, coObjects);
+		SetState(STATE_ITEM);
 	}
 
 	if (state == STATE_ITEM)
