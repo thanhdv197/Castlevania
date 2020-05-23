@@ -43,6 +43,7 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 #define OBJECT_TYPE_ENEMY_ARMY	10
 #define OBJECT_TYPE_ENEMY_ZOMBIE	11
 #define OBJECT_TYPE_ENEMY_BAT	12
+#define OBJECT_TYPE_ENEMY_FLEA	13
 
 #define OBJECT_TYPE_PORTAL	50
 
@@ -194,11 +195,17 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 			break;
 		}
 	case OBJECT_TYPE_ENEMY_BAT:
-	{
-		int item = atoi(tokens[4].c_str());
-		obj = new CBat(item);
-		break;
-	}
+		{
+			int item = atoi(tokens[4].c_str());
+			obj = new CBat(item);
+			break;
+		}
+	case OBJECT_TYPE_ENEMY_FLEA:
+		{
+			int item = atoi(tokens[4].c_str());
+			obj = new CFlea(item);
+			break;
+		}
 	case OBJECT_TYPE_PORTAL:
 		{	
 			float r = atof(tokens[4].c_str());

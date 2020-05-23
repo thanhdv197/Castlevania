@@ -115,6 +115,9 @@
     <Filter Include="Objects\Portal">
       <UniqueIdentifier>{d04cf6bd-6aab-4ee2-93dc-8fd54065898e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\Enemies\Flea">
+      <UniqueIdentifier>{1a6d54b5-2cdf-4f83-97f0-6a8f4ce45fac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animations.cpp">
@@ -203,6 +206,9 @@
     </ClCompile>
     <ClCompile Include="Bat.cpp">
       <Filter>Objects\Enemies\Bat</Filter>
+    </ClCompile>
+    <ClCompile Include="Flea.cpp">
+      <Filter>Objects\Enemies\Flea</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -295,6 +301,9 @@
     </ClInclude>
     <ClInclude Include="Bat.h">
       <Filter>Objects\Enemies\Bat</Filter>
+    </ClInclude>
+    <ClInclude Include="Flea.h">
+      <Filter>Objects\Enemies\Flea</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

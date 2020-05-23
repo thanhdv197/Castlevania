@@ -129,6 +129,20 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 					isAttack = false;
 				}
 			}
+			else if (dynamic_cast<CFlea*>(coObjects->at(i))) {
+				CFlea* flea = dynamic_cast<CFlea*>(coObjects->at(i));
+
+				float l1, t1, r1, b1, l2, t2, r2, b2;
+				GetBoundingBox(l1, t1, r1, b1);
+				flea->GetBoundingBox(l2, t2, r2, b2);
+
+				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
+				{
+					flea->isAttacked = true;
+					flea->LostBlood(GetDame());
+					isAttack = false;
+				}
+			}
 		}
 	}
 	

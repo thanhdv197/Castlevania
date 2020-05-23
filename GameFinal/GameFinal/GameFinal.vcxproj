@@ -134,6 +134,7 @@
     <ClCompile Include="Bricks.cpp" />
     <ClCompile Include="Candle.cpp" />
     <ClCompile Include="DieEffect.cpp" />
+    <ClCompile Include="Flea.cpp" />
     <ClCompile Include="FlyBrick.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="Bricks.h" />
     <ClInclude Include="Candle.h" />
     <ClInclude Include="DieEffect.h" />
+    <ClInclude Include="Flea.h" />
     <ClInclude Include="FlyBrick.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />

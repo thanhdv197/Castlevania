@@ -6,6 +6,7 @@
 #include "Army.h"
 #include "Zombie.h"
 #include "Bat.h"
+#include "Flea.h"
 
 #define SIMON_WALKING_SPEED		0.1f 
 //0.1f

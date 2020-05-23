@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "Zombie.h"
 #include "Bat.h"
+#include "Flea.h"
 
 #define WEAPON_FLY_SPEED 0.1f;
 

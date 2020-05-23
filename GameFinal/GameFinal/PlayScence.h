@@ -16,6 +16,7 @@
 #include "Army.h"
 #include "Zombie.h"
 #include "Bat.h"
+#include "Flea.h"
 #include "Grid.h"
 
 
