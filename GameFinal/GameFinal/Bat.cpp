@@ -16,6 +16,9 @@ CBat::CBat(int item)
 	SetState(STATE_BAT_STAND);
 
 	RanDom(item);
+
+	timeDown = 0;
+
 }
 
 void CBat::GetBoundingBox(float &left, float &top, float &right, float &bottom)
@@ -36,6 +39,18 @@ void CBat::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 	x += dx;
 	y += dy;
+
+	// check simon position and change state bat
+	if (abs(this->x - this->xSimon) < 50 && abs(this->y - this->ySimon) < 30)
+		SetState(STATE_BAT_DOWN);
+
+	// change state to fly 
+	if (this->state == STATE_BAT_DOWN)
+	{
+		timeDown += dt;
+		if (timeDown > 300)
+			SetState(STATE_BAT_FLY);
+	}
 
 	// check whip attack
 	if (isAttacked)

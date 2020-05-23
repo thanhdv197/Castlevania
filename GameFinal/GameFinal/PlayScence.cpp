@@ -334,6 +334,11 @@ void CPlayScene::Update(DWORD dt)
 
 	for (size_t i = 0; i < objects.size(); i++)
 	{
+		// get position simon to change state of enemy
+		float xSimon, ySimon;
+		player->GetPosition(xSimon, ySimon);
+		objects[i]->SetPositionSimon(xSimon, ySimon);
+
 		objects[i]->Update(dt, &coObjects);
 	}
 

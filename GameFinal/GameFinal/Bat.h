@@ -32,6 +32,9 @@ class CBat : public CGameObject
 	CWhipEffect * whipEffect;
 
 	CDieEffect * dieEffect;
+
+	DWORD timeDown;
+
 public:
 
 	bool isEnable;
