@@ -123,6 +123,22 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 					this->isAttack = false;
 				}
 			}
+			else if (dynamic_cast<CBat*>(coObjects->at(i))) {
+				CBat* bat = dynamic_cast<CBat*>(coObjects->at(i));
+
+				float l1, t1, r1, b1, l2, t2, r2, b2;
+				GetBoundingBox(l1, t1, r1, b1);
+				bat->GetBoundingBox(l2, t2, r2, b2);
+
+				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
+				{
+					bat->isAttacked = true;
+					bat->LostBlood(GetDame());
+					if (bat->GetBlood() < 1)
+						bat->SetState(STATE_ITEM);
+					isAttack = false;
+				}
+			}
 		}
 	}
 	

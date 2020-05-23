@@ -13,7 +13,7 @@ CBat::CBat(int item)
 
 	dieEffect = new CDieEffect();
 
-	SetState(STATE_ITEM);
+	SetState(STATE_BAT_STAND);
 
 	RanDom(item);
 }

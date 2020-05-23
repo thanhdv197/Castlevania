@@ -167,7 +167,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				CTorch *torch = dynamic_cast<CTorch *>(e->obj);
 
-				if (torch->GetState() == STATE_CANDLE)
+				if (torch->GetState() == STATE_TORCH)
 				{
 
 				}
@@ -210,7 +210,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				CZombie *zombie = dynamic_cast<CZombie *>(e->obj);
 
-				if (zombie->GetState() == STATE_ARMY)
+				if (zombie->GetState() == STATE_ZOMBIE)
 				{
 					LostBlood(4);
 					SetPosition(x + 20, y);
@@ -219,6 +219,21 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					CollisionItem(zombie->GetItem());
 					zombie->isEnable = false;
+				}
+			}
+			else if (dynamic_cast<CBat *>(e->obj))
+			{
+				CBat *bat = dynamic_cast<CBat *>(e->obj);
+
+				if (bat->GetState() != STATE_ITEM)
+				{
+					LostBlood(4);
+					SetPosition(x + 20, y);
+				}
+				else
+				{
+					CollisionItem(bat->GetItem());
+					bat->isEnable = false;
 				}
 			}
 		}
