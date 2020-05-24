@@ -456,6 +456,12 @@
 99	224	20	0	255	211
 99	177	134	0	224	147
 
+# ==== CANDLE ====
+# type	x	y	ani_set_id	item
+6	72	134	45	5
+6	200	140	45	5
+6	153	27	45	5
+
 # ==== ENEMIES ====
 # type	x	y	ani_set_id	item
 # ARMY
@@ -471,13 +477,13 @@
 #13	162	180	36	0
 
 # BIRD
-15	162	160	34	0
+#15	162	160	34	0
 
 [MAP]
-# width height
+# WIDTH HEIGHT
 320	192
 
-# tilemap
+# TILE MAP
 0	3	4	4	13	8	3	5	5	5
 0	3	4	13	4	2	3	5	5	5
 5	9	14	10	11	4	3	5	5	5
