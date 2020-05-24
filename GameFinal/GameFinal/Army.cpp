@@ -48,7 +48,7 @@ void CArmy::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	{
 		timeChangeDirection += dt;
 
-		if (timeChangeDirection > 3000)
+		if (timeChangeDirection > 1000)
 		{
 			nx = -nx;
 			if (nx > 0)

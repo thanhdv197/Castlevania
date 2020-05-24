@@ -459,8 +459,8 @@
 # ==== CANDLE ====
 # type	x	y	ani_set_id	item
 6	72	134	45	5
-6	200	140	45	5
-6	153	27	45	5
+6	200	134	45	5
+6	140	40	45	5
 
 # ==== ENEMIES ====
 # type	x	y	ani_set_id	item
