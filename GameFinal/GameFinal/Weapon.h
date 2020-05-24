@@ -8,6 +8,7 @@
 #include "Bat.h"
 #include "Flea.h"
 #include "Bird.h"
+#include "Toad.h"
 
 #define WEAPON_FLY_SPEED 0.1f;
 

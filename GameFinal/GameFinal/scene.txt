@@ -468,6 +468,11 @@
 # type	l	t	ani_set_id	r	b
 99	0	180	0	768	320
 
+# ==== ENEMIES ====
+# type	x	y	ani_set_id	item
+# TOAD
+14	150	148	35	5
+
 [MAP]
 # WIDTH HEIGHT
 768	192

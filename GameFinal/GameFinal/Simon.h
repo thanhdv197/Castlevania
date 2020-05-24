@@ -8,6 +8,7 @@
 #include "Bat.h"
 #include "Flea.h"
 #include "Bird.h"
+#include "Toad.h"
 
 #define SIMON_WALKING_SPEED		0.1f 
 //0.1f

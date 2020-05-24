@@ -121,6 +121,9 @@
     <Filter Include="Objects\Enemies\Bird">
       <UniqueIdentifier>{5e34f41c-62ce-45d6-9683-9b1ebb043f4c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\Enemies\Toad">
+      <UniqueIdentifier>{fab66de8-fe24-452f-8ecf-29e9fb092152}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animations.cpp">
@@ -215,6 +218,9 @@
     </ClCompile>
     <ClCompile Include="Bird.cpp">
       <Filter>Objects\Enemies\Bird</Filter>
+    </ClCompile>
+    <ClCompile Include="Toad.cpp">
+      <Filter>Objects\Enemies\Toad</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -313,6 +319,9 @@
     </ClInclude>
     <ClInclude Include="Bird.h">
       <Filter>Objects\Enemies\Bird</Filter>
+    </ClInclude>
+    <ClInclude Include="Toad.h">
+      <Filter>Objects\Enemies\Toad</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

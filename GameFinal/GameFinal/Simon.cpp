@@ -266,6 +266,21 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					bird->isEnable = false;
 				}
 			}
+			else if (dynamic_cast<CToad *>(e->obj))
+			{
+				CToad *toad = dynamic_cast<CToad *>(e->obj);
+
+				if (toad->GetState() != STATE_ITEM)
+				{
+					LostBlood(4);
+					SetPosition(x + 20, y);
+				}
+				else
+				{
+					CollisionItem(toad->GetItem());
+					toad->isEnable = false;
+				}
+			}
 		}
 	}
 

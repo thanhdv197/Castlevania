@@ -157,6 +157,20 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 					isAttack = false;
 				}
 			}
+			else if (dynamic_cast<CToad*>(coObjects->at(i))) {
+				CToad* toad = dynamic_cast<CToad*>(coObjects->at(i));
+
+				float l1, t1, r1, b1, l2, t2, r2, b2;
+				GetBoundingBox(l1, t1, r1, b1);
+				toad->GetBoundingBox(l2, t2, r2, b2);
+
+				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
+				{
+					toad->isAttacked = true;
+					toad->LostBlood(GetDame());
+					isAttack = false;
+				}
+			}
 		}
 	}
 	

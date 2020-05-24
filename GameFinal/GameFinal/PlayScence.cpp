@@ -209,6 +209,12 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 			obj = new CFlea(item);
 			break;
 		}
+	case OBJECT_TYPE_ENEMY_TOAD:
+		{
+			int item = atoi(tokens[4].c_str());
+			obj = new CToad(item);
+			break;
+		}
 	case OBJECT_TYPE_ENEMY_BIRD:
 		{
 			int item = atoi(tokens[4].c_str());

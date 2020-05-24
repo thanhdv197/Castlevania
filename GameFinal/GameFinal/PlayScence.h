@@ -18,6 +18,7 @@
 #include "Bat.h"
 #include "Flea.h"
 #include "Bird.h"
+#include "Toad.h"
 #include "Grid.h"
 
 
