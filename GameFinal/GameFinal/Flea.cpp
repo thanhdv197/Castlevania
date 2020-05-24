@@ -39,6 +39,9 @@ void CFlea::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	if ((this->x - this->xSimon) < 80)
 	{
 		SetState(STATE_FLEA_FLY);
+
+		if (GetBlood() > 0)
+			isEnable = true;
 	}
 
 	// check whip attack
@@ -74,12 +77,6 @@ void CFlea::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 			// TODO: This is a very ugly designed function!!!!
 			FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
-
-			/*x += min_tx * dx + nx * 0.4f;
-			y += min_ty * dy + ny * 0.4f;
-
-			if (nx != 0) vx = 0;
-			if (ny != 0) vy = 0;*/
 
 			for (UINT i = 0; i < coEventsResult.size(); i++)
 			{
@@ -158,6 +155,7 @@ void CFlea::SetState(int state)
 	case STATE_FLEA_WAIT:
 		vx = 0;
 		vy = 0;
+		isEnable = false;
 		break;
 	case STATE_ITEM:
 		vy = 0.01f;
