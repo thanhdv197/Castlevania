@@ -17,6 +17,7 @@
 #include "Zombie.h"
 #include "Bat.h"
 #include "Flea.h"
+#include "Bird.h"
 #include "Grid.h"
 
 

@@ -101,6 +101,20 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 					isAttack = false;
 				}
 			}
+			else if (dynamic_cast<CBird*>(coObjects->at(i))) {
+				CBird* bird = dynamic_cast<CBird*>(coObjects->at(i));
+
+				float l1, t1, r1, b1, l2, t2, r2, b2;
+				GetBoundingBox(l1, t1, r1, b1);
+				bird->GetBoundingBox(l2, t2, r2, b2);
+
+				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
+				{
+					bird->isAttacked = true;
+					bird->LostBlood(GetDame());
+					isAttack = false;
+				}
+			}
 		}
 	}
 	

@@ -251,6 +251,21 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					flea->isEnable = false;
 				}
 			}
+			else if (dynamic_cast<CBird *>(e->obj))
+			{
+				CBird *bird = dynamic_cast<CBird *>(e->obj);
+
+				if (bird->GetState() != STATE_ITEM)
+				{
+					LostBlood(4);
+					SetPosition(x + 20, y);
+				}
+				else
+				{
+					CollisionItem(bird->GetItem());
+					bird->isEnable = false;
+				}
+			}
 		}
 	}
 

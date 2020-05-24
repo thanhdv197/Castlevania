@@ -44,6 +44,9 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 #define OBJECT_TYPE_ENEMY_ZOMBIE	11
 #define OBJECT_TYPE_ENEMY_BAT	12
 #define OBJECT_TYPE_ENEMY_FLEA	13
+#define OBJECT_TYPE_ENEMY_TOAD	14
+#define OBJECT_TYPE_ENEMY_BIRD	15
+#define OBJECT_TYPE_ENEMY_SKELETON	16
 
 #define OBJECT_TYPE_PORTAL	50
 
@@ -204,6 +207,12 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		{
 			int item = atoi(tokens[4].c_str());
 			obj = new CFlea(item);
+			break;
+		}
+	case OBJECT_TYPE_ENEMY_BIRD:
+		{
+			int item = atoi(tokens[4].c_str());
+			obj = new CBird(item);
 			break;
 		}
 	case OBJECT_TYPE_PORTAL:
