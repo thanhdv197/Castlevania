@@ -10,6 +10,7 @@ CBird::CBird(int item)
 	this->timeChangeState = 0;
 
 	this->nx = -1;
+	this->ny = 1;
 
 	whipEffect = new CWhipEffect();
 
@@ -39,7 +40,39 @@ void CBird::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	if ((this->x - this->xSimon) < 100)
 	{
 		SetState(STATE_BIRD_FLY);
+		timeChangeState += dt;
+
+		// set time to change waitting state
+		if (timeChangeState > 3000)
+		{
+			if (this->state == STATE_BIRD_FLY)
+			{
+				SetState(STATE_BIRD_FLY_WAIT);
+			}
+		}
 	}
+	// set time to change fly state from waitting state
+	if (this->state == STATE_BIRD_FLY_WAIT)
+	{
+		timeChangeState += dt;
+		if (timeChangeState > 7000)
+		{
+			SetState(STATE_BIRD_FLY);
+			timeChangeState = 0;
+		}
+	}
+
+	// set nx of bird
+	if (this->xSimon - this->x > 30)
+		nx = 1;
+	else if (this->xSimon - this->x < -30)
+		nx = -1;
+
+	// set ny of bird
+	if (ySimon - y > 50)
+		ny = 1;
+	else if (ySimon - y < -10)
+		ny = -1;
 
 	// check whip attack
 	if (isAttacked)
@@ -160,7 +193,12 @@ void CBird::SetState(int state)
 			vx = 0.01f;
 		}
 		else vx = -0.01f;
-		vy = 0.01f;
+		
+		if (ny > 0)
+			vy = 0.01f;
+		else
+			vy = -0.01f;
+
 		break;
 	case STATE_BIRD_FLY_WAIT:
 		vx = 0;

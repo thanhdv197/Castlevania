@@ -30,6 +30,8 @@ class CBird : public CGameObject
 
 	int blood;
 
+	int ny;
+
 	DWORD timeChangeState;
 
 	CWhipEffect * whipEffect;
