@@ -471,7 +471,9 @@
 # ==== ENEMIES ====
 # type	x	y	ani_set_id	item
 # TOAD
-14	150	148	35	5
+#14	150	148	35	5
+# SKELETON
+#16	150	128	33	5
 
 [MAP]
 # WIDTH HEIGHT

@@ -9,6 +9,7 @@
 #include "Flea.h"
 #include "Bird.h"
 #include "Toad.h"
+#include "Skeleton.h"
 
 #define WHIP_ANI_RIGHT_LV1	0
 #define WHIP_ANI_LEFT_LV1	1

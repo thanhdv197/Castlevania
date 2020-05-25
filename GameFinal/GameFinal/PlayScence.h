@@ -19,6 +19,7 @@
 #include "Flea.h"
 #include "Bird.h"
 #include "Toad.h"
+#include "Skeleton.h"
 #include "Grid.h"
 
 

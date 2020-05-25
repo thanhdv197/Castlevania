@@ -124,6 +124,9 @@
     <Filter Include="Objects\Enemies\Toad">
       <UniqueIdentifier>{fab66de8-fe24-452f-8ecf-29e9fb092152}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\Enemies\Skeleton">
+      <UniqueIdentifier>{9193519f-68fb-4b4a-80ed-d02b5343304d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animations.cpp">
@@ -221,6 +224,9 @@
     </ClCompile>
     <ClCompile Include="Toad.cpp">
       <Filter>Objects\Enemies\Toad</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Objects\Enemies\Skeleton</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -322,6 +328,9 @@
     </ClInclude>
     <ClInclude Include="Toad.h">
       <Filter>Objects\Enemies\Toad</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>Objects\Enemies\Skeleton</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

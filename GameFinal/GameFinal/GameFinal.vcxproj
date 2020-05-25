@@ -149,6 +149,7 @@
     <ClCompile Include="Scence.cpp" />
     <ClCompile Include="Scores.cpp" />
     <ClCompile Include="Simon.cpp" />
+    <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="Textures.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="Scence.h" />
     <ClInclude Include="Scores.h" />
     <ClInclude Include="Simon.h" />
+    <ClInclude Include="Skeleton.h" />
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="Toad.h" />

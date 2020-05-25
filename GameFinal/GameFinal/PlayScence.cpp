@@ -221,6 +221,12 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 			obj = new CBird(item);
 			break;
 		}
+	case OBJECT_TYPE_ENEMY_SKELETON:
+		{
+			int item = atoi(tokens[4].c_str());
+			obj = new CSkeleton(item);
+			break;
+		}
 	case OBJECT_TYPE_PORTAL:
 		{	
 			float r = atof(tokens[4].c_str());
