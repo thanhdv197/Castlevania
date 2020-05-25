@@ -281,6 +281,21 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					toad->isEnable = false;
 				}
 			}
+			else if (dynamic_cast<CSkeleton *>(e->obj))
+			{
+				CSkeleton *skeleton = dynamic_cast<CSkeleton *>(e->obj);
+
+				if (skeleton->GetState() != STATE_ITEM)
+				{
+					LostBlood(4);
+					SetPosition(x + 20, y);
+				}
+				else
+				{
+					CollisionItem(skeleton->GetItem());
+					skeleton->isEnable = false;
+				}
+			}
 		}
 	}
 

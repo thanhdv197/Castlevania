@@ -9,6 +9,7 @@
 #include "Flea.h"
 #include "Bird.h"
 #include "Toad.h"
+#include "Skeleton.h"
 
 #define SIMON_WALKING_SPEED		0.1f 
 //0.1f
@@ -115,6 +116,7 @@ public:
 
 	int GetScores() { return this->score; }
 	void SetScores(int _scores) { this->score = _scores; }
+	void AddScores(int _scores) { this->score += _scores; }
 
 	int GetWeapon() { return this->stateWeapon; }
 	void SetWeapon(int _weapon) { this->stateWeapon = _weapon; }
