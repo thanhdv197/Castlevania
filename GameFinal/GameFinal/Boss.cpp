@@ -27,7 +27,7 @@ void CBoss::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 			left = x;
 			top = y;
 			right = left + 48;
-			bottom = top + 32;
+			bottom = top + 24;
 		}
 		else if (this->state == STATE_BOSS_STAND)
 		{
@@ -44,6 +44,7 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	CGameObject::Update(dt, coObjects);
 
+	// set distance to change state of boss
 	if ((this->xSimon - this->x) > 50)
 	{
 		SetState(STATE_BOSS_FLY);
@@ -90,12 +91,9 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	{
 		SetState(STATE_BOSS_DIE);
 
-		if (this->state == STATE_BOSS_DIE)
-		{
-			timeDead += dt;
-			if (timeDead > 300)
-				isEnable = true;
-		}
+		timeDead += dt;
+		if (timeDead > 1000)
+			isEnable = false;
 	}
 
 	x += dx;
@@ -147,14 +145,14 @@ void CBoss::SetState(int state)
 	case STATE_BOSS_FLY:
 		if (nx > 0)
 		{
-			vx = 0.01f;
+			vx = 0.03f;
 		}
-		else vx = -0.01f;
+		else vx = -0.03f;
 
 		if (ny > 0)
-			vy = 0.01f;
+			vy = 0.02f;
 		else
-			vy = -0.01f;
+			vy = -0.02f;
 
 		break;
 	case STATE_BOSS_FLY_WAIT:
