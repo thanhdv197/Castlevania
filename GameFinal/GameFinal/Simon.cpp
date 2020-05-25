@@ -296,6 +296,16 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					skeleton->isEnable = false;
 				}
 			}
+			else if (dynamic_cast<CBoss *>(e->obj))
+			{
+				CBoss *boss = dynamic_cast<CBoss *>(e->obj);
+
+				if (boss->GetState() != STATE_BOSS_DIE)
+				{
+					LostBlood(5);
+					SetPosition(x + 20, y);
+				}
+			}
 		}
 	}
 

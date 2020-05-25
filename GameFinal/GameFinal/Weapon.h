@@ -10,6 +10,7 @@
 #include "Bird.h"
 #include "Toad.h"
 #include "Skeleton.h"
+#include "Boss.h"
 
 #define WEAPON_FLY_SPEED 0.1f;
 

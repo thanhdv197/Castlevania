@@ -20,6 +20,7 @@
 #include "Bird.h"
 #include "Toad.h"
 #include "Skeleton.h"
+#include "Boss.h"
 #include "Grid.h"
 
 

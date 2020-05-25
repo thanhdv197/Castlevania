@@ -143,6 +143,21 @@ void CWhip::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 					isAttack = false;
 				}
 			}
+			else if (dynamic_cast<CBoss*>(coObjects->at(i)))
+			{
+				CBoss* boss = dynamic_cast<CBoss*>(coObjects->at(i));
+
+				float l1, t1, r1, b1, l2, t2, r2, b2;
+				GetBoundingBox(l1, t1, r1, b1);
+				boss->GetBoundingBox(l2, t2, r2, b2);
+
+				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
+				{
+					boss->isAttacked = true;
+					boss->LostBlood(GetDame());
+					isAttack = false;
+				}
+			}
 		}
 	}
 	

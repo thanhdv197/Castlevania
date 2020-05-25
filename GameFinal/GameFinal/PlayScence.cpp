@@ -47,6 +47,7 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 #define OBJECT_TYPE_ENEMY_TOAD	14
 #define OBJECT_TYPE_ENEMY_BIRD	15
 #define OBJECT_TYPE_ENEMY_SKELETON	16
+#define OBJECT_TYPE_ENEMY_BOSS	17
 
 #define OBJECT_TYPE_PORTAL	50
 
@@ -225,6 +226,11 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		{
 			int item = atoi(tokens[4].c_str());
 			obj = new CSkeleton(item);
+			break;
+		}
+	case OBJECT_TYPE_ENEMY_BOSS:
+		{
+			obj = new CBoss();
 			break;
 		}
 	case OBJECT_TYPE_PORTAL:

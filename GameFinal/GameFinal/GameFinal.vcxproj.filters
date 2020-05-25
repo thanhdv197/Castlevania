@@ -127,6 +127,9 @@
     <Filter Include="Objects\Enemies\Skeleton">
       <UniqueIdentifier>{9193519f-68fb-4b4a-80ed-d02b5343304d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\Enemies\Boss">
+      <UniqueIdentifier>{1b010632-bd36-432e-84fa-4c681e44f714}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animations.cpp">
@@ -227,6 +230,9 @@
     </ClCompile>
     <ClCompile Include="Skeleton.cpp">
       <Filter>Objects\Enemies\Skeleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Objects\Enemies\Boss</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -331,6 +337,9 @@
     </ClInclude>
     <ClInclude Include="Skeleton.h">
       <Filter>Objects\Enemies\Skeleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Objects\Enemies\Boss</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

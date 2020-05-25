@@ -10,6 +10,7 @@
 #include "Bird.h"
 #include "Toad.h"
 #include "Skeleton.h"
+#include "Boss.h"
 
 #define SIMON_WALKING_SPEED		0.1f 
 //0.1f
