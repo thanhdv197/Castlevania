@@ -9,6 +9,10 @@ CToad::CToad(int item)
 
 	this->nx = -1;
 
+	this->timeJump = 0;
+
+	this->ny = 0;
+
 	whipEffect = new CWhipEffect();
 
 	dieEffect = new CDieEffect();
@@ -34,6 +38,28 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	CGameObject::Update(dt, coObjects);
 
+	// set state of toad
+	if (this->xSimon - this->x > 50)
+	{
+		SetState(STATE_TOAD_JUMP);
+	}	
+
+	// set time jump
+	if (this->state == STATE_TOAD_JUMP)
+	{
+		timeJump += dt;
+
+		if (timeJump > 200)
+		{
+			ny = 1;
+
+			if (timeJump > 500)
+			{
+				SetState(STATE_TOAD_STAND);
+			}
+		}
+	}
+	
 	// check whip attack
 	if (isAttacked)
 		whipEffect->Update(dt, coObjects);
@@ -140,9 +166,14 @@ void CToad::SetState(int state)
 		break;
 	case STATE_TOAD_JUMP:
 		if (nx > 0)
-			vx = 0.05f;
-		else vx = -0.05f;
-		vy = -0.05f;
+			vx = 0.1f;
+		else vx = -0.1f;
+
+		if (ny > 0)
+			vy = 0.05f;
+		else vy = -0.05f;
+		
+		break;
 	case STATE_ITEM:
 		vy = 0.05f;
 		vx = 0;

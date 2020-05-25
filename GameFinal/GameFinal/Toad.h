@@ -29,6 +29,10 @@ class CToad : public CGameObject
 
 	int blood;
 
+	DWORD timeJump;
+
+	int ny;
+
 	CWhipEffect * whipEffect;
 
 	CDieEffect * dieEffect;
