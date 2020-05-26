@@ -7,7 +7,7 @@ CToad::CToad(int item)
 
 	this->blood = 1;
 
-	this->nx = -1;
+	this->nx = 1;
 
 	this->timeJump = 0;
 
@@ -39,7 +39,7 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	CGameObject::Update(dt, coObjects);
 
 	// set state of toad
-	if (this->xSimon - this->x > 50)
+	if (this->xSimon - this->x > 50 && this->xSimon - this->x < 60)
 	{
 		SetState(STATE_TOAD_JUMP);
 	}	
@@ -166,12 +166,12 @@ void CToad::SetState(int state)
 		break;
 	case STATE_TOAD_JUMP:
 		if (nx > 0)
-			vx = 0.1f;
-		else vx = -0.1f;
+			vx = 0.05f;
+		else vx = -0.05f;
 
 		if (ny > 0)
-			vy = 0.05f;
-		else vy = -0.05f;
+			vy = 0.02f;
+		else vy = -0.02f;
 		
 		break;
 	case STATE_ITEM:
