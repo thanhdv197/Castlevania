@@ -169,7 +169,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				if (torch->GetState() == STATE_TORCH)
 				{
-
+					x += dx;
 				}
 				else
 				{
@@ -183,7 +183,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				if (candle->GetState() == STATE_CANDLE)
 				{
-
+					x += dx;
 				}
 				else
 				{
