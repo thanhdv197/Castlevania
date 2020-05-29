@@ -29,6 +29,8 @@
 #define SIMON_STATE_SIT				500
 #define SIMON_STATE_ATTACK			600
 #define SIMON_STATE_HURT			700
+#define SIMON_STATE_GO_UP			800
+#define SIMON_STATE_GO_DOWN			900
 
 #define SIMON_ANI_IDLE_RIGHT		0
 #define SIMON_ANI_IDLE_LEFT			1
@@ -50,14 +52,14 @@
 #define SIMON_ANI_SIT_ATTACK_RIGHT	11
 #define SIMON_ANI_SIT_ATTACK_LEFT	12
 
-#define SIMON_ANI_LEVELUP_RIGHT	13
-#define SIMON_ANI_LEVELUP_LEFT	14
+#define SIMON_ANI_LEVELUP_RIGHT		13
+#define SIMON_ANI_LEVELUP_LEFT		14
 
-#define SIMON_BBOX_WIDTH  16
-#define SIMON_BBOX_HEIGHT 30
-#define SIMON_BBOX_HEIGHT_SIT 23
+#define SIMON_BBOX_WIDTH			16
+#define SIMON_BBOX_HEIGHT			30
+#define SIMON_BBOX_HEIGHT_SIT		23
 
-#define SIMON_UNTOUCHABLE_TIME 5000
+#define SIMON_UNTOUCHABLE_TIME		5000
 
 
 class CSimon : public CGameObject
@@ -82,6 +84,8 @@ class CSimon : public CGameObject
 	int score;
 
 	DWORD timeLevelUp;
+
+	int stairDirection;
 
 public:
 	// check active

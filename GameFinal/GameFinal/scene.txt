@@ -481,7 +481,7 @@
 
 # ==== Top Stair ====
 # type	x	y	ani_set_id	direction
-2	110	40	0	1
+#2	110	40	0	1
 
 # ==== TORCH ====
 # type	x	y	ani_set_id	item

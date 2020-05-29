@@ -530,6 +530,13 @@ void CPlayScenceKeyHandler::KeyState(BYTE *states)
 		else
 			simon->SetState(SIMON_STATE_JUMP);
 	}
+	else if (game->IsKeyDown(DIK_UP))
+	{
+		simon->SetState(SIMON_STATE_GO_UP);
+	}
 	else
+	{
 		simon->SetState(SIMON_STATE_IDLE);
+	}
+		
 }

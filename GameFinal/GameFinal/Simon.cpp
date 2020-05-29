@@ -311,20 +311,18 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			else if (dynamic_cast<CBottomStair *>(e->obj))
 			{
 				CBottomStair *bottomStair = dynamic_cast<CBottomStair *>(e->obj);
+				this->isStair = true;
 				x += dx;
 
-				this->nx = bottomStair->GetDirection();
-				this->x = x + 30;
-				this->y = y - 40;
+				this->stairDirection = bottomStair->GetDirection();
+				
 			}
 			else if (dynamic_cast<CTopStair *>(e->obj))
 			{
 				CTopStair *topStair = dynamic_cast<CTopStair *>(e->obj);
 				x += dx;
 
-				this->nx = topStair->GetDirection();
-				this->x = x + 30;
-				this->y = y + 40;
+				this->stairDirection = topStair->GetDirection();
 			}
 		}
 	}
@@ -495,6 +493,7 @@ void CSimon::SetState(int state)
 	case SIMON_STATE_JUMP:
 		isJump = true;
 		vy = -SIMON_JUMP_SPEED_Y;
+		break;
 	case SIMON_STATE_IDLE:
 		isSit = false;
 		vx = 0;
@@ -515,10 +514,19 @@ void CSimon::SetState(int state)
 			weapon = new CWeapon(xSimon, ySimon, GetDirection(), this->stateWeapon);
 			weapon->isAttack = true;
 		}
-		
 		break;
 	case SIMON_STATE_SIT:
 		isSit = true;
+		break;
+	case SIMON_STATE_GO_UP:
+		if (this->isStair)
+		{
+			this->x += 1;
+			this->y -= 1;
+		}
+		nx = stairDirection;
+		vy = 0;
+		vx = 0;
 		break;
 	}
 }
