@@ -73,6 +73,8 @@ public:
 
 	void SetPositionSimon(float _x, float _y) { this->xSimon = _x, this->ySimon = _y; }
 
+	int GetDirection() { return this->nx; }
+
 	int GetState() { return this->state; }
 
 	void RenderBoundingBox();

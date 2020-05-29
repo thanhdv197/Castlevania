@@ -32,6 +32,8 @@ CSimon::CSimon(float x, float y)
 	usingWhip = false;
 	isFlyingWeapon = false;
 
+	isStair = false;
+
 	this->blood = 16;
 	this->alive = 4;
 	this->heart = 0;
@@ -305,6 +307,24 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					LostBlood(5);
 					SetPosition(x + 20, y);
 				}
+			}
+			else if (dynamic_cast<CBottomStair *>(e->obj))
+			{
+				CBottomStair *bottomStair = dynamic_cast<CBottomStair *>(e->obj);
+				x += dx;
+
+				this->nx = bottomStair->GetDirection();
+				this->x = x + 30;
+				this->y = y - 40;
+			}
+			else if (dynamic_cast<CTopStair *>(e->obj))
+			{
+				CTopStair *topStair = dynamic_cast<CTopStair *>(e->obj);
+				x += dx;
+
+				this->nx = topStair->GetDirection();
+				this->x = x + 30;
+				this->y = y + 40;
 			}
 		}
 	}

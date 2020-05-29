@@ -22,6 +22,8 @@
 #include "Skeleton.h"
 #include "Boss.h"
 #include "Grid.h"
+#include "BottomStair.h"
+#include "TopStair.h"
 
 
 class CPlayScene: public CScene

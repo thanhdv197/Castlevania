@@ -130,6 +130,15 @@
     <Filter Include="Objects\Enemies\Boss">
       <UniqueIdentifier>{1b010632-bd36-432e-84fa-4c681e44f714}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\Stair">
+      <UniqueIdentifier>{e7b95054-6b10-4f1e-8873-c1c72328f0c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Stair\BottomStair">
+      <UniqueIdentifier>{1518f2b0-373c-4a4b-8333-83de0046ec93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Stair\TopStair">
+      <UniqueIdentifier>{2adda0e7-363e-4b06-b7a2-5607d14ec4e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animations.cpp">
@@ -233,6 +242,12 @@
     </ClCompile>
     <ClCompile Include="Boss.cpp">
       <Filter>Objects\Enemies\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="BottomStair.cpp">
+      <Filter>Objects\Stair\BottomStair</Filter>
+    </ClCompile>
+    <ClCompile Include="TopStair.cpp">
+      <Filter>Objects\Stair\TopStair</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -340,6 +355,12 @@
     </ClInclude>
     <ClInclude Include="Boss.h">
       <Filter>Objects\Enemies\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="BottomStair.h">
+      <Filter>Objects\Stair\BottomStair</Filter>
+    </ClInclude>
+    <ClInclude Include="TopStair.h">
+      <Filter>Objects\Stair\TopStair</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

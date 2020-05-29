@@ -132,6 +132,7 @@
     <ClCompile Include="Bat.cpp" />
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="BottomStair.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Bricks.cpp" />
     <ClCompile Include="Candle.cpp" />
@@ -155,6 +156,7 @@
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="Toad.cpp" />
+    <ClCompile Include="TopStair.cpp" />
     <ClCompile Include="Torch.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Weapon.cpp" />
@@ -168,6 +170,7 @@
     <ClInclude Include="Bat.h" />
     <ClInclude Include="Bird.h" />
     <ClInclude Include="Boss.h" />
+    <ClInclude Include="BottomStair.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="Bricks.h" />
     <ClInclude Include="Candle.h" />
@@ -192,6 +195,7 @@
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="Toad.h" />
+    <ClInclude Include="TopStair.h" />
     <ClInclude Include="Torch.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Weapon.h" />

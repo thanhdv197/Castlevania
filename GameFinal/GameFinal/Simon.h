@@ -11,6 +11,8 @@
 #include "Toad.h"
 #include "Skeleton.h"
 #include "Boss.h"
+#include "BottomStair.h"
+#include "TopStair.h"
 
 #define SIMON_WALKING_SPEED		0.1f 
 //0.1f
@@ -91,6 +93,9 @@ public:
 	// check type attack
 	bool usingWhip;
 	bool isFlyingWeapon;
+
+	// check stair
+	bool isStair;
 
 	CSimon(float x = 0.0f, float y = 0.0f);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *colliable_objects = NULL);
