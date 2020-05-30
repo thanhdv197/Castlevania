@@ -86,6 +86,7 @@ class CSimon : public CGameObject
 	DWORD timeLevelUp;
 
 	int stairDirection;
+	float xStair, yStair;
 
 public:
 	// check active
@@ -100,6 +101,8 @@ public:
 
 	// check stair
 	bool isStair;
+	bool isGoUp;
+	bool isGoDown;
 
 	CSimon(float x = 0.0f, float y = 0.0f);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *colliable_objects = NULL);

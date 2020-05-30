@@ -33,6 +33,8 @@ CSimon::CSimon(float x, float y)
 	isFlyingWeapon = false;
 
 	isStair = false;
+	isGoUp = false;
+	isGoDown = false;
 
 	this->blood = 16;
 	this->alive = 4;
@@ -46,7 +48,23 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	CGameObject::Update(dt);
 
 	// Simple fall down
-	vy += SIMON_GRAVITY * dt;
+	if (isGoUp == false && isGoDown == false)
+	{
+		vy += SIMON_GRAVITY * dt;
+	}
+	else
+	{
+		x += dx;
+		y += dy;
+
+		// finish stair state
+		if (abs(this->x - this->xStair) > 50 && abs(this->y - this->yStair) > 50)
+		{
+			isGoUp = false;
+			isGoDown = false;
+			isStair = false;
+		}
+	}
 
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;
@@ -315,6 +333,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				x += dx;
 
 				this->stairDirection = bottomStair->GetDirection();
+				bottomStair->GetPosition(xStair, yStair);
 				
 			}
 			else if (dynamic_cast<CTopStair *>(e->obj))
@@ -521,12 +540,27 @@ void CSimon::SetState(int state)
 	case SIMON_STATE_GO_UP:
 		if (this->isStair)
 		{
-			this->x += 1;
-			this->y -= 1;
+			this->isGoUp = true;
+			this->isGoDown = false;
 		}
 		nx = stairDirection;
-		vy = 0;
-		vx = 0;
+		vy = -0.01f;
+		if (nx > 0)
+			vx = 0.01f;
+		else vx = -0.01f;
+		
+		break;
+	case SIMON_STATE_GO_DOWN:
+		if (this->isStair)
+		{
+			this->isGoUp = false;
+			this->isGoDown = true;
+		}
+		nx = stairDirection;
+		vy = 0.01f;
+		if (nx > 0)
+			vx = 0.01f;
+		else vx = -0.01f;
 		break;
 	}
 }
