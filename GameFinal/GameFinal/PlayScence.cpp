@@ -524,7 +524,11 @@ void CPlayScenceKeyHandler::KeyState(BYTE *states)
 	else if (game->IsKeyDown(DIK_LEFT))
 		simon->SetState(SIMON_STATE_WALKING_LEFT);
 	else if (game->IsKeyDown(DIK_DOWN))
-		simon->SetState(SIMON_STATE_SIT);
+	{
+		if (simon->isStair == true)
+			simon->SetState(SIMON_STATE_GO_DOWN);
+		else simon->SetState(SIMON_STATE_SIT);
+	}
 	else if (game->IsKeyDown(DIK_SPACE)) {
 		if (game->IsKeyDown(DIK_SPACE)) return;
 		else

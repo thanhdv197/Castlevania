@@ -339,9 +339,24 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			else if (dynamic_cast<CTopStair *>(e->obj))
 			{
 				CTopStair *topStair = dynamic_cast<CTopStair *>(e->obj);
+				this->isStair = true;
 				x += dx;
+				y += dy;
 
 				this->stairDirection = topStair->GetDirection();
+				topStair->GetPosition(xStair, yStair);
+			}
+			else if (dynamic_cast<CBricks *>(e->obj))
+			{
+				CBricks *bricks = dynamic_cast<CBricks *>(e->obj);
+
+				if (ny > 0)
+				{
+					y += dy;
+					x += dx;
+				}
+				else
+					this->isGoDown = false;
 			}
 		}
 	}
@@ -553,15 +568,21 @@ void CSimon::SetState(int state)
 	{
 	case SIMON_STATE_WALKING_RIGHT:
 		vx = SIMON_WALKING_SPEED;
+		isGoUp = false;
+		isGoDown = false;
 		nx = 1;
 		break;
 	case SIMON_STATE_WALKING_LEFT:
 		vx = -SIMON_WALKING_SPEED;
+		isGoUp = false;
+		isGoDown = false;
 		nx = -1;
 		break;
 	case SIMON_STATE_JUMP:
 		isJump = true;
 		vy = -SIMON_JUMP_SPEED_Y;
+		isGoUp = false;
+		isGoDown = false;
 		break;
 	case SIMON_STATE_IDLE:
 		isSit = false;
