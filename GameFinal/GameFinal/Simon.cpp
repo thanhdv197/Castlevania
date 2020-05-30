@@ -449,9 +449,25 @@ void CSimon::Render()
 			}
 			else
 			{
-				if (nx > 0)
-					ani = SIMON_ANI_IDLE_RIGHT;
-				else ani = SIMON_ANI_IDLE_LEFT;
+				if (isGoUp == true && isGoDown == false)
+				{
+					if (nx > 0)
+						ani = SIMON_ANI_IDLE_GO_UP_RIGHT;
+					else ani = SIMON_ANI_IDLE_GO_UP_LEFT;
+				}
+				else if (isGoUp == false && isGoDown == true)
+				{
+					if (nx > 0)
+						ani = SIMON_ANI_IDLE_GO_DOWN_RIGHT;
+					else ani = SIMON_ANI_IDLE_GO_DOWN_LEFT;
+				}
+				else
+				{
+					if (nx > 0)
+						ani = SIMON_ANI_IDLE_RIGHT;
+					else ani = SIMON_ANI_IDLE_LEFT;
+				}
+				
 			}
 
 		}
@@ -550,6 +566,10 @@ void CSimon::SetState(int state)
 	case SIMON_STATE_IDLE:
 		isSit = false;
 		vx = 0;
+		if (isGoUp == true || isGoDown == true)
+		{
+			vy = 0;
+		}
 		break;
 	case SIMON_STATE_DIE:
 		vy = -SIMON_DIE_DEFLECT_SPEED;
