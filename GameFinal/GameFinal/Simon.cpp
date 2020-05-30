@@ -542,25 +542,26 @@ void CSimon::SetState(int state)
 		{
 			this->isGoUp = true;
 			this->isGoDown = false;
+
+			nx = stairDirection;
+			vy = -0.01f;
+			if (nx > 0)
+				vx = 0.01f;
+			else vx = -0.01f;
 		}
-		nx = stairDirection;
-		vy = -0.01f;
-		if (nx > 0)
-			vx = 0.01f;
-		else vx = -0.01f;
-		
 		break;
 	case SIMON_STATE_GO_DOWN:
 		if (this->isStair)
 		{
 			this->isGoUp = false;
 			this->isGoDown = true;
+
+			nx = stairDirection;
+			vy = 0.01f;
+			if (nx > 0)
+				vx = 0.01f;
+			else vx = -0.01f;
 		}
-		nx = stairDirection;
-		vy = 0.01f;
-		if (nx > 0)
-			vx = 0.01f;
-		else vx = -0.01f;
 		break;
 	}
 }
