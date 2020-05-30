@@ -32,7 +32,8 @@ CSimon::CSimon(float x, float y)
 	usingWhip = false;
 	isFlyingWeapon = false;
 
-	isStair = false;
+	isStairUp = false;
+	isStairDown = false;
 	isGoUp = false;
 	isGoDown = false;
 
@@ -62,7 +63,8 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		{
 			isGoUp = false;
 			isGoDown = false;
-			isStair = false;
+			isStairUp = false;
+			isStairDown = false;
 		}
 	}
 
@@ -329,7 +331,8 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			else if (dynamic_cast<CBottomStair *>(e->obj))
 			{
 				CBottomStair *bottomStair = dynamic_cast<CBottomStair *>(e->obj);
-				this->isStair = true;
+				this->isStairUp = true;
+				this->isStairDown = false;
 				x += dx;
 
 				this->stairDirection = bottomStair->GetDirection();
@@ -339,24 +342,13 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			else if (dynamic_cast<CTopStair *>(e->obj))
 			{
 				CTopStair *topStair = dynamic_cast<CTopStair *>(e->obj);
-				this->isStair = true;
+				this->isStairDown = true;
+				this->isStairUp = false;
 				x += dx;
-				y += dy;
+				//y += dy;
 
 				this->stairDirection = topStair->GetDirection();
 				topStair->GetPosition(xStair, yStair);
-			}
-			else if (dynamic_cast<CBricks *>(e->obj))
-			{
-				CBricks *bricks = dynamic_cast<CBricks *>(e->obj);
-
-				if (ny > 0)
-				{
-					y += dy;
-					x += dx;
-				}
-				else
-					this->isGoDown = false;
 			}
 		}
 	}
@@ -376,7 +368,8 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 			if (CGame::GetInstance()->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 			{
-				this->isStair = true;
+				this->isStairUp = true;
+				this->isStairDown = false;
 			}
 		}
 		else if (dynamic_cast<CTopStair*>(coObjects->at(i))) {
@@ -388,7 +381,8 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 			if (CGame::GetInstance()->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 			{
-				this->isStair = true;
+				this->isStairDown = true;
+				this->isStairUp = false;
 			}
 		}
 	}
@@ -599,13 +593,16 @@ void CSimon::SetState(int state)
 		vx = SIMON_WALKING_SPEED;
 		isGoUp = false;
 		isGoDown = false;
-		isStair = false;
+		isStairUp = false;
+		isStairDown = false;
 		nx = 1;
 		break;
 	case SIMON_STATE_WALKING_LEFT:
 		vx = -SIMON_WALKING_SPEED;
 		isGoUp = false;
 		isGoDown = false;
+		isStairUp = false;
+		isStairDown = false;
 		nx = -1;
 		break;
 	case SIMON_STATE_JUMP:
@@ -613,6 +610,8 @@ void CSimon::SetState(int state)
 		vy = -SIMON_JUMP_SPEED_Y;
 		isGoUp = false;
 		isGoDown = false;
+		isStairUp = false;
+		isStairDown = false;
 		break;
 	case SIMON_STATE_IDLE:
 		isSit = false;
@@ -643,7 +642,7 @@ void CSimon::SetState(int state)
 		isSit = true;
 		break;
 	case SIMON_STATE_GO_UP:
-		if (this->isStair)
+		if (this->isStairUp)
 		{
 			this->isGoUp = true;
 			this->isGoDown = false;
@@ -656,7 +655,7 @@ void CSimon::SetState(int state)
 		}
 		break;
 	case SIMON_STATE_GO_DOWN:
-		if (this->isStair)
+		if (this->isStairDown)
 		{
 			this->isGoUp = false;
 			this->isGoDown = true;

@@ -118,7 +118,8 @@ public:
 	bool isFlyingWeapon;
 
 	// check stair
-	bool isStair;
+	bool isStairUp;
+	bool isStairDown;
 	bool isGoUp;
 	bool isGoDown;
 
