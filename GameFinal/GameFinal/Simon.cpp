@@ -364,6 +364,35 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	// clean up collision events
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 
+	// check object a in object b
+	for (UINT i = 0; i < coObjects->size(); i++)
+	{
+		if (dynamic_cast<CBottomStair*>(coObjects->at(i))) {
+			CBottomStair* bottomStair = dynamic_cast<CBottomStair*>(coObjects->at(i));
+
+			float l1, t1, r1, b1, l2, t2, r2, b2;
+			GetBoundingBox(l1, t1, r1, b1);
+			bottomStair->GetBoundingBox(l2, t2, r2, b2);
+
+			if (CGame::GetInstance()->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
+			{
+				this->isStair = true;
+			}
+		}
+		else if (dynamic_cast<CTopStair*>(coObjects->at(i))) {
+			CTopStair* topStair = dynamic_cast<CTopStair*>(coObjects->at(i));
+
+			float l1, t1, r1, b1, l2, t2, r2, b2;
+			GetBoundingBox(l1, t1, r1, b1);
+			topStair->GetBoundingBox(l2, t2, r2, b2);
+
+			if (CGame::GetInstance()->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
+			{
+				this->isStair = true;
+			}
+		}
+	}
+
 }
 
 void CSimon::Render()
@@ -570,6 +599,7 @@ void CSimon::SetState(int state)
 		vx = SIMON_WALKING_SPEED;
 		isGoUp = false;
 		isGoDown = false;
+		isStair = false;
 		nx = 1;
 		break;
 	case SIMON_STATE_WALKING_LEFT:
