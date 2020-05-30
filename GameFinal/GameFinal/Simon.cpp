@@ -54,8 +54,8 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	}
 	else
 	{
-		x += dx;
-		y += dy;
+		/*x += dx;
+		y += dy;*/
 
 		// finish stair state
 		if (abs(this->x - this->xStair) > 50 && abs(this->y - this->yStair) > 50)
@@ -396,6 +396,40 @@ void CSimon::Render()
 			}
 		}
 		else return;
+	}
+	else if (state == SIMON_STATE_GO_UP && isGoUp == true)
+	{
+		if (nx > 0)
+		{
+			if (isAttack)
+				ani = SIMON_ANI_ATTACK_UP_RIGHT;
+			else
+				ani = SIMON_ANI_GO_UP_RIGHT;
+		}
+		else
+		{
+			if (isAttack)
+				ani = SIMON_ANI_ATTACK_UP_LEFT;
+			else
+				ani = SIMON_ANI_GO_UP_LEFT;
+		}
+	}
+	else if (state == SIMON_STATE_GO_DOWN && isGoDown == true)
+	{
+		if (nx > 0)
+		{
+			if (isAttack)
+				ani = SIMON_ANI_ATTACK_DOWN_RIGHT;
+			else
+				ani = SIMON_ANI_GO_DOWN_RIGHT;
+		}
+		else
+		{
+			if (isAttack)
+				ani = SIMON_ANI_ATTACK_DOWN_LEFT;
+			else
+				ani = SIMON_ANI_GO_DOWN_LEFT;
+		}
 	}
 	else
 	{
