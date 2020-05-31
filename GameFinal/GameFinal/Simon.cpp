@@ -26,8 +26,10 @@ CSimon::CSimon(float x, float y)
 	isAttack = false;
 	isSit = false;
 	isLevelUp = false;
+	isHurt = false;
 
 	timeLevelUp = 0;
+	timeHurt = 0;
 
 	usingWhip = false;
 	isFlyingWeapon = false;
@@ -49,7 +51,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	CGameObject::Update(dt);
 
 	// Simple fall down
-	if (isGoUp == false && isGoDown == false && isAttack == false)
+	if (isGoUp == false && isGoDown == false && isAttack == false && isHurt == false)
 	{
 		vy += SIMON_GRAVITY * dt;
 	}
@@ -65,6 +67,25 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			isGoDown = false;
 			isStairUp = false;
 			isStairDown = false;
+		}
+	}
+
+	// set hurt state
+	if (isHurt)
+	{
+		timeHurt += dt;
+		x += dx;
+		if (timeHurt > 300)
+		{
+			SetState(SIMON_STATE_SIT);
+			if (isSit)
+			{
+				if (timeHurt > 600)
+				{
+					isHurt = false;
+					timeHurt = 0;
+				}
+			}
 		}
 	}
 
@@ -219,8 +240,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				if (army->GetState() == STATE_ARMY)
 				{
-					LostBlood(4);
-					SetPosition(x + 20, y);
+					SetState(SIMON_STATE_HURT);
 				}
 				else
 				{
@@ -234,8 +254,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				if (zombie->GetState() == STATE_ZOMBIE)
 				{
-					LostBlood(4);
-					SetPosition(x + 20, y);
+					SetState(SIMON_STATE_HURT);
 				}
 				else
 				{
@@ -249,8 +268,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				if (bat->GetState() != STATE_ITEM)
 				{
-					LostBlood(4);
-					SetPosition(x + 20, y);
+					SetState(SIMON_STATE_HURT);
 				}
 				else
 				{
@@ -264,8 +282,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				if (flea->GetState() != STATE_ITEM)
 				{
-					LostBlood(4);
-					SetPosition(x + 20, y);
+					SetState(SIMON_STATE_HURT);
 				}
 				else
 				{
@@ -279,8 +296,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				if (bird->GetState() != STATE_ITEM)
 				{
-					LostBlood(4);
-					SetPosition(x + 20, y);
+					SetState(SIMON_STATE_HURT);
 				}
 				else
 				{
@@ -294,8 +310,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				if (toad->GetState() != STATE_ITEM)
 				{
-					LostBlood(4);
-					SetPosition(x + 20, y);
+					SetState(SIMON_STATE_HURT);
 				}
 				else
 				{
@@ -309,8 +324,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				if (skeleton->GetState() != STATE_ITEM)
 				{
-					LostBlood(4);
-					SetPosition(x + 20, y);
+					SetState(SIMON_STATE_HURT);
 				}
 				else
 				{
@@ -324,8 +338,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				if (boss->GetState() != STATE_BOSS_DIE)
 				{
-					LostBlood(5);
-					SetPosition(x + 20, y);
+					SetState(SIMON_STATE_HURT);
 				}
 			}
 			else if (dynamic_cast<CBottomStair *>(e->obj))
@@ -509,6 +522,17 @@ void CSimon::Render()
 		
 		isSit = false;
 	}
+	else if (state == SIMON_STATE_HURT)
+	{
+		if (nx > 0)
+		{
+			ani = SIMON_ANI_HURT_RIGHT;
+		}
+		else
+		{
+			ani = SIMON_ANI_HURT_LEFT;
+		}
+	}
 	else if (state == SIMON_STATE_JUMP)
 	{
 		if (isJump)
@@ -579,6 +603,12 @@ void CSimon::Render()
 				if (nx > 0)
 					ani = SIMON_ANI_LEVELUP_RIGHT;
 				else ani = SIMON_ANI_LEVELUP_LEFT;
+			}
+			else if (isHurt)
+			{
+				if (nx > 0)
+					ani = SIMON_ANI_HURT_RIGHT;
+				else ani = SIMON_ANI_HURT_LEFT;
 			}
 			else
 			{
@@ -710,6 +740,7 @@ void CSimon::SetState(int state)
 		break;
 	case SIMON_STATE_IDLE:
 		isSit = false;
+		isJump = false;
 		vx = 0;
 		if (isGoUp == true || isGoDown == true)
 		{
@@ -763,7 +794,16 @@ void CSimon::SetState(int state)
 			else vx = -0.01f;
 		}
 		break;
+	case SIMON_STATE_HURT:
+		isHurt = true;
+		LostBlood(1);
+		if (nx > 0)
+			vx = -0.2f;
+		else vx = 0.2f;
+		vy = 0;
+		break;
 	}
+	
 }
 
 void CSimon::GetBoundingBox(float &left, float &top, float &right, float &bottom)
@@ -781,6 +821,15 @@ void CSimon::GetBoundingBox(float &left, float &top, float &right, float &bottom
 
 		right = x + SIMON_BBOX_WIDTH;
 		bottom = y + 23;
+	}
+
+	if (isHurt)
+	{
+		left = 0;
+		top = 0;
+
+		right = 0;
+		bottom = 0;
 	}
 
 }
@@ -849,7 +898,6 @@ void CSimon::LostBlood(int _blood)
 	}
 	else
 		SetState(SIMON_STATE_DIE);
-	
 }
 
 

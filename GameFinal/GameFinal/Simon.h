@@ -105,6 +105,7 @@ class CSimon : public CGameObject
 	int score;
 
 	DWORD timeLevelUp;
+	DWORD timeHurt;
 
 	int stairDirection;
 	float xStair, yStair;
@@ -115,6 +116,7 @@ public:
 	bool isJump;
 	bool isSit;
 	bool isLevelUp;
+	bool isHurt;
 
 	// check type attack
 	bool usingWhip;
