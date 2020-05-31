@@ -3,6 +3,7 @@
 #include "WhipEffect.h"
 #include "DieEffect.h"
 #include "Bricks.h"
+#include "Candle.h"
 
 #define STATE_ZOMBIE	100
 #define STATE_ITEM	200
