@@ -543,11 +543,23 @@
 
 [OBJECTS]
 # type	x	y	ani_set_id	extra_settings per object type
-# type: 0 = Simon , 99 = Bricks, 3 = fly brick, 4 = torch, 6 = candle, 50 = portal
+# type: 0 = Simon , 99 = Bricks, 1 = bottom stair, 2 = top stair, 3 = fly brick, 4 = torch, 6 = candle, 50 = portal
 # type: 10 = army, 11 = zombie, 12 = bat, 13 = flea, 14 = toad, 15 = bird, 16 = skeleton, 17 = boss
 # ==== SIMON ====
 # type	x	y	ani_set_id
-0	42	116	1
+0	33	145	1
+
+# ==== Bottom Stair ====
+# type	x	y	ani_set_id	direction
+1	50	120	0	1
+1	368	116	0	1
+1	655	116	0	-1
+
+# ==== Top Stair ====
+# type	x	y	ani_set_id	direction
+2	135	64	0	-1
+2	420	64	0	-1
+2	556	52	0	1
 
 # ==== SCENE PORTAL ====
 # type	l	t	ani_set_id	r	b	scene_id

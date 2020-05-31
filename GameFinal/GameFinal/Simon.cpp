@@ -59,7 +59,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		y += dy;*/
 
 		// finish stair state
-		if (abs(this->x - this->xStair) > 50 && abs(this->y - this->yStair) > 50)
+		if (abs(this->x - this->xStair) > 80)
 		{
 			isGoUp = false;
 			isGoDown = false;
@@ -333,6 +333,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				CBottomStair *bottomStair = dynamic_cast<CBottomStair *>(e->obj);
 				this->isStairUp = true;
 				this->isStairDown = false;
+
 				x += dx;
 
 				this->stairDirection = bottomStair->GetDirection();
@@ -344,8 +345,10 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				CTopStair *topStair = dynamic_cast<CTopStair *>(e->obj);
 				this->isStairDown = true;
 				this->isStairUp = false;
+
 				x += dx;
-				//y += dy;
+				/*if ( ny<0 )
+					y += dy;*/
 
 				this->stairDirection = topStair->GetDirection();
 				topStair->GetPosition(xStair, yStair);

@@ -519,11 +519,11 @@ void CPlayScenceKeyHandler::KeyState(BYTE *states)
 	// disable control key when Mario die 
 	if (simon->GetState() == SIMON_STATE_DIE) return;
 
-	if (game->IsKeyDown(DIK_RIGHT))
+	if (game->IsKeyDown(DIK_RIGHT) || game->IsKeyDown(DIK_L))
 		simon->SetState(SIMON_STATE_WALKING_RIGHT);
-	else if (game->IsKeyDown(DIK_LEFT))
+	else if (game->IsKeyDown(DIK_LEFT) || game->IsKeyDown(DIK_J))
 		simon->SetState(SIMON_STATE_WALKING_LEFT);
-	else if (game->IsKeyDown(DIK_DOWN))
+	else if (game->IsKeyDown(DIK_DOWN) || game->IsKeyDown(DIK_K))
 	{
 		if (simon->isStairDown == true)
 			simon->SetState(SIMON_STATE_GO_DOWN);
@@ -534,7 +534,7 @@ void CPlayScenceKeyHandler::KeyState(BYTE *states)
 		else
 			simon->SetState(SIMON_STATE_JUMP);
 	}
-	else if (game->IsKeyDown(DIK_UP))
+	else if (game->IsKeyDown(DIK_UP) || game->IsKeyDown(DIK_I))
 	{
 		simon->SetState(SIMON_STATE_GO_UP);
 	}

@@ -537,21 +537,22 @@
 
 # ==== Bottom Stair ====
 # type	x	y	ani_set_id	direction
-#1	110	140	0	1
+1	100	160	0	1
+1	71	52	0	1
 
 # ==== Top Stair ====
 # type	x	y	ani_set_id	direction
-#2	150	120	0	1
+2	185	96	0	-1
 
 # ==== SCENE PORTAL ====
 # type	l	t	ani_set_id	r	b	scene_id
-50	36	49	0	55	72	2
+50	96	20	0	128	30	2
 
 # ==== BRICKS ====
 # type	l	t	ani_set_id	r	b
 99	0	197	0	240	190
 99	0	84	0	32	148
-99	32	101	0	158	115
+99	32	101	0	158	105
 99	0	0	0	14	83
 99	224	20	0	255	211
 99	177	134	0	224	147
