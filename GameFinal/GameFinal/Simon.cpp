@@ -49,7 +49,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	CGameObject::Update(dt);
 
 	// Simple fall down
-	if (isGoUp == false && isGoDown == false)
+	if (isGoUp == false && isGoDown == false && isAttack == false)
 	{
 		vy += SIMON_GRAVITY * dt;
 	}
@@ -640,6 +640,7 @@ void CSimon::SetState(int state)
 			weapon = new CWeapon(xSimon, ySimon, GetDirection(), this->stateWeapon);
 			weapon->isAttack = true;
 		}
+		vy = 0.05f;
 		break;
 	case SIMON_STATE_SIT:
 		isSit = true;
