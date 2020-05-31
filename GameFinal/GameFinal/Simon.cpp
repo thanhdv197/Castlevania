@@ -359,7 +359,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	// clean up collision events
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 
-	// check object a in object b
+	// check state of object
 	for (UINT i = 0; i < coObjects->size(); i++)
 	{
 		if (dynamic_cast<CBottomStair*>(coObjects->at(i))) {
@@ -386,6 +386,98 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				this->isStairDown = true;
 				this->isStairUp = false;
+			}
+		}
+		else if (dynamic_cast<CTorch *>(coObjects->at(i)))
+		{
+			CTorch *torch = dynamic_cast<CTorch *>(coObjects->at(i));
+
+			if (torch->GetBlood() < 1 && torch->GetBlood() > -10)
+			{
+				torch->SetBlood(1000);
+				AddScores(1000);
+			}
+		}
+		else if (dynamic_cast<CCandle*>(coObjects->at(i))) {
+			CCandle* candle = dynamic_cast<CCandle*>(coObjects->at(i));
+
+			if (candle->GetBlood() < 1 && candle->GetBlood() > -10)
+			{
+				candle->SetBlood(1000);
+				AddScores(1000);
+			}
+		}
+		else if (dynamic_cast<CArmy*>(coObjects->at(i))) {
+			CArmy* army = dynamic_cast<CArmy*>(coObjects->at(i));
+
+			if (army->GetBlood() < 1 && army->GetBlood() > -10)
+			{
+				army->LostBlood(1000);
+				AddScores(1000);
+			}
+		}
+		else if (dynamic_cast<CZombie*>(coObjects->at(i))) {
+			CZombie* zombie = dynamic_cast<CZombie*>(coObjects->at(i));
+
+			if (zombie->GetBlood() < 1 && zombie->GetBlood() > -10)
+			{
+				zombie->LostBlood(1000);
+				AddScores(1000);
+			}
+		}
+		else if (dynamic_cast<CBat*>(coObjects->at(i))) {
+			CBat* bat = dynamic_cast<CBat*>(coObjects->at(i));
+
+			if (bat->GetBlood() < 1 && bat->GetBlood() > -10)
+			{
+				bat->LostBlood(1000);
+				AddScores(1000);
+			}
+		}
+		else if (dynamic_cast<CFlea*>(coObjects->at(i))) {
+			CFlea* flea = dynamic_cast<CFlea*>(coObjects->at(i));
+
+			if (flea->GetBlood() < 1 && flea->GetBlood() > -10)
+			{
+				flea->LostBlood(1000);
+				AddScores(1000);
+			}
+		}
+		else if (dynamic_cast<CBird*>(coObjects->at(i))) {
+			CBird* bird = dynamic_cast<CBird*>(coObjects->at(i));
+
+			if (bird->GetBlood() < 1 && bird->GetBlood() > -10)
+			{
+				bird->LostBlood(1000);
+				AddScores(1000);
+			}
+		}
+		else if (dynamic_cast<CToad*>(coObjects->at(i))) {
+			CToad* toad = dynamic_cast<CToad*>(coObjects->at(i));
+
+			if (toad->GetBlood() < 1 && toad->GetBlood() > -10)
+			{
+				toad->LostBlood(1000);
+				AddScores(1000);
+			}
+		}
+		else if (dynamic_cast<CSkeleton*>(coObjects->at(i))) {
+			CSkeleton* skeleton = dynamic_cast<CSkeleton*>(coObjects->at(i));
+
+			if (skeleton->GetBlood() < 1 && skeleton->GetBlood() > -10)
+			{
+				skeleton->LostBlood(1000);
+				AddScores(1000);
+			}
+		}
+		else if (dynamic_cast<CBoss*>(coObjects->at(i)))
+		{
+			CBoss* boss = dynamic_cast<CBoss*>(coObjects->at(i));
+
+			if (boss->GetBlood() < 1 && boss->GetBlood() > -10)
+			{
+				boss->LostBlood(1000);
+				AddScores(10000);
 			}
 		}
 	}
