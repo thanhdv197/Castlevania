@@ -51,7 +51,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	CGameObject::Update(dt);
 
 	// Simple fall down
-	if (isGoUp == false && isGoDown == false && isAttack == false && isHurt == false)
+	if (isGoUp == false && isGoDown == false && isAttack == false)
 	{
 		vy += SIMON_GRAVITY * dt;
 	}
@@ -74,7 +74,12 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	if (isHurt)
 	{
 		timeHurt += dt;
-		x += dx;
+
+		// set position when hurt
+		if (nx > 0)
+			x -= 1;
+		else x += 1;
+
 		if (timeHurt > 300)
 		{
 			SetState(SIMON_STATE_SIT);
@@ -797,10 +802,6 @@ void CSimon::SetState(int state)
 	case SIMON_STATE_HURT:
 		isHurt = true;
 		LostBlood(1);
-		if (nx > 0)
-			vx = -0.2f;
-		else vx = 0.2f;
-		vy = 0;
 		break;
 	}
 	
@@ -821,15 +822,6 @@ void CSimon::GetBoundingBox(float &left, float &top, float &right, float &bottom
 
 		right = x + SIMON_BBOX_WIDTH;
 		bottom = y + 23;
-	}
-
-	if (isHurt)
-	{
-		left = 0;
-		top = 0;
-
-		right = 0;
-		bottom = 0;
 	}
 
 }
