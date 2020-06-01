@@ -50,46 +50,43 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		SetState(STATE_BOSS_FLY);
 	}
 
+	if (ySimon > 240 || x > 720)
+		SetState(STATE_BOSS_FLY_WAIT);
+
 	if (this->state != STATE_BOSS_STAND)
 	{
 		timeChangeState += dt;
-	}
 
-	if (this->state == STATE_BOSS_FLY)
-	{
-		// set time to change waitting state
-		if (timeChangeState > 2000)
+		// set nx of bird
+		if (this->xSimon < this->x)
+			nx = -1;
+		else
+			nx = 1;
+
+		// set ny of bird
+		if (ySimon > y)
+			ny = 1;
+		else
+			ny = -1;
+
+		if (timeChangeState > 3000)
 		{
-			SetState(STATE_BOSS_FLY_WAIT);
-			timeChangeState = 0;
-		}
-	}
-	else if (this->state == STATE_BOSS_FLY_WAIT)
-	{
-		if (timeChangeState > 2000)
-		{
-			// set nx of bird
-			if (this->xSimon < this->x)
-				nx = -1;
-			else
-				nx = 1;
+			if (this->state == STATE_BOSS_FLY)
+			{
+				SetState(STATE_BOSS_FLY_WAIT);
+			}
+			else if (this->state == STATE_BOSS_FLY_WAIT)
+			{
+				if (ySimon >= y)
+					SetState(STATE_BOSS_ATTACK);
+				else
+					SetState(STATE_BOSS_FLY);
+			}
+			else if (this->state == STATE_BOSS_ATTACK)
+			{
+				SetState(STATE_BOSS_FLY_WAIT);
+			}
 
-			// set ny of bird
-			if (ySimon > y)
-				ny = 1;
-			else
-				ny = -1;
-
-			SetState(STATE_BOSS_ATTACK);
-
-			timeChangeState = 0;
-		}
-	}
-	else if (this->state == STATE_BOSS_ATTACK)
-	{
-		if (timeChangeState > 2000)
-		{
-			SetState(STATE_BOSS_FLY_WAIT);
 			timeChangeState = 0;
 		}
 	}
