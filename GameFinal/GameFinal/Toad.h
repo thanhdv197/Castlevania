@@ -6,6 +6,7 @@
 
 #define STATE_TOAD_STAND	100
 #define STATE_TOAD_JUMP	300
+#define STATE_TOAD_DOWN	400
 #define STATE_ITEM	200
 
 #define ANI_ITEM_WHIP	0
@@ -30,8 +31,6 @@ class CToad : public CGameObject
 	int blood;
 
 	DWORD timeJump;
-
-	int ny;
 
 	CWhipEffect * whipEffect;
 

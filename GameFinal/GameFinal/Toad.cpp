@@ -11,8 +11,6 @@ CToad::CToad(int item)
 
 	this->timeJump = 0;
 
-	this->ny = 0;
-
 	whipEffect = new CWhipEffect();
 
 	dieEffect = new CDieEffect();
@@ -39,7 +37,7 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	CGameObject::Update(dt, coObjects);
 
 	// set state of toad
-	if (this->xSimon - this->x > 50 && this->xSimon - this->x < 60)
+	if (this->xSimon - this->x > 80 && this->xSimon - this->x < 100)
 	{
 		SetState(STATE_TOAD_JUMP);
 	}	
@@ -49,14 +47,19 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	{
 		timeJump += dt;
 
-		if (timeJump > 200)
+		if (timeJump > 400)
 		{
-			ny = 1;
-
-			if (timeJump > 500)
-			{
-				SetState(STATE_TOAD_STAND);
-			}
+			SetState(STATE_TOAD_DOWN);
+		}
+	}
+	// set time down
+	if (this->state == STATE_TOAD_DOWN)
+	{
+		timeJump += dt;
+		if (timeJump > 1200)
+		{
+			SetState(STATE_TOAD_STAND);
+			timeJump = 0;
 		}
 	}
 	
@@ -85,7 +88,7 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	}
 	else
 	{
-		float min_tx, min_ty, nx = 0, ny;
+		float min_tx, min_ty, nx, ny;
 		float rdx = 0;
 		float rdy = 0;
 
@@ -106,7 +109,11 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					if (ny != 0) vy = 0;
 				}
 			}
-
+			else
+			{
+				x += dx;
+				y += dy;
+			}
 		}
 	}
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
@@ -123,7 +130,7 @@ void CToad::Render()
 				ani = ANI_TOAD_STAND_RIGHT;
 			else ani = ANI_TOAD_STAND_LEFT;
 		}
-		else if (this->state == STATE_TOAD_JUMP)
+		else if (this->state == STATE_TOAD_JUMP || this->state == STATE_TOAD_DOWN)
 		{
 			if (nx > 0)
 				ani = ANI_TOAD_JUMP_RIGHT;
@@ -162,17 +169,19 @@ void CToad::SetState(int state)
 	{
 	case STATE_TOAD_STAND:
 		vx = 0;
-		vy = 0.05f;
+		vy = 0.1f;
 		break;
 	case STATE_TOAD_JUMP:
 		if (nx > 0)
 			vx = 0.05f;
 		else vx = -0.05f;
-
-		if (ny > 0)
-			vy = 0.02f;
-		else vy = -0.02f;
-		
+		vy = -0.03f;
+		break;
+	case STATE_TOAD_DOWN:
+		if (nx > 0)
+			vx = 0.04f;
+		else vx = -0.04f;
+		vy = 0.1f;
 		break;
 	case STATE_ITEM:
 		vy = 0.05f;
