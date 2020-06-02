@@ -9,6 +9,7 @@
 #define STATE_BOSS_FLY_WAIT	300
 #define STATE_BOSS_DIE	400
 #define STATE_BOSS_ATTACK	500
+#define STATE_GLOBULAR	600
 
 #define ANI_BOSS_STAND	0
 #define ANI_BOSS_FLY	1
@@ -19,9 +20,9 @@ class CBoss : public CGameObject
 {
 	int ani;
 
-	int item;
-
 	int blood;
+
+	float start_x, start_y;
 
 	int ny;
 
@@ -33,6 +34,7 @@ public:
 
 	bool isEnable;
 	bool isAttacked;
+	bool isDisplay;
 
 	CBoss();
 
@@ -43,5 +45,7 @@ public:
 
 	void LostBlood(int _blood) { this->blood -= _blood; }
 	int GetBlood() { return this->blood; }
+
+	void Reset() { x = start_x; y = start_y; }
 };
 

@@ -76,9 +76,9 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		timeHurt += dt;
 
 		// set position when hurt
-		if (nx > 0)
+		/*if (nx > 0)
 			x -= 1;
-		else x += 1;
+		else x += 1;*/
 
 		if (timeHurt > 300)
 		{
@@ -341,9 +341,13 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				CBoss *boss = dynamic_cast<CBoss *>(e->obj);
 
-				if (boss->GetState() != STATE_BOSS_DIE)
+				if (boss->GetState() != STATE_GLOBULAR)
 				{
 					SetState(SIMON_STATE_HURT);
+				}
+				else
+				{
+					boss->isDisplay = false;
 				}
 			}
 			else if (dynamic_cast<CBottomStair *>(e->obj))

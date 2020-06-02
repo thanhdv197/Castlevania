@@ -4,8 +4,12 @@ CBoss::CBoss()
 {
 	this->isEnable = true;
 	this->isAttacked = false;
+	this->isDisplay = true;
 
 	this->blood = 16;
+
+	this->start_x = 580;
+	this->start_y = 60;
 
 	this->timeChangeState = 0;
 	this->timeDead = 0;
@@ -29,7 +33,7 @@ void CBoss::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 			right = left + 48;
 			bottom = top + 24;
 		}
-		else if (this->state == STATE_BOSS_STAND)
+		else if (this->state == STATE_BOSS_STAND || this->state == STATE_GLOBULAR)
 		{
 			left = x;
 			top = y;
@@ -109,13 +113,56 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 		timeDead += dt;
 		if (timeDead > 1000)
+		{
 			isEnable = false;
+			SetState(STATE_GLOBULAR);
+
+			if (timeDead > 2000)
+			{
+				(isDisplay) ? isEnable = true : isEnable = false;
+			}
+		}
 	}
 
-	x += dx;
-	y += dy;
-	
+	if (!isEnable)
+		Reset();
 
+	if (this->state != STATE_GLOBULAR)
+	{
+		x += dx;
+		y += dy;
+	}
+	else
+	{
+		vector<LPCOLLISIONEVENT> coEvents;
+		vector<LPCOLLISIONEVENT> coEventsResult;
+
+		coEvents.clear();
+
+		CalcPotentialCollisions(coObjects, coEvents);
+
+		if (coEvents.size() == 0)
+		{
+			x += dx;
+			y += dy;
+		}
+		else
+		{
+			float min_tx, min_ty, nx = 0, ny;
+			float rdx = 0;
+			float rdy = 0;
+
+			// TODO: This is a very ugly designed function!!!!
+			FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny, rdx, rdy);
+
+			x += min_tx * dx + nx * 0.4f;
+			y += min_ty * dy + ny * 0.4f;
+
+			if (nx != 0) vx = 0;
+			if (ny != 0) vy = 0;
+		}
+		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+	}
 }
 
 void CBoss::Render()
@@ -129,6 +176,10 @@ void CBoss::Render()
 		else if (this->state == STATE_BOSS_FLY || this->state == STATE_BOSS_FLY_WAIT)
 		{
 			ani = ANI_BOSS_FLY;
+		}
+		else if (this->state == STATE_GLOBULAR)
+		{
+			ani = ANI_GLOBULAR;
 		}
 		else if (this->state == STATE_BOSS_DIE)
 		{
@@ -191,8 +242,13 @@ void CBoss::SetState(int state)
 		else
 			vy = -0;
 		break;
+	case STATE_GLOBULAR:
+		vx = 0;
+		vy = 0.1f;
+		break;
 	default:
 		break;
 	}
 }
+
 
