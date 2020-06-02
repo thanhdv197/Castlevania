@@ -225,7 +225,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				else
 				{
 					CollisionItem(torch->GetItem());
-					torch->isEnable = false;
+					torch->isDisplay = false;
 				}
 			}
 			else if (dynamic_cast<CCandle *>(e->obj))
@@ -239,7 +239,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				else
 				{
 					CollisionItem(candle->GetItem());
-					candle->isEnable = false;
+					candle->isDisplay = false;
 				}
 			}
 			else if (dynamic_cast<CArmy *>(e->obj))
@@ -253,7 +253,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				else
 				{
 					CollisionItem(army->GetItem());
-					army->isEnable = false;
+					army->isDisplay = false;
 				}
 			}
 			else if (dynamic_cast<CZombie *>(e->obj))
@@ -267,7 +267,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				else
 				{
 					CollisionItem(zombie->GetItem());
-					zombie->isEnable = false;
+					zombie->isDisplay = false;
 				}
 			}
 			else if (dynamic_cast<CBat *>(e->obj))
@@ -281,7 +281,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				else
 				{
 					CollisionItem(bat->GetItem());
-					bat->isEnable = false;
+					bat->isDisplay = false;
 				}
 			}
 			else if (dynamic_cast<CFlea *>(e->obj))
@@ -295,7 +295,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				else
 				{
 					CollisionItem(flea->GetItem());
-					flea->isEnable = false;
+					flea->isDisplay = false;
 				}
 			}
 			else if (dynamic_cast<CBird *>(e->obj))
@@ -309,7 +309,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				else
 				{
 					CollisionItem(bird->GetItem());
-					bird->isEnable = false;
+					bird->isDisplay = false;
 				}
 			}
 			else if (dynamic_cast<CToad *>(e->obj))
@@ -323,7 +323,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				else
 				{
 					CollisionItem(toad->GetItem());
-					toad->isEnable = false;
+					toad->isDisplay = false;
 				}
 			}
 			else if (dynamic_cast<CSkeleton *>(e->obj))
@@ -337,7 +337,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				else
 				{
 					CollisionItem(skeleton->GetItem());
-					skeleton->isEnable = false;
+					skeleton->isDisplay = false;
 				}
 			}
 			else if (dynamic_cast<CBoss *>(e->obj))
@@ -384,7 +384,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	// clean up collision events
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 
-	// check state of object
+	// check state of object (add scores for player)
 	for (UINT i = 0; i < coObjects->size(); i++)
 	{
 		if (dynamic_cast<CBottomStair*>(coObjects->at(i))) {

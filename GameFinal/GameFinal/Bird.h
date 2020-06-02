@@ -40,6 +40,7 @@ class CBird : public CGameObject
 public:
 
 	bool isEnable;
+	bool isDisplay;
 	bool isAttacked;
 
 	CBird(int item);

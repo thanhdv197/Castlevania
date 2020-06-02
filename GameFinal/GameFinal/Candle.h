@@ -32,6 +32,7 @@ class CCandle : public CGameObject
 public:
 
 	bool isEnable;
+	bool isDisplay;
 	bool isAttacked;
 
 	CCandle(int item);

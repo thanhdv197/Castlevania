@@ -38,6 +38,7 @@ class CBat : public CGameObject
 public:
 
 	bool isEnable;
+	bool isDisplay;
 	bool isAttacked;
 
 	CBat(int item);

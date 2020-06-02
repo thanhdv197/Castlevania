@@ -34,6 +34,7 @@ class CFlea : public CGameObject
 public:
 
 	bool isEnable;
+	bool isDisplay;
 	bool isAttacked;
 
 	CFlea(int item);

@@ -31,6 +31,7 @@ class CTorch : public CGameObject
 public:
 
 	bool isEnable;
+	bool isDisplay;
 	bool isAttacked;
 
 	CTorch(int item);

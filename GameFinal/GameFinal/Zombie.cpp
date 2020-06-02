@@ -3,6 +3,7 @@
 CZombie::CZombie(int item)
 {
 	this->isEnable = true;
+	this->isDisplay = true;
 	this->isAttacked = false;
 
 	this->blood = 1;
@@ -48,10 +49,17 @@ void CZombie::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	if (isAttacked)
 		whipEffect->Update(dt, coObjects);
 
-	// update die effect
+	// set die effect
 	if (this->blood < 1)
 	{
 		dieEffect->Update(dt, coObjects);
+
+		if (dieEffect->isEnable == true)
+			isEnable = false;
+		else isEnable = true;
+
+		if (!isDisplay) isEnable = false;
+
 		SetState(STATE_ITEM);
 	}
 
@@ -123,14 +131,13 @@ void CZombie::Render()
 			whipEffect->Render();
 		}
 
-		// render die effect
-		if (this->blood < 1)
-		{
-			dieEffect->SetPosition(x, y);
-			dieEffect->Render();
-		}
 	}
-
+	// render die effect
+	if (this->blood < 1)
+	{
+		dieEffect->SetPosition(x, y);
+		dieEffect->Render();
+	}
 }
 
 void CZombie::SetState(int state)

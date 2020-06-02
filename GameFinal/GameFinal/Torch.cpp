@@ -3,6 +3,7 @@
 CTorch::CTorch(int item)
 {
 	this->isEnable = true;
+	this->isDisplay = true;
 	this->isAttacked = false;
 
 	this->blood = 1;
@@ -50,6 +51,13 @@ void CTorch::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	if (this->blood < 1)
 	{
 		dieEffect->Update(dt, coObjects);
+
+		if (dieEffect->isEnable == true)
+			isEnable = false;
+		else isEnable = true;
+
+		if (!isDisplay) isEnable = false;
+
 		SetState(STATE_ITEM);
 	}
 
@@ -122,12 +130,13 @@ void CTorch::Render()
 			whipEffect->Render();
 		}
 
-		// render die effect
-		if (this->blood < 1)
-		{
-			dieEffect->SetPosition(x, y);
-			dieEffect->Render();
-		}
+	}
+
+	// render die effect
+	if (this->blood < 1)
+	{
+		dieEffect->SetPosition(x, y);
+		dieEffect->Render();
 	}
 
 }

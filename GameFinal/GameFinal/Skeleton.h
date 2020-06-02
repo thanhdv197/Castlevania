@@ -36,6 +36,7 @@ class CSkeleton : public CGameObject
 public:
 
 	bool isEnable;
+	bool isDisplay;
 	bool isAttacked;
 
 	CSkeleton(int item);

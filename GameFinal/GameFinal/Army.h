@@ -34,6 +34,7 @@ class CArmy : public CGameObject
 public:
 
 	bool isEnable;
+	bool isDisplay;
 	bool isAttacked;
 
 	CArmy(int item);

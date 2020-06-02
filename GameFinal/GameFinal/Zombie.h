@@ -33,6 +33,7 @@ class CZombie : public CGameObject
 public:
 
 	bool isEnable;
+	bool isDisplay;
 	bool isAttacked;
 
 	CZombie(int item);
