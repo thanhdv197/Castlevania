@@ -94,6 +94,9 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		}
 	}
 
+	if (this->y > CGame::GetInstance()->GetScreenHeight())
+		SetState(SIMON_STATE_DIE);
+
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;
 
@@ -758,8 +761,11 @@ void CSimon::SetState(int state)
 		break;
 	case SIMON_STATE_DIE:
 		vy = -SIMON_DIE_DEFLECT_SPEED;
-		if(this->alive > 0)
+		if (this->alive > 0)
+		{
+			this->alive--;
 			Reset();
+		}
 		break;
 	case SIMON_STATE_ATTACK:
 		isAttack = true;

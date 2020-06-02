@@ -82,7 +82,7 @@ void CScores::Render()
 		Draw(rectStage, strStage);
 
 		// draw heart
-		SetRect(&rectHeart, 211, 16, 235, 24);
+		SetRect(&rectHeart, 211, 16, 250, 24);
 		string strHeart = "00";
 		if (this->heart != NULL)
 		{
