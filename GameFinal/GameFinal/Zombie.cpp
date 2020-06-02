@@ -55,6 +55,17 @@ void CZombie::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		SetState(STATE_ITEM);
 	}
 
+	if (this->x <= 1)
+	{
+		nx = 1;
+		SetState(STATE_ZOMBIE);
+	}
+	else if (this->x > 600)
+	{
+		nx = -1;
+		SetState(STATE_ZOMBIE);
+	}
+
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;
 
@@ -69,7 +80,7 @@ void CZombie::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	}
 	else
 	{
-		float min_tx, min_ty, nx = 0, ny;
+		float min_tx, min_ty, nx, ny;
 		float rdx = 0;
 		float rdy = 0;
 
@@ -79,22 +90,6 @@ void CZombie::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
-			/*if (dynamic_cast<CBricks*>(e->obj))
-			{
-				if (e->ny < 0)
-				{
-					x += min_tx * dx + nx * 0.4f;
-					y += min_ty * dy + ny * 0.4f;
-
-					if (nx != 0) vx = 0;
-					if (ny != 0) vy = 0;
-				}
-				
-			}
-			else
-			{
-				x += dx;
-			}*/
 			x += dx;
 
 		}
