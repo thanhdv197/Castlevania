@@ -44,32 +44,25 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	CGameObject::Update(dt, coObjects);
 
-	// set distance to change state of boss
-	if ((this->xSimon - this->x) > 40)
+	if (this->state == STATE_BOSS_STAND)
 	{
-		SetState(STATE_BOSS_FLY);
+		// set distance to change state of boss
+		if ((this->xSimon - this->x) > 40)
+		{
+			SetState(STATE_BOSS_FLY);
+		}
 	}
-
-	if (ySimon > 240 || x > 720)
-		SetState(STATE_BOSS_FLY_WAIT);
-
-	if (this->state != STATE_BOSS_STAND)
+	else 
 	{
 		timeChangeState += dt;
 
-		// set nx of bird
-		if (this->xSimon < this->x)
-			nx = -1;
-		else
-			nx = 1;
+		if (this->xSimon < this->x) nx = -1;
+		else nx = 1;
 
-		// set ny of bird
-		if (ySimon > y)
-			ny = 1;
-		else
-			ny = -1;
+		if (ySimon > y) ny = 1;
+		else ny = -1;
 
-		if (timeChangeState > 3000)
+		if (timeChangeState > 2000)
 		{
 			if (this->state == STATE_BOSS_FLY)
 			{
@@ -77,7 +70,7 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			}
 			else if (this->state == STATE_BOSS_FLY_WAIT)
 			{
-				if (ySimon >= y)
+				if (y >= ySimon && y + 48 < CGame::GetInstance()->GetScreenHeight())
 					SetState(STATE_BOSS_ATTACK);
 				else
 					SetState(STATE_BOSS_FLY);
@@ -90,7 +83,21 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			timeChangeState = 0;
 		}
 	}
+	
+	// change direction when boss touch limit height map
+	if (y >= ySimon && y + 48 >= CGame::GetInstance()->GetScreenHeight())
+	{
+		ny = -1;
+		SetState(STATE_BOSS_FLY);
+	}
 
+	// change direction when boss touch limit width map
+	if (x + 48 >= 768)
+	{
+		nx = -1;
+		SetState(STATE_BOSS_FLY);
+	}
+		
 	// check whip attack
 	if (isAttacked)
 		whipEffect->Update(dt, coObjects);
@@ -107,6 +114,7 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 	x += dx;
 	y += dy;
+	
 
 }
 

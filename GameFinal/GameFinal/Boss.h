@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "WhipEffect.h"
 #include "Bricks.h"
+#include "Game.h"
 
 #define STATE_BOSS_STAND	100
 #define STATE_BOSS_FLY	200
