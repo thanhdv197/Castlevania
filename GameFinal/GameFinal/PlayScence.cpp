@@ -374,6 +374,7 @@ void CPlayScene::Load(int _level, int _blood, int _heart, int _alive, int _score
 
 void CPlayScene::Update(DWORD dt)
 {
+	int bloodBoss = 16;
 	// We know that Mario is the first object in the list hence we won't add him into the colliable object list
 	// TO-DO: This is a "dirty" way, need a more organized way 
 	vector<LPGAMEOBJECT> coObjects;
@@ -389,7 +390,12 @@ void CPlayScene::Update(DWORD dt)
 		player->GetPosition(xSimon, ySimon);
 		objects[i]->SetPositionSimon(xSimon, ySimon);
 
+		// set blood of boss
 		objects[i]->Update(dt, &coObjects);
+		if (objects[i]->IsBoss())
+		{
+			bloodBoss = objects[i]->GetBloodBoss();
+		}
 	}
 
 	// grid object update
@@ -404,7 +410,7 @@ void CPlayScene::Update(DWORD dt)
 
 	// update Scores bar
 	if (player != NULL)
-		scores->Update(player->GetScores(), 1, player->GetHeart(), player->GetAlive(), player->GetBlood(), player->GetWeapon(), dt);
+		scores->Update(player->GetScores(), 1, player->GetHeart(), player->GetAlive(), player->GetBlood(), player->GetWeapon(), bloodBoss, dt);
 
 	// change scene
 	if (game->GetIsNextMap() == true)

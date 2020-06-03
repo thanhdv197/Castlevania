@@ -65,6 +65,10 @@ public:
 	// simon postion
 	float xSimon, ySimon;
 
+	// check boss
+	bool isBoss;
+	int bloodBoss;
+
 public: 
 	void SetPosition(float x, float y) { this->x = x, this->y = y; }
 	void SetSpeed(float vx, float vy) { this->vx = vx, this->vy = vy; }
@@ -100,6 +104,10 @@ public:
 	virtual void Render() = 0;
 	virtual void SetState(int state) { this->state = state; }
 
+	// check boss
+	bool IsBoss() { return this->isBoss; }
+	void SetBloodBoss(int blood) { this->bloodBoss = blood; }
+	int GetBloodBoss() { return this->bloodBoss; }
 
 	~CGameObject();
 };

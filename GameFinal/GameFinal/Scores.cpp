@@ -19,7 +19,7 @@ CScores::CScores()
 	);
 }
 
-void CScores::Update(int _scores, int _stage, int _heart, int _alive, int _blood, int _stateWeapon, DWORD dt)
+void CScores::Update(int _scores, int _stage, int _heart, int _alive, int _blood, int _stateWeapon, int _bloodBoss, DWORD dt)
 {
 	this->scores = _scores;
 	this->stage = _stage;
@@ -27,6 +27,7 @@ void CScores::Update(int _scores, int _stage, int _heart, int _alive, int _blood
 	this->alive = _alive;
 	this->bloodSimon = _blood;
 	this->stateWeapon = _stateWeapon;
+	this->bloodBoss = _bloodBoss;
 
 	timeLimit += dt;
 	if (timeLimit > 1000)

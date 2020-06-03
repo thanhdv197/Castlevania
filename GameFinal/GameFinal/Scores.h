@@ -43,15 +43,15 @@ class CScores
 
 	// blood of boss
 	CSprite * spriteBloodBoss;
-	int bloodBoss = 12;
+	int bloodBoss = 16;
 
 	int stateWeapon;
-
+	
 public:
 	CScores();
 	~CScores();
 
-	void Update(int _scores, int _stage, int _heart, int _alive, int _blood, int _stateWeapon, DWORD dt);
+	void Update(int _scores, int _stage, int _heart, int _alive, int _blood, int _stateWeapon, int _bloodBoss, DWORD dt);
 	void Render();
 
 	void CheckLength(string &text, int max);

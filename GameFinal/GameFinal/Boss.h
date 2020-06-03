@@ -43,7 +43,7 @@ public:
 	virtual void Render();
 	virtual void SetState(int state);
 
-	void LostBlood(int _blood) { this->blood -= _blood; }
+	void LostBlood(int _blood) { this->blood -= _blood; this->bloodBoss = this->blood; }
 	int GetBlood() { return this->blood; }
 
 	void Reset() { x = start_x; y = start_y; }

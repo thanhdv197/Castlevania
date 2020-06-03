@@ -17,6 +17,8 @@ CBoss::CBoss()
 	this->nx = -1;
 	this->ny = 1;
 
+	this->isBoss = true;
+
 	whipEffect = new CWhipEffect();
 
 	SetState(STATE_BOSS_STAND);
