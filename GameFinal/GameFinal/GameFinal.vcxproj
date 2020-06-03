@@ -131,6 +131,7 @@
     <ClCompile Include="Army.cpp" />
     <ClCompile Include="Bat.cpp" />
     <ClCompile Include="Bird.cpp" />
+    <ClCompile Include="Bone.cpp" />
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="BottomStair.cpp" />
     <ClCompile Include="Brick.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="Army.h" />
     <ClInclude Include="Bat.h" />
     <ClInclude Include="Bird.h" />
+    <ClInclude Include="Bone.h" />
     <ClInclude Include="Boss.h" />
     <ClInclude Include="BottomStair.h" />
     <ClInclude Include="Brick.h" />

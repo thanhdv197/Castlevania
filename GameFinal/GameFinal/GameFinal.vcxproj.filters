@@ -249,6 +249,9 @@
     <ClCompile Include="TopStair.cpp">
       <Filter>Objects\Stair\TopStair</Filter>
     </ClCompile>
+    <ClCompile Include="Bone.cpp">
+      <Filter>Objects\Enemies\Skeleton</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animations.h">
@@ -361,6 +364,9 @@
     </ClInclude>
     <ClInclude Include="TopStair.h">
       <Filter>Objects\Stair\TopStair</Filter>
+    </ClInclude>
+    <ClInclude Include="Bone.h">
+      <Filter>Objects\Enemies\Skeleton</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -16,6 +16,8 @@ CSkeleton::CSkeleton(int item)
 
 	dieEffect = new CDieEffect();
 
+	bone = new CBone();
+
 	SetState(STATE_SKELETON_STAND);
 
 	RanDom(item);
@@ -53,9 +55,15 @@ void CSkeleton::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	else nx = -1;
 
 	// set state of skeleton
-	if (abs(this->x - this->xSimon) < 50)
+	if (abs(this->x - this->xSimon) < 70)
 	{
 		SetState(STATE_SKELETON_WALK);
+
+		if (abs(this->x - this->xSimon) < 40)
+		{
+			SetState(STATE_THROW);
+			bone->Update(dt, coObjects);
+		}
 	}
 
 	// check whip attack
@@ -143,6 +151,13 @@ void CSkeleton::Render()
 			whipEffect->SetPosition(x, y);
 			whipEffect->Render();
 		}
+
+		// render bone
+		if (bone)
+		{
+			bone->SetPosition(x, y);
+			bone->Render();
+		}
 	}
 	// render die effect
 	if (this->blood < 1)
@@ -170,6 +185,11 @@ void CSkeleton::SetState(int state)
 	case STATE_ITEM:
 		vy = 0.1f;
 		vx = 0;
+		break;
+	case STATE_THROW:
+		vx = 0;
+		vy = 0;
+		bone->SetState(STATE_THROW);
 		break;
 	default:
 		break;

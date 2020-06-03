@@ -3,6 +3,7 @@
 #include "WhipEffect.h"
 #include "DieEffect.h"
 #include "Bricks.h"
+#include "Bone.h"
 
 #define STATE_SKELETON_STAND	100
 #define STATE_SKELETON_WALK	300
@@ -33,6 +34,8 @@ class CSkeleton : public CGameObject
 	CWhipEffect * whipEffect;
 
 	CDieEffect * dieEffect;
+
+	CBone* bone;
 public:
 
 	bool isEnable;
