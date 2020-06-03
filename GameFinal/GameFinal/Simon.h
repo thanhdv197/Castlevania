@@ -10,6 +10,7 @@
 #include "Bird.h"
 #include "Toad.h"
 #include "Skeleton.h"
+#include "Bone.h"
 #include "Boss.h"
 #include "BottomStair.h"
 #include "TopStair.h"

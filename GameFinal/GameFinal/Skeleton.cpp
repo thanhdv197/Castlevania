@@ -8,7 +8,7 @@ CSkeleton::CSkeleton(int item)
 
 	this->blood = 2;
 
-	this->nx = -1;
+	this->nx = 1;
 
 	this->timeChangeDirection = 0;
 
@@ -59,12 +59,20 @@ void CSkeleton::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	{
 		SetState(STATE_SKELETON_WALK);
 
-		if (abs(this->x - this->xSimon) < 40)
+		if (abs(this->x - this->xSimon) < 50 && abs(this->ySimon - this->y) < 20)
 		{
 			SetState(STATE_THROW);
 			bone->Update(dt, coObjects);
 		}
 	}
+	// set bone position again
+	if (bone->state == STATE_NONE)
+	{
+		bone->SetPosition(x, y);
+		bone->SetNx(nx);
+	}
+	// set isEnable of bone
+	if (this->isDisplay = false) bone->isEnable = false;
 
 	// check whip attack
 	if (isAttacked)
@@ -99,7 +107,7 @@ void CSkeleton::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	}
 	else
 	{
-		float min_tx, min_ty, nx = 0, ny;
+		float min_tx, min_ty, nx, ny;
 		float rdx = 0;
 		float rdy = 0;
 
@@ -120,7 +128,10 @@ void CSkeleton::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					if (ny != 0) vy = 0;
 				}
 			}
-
+			else
+			{
+				x += dx;
+			}
 		}
 	}
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
@@ -155,7 +166,6 @@ void CSkeleton::Render()
 		// render bone
 		if (bone)
 		{
-			bone->SetPosition(x, y);
 			bone->Render();
 		}
 	}
@@ -188,7 +198,7 @@ void CSkeleton::SetState(int state)
 		break;
 	case STATE_THROW:
 		vx = 0;
-		vy = 0;
+		vy = 0.1f;
 		bone->SetState(STATE_THROW);
 		break;
 	default:

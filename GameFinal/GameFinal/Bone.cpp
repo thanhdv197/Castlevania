@@ -6,6 +6,9 @@ CBone::CBone()
 	SetState(STATE_NONE);
 	this->timeThrow = 0;
 
+	this->nx = 1;
+	this->ny = -1;
+
 	SetAnimationSet(CAnimationSets::GetInstance()->Get(33));
 }
 
@@ -31,10 +34,16 @@ void CBone::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		y += dy;
 
 		timeThrow += dt;
+
 		if (timeThrow > 500)
 		{
-			SetState(STATE_NONE);
-			timeThrow = 0;
+			ny = 1;
+
+			if (timeThrow > 1200)
+			{
+				SetState(STATE_NONE);
+				timeThrow = 0;
+			}
 		}
 	}
 
@@ -60,12 +69,14 @@ void CBone::SetState(int state)
 		isEnable = false;
 		vx = 0;
 		vy = 0;
+		ny = -1;
 		break;
 	case STATE_THROW:
 		isEnable = true;
 		if (nx > 0) vx = 0.05f;
 		else vx = -0.05f;
-		vy = -0.05f;
+		if (ny > 0) vy = 0.05f;
+		else vy = -0.05f;
 		break;
 	default:
 		break;

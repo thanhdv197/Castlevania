@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "bricks.h"
 
 #define STATE_NONE	0
 #define STATE_THROW	1
@@ -9,6 +10,9 @@
 class CBone : public CGameObject
 {
 	DWORD timeThrow;
+
+	int ny;
+
 public:
 
 	bool isEnable;
@@ -21,5 +25,6 @@ public:
 	virtual void SetState(int state);
 
 	void SetPosition(float x, float y);
+	void SetNx(int _nx) { this->nx = _nx; }
 };
 

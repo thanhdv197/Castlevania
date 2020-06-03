@@ -340,6 +340,15 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					skeleton->isDisplay = false;
 				}
 			}
+			else if (dynamic_cast<CBone *>(e->obj))
+			{
+				CBone *bone = dynamic_cast<CBone *>(e->obj);
+
+				if (bone->GetState() == STATE_THROW)
+				{
+					SetState(SIMON_STATE_HURT);
+				}
+			}
 			else if (dynamic_cast<CBoss *>(e->obj))
 			{
 				CBoss *boss = dynamic_cast<CBoss *>(e->obj);
