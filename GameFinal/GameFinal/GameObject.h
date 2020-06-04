@@ -48,6 +48,8 @@ public:
 	float x; 
 	float y;
 
+	float width, height;
+
 	float dx;	// dx = vx*dt
 	float dy;	// dy = vy*dt
 
@@ -74,6 +76,9 @@ public:
 	void SetSpeed(float vx, float vy) { this->vx = vx, this->vy = vy; }
 	void GetPosition(float &x, float &y) { x = this->x; y = this->y; }
 	void GetSpeed(float &vx, float &vy) { vx = this->vx; vy = this->vy; }
+
+	float GetWidth() { return this->width; }
+	float GetHeight() { return this->height; }
 
 	void SetPositionSimon(float _x, float _y) { this->xSimon = _x, this->ySimon = _y; }
 

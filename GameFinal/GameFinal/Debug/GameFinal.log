@@ -12,5 +12,4 @@ c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscen
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(308): warning C4018: '<': signed/unsigned mismatch
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(453): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(473): warning C4018: '<': signed/unsigned mismatch
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(488): warning C4018: '<': signed/unsigned mismatch
   GameFinal.vcxproj -> C:\Users\Thanh\source\repos\Castlevania\Castlevania\GameFinal\Debug\GameFinal.exe

@@ -19,10 +19,20 @@ CGrid::CGrid()
 
 void CGrid::Add(LPGAMEOBJECT object, float x, float y)
 {
-	int i = x / CELL_WIDTH;
-	int j = y / CELL_HEIGHT;
+	int startX = x / CELL_WIDTH;
+	int startY = y / CELL_HEIGHT;
+	int endX = (x + object->GetWidth()) / CELL_WIDTH;
+	int endY = (y + object->GetHeight()) / CELL_HEIGHT;
 
-	cells[i][j].Add(object);
+	for (int i = startX; i <= endX; i++)
+	{
+		/*for (int j = startY; j <= endY; j++)
+		{
+			cells[i][j].Add(object);
+		}*/
+		cells[i][startY].Add(object);
+	}
+	//cells[startX][startY].Add(object);
 }
 
 vector<LPGAMEOBJECT> CGrid::GetList()
