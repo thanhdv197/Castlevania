@@ -168,11 +168,14 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 			//DebugOut(L"[ERROR] MARIO object was created before!\n");
 			return;
 		}
-		obj = new CSimon(x, y);
-		player = (CSimon*)obj;
+		//obj = new CSimon(x, y);
+		//player = (CSimon*)obj;
+		player = new CSimon(x, y);
+		player->SetPosition(x, y);
+		player->SetAnimationSet(animation_sets->Get(ani_set_id));
 
 		//DebugOut(L"[INFO] Player object created!\n");
-		break ;
+		return;
 	case OBJECT_TYPE_BOTTOM_STAIR:
 		{
 			int direction = atoi(tokens[4].c_str());
@@ -278,7 +281,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	objects.push_back(obj);
 
 	// add objects to grid
-	// grid->Add(obj, x, y);
+	grid->Add(obj, x, y);
 }
 
 void CPlayScene::_ParseSection_MAP(string line)
@@ -375,10 +378,13 @@ void CPlayScene::Load(int _level, int _blood, int _heart, int _alive, int _score
 void CPlayScene::Update(DWORD dt)
 {
 	int bloodBoss = 16;
+
+	objects = grid->GetList();
+
 	// We know that Mario is the first object in the list hence we won't add him into the colliable object list
 	// TO-DO: This is a "dirty" way, need a more organized way 
 	vector<LPGAMEOBJECT> coObjects;
-	for (size_t i = 1; i < objects.size(); i++)
+	for (size_t i = 0; i < objects.size(); i++)
 	{
 		coObjects.push_back(objects[i]);
 	}
@@ -405,6 +411,10 @@ void CPlayScene::Update(DWORD dt)
 
 	// skip the rest if scene was already unloaded (Mario::Update might trigger PlayScene::Unload)
 	if (player == NULL) return; 
+
+	// update simon
+	if (player != NULL)
+		player->Update(dt, &coObjects);
 
 	CGame *game = CGame::GetInstance();
 
@@ -465,6 +475,9 @@ void CPlayScene::Render()
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
 
+	// thêm
+	player->Render();
+
 	//// grid render
 	//vector<LPGAMEOBJECT> objs = grid->GetList();
 	//for (int i = 0; i < objs.size(); i++)
@@ -488,7 +501,7 @@ void CPlayScene::Unload()
 	player = NULL;
 
 	// grid unload
-	// grid->Unload();
+	grid->Unload();
 
 	//DebugOut(L"[INFO] Scene %s unloaded! \n", sceneFilePath);
 }

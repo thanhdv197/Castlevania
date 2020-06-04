@@ -36,6 +36,8 @@ vector<LPGAMEOBJECT> CGrid::GetList()
 	int start = x / CELL_WIDTH;
 	int end = (x + game->GetScreenWidth()) / CELL_WIDTH;
 
+	objects.clear();
+
 	for (int i = start; i <= end; i++)
 	{
 		for (int j = 0; j < 2; j++)
