@@ -175,6 +175,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		player->SetAnimationSet(animation_sets->Get(ani_set_id));
 
 		//DebugOut(L"[INFO] Player object created!\n");
+		//break;
 		return;
 	case OBJECT_TYPE_BOTTOM_STAIR:
 		{
@@ -377,8 +378,10 @@ void CPlayScene::Load(int _level, int _blood, int _heart, int _alive, int _score
 
 void CPlayScene::Update(DWORD dt)
 {
+	// create blood for boss
 	int bloodBoss = 16;
 
+	// get objects from grid 
 	objects = grid->GetList();
 
 	// We know that Mario is the first object in the list hence we won't add him into the colliable object list
@@ -404,16 +407,10 @@ void CPlayScene::Update(DWORD dt)
 		}
 	}
 
-	// grid object update
-	/*coObjects = grid->GetList();
-	for (int i = 0; i < coObjects.size(); i++)
-		coObjects[i]->Update(dt, &coObjects);*/
-
 	// skip the rest if scene was already unloaded (Mario::Update might trigger PlayScene::Unload)
-	if (player == NULL) return; 
-
 	// update simon
-	if (player != NULL)
+	if (player == NULL) return; 
+	else
 		player->Update(dt, &coObjects);
 
 	CGame *game = CGame::GetInstance();
@@ -472,18 +469,12 @@ void CPlayScene::Render()
 	// render map follow camera
 	map->Render();
 
+	// render objects
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
 
-	// thêm
+	// render simon
 	player->Render();
-
-	//// grid render
-	//vector<LPGAMEOBJECT> objs = grid->GetList();
-	//for (int i = 0; i < objs.size(); i++)
-	//{
-	//	objs[i]->Render();
-	//}
 
 	// render scores bar
 	scores->Render();
