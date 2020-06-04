@@ -6,6 +6,9 @@ CBoss::CBoss()
 	this->isAttacked = false;
 	this->isDisplay = true;
 
+	this->width = 48;
+	this->height = 24;
+
 	this->blood = 16;
 
 	this->start_x = 580;

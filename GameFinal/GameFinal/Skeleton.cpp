@@ -6,6 +6,9 @@ CSkeleton::CSkeleton(int item)
 	this->isDisplay = true;
 	this->isAttacked = false;
 
+	this->width = 16;
+	this->height = 32;
+
 	this->blood = 2;
 
 	this->nx = 1;

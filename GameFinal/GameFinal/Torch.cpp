@@ -6,6 +6,9 @@ CTorch::CTorch(int item)
 	this->isDisplay = true;
 	this->isAttacked = false;
 
+	this->width = 16;
+	this->height = 32;
+
 	this->blood = 1;
 
 	whipEffect = new CWhipEffect();
