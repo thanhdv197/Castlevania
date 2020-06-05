@@ -34,6 +34,7 @@ protected:
 	vector<LPGAMEOBJECT> objects;
 
 	CMap *map;
+	int mapName = 1;
 
 	CScores * scores;
 

@@ -73,7 +73,7 @@ void CScores::Render()
 		Draw(rectTime, strTime);
 
 		// draw stage
-		SetRect(&rectStage, 256, 6, 276, 16);
+		SetRect(&rectStage, 256, 6, 280, 16);
 		string strStage = "00";
 		if (this->stage != NULL)
 		{

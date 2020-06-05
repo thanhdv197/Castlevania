@@ -291,11 +291,14 @@ void CPlayScene::_ParseSection_MAP(string line)
 
 	vector<string> tokens = split(line);
 
-	if (tokens.size() < 2) return; // skip invalid lines
-	else if (tokens.size() == 2)
+	if (tokens.size() < 3) return; // skip invalid lines
+	else if (tokens.size() == 3)
 	{
+		// set width and height map
 		map->SetWidth(atoi(tokens[0].c_str()));
 		map->SetHeight(atoi(tokens[1].c_str()));
+		// set map name
+		mapName = atoi(tokens[2].c_str());
 
 		int colNumber = map->GetWidth() / 32;
 		int rowNumber = map->GetHeight() / 32;
@@ -305,6 +308,7 @@ void CPlayScene::_ParseSection_MAP(string line)
 	}
 	else
 	{
+		// set tile map
 		for (int i = 0; i < tokens.size(); i++)
 		{
 			int ID = atoi(tokens[i].c_str());
@@ -417,7 +421,7 @@ void CPlayScene::Update(DWORD dt)
 
 	// update Scores bar
 	if (player != NULL)
-		scores->Update(player->GetScores(), 1, player->GetHeart(), player->GetAlive(), player->GetBlood(), player->GetWeapon(), bloodBoss, dt);
+		scores->Update(player->GetScores(), mapName, player->GetHeart(), player->GetAlive(), player->GetBlood(), player->GetWeapon(), bloodBoss, dt);
 
 	// change scene
 	if (game->GetIsNextMap() == true)
