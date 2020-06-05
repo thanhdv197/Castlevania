@@ -13,7 +13,10 @@ void CWhipEffect::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	timeDisplay += dt;
 	if (timeDisplay > 100)
+	{
 		isEnable = false;
+		timeDisplay = 0;
+	}	
 }
 
 void CWhipEffect::Render()

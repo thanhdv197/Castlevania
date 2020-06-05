@@ -109,7 +109,11 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		
 	// check whip attack
 	if (isAttacked)
+	{
+		whipEffect->isEnable = true;
 		whipEffect->Update(dt, coObjects);
+	}
+	if (!whipEffect->isEnable) isAttacked = false;
 
 	// update die effect
 	if (this->blood < 1)
