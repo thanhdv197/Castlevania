@@ -260,11 +260,12 @@ void CWhip::LevelUp()
 		this->level += 1;
 	}
 
-	this->dame = this->level;
+	(this->level > 2) ? this->dame = 2 : this->dame = this->level;
+	
 }
 
 void CWhip::SetLevel(int _level)
 {
 	this->level = _level;
-	this->dame = _level;
+	(this->level > 2) ? this->dame = 2 : this->dame = this->level;
 }

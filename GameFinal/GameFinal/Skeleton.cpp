@@ -74,8 +74,6 @@ void CSkeleton::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		bone->SetPosition(x, y);
 		bone->SetNx(nx);
 	}
-	// set isEnable of bone
-	if (this->isDisplay = false) bone->isEnable = false;
 
 	// check whip attack
 	if (isAttacked)
@@ -196,7 +194,8 @@ void CSkeleton::SetState(int state)
 		vy = 0.1f;
 		break;
 	case STATE_ITEM:
-		vy = 0.1f;
+		bone->isEnable = false;
+		vy = 0.05f;
 		vx = 0;
 		break;
 	case STATE_THROW:
