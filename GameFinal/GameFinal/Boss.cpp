@@ -31,7 +31,7 @@ void CBoss::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 {
 	if (isEnable)
 	{
-		if (this->state == STATE_BOSS_FLY || this->state == STATE_BOSS_FLY_WAIT)
+		if (this->state == STATE_BOSS_FLY || this->state == STATE_BOSS_FLY_WAIT || this->state == STATE_BOSS_ATTACK)
 		{
 			left = x;
 			top = y;
