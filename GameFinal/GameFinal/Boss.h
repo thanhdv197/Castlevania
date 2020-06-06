@@ -21,6 +21,14 @@
 
 #define TIME_CHANGE_STATE	2000
 
+#define BOSS_WIDTH	48
+#define BOSS_HEIGHT	24
+#define	ITEM_WIDTH	16
+#define	ITEM_HEIGHT	16
+
+#define START_X	580
+#define START_Y	60
+
 class CBoss : public CGameObject
 {
 	int ani;

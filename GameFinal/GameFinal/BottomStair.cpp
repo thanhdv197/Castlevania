@@ -7,8 +7,8 @@ CBottomStair::CBottomStair(float _x, float _y, int _nx)
 
 	nx = _nx;
 
-	width = 8;
-	height = 64;
+	width = BOTTOM_STAIR_WIDTH;
+	height = BOTTOM_STAIR_HEIGHT;
 }
 
 void CBottomStair::Render()

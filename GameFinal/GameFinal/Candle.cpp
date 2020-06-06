@@ -25,15 +25,15 @@ void CCandle::GetBoundingBox(float &left, float &top, float &right, float &botto
 		{
 			left = x;
 			top = y;
-			right = left + 8;
-			bottom = top + 8;
+			right = left + CANDLE_WIDTH;
+			bottom = top + CANDLE_HEIGHT;
 		}
 		else
 		{
 			left = x;
 			top = y;
-			right = left + 16;
-			bottom = top + 16;
+			right = left + ITEM_WIDTH;
+			bottom = top + ITEM_HEIGHT;
 		}
 	}
 	

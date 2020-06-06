@@ -7,6 +7,12 @@
 
 #define ANI_THROW	9
 
+#define	TIME_UP	500
+#define TIME_DOWN	1200
+
+#define BONE_WIDTH	16
+#define BONE_HEIGHT	16
+
 class CBone : public CGameObject
 {
 	DWORD timeThrow;

@@ -17,6 +17,11 @@
 
 #define ANI_TORCH	7
 
+#define TORCH_WIDTH	16
+#define TORCH_HEIGHT	32
+#define	ITEM_WIDTH	16
+#define	ITEM_HEIGHT	16
+
 class CTorch : public CGameObject
 {
 	int ani;

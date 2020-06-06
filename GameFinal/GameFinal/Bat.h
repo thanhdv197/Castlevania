@@ -24,6 +24,11 @@
 #define DISTANCE_MIN	30
 #define DISTANCE_MAX	80
 
+#define BAT_WIDTH	16
+#define BAT_HEIGHT	16
+#define	ITEM_WIDTH	16
+#define	ITEM_HEIGHT	16
+
 class CBat : public CGameObject
 {
 	int ani;

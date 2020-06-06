@@ -21,6 +21,11 @@
 #define ANI_SKELETON_RIGHT	8
 #define ANI_THROW	9
 
+#define SKELETON_WIDTH	16
+#define SKELETON_HEIGHT	32
+#define	ITEM_WIDTH	16
+#define	ITEM_HEIGHT	16
+
 class CSkeleton : public CGameObject
 {
 	int ani;

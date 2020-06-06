@@ -30,6 +30,11 @@
 #define TIME_CHANGE_FLY_WAIT	3000
 #define TIME_CHANGE_FLY	7000
 
+#define BIRD_WIDTH	16
+#define BIRD_HEIGHT	16
+#define	ITEM_WIDTH	16
+#define	ITEM_HEIGHT	16
+
 class CBird : public CGameObject
 {
 	int ani;

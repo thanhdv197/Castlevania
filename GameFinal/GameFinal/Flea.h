@@ -21,6 +21,11 @@
 
 #define DISTANCE_CHANGE_STATE	50
 
+#define FLEA_WIDTH	16
+#define FLEA_HEIGHT	16
+#define	ITEM_WIDTH	16
+#define	ITEM_HEIGHT	16
+
 class CFlea : public CGameObject
 {
 	int ani;

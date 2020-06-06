@@ -1,6 +1,9 @@
 #pragma once
 #include "GameObject.h"
 
+#define	BOTTOM_STAIR_WIDTH	8
+#define BOTTOM_STAIR_HEIGHT	64
+
 class CBottomStair : public CGameObject
 {
 public:

@@ -18,8 +18,8 @@ void CBone::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 	{
 		left = x;
 		top = y;
-		right = left + 16;
-		bottom = top + 16;
+		right = left + BONE_WIDTH;
+		bottom = top + BONE_HEIGHT;
 	}
 
 }
@@ -35,11 +35,11 @@ void CBone::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 		timeThrow += dt;
 
-		if (timeThrow > 500)
+		if (timeThrow > TIME_UP)
 		{
 			ny = 1;
 
-			if (timeThrow > 1200)
+			if (timeThrow > TIME_DOWN)
 			{
 				SetState(STATE_NONE);
 				timeThrow = 0;

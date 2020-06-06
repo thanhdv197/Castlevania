@@ -7,8 +7,8 @@ CTopStair::CTopStair(float _x, float _y, int _nx)
 
 	nx = _nx;
 
-	width = 8;
-	height = 64;
+	width = TOP_STAIR_WIDTH;
+	height = TOP_STAIR_HEIGHT;
 }
 
 void CTopStair::Render()

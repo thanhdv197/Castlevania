@@ -28,8 +28,8 @@ void CBird::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 	{
 		left = x;
 		top = y;
-		right = left + 16;
-		bottom = top + 16;
+		right = left + BIRD_WIDTH;
+		bottom = top + BIRD_HEIGHT;
 	}
 
 }

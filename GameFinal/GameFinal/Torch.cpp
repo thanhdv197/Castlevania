@@ -6,8 +6,8 @@ CTorch::CTorch(int item)
 	this->isDisplay = true;
 	this->isAttacked = false;
 
-	this->width = 16;
-	this->height = 32;
+	this->width = TORCH_WIDTH;
+	this->height = TORCH_HEIGHT;
 
 	this->blood = 1;
 
@@ -28,15 +28,15 @@ void CTorch::GetBoundingBox(float &left, float &top, float &right, float &bottom
 		{
 			left = x;
 			top = y;
-			right = left + 16;
-			bottom = top + 32;
+			right = left + TORCH_WIDTH;
+			bottom = top + TORCH_HEIGHT;
 		}
 		else
 		{
 			left = x;
 			top = y;
-			right = left + 16;
-			bottom = top + 16;
+			right = left + ITEM_WIDTH;
+			bottom = top + ITEM_HEIGHT;
 		}
 	}
 

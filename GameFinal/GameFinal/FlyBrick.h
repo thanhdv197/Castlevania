@@ -2,6 +2,11 @@
 #include "GameObject.h"
 #include "Bricks.h"
 
+#define BRICK_WIDTH	32
+#define	BRICK_HEIGHT	16
+
+#define	SPEED_VX	0.02f
+
 class CFlyBrick : public CGameObject
 {
 public:

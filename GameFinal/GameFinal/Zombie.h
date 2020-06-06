@@ -22,6 +22,11 @@
 #define POSITION_X_CHANGE_DIRECTION	1
 #define POSITION_X_CHANGE_DIRECTION_OPPOSITE	600
 
+#define ZOMBIE_WIDTH	16
+#define ZOMBIE_HEIGHT	32
+#define	ITEM_WIDTH	16
+#define	ITEM_HEIGHT	16
+
 class CZombie : public CGameObject
 {
 	int ani;

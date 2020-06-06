@@ -3,10 +3,10 @@
 CFlyBrick::CFlyBrick()
 {
 	this->nx = 1;
-	this->vx = 0.02f;
+	this->vx = SPEED_VX;
 	this->vy = 0;
-	this->width = 32;
-	this->height = 16;
+	this->width = BRICK_WIDTH;
+	this->height = BRICK_HEIGHT;
 }
 
 void CFlyBrick::GetBoundingBox(float &left, float &top, float &right, float &bottom)

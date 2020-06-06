@@ -28,6 +28,11 @@
 #define TIME_CHANGE_STATE_DOWN	400
 #define TIME_CHANGE_STATE_STAND	1200
 
+#define TOAD_WIDTH	16
+#define TOAD_HEIGHT	16
+#define	ITEM_WIDTH	16
+#define	ITEM_HEIGHT	16
+
 class CToad : public CGameObject
 {
 	int ani;

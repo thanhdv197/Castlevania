@@ -6,8 +6,8 @@ CArmy::CArmy(int item)
 	this->isDisplay = true;
 	this->isAttacked = false;
 
-	this->width = 16;
-	this->height = 32;
+	this->width = ARMY_WIDTH;
+	this->height = ARMY_HEIGHT;
 
 	this->blood = 2;
 
@@ -30,15 +30,15 @@ void CArmy::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 		{
 			left = x;
 			top = y;
-			right = left + 16;
-			bottom = top + 32;
+			right = left + ARMY_WIDTH;
+			bottom = top + ARMY_HEIGHT;
 		}
 		else
 		{
 			left = x;
 			top = y;
-			right = left + 16;
-			bottom = top + 16;
+			right = left + ITEM_WIDTH;
+			bottom = top + ITEM_HEIGHT;
 		}
 	}
 

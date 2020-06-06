@@ -26,8 +26,8 @@ void CFlea::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 	{
 		left = x;
 		top = y;
-		right = left + 16;
-		bottom = top + 16;
+		right = left + FLEA_WIDTH;
+		bottom = top + FLEA_HEIGHT;
 	}
 
 }

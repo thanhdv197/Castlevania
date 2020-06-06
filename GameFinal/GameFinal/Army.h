@@ -18,6 +18,11 @@
 #define ANI_ARMY_LEFT	7
 #define ANI_ARMY_RIGHT	8
 
+#define ARMY_WIDTH	16
+#define ARMY_HEIGHT	32
+#define	ITEM_WIDTH	16
+#define	ITEM_HEIGHT	16
+
 #define TIME_CHANGE_DIRECTION	1000
 
 class CArmy : public CGameObject

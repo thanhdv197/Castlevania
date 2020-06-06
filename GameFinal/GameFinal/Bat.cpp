@@ -28,8 +28,8 @@ void CBat::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 	{
 		left = x;
 		top = y;
-		right = left + 16;
-		bottom = top + 16;
+		right = left + BAT_WIDTH;
+		bottom = top + BAT_HEIGHT;
 	}
 
 }

@@ -6,8 +6,8 @@ CZombie::CZombie(int item)
 	this->isDisplay = true;
 	this->isAttacked = false;
 
-	this->width = 16;
-	this->height = 32;
+	this->width = ZOMBIE_WIDTH;
+	this->height = ZOMBIE_HEIGHT;
 
 	this->blood = 1;
 
@@ -30,15 +30,15 @@ void CZombie::GetBoundingBox(float &left, float &top, float &right, float &botto
 		{
 			left = x;
 			top = y;
-			right = left + 16;
-			bottom = top + 32;
+			right = left + ZOMBIE_WIDTH;
+			bottom = top + ZOMBIE_HEIGHT;
 		}
 		else
 		{
 			left = x;
 			top = y;
-			right = left + 16;
-			bottom = top + 16;
+			right = left + ITEM_WIDTH;
+			bottom = top + ITEM_HEIGHT;
 		}
 	}
 

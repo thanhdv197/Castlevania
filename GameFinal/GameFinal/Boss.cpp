@@ -6,13 +6,13 @@ CBoss::CBoss()
 	this->isAttacked = false;
 	this->isDisplay = true;
 
-	this->width = 48;
-	this->height = 24;
+	this->width = BOSS_WIDTH;
+	this->height = BOSS_HEIGHT;
 
 	this->blood = 16;
 
-	this->start_x = 580;
-	this->start_y = 60;
+	this->start_x = START_X;
+	this->start_y = START_Y;
 
 	this->timeChangeState = 0;
 	this->timeDead = 0;
@@ -35,15 +35,15 @@ void CBoss::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 		{
 			left = x;
 			top = y;
-			right = left + 48;
-			bottom = top + 24;
+			right = left + BOSS_WIDTH;
+			bottom = top + BOSS_HEIGHT;
 		}
 		else if (this->state == STATE_BOSS_STAND || this->state == STATE_GLOBULAR)
 		{
 			left = x;
 			top = y;
-			right = left + 16;
-			bottom = top + 16;
+			right = left + ITEM_WIDTH;
+			bottom = top + ITEM_HEIGHT;
 		}
 	}
 

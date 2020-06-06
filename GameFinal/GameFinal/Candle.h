@@ -17,6 +17,11 @@
 
 #define ANI_CANDLE	7
 
+#define CANDLE_WIDTH	8
+#define CANDLE_HEIGHT	8
+#define	ITEM_WIDTH	16
+#define	ITEM_HEIGHT	16
+
 class CCandle : public CGameObject
 {
 	int ani;
