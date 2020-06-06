@@ -66,12 +66,12 @@ void CZombie::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		SetState(STATE_ITEM);
 	}
 
-	if (this->x <= 1)
+	if (this->x <= POSITION_X_CHANGE_DIRECTION)
 	{
 		nx = 1;
 		SetState(STATE_ZOMBIE);
 	}
-	else if (this->x > 600)
+	else if (this->x > POSITION_X_CHANGE_DIRECTION_OPPOSITE)
 	{
 		nx = -1;
 		SetState(STATE_ZOMBIE);

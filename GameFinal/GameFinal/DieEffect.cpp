@@ -12,7 +12,7 @@ CDieEffect::CDieEffect()
 void CDieEffect::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	timeDisplay += dt;
-	if (timeDisplay > 200)
+	if (timeDisplay > TIME_END)
 		isEnable = false;
 }
 

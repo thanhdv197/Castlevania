@@ -52,12 +52,10 @@ void CArmy::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	{
 		timeChangeDirection += dt;
 
-		if (timeChangeDirection > 1000)
+		if (timeChangeDirection > TIME_CHANGE_DIRECTION)
 		{
 			nx = -nx;
-			if (nx > 0)
-				vx = 0.02f;
-			else vx = -0.02f;
+			SetState(STATE_ARMY);
 			timeChangeDirection = 0;
 		}
 		x += dx;

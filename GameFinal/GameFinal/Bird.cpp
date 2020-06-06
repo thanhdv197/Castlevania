@@ -38,13 +38,13 @@ void CBird::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	CGameObject::Update(dt, coObjects);
 
-	if ((this->x - this->xSimon) < 100)
+	if ((this->x - this->xSimon) < DISTANCE_CHANGE_FLY)
 	{
 		SetState(STATE_BIRD_FLY);
 		timeChangeState += dt;
 
 		// set time to change waitting state
-		if (timeChangeState > 3000)
+		if (timeChangeState > TIME_CHANGE_FLY_WAIT)
 		{
 			if (this->state == STATE_BIRD_FLY)
 			{
@@ -56,7 +56,7 @@ void CBird::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	if (this->state == STATE_BIRD_FLY_WAIT)
 	{
 		timeChangeState += dt;
-		if (timeChangeState > 7000)
+		if (timeChangeState > TIME_CHANGE_FLY)
 		{
 			SetState(STATE_BIRD_FLY);
 			timeChangeState = 0;
@@ -64,15 +64,15 @@ void CBird::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	}
 
 	// set nx of bird
-	if (this->xSimon - this->x > 30)
+	if (this->xSimon - this->x > DISTANCE_CHANGE_NX)
 		nx = 1;
-	else if (this->xSimon - this->x < -30)
+	else if (this->xSimon - this->x < -DISTANCE_CHANGE_NX)
 		nx = -1;
-
+	
 	// set ny of bird
-	if (ySimon - y > 50)
+	if (ySimon - y > DISTANCE_CHANGE_NY)
 		ny = 1;
-	else if (ySimon - y < -10)
+	else if (ySimon - y < DISTANCE_CHANGE_NY_OPPOSITE)
 		ny = -1;
 
 	// check whip attack

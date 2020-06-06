@@ -38,7 +38,7 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	CGameObject::Update(dt, coObjects);
 
 	// set state of toad
-	if (this->xSimon - this->x > 80 && this->xSimon - this->x < 100)
+	if (this->xSimon - this->x > DISTANCE_MIN_CHANGE_STATE && this->xSimon - this->x < DISTANCE_MAX_CHANGE_STATE)
 	{
 		SetState(STATE_TOAD_JUMP);
 	}	
@@ -48,7 +48,7 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	{
 		timeJump += dt;
 
-		if (timeJump > 400)
+		if (timeJump > TIME_CHANGE_STATE_DOWN)
 		{
 			SetState(STATE_TOAD_DOWN);
 		}
@@ -57,7 +57,7 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	if (this->state == STATE_TOAD_DOWN)
 	{
 		timeJump += dt;
-		if (timeJump > 1200)
+		if (timeJump > TIME_CHANGE_STATE_STAND)
 		{
 			SetState(STATE_TOAD_STAND);
 			timeJump = 0;

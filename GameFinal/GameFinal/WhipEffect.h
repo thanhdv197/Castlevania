@@ -1,6 +1,8 @@
 #pragma once
 #include "GameObject.h"
 
+#define TIME_END	100
+
 class CWhipEffect : public CGameObject
 {
 	DWORD timeDisplay;

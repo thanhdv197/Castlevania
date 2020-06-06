@@ -1,6 +1,8 @@
 #pragma once
 #include "GameObject.h"
 
+#define TIME_END	200
+
 class CDieEffect : public CGameObject
 {
 	DWORD timeDisplay;

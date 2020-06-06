@@ -21,6 +21,9 @@
 #define ANI_BAT_FLY_LEFT	8
 #define ANI_BAT_FLY_RIGHT	9
 
+#define DISTANCE_MIN	30
+#define DISTANCE_MAX	80
+
 class CBat : public CGameObject
 {
 	int ani;

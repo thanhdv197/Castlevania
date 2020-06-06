@@ -22,6 +22,14 @@
 #define ANI_BIRD_STAND_RIGHT	9
 #define ANI_BIRD_FLY_RIGHT	10
 
+#define DISTANCE_CHANGE_FLY	100
+#define DISTANCE_CHANGE_NX	30
+#define DISTANCE_CHANGE_NY	50
+#define DISTANCE_CHANGE_NY_OPPOSITE	-10
+
+#define TIME_CHANGE_FLY_WAIT	3000
+#define TIME_CHANGE_FLY	7000
+
 class CBird : public CGameObject
 {
 	int ani;

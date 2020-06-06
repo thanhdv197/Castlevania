@@ -16,6 +16,11 @@
 #define ANI_BOSS_DIE	2
 #define ANI_GLOBULAR	3
 
+#define LIMIT_X	768
+#define DISTANCE_CHANGE_STATE_FLY	60
+
+#define TIME_CHANGE_STATE	2000
+
 class CBoss : public CGameObject
 {
 	int ani;

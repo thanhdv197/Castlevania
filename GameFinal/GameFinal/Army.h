@@ -18,6 +18,8 @@
 #define ANI_ARMY_LEFT	7
 #define ANI_ARMY_RIGHT	8
 
+#define TIME_CHANGE_DIRECTION	1000
+
 class CArmy : public CGameObject
 {
 	int ani;

@@ -19,6 +19,8 @@
 #define ANI_FLEA_LEFT	7
 #define ANI_FLEA_RIGHT	8
 
+#define DISTANCE_CHANGE_STATE	50
+
 class CFlea : public CGameObject
 {
 	int ani;

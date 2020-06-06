@@ -22,6 +22,12 @@
 #define ANI_TOAD_STAND_RIGHT	9
 #define ANI_TOAD_JUMP_RIGHT	10
 
+#define DISTANCE_MIN_CHANGE_STATE	80
+#define DISTANCE_MAX_CHANGE_STATE	100
+
+#define TIME_CHANGE_STATE_DOWN	400
+#define TIME_CHANGE_STATE_STAND	1200
+
 class CToad : public CGameObject
 {
 	int ani;

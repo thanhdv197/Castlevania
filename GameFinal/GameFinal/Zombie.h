@@ -19,6 +19,9 @@
 #define ANI_ZOMBIE_LEFT	7
 #define ANI_ZOMBIE_RIGHT	8
 
+#define POSITION_X_CHANGE_DIRECTION	1
+#define POSITION_X_CHANGE_DIRECTION_OPPOSITE	600
+
 class CZombie : public CGameObject
 {
 	int ani;
