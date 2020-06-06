@@ -34,23 +34,46 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	{
 		timeAttack += dt;
 
-		if (timeAttack > 1000)
+		if (this->state == WEAPON_STATE_BOMERANG)
 		{
-			this->isEnable = false;
-			this->isAttack = false;
+			if (timeAttack > 2000)
+			{
+				this->isEnable = false;
+				this->isAttack = false;
+			}
+			else
+			{
+				SetState(state);
+
+				if (timeAttack > 1000)
+				{
+					vx = -vx;
+				}
+
+				x += dx;
+				y += dy;
+			}
 		}
 		else
 		{
-			SetState(state);
-
-			if (timeAttack < 500)
+			if (timeAttack > 1000)
 			{
-				vy = -vy;
+				this->isEnable = false;
+				this->isAttack = false;
 			}
-			else vy += vy;
+			else
+			{
+				SetState(state);
 
-			x += dx;
-			y += dy;
+				if (timeAttack < 500)
+				{
+					vy = -vy;
+				}
+				else vy += vy;
+
+				x += dx;
+				y += dy;
+			}
 		}
 		
 	}
@@ -225,6 +248,10 @@ void CWeapon::Render()
 			{
 				ani = WEAPON_ANI_AXE;
 			}
+			else if (this->state == WEAPON_STATE_BOMERANG)
+			{
+				ani = WEAPON_ANI_BOMERANG;
+			}
 
 			animation_set->at(ani)->Render(x, y);
 			RenderBoundingBox();
@@ -288,6 +315,15 @@ void CWeapon::SetState(int state)
 		}
 		else vx = -WEAPON_FLY_SPEED;
 		vy = 0.04f;
+		this->dame = 2;
+		break;
+	case WEAPON_STATE_BOMERANG:
+		if (nx > 0)
+		{
+			vx = WEAPON_FLY_SPEED;
+		}
+		else vx = -WEAPON_FLY_SPEED;
+		vy = 0;
 		this->dame = 2;
 		break;
 	default:

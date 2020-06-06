@@ -1,48 +1,7 @@
-﻿  PlayScence.cpp
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(92): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(93): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\dieeffect.h(4): warning C4005: 'TIME_END': macro redefinition
-  c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\whipeffect.h(4): note: see previous definition of 'TIME_END'
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(109): warning C4018: '<': signed/unsigned mismatch
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(131): warning C4018: '<': signed/unsigned mismatch
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(154): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(155): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(258): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(259): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(266): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(267): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(312): warning C4018: '<': signed/unsigned mismatch
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(457): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(477): warning C4018: '<': signed/unsigned mismatch
-  Scores.cpp
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(92): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(93): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\dieeffect.h(4): warning C4005: 'TIME_END': macro redefinition
-  c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\whipeffect.h(4): note: see previous definition of 'TIME_END'
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\scores.cpp(48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\scores.cpp(113): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\scores.cpp(115): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\scores.cpp(125): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\scores.cpp(135): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\scores.cpp(142): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\scores.cpp(144): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\scores.cpp(152): warning C4018: '<': signed/unsigned mismatch
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\scores.cpp(157): warning C4018: '<': signed/unsigned mismatch
-  Simon.cpp
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\dieeffect.h(4): warning C4005: 'TIME_END': macro redefinition
-  c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\whipeffect.h(4): note: see previous definition of 'TIME_END'
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(92): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(93): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  Source.cpp
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(92): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(93): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\dieeffect.h(4): warning C4005: 'TIME_END': macro redefinition
-  c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\whipeffect.h(4): note: see previous definition of 'TIME_END'
-  Weapon.cpp
+﻿  Weapon.cpp
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\dieeffect.h(4): warning C4005: 'TIME_END': macro redefinition
   c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\whipeffect.h(4): note: see previous definition of 'TIME_END'
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(92): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(93): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\weapon.cpp(9): warning C4244: '=': conversion from 'float' to 'DWORD', possible loss of data
-  Generating Code...
   GameFinal.vcxproj -> C:\Users\Thanh\source\repos\Castlevania\Castlevania\GameFinal\Debug\GameFinal.exe
