@@ -914,12 +914,17 @@ void CSimon::LostBlood(int _blood)
 		SetState(SIMON_STATE_DIE);
 }
 
-void CSimon::TotalScores(int _heart)
+void CSimon::TotalScores(int _heart, DWORD _time)
 {
 	if (_heart > 0)
 	{
 		this->heart--;
 		this->score += 100;
+	}
+	
+	if (_time > 0)
+	{
+		this->score += 10;
 	}
 }
 

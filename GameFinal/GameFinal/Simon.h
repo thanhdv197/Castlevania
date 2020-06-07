@@ -166,5 +166,5 @@ public:
 
 	void LostBlood(int _blood);
 
-	void TotalScores(int _heart);
+	void TotalScores(int _heart, DWORD _time);
 };

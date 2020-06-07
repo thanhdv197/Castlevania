@@ -51,6 +51,8 @@ public:
 	CScores();
 	~CScores();
 
+	int GetTime() { return this->time; }
+
 	void Update(int _scores, int _stage, int _heart, int _alive, int _blood, int _stateWeapon, int _bloodBoss, DWORD dt);
 	void Render();
 

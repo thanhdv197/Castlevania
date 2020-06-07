@@ -422,8 +422,9 @@ void CPlayScene::Update(DWORD dt)
 		player->Update(dt, &coObjects);
 		if (player->isFinish)
 		{
-			player->TotalScores(player->GetHeart());
-			time = 1000;
+			(scores->GetTime() > 0) ? time = 1000 : time = 0;
+			
+			player->TotalScores(player->GetHeart(), time);
 		}	
 	}
 
