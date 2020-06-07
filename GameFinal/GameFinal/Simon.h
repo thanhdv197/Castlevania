@@ -129,6 +129,8 @@ public:
 	bool isGoUp;
 	bool isGoDown;
 
+	bool isFinish;
+
 	CSimon(float x = 0.0f, float y = 0.0f);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *colliable_objects = NULL);
 	virtual void Render();
@@ -163,4 +165,6 @@ public:
 	int GetLevelWhip() { return whip->GetLevel(); }
 
 	void LostBlood(int _blood);
+
+	void TotalScores(int _heart);
 };

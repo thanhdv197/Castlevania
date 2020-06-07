@@ -19,7 +19,7 @@ class CScores
 
 	// time
 	RECT rectTime;
-	int time = 2000;
+	int time = 200;
 	DWORD timeLimit = 0;
 
 	// stage

@@ -39,6 +39,8 @@ CSimon::CSimon(float x, float y)
 	isGoUp = false;
 	isGoDown = false;
 
+	isFinish = false;
+
 	this->blood = 16;
 	this->alive = 4;
 	this->heart = 0;
@@ -360,6 +362,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				else
 				{
 					boss->isDisplay = false;
+					isFinish = true;
 				}
 			}
 			else if (dynamic_cast<CBottomStair *>(e->obj))
@@ -909,6 +912,15 @@ void CSimon::LostBlood(int _blood)
 	}
 	else
 		SetState(SIMON_STATE_DIE);
+}
+
+void CSimon::TotalScores(int _heart)
+{
+	if (_heart > 0)
+	{
+		this->heart--;
+		this->score += 100;
+	}
 }
 
 

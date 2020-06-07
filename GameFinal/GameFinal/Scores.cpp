@@ -32,9 +32,12 @@ void CScores::Update(int _scores, int _stage, int _heart, int _alive, int _blood
 	timeLimit += dt;
 	if (timeLimit > 1000)
 	{
-		time -= 1;
+		if (this->time > 0)
+		{
+			time -= 1;
 
-		timeLimit = 0;
+			timeLimit = 0;
+		}
 	}
 }
 

@@ -411,17 +411,27 @@ void CPlayScene::Update(DWORD dt)
 		}
 	}
 
+	// time scores
+	DWORD time = dt;
+
 	// skip the rest if scene was already unloaded (Mario::Update might trigger PlayScene::Unload)
 	// update simon
 	if (player == NULL) return; 
 	else
+	{
 		player->Update(dt, &coObjects);
+		if (player->isFinish)
+		{
+			player->TotalScores(player->GetHeart());
+			time = 1000;
+		}	
+	}
 
 	CGame *game = CGame::GetInstance();
-
+	
 	// update Scores bar
 	if (player != NULL)
-		scores->Update(player->GetScores(), mapName, player->GetHeart(), player->GetAlive(), player->GetBlood(), player->GetWeapon(), bloodBoss, dt);
+		scores->Update(player->GetScores(), mapName, player->GetHeart(), player->GetAlive(), player->GetBlood(), player->GetWeapon(), bloodBoss, time);
 
 	// change scene
 	if (game->GetIsNextMap() == true)
