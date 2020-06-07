@@ -97,6 +97,8 @@ public:
 	void SetSceneId(int _sceneId) { this->sceneId = _sceneId; }
 	int GetSceneId() { return this->sceneId; }
 
+	int RandomItem(int _item);
+
 	static CGame * GetInstance();
 
 	~CGame();

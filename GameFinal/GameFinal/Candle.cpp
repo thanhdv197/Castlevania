@@ -1,6 +1,6 @@
 #include "Candle.h"
 
-CCandle::CCandle(int item)
+CCandle::CCandle(int _item)
 {
 	this->isEnable = true;
 	this->isDisplay = true;
@@ -14,7 +14,7 @@ CCandle::CCandle(int item)
 
 	SetState(STATE_CANDLE);
 
-	RanDom(item);
+	item = CGame::GetInstance()->RandomItem(_item);
 }
 
 void CCandle::GetBoundingBox(float &left, float &top, float &right, float &bottom)
@@ -155,44 +155,3 @@ void CCandle::SetState(int state)
 	}
 }
 
-void CCandle::RanDom(int r)
-{
-	if (r > 6)
-	{
-		int random = rand() % 100;
-
-		if (random < 10)
-		{
-			this->item = ANI_ITEM_WHIP;
-		}
-		else if (random < 20 && random >= 10)
-		{
-			this->item = ANI_ITEM_KNIFE;
-		}
-		else if (random < 30 && random >= 20)
-		{
-			this->item = ANI_ITEM_AXE;
-		}
-		else if (random < 40 && random >= 30)
-		{
-			this->item = ANI_ITEM_BOMERANG;
-		}
-		else if (random < 50 && random >= 40)
-		{
-			this->item = ANI_ITEM_FIRE;
-		}
-		else if (random < 60 && random >= 50)
-		{
-			this->item = ANI_ITEM_SMALL_HEART;
-		}
-		else
-		{
-			this->item = ANI_ITEM_BIG_HEART;
-		}
-	}
-	else
-	{
-		this->item = r;
-	}
-		
-}

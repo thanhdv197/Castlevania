@@ -4,6 +4,7 @@
 #include "DieEffect.h"
 #include "Bricks.h"
 #include "Bone.h"
+#include "Game.h"
 
 #define STATE_SKELETON_STAND	100
 #define STATE_SKELETON_WALK	300
@@ -47,14 +48,12 @@ public:
 	bool isDisplay;
 	bool isAttacked;
 
-	CSkeleton(int item);
+	CSkeleton(int _item);
 
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects);
 	virtual void Render();
 	virtual void SetState(int state);
-
-	void RanDom(int r);
 
 	int GetItem() { return this->item; }
 

@@ -4,6 +4,7 @@
 #include "DieEffect.h"
 #include "Bricks.h"
 #include "Candle.h"
+#include "Game.h"
 
 #define STATE_ZOMBIE	100
 #define STATE_ITEM	200
@@ -44,14 +45,12 @@ public:
 	bool isDisplay;
 	bool isAttacked;
 
-	CZombie(int item);
+	CZombie(int _item);
 
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects);
 	virtual void Render();
 	virtual void SetState(int state);
-
-	void RanDom(int r);
 
 	int GetItem() { return this->item; }
 

@@ -3,6 +3,7 @@
 #include "WhipEffect.h"
 #include "DieEffect.h"
 #include "Bricks.h"
+#include "Game.h"
 
 #define STATE_BIRD_STAND	100
 #define STATE_BIRD_FLY	300
@@ -56,14 +57,12 @@ public:
 	bool isDisplay;
 	bool isAttacked;
 
-	CBird(int item);
+	CBird(int _item);
 
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects);
 	virtual void Render();
 	virtual void SetState(int state);
-
-	void RanDom(int r);
 
 	int GetItem() { return this->item; }
 
