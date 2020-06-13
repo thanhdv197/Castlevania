@@ -196,14 +196,14 @@ void CBird::SetState(int state)
 	case STATE_BIRD_FLY:
 		if (nx > 0)
 		{
-			vx = 0.01f;
+			vx = 0.05f;
 		}
-		else vx = -0.01f;
+		else vx = -0.05f;
 		
 		if (ny > 0)
-			vy = 0.01f;
+			vy = 0.05f;
 		else
-			vy = -0.01f;
+			vy = -0.05f;
 
 		break;
 	case STATE_BIRD_FLY_WAIT:
@@ -211,7 +211,7 @@ void CBird::SetState(int state)
 		vy = 0;
 		break;
 	case STATE_ITEM:
-		vy = 0.01f;
+		vy = 0.05f;
 		vx = 0;
 		break;
 	default:

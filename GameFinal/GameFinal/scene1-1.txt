@@ -574,7 +574,7 @@
 # ==== ENEMIES ====
 # type	x	y	ani_set_id	item
 # ARMY
-10	50	70	39	0
+10	50	70	39	5
 
 # BAT
 12	48	52	37	0

@@ -154,7 +154,7 @@ void CTorch::SetState(int state)
 		vy = 0;
 		break;
 	case STATE_ITEM:
-		vy = 0.01f;
+		vy = 0.05f;
 		break;
 	default:
 		break;

@@ -802,10 +802,10 @@ void CSimon::SetState(int state)
 			this->isGoDown = false;
 
 			nx = stairDirection;
-			vy = -0.01f;
+			vy = -0.05f;
 			if (nx > 0)
-				vx = 0.01f;
-			else vx = -0.01f;
+				vx = 0.05f;
+			else vx = -0.05f;
 		}
 		break;
 	case SIMON_STATE_GO_DOWN:
@@ -815,10 +815,10 @@ void CSimon::SetState(int state)
 			this->isGoDown = true;
 
 			nx = stairDirection;
-			vy = 0.01f;
+			vy = 0.05f;
 			if (nx > 0)
-				vx = 0.01f;
-			else vx = -0.01f;
+				vx = 0.05f;
+			else vx = -0.05f;
 		}
 		break;
 	case SIMON_STATE_HURT:
