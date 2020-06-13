@@ -1,40 +1,6 @@
-﻿  Army.cpp
+﻿  Toad.cpp
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\dieeffect.h(4): warning C4005: 'TIME_END': macro redefinition
   c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\whipeffect.h(4): note: see previous definition of 'TIME_END'
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(92): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(93): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  Bat.cpp
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\dieeffect.h(4): warning C4005: 'TIME_END': macro redefinition
-  c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\whipeffect.h(4): note: see previous definition of 'TIME_END'
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(92): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(93): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  Bird.cpp
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\dieeffect.h(4): warning C4005: 'TIME_END': macro redefinition
-  c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\whipeffect.h(4): note: see previous definition of 'TIME_END'
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(92): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(93): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  Candle.cpp
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\dieeffect.h(4): warning C4005: 'TIME_END': macro redefinition
-  c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\whipeffect.h(4): note: see previous definition of 'TIME_END'
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(92): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(93): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  Flea.cpp
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\dieeffect.h(4): warning C4005: 'TIME_END': macro redefinition
-  c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\whipeffect.h(4): note: see previous definition of 'TIME_END'
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(92): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(93): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  GameObject.cpp
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(92): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(93): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  Torch.cpp
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\dieeffect.h(4): warning C4005: 'TIME_END': macro redefinition
-  c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\whipeffect.h(4): note: see previous definition of 'TIME_END'
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(92): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(93): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  Zombie.cpp
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\dieeffect.h(4): warning C4005: 'TIME_END': macro redefinition
-  c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\whipeffect.h(4): note: see previous definition of 'TIME_END'
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(92): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(93): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
   GameFinal.vcxproj -> C:\Users\Thanh\source\repos\Castlevania\Castlevania\GameFinal\Debug\GameFinal.exe

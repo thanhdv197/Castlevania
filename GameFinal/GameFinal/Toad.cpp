@@ -38,29 +38,21 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	CGameObject::Update(dt, coObjects);
 
 	// set state of toad
-	if (this->xSimon - this->x > DISTANCE_MIN_CHANGE_STATE && this->xSimon - this->x < DISTANCE_MAX_CHANGE_STATE)
+	if (this->state == STATE_TOAD_STAND)
 	{
-		SetState(STATE_TOAD_JUMP);
-	}	
+		if (abs(this->xSimon - this->x) < DISTANC_CHANGE_STATE_JUMP)
+		{
+			SetState(STATE_TOAD_JUMP);
+		}
+	}
 
 	// set time jump
 	if (this->state == STATE_TOAD_JUMP)
 	{
-		timeJump += dt;
-
-		if (timeJump > TIME_CHANGE_STATE_DOWN)
+		if (this->ySimon > this->y + 50)
 		{
 			SetState(STATE_TOAD_DOWN);
-		}
-	}
-	// set time down
-	if (this->state == STATE_TOAD_DOWN)
-	{
-		timeJump += dt;
-		if (timeJump > TIME_CHANGE_STATE_STAND)
-		{
-			SetState(STATE_TOAD_STAND);
-			timeJump = 0;
+			(this->x < this->xSimon) ? nx = 1 : nx = -1;
 		}
 	}
 	
@@ -108,13 +100,9 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			LPCOLLISIONEVENT e = coEventsResult[i];
 			if (dynamic_cast<CBricks*>(e->obj))
 			{
-				if (e->ny < 0)
+				if (this->state == STATE_TOAD_DOWN)
 				{
-					x += min_tx * dx + nx * 0.4f;
-					y += min_ty * dy + ny * 0.4f;
-
-					if (nx != 0) vx = 0;
-					if (ny != 0) vy = 0;
+					SetState(STATE_TOAD_JUMP);
 				}
 			}
 			else
@@ -181,12 +169,12 @@ void CToad::SetState(int state)
 		if (nx > 0)
 			vx = 0.05f;
 		else vx = -0.05f;
-		vy = -0.03f;
+		vy = -0.1f;
 		break;
 	case STATE_TOAD_DOWN:
 		if (nx > 0)
-			vx = 0.04f;
-		else vx = -0.04f;
+			vx = 0.05f;
+		else vx = -0.05f;
 		vy = 0.1f;
 		break;
 	case STATE_ITEM:
