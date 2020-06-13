@@ -25,9 +25,6 @@
 
 #define DISTANC_CHANGE_STATE_JUMP	80
 
-#define TIME_CHANGE_STATE_DOWN	600
-#define TIME_CHANGE_STATE_STAND	1200
-
 #define TOAD_WIDTH	16
 #define TOAD_HEIGHT	16
 #define	ITEM_WIDTH	16
@@ -40,8 +37,6 @@ class CToad : public CGameObject
 	int item;
 
 	int blood;
-
-	DWORD timeJump;
 
 	CWhipEffect * whipEffect;
 

@@ -195,7 +195,7 @@ void CSkeleton::SetState(int state)
 		break;
 	case STATE_ITEM:
 		bone->isEnable = false;
-		vy = 0.05f;
+		(!isEnable) ? vy = 0 : vy = 0.05f;
 		vx = 0;
 		break;
 	case STATE_THROW:

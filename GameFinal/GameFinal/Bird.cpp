@@ -211,7 +211,7 @@ void CBird::SetState(int state)
 		vy = 0;
 		break;
 	case STATE_ITEM:
-		vy = 0.05f;
+		(!isEnable) ? vy = 0 : vy = 0.05f;
 		vx = 0;
 		break;
 	default:

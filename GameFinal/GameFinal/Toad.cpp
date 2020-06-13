@@ -10,8 +10,6 @@ CToad::CToad(int _item)
 
 	this->nx = 1;
 
-	this->timeJump = 0;
-
 	whipEffect = new CWhipEffect();
 
 	dieEffect = new CDieEffect();
@@ -49,7 +47,7 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	// set time jump
 	if (this->state == STATE_TOAD_JUMP)
 	{
-		if (this->ySimon > this->y + 50)
+		if (this->ySimon > this->y + 55)
 		{
 			SetState(STATE_TOAD_DOWN);
 			(this->x < this->xSimon) ? nx = 1 : nx = -1;
@@ -103,6 +101,11 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				if (this->state == STATE_TOAD_DOWN)
 				{
 					SetState(STATE_TOAD_JUMP);
+				}
+				if (vy < 0)
+				{
+					x += dx;
+					y += dy;
 				}
 			}
 			else
