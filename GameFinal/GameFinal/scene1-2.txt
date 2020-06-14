@@ -538,46 +538,46 @@
 # type: 0 = Simon , 99 = Bricks, 1 = bottom stair, 2 = top stair, 3 = fly brick, 4 = torch, 6 = candle, 50 = portal
 # type: 10 = army, 11 = zombie, 12 = bat, 13 = flea, 14 = toad, 15 = bird, 16 = skeleton, 17 = boss
 # ==== SIMON ====
-# type	x	y	ani_set_id
-0	460	90	1
+#id type	x	y	ani_set_id
+0	0	460	90	1
 
 # ==== SCENE PORTAL ====
-# type	l	t	ani_set_id	r	b	scene_id
-50	0	53	0	18	102	4
+#id type	l	t	ani_set_id	r	b	scene_id
+1	50	0	53	0	18	102	4
 
 # ==== BRICKS ====
-# type	l	t	ani_set_id	r	b
-99	480	20	0	512	212
-99	450	133	0	478	147
-99	352	101	0	445	114
-99	352	116	0	385	180
-99	320	164	0	352	180
-99	288	132	0	320	148
-99	192	100	0	288	115
-99	95	100	0	160	200
-99	64	134	0	95	148
-99	0	102	0	32	116
+#id type	l	t	ani_set_id	r	b
+2	99	480	20	0	512	212
+3	99	450	133	0	478	147
+4	99	352	101	0	445	114
+5	99	352	116	0	385	180
+6	99	320	164	0	352	180
+7	99	288	132	0	320	148
+8	99	192	100	0	288	115
+9	99	95	100	0	160	200
+10	99	64	134	0	95	148
+11	99	0	102	0	32	116
 
 # ==== CANDLE ====
-# type	x	y	ani_set_id	item
-6	460	40	45	5
-6	393	40	45	5
-6	333	40	45	5
-6	268	40	45	5
-6	203	40	45	5
-6	139	40	45	5
-6	76	40	45	5
+#id type	x	y	ani_set_id	item
+12	6	460	40	45	5
+13	6	393	40	45	5
+14	6	333	40	45	5
+15	6	268	40	45	5
+16	6	203	40	45	5
+17	6	139	40	45	5
+18	6	76	40	45	5
 
 # ==== FLY BRICKS ====
-3	38	102	44
+19	3	38	102	44
 
 # ==== ENEMIES ====
-# type	x	y	ani_set_id	item
+#id type	x	y	ani_set_id	item
 # ARMY
-10	320	135	39	5
-10	130	70	39	5
+20	10	320	135	39	5
+21	10	130	70	39	5
 # BAT
-12	298	45	37	5
+22	12	298	45	37	5
 
 [MAP]
 # WIDTH HEIGHT	NAME

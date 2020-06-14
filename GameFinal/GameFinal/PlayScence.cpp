@@ -150,11 +150,12 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 	if (tokens.size() < 3) return; // skip invalid lines - an object set must have at least id, x, y
 
-	int object_type = atoi(tokens[0].c_str());
-	float x = atof(tokens[1].c_str());
-	float y = atof(tokens[2].c_str());
+	int object_id = atoi(tokens[0].c_str());
+	int object_type = atoi(tokens[1].c_str());
+	float x = atof(tokens[2].c_str());
+	float y = atof(tokens[3].c_str());
 
-	int ani_set_id = atoi(tokens[3].c_str());
+	int ani_set_id = atoi(tokens[4].c_str());
 
 	CAnimationSets * animation_sets = CAnimationSets::GetInstance();
 
@@ -179,13 +180,13 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		return;
 	case OBJECT_TYPE_BOTTOM_STAIR:
 		{
-			int direction = atoi(tokens[4].c_str());
+			int direction = atoi(tokens[5].c_str());
 			obj = new CBottomStair(x, y, direction); 
 			break;
 		}
 	case OBJECT_TYPE_TOP_STAIR:
 		{
-			int direction = atoi(tokens[4].c_str());
+			int direction = atoi(tokens[5].c_str());
 			obj = new CTopStair(x, y, direction);
 			break;
 		}
@@ -196,55 +197,55 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		}
 	case OBJECT_TYPE_TORCH:
 		{
-			int item = atoi(tokens[4].c_str());
+			int item = atoi(tokens[5].c_str());
 			obj = new CTorch(item);
 			break;
 		}
 	case OBJECT_TYPE_CANDLE:
 		{
-			int item = atoi(tokens[4].c_str());
+			int item = atoi(tokens[5].c_str());
 			obj = new CCandle(item);
 			break;
 		}
 	case OBJECT_TYPE_ENEMY_ARMY:
 		{
-			int item = atoi(tokens[4].c_str());
+			int item = atoi(tokens[5].c_str());
 			obj = new CArmy(item);
 			break;
 		}
 	case OBJECT_TYPE_ENEMY_ZOMBIE:
 		{
-			int item = atoi(tokens[4].c_str());
+			int item = atoi(tokens[5].c_str());
 			obj = new CZombie(item);
 			break;
 		}
 	case OBJECT_TYPE_ENEMY_BAT:
 		{
-			int item = atoi(tokens[4].c_str());
+			int item = atoi(tokens[5].c_str());
 			obj = new CBat(item);
 			break;
 		}
 	case OBJECT_TYPE_ENEMY_FLEA:
 		{
-			int item = atoi(tokens[4].c_str());
+			int item = atoi(tokens[5].c_str());
 			obj = new CFlea(item);
 			break;
 		}
 	case OBJECT_TYPE_ENEMY_TOAD:
 		{
-			int item = atoi(tokens[4].c_str());
+			int item = atoi(tokens[5].c_str());
 			obj = new CToad(item);
 			break;
 		}
 	case OBJECT_TYPE_ENEMY_BIRD:
 		{
-			int item = atoi(tokens[4].c_str());
+			int item = atoi(tokens[5].c_str());
 			obj = new CBird(item);
 			break;
 		}
 	case OBJECT_TYPE_ENEMY_SKELETON:
 		{
-			int item = atoi(tokens[4].c_str());
+			int item = atoi(tokens[5].c_str());
 			obj = new CSkeleton(item);
 			break;
 		}
@@ -255,16 +256,16 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		}
 	case OBJECT_TYPE_PORTAL:
 		{	
-			float r = atof(tokens[4].c_str());
-			float b = atof(tokens[5].c_str());
-			int scene_id = atoi(tokens[6].c_str());
+			float r = atof(tokens[5].c_str());
+			float b = atof(tokens[6].c_str());
+			int scene_id = atoi(tokens[7].c_str());
 			obj = new CPortal(x, y, r, b, scene_id);
 		}
 		break;
 	case OBJECT_TYPE_BRICKS:
 		{
-			float r = atof(tokens[4].c_str());
-			float b = atof(tokens[5].c_str());
+			float r = atof(tokens[5].c_str());
+			float b = atof(tokens[6].c_str());
 			obj = new CBricks(x, y, r, b);
 		}
 	break;
@@ -275,6 +276,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 	// General object setup
 	obj->SetPosition(x, y);
+	obj->SetID(object_id);
 
 	LPANIMATION_SET ani_set = animation_sets->Get(ani_set_id);
 

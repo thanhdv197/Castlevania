@@ -537,47 +537,44 @@
 # type: 0 = Simon , 99 = Bricks, 1 = bottom stair, 2 = top stair, 3 = fly brick, 4 = torch, 6 = candle, 50 = portal
 # type: 10 = army, 11 = zombie, 12 = bat, 13 = flea, 14 = toad, 15 = bird, 16 = skeleton, 17 = boss
 # ==== SIMON ====
-# type	x	y	ani_set_id
-0	17	100	1
-
-# ==== FLY BRICKS ====
-#3	162	102	44
+#id type	x	y	ani_set_id
+0	0	17	100	1
 
 # ==== Bottom Stair ====
-# type	x	y	ani_set_id	direction
-1	100	160	0	1
-1	71	52	0	1
+#id type	x	y	ani_set_id	direction
+1	1	100	160	0	1
+2	1	71	52	0	1
 
 # ==== Top Stair ====
-# type	x	y	ani_set_id	direction
-2	185	96	0	-1
+#id type	x	y	ani_set_id	direction
+3	2	185	96	0	-1
 
 # ==== SCENE PORTAL ====
-# type	l	t	ani_set_id	r	b	scene_id
-50	96	20	0	128	30	2
+#id type	l	t	ani_set_id	r	b	scene_id
+4	50	96	20	0	128	30	2
 
 # ==== BRICKS ====
-# type	l	t	ani_set_id	r	b
-99	0	197	0	240	190
-99	0	84	0	32	148
-99	32	101	0	158	105
-99	0	0	0	14	83
-99	224	20	0	255	211
-99	177	134	0	224	147
+#id type	l	t	ani_set_id	r	b
+5	99	0	197	0	240	190
+6	99	0	84	0	32	148
+7	99	32	101	0	158	105
+8	99	0	0	0	14	83
+9	99	224	20	0	255	211
+10	99	177	134	0	224	147
 
 # ==== CANDLE ====
-# type	x	y	ani_set_id	item
-6	72	134	45	5
-6	200	134	45	5
-6	140	40	45	5
+#id type	x	y	ani_set_id	item
+11	6	72	134	45	5
+12	6	200	134	45	5
+13	6	140	40	45	5
 
 # ==== ENEMIES ====
-# type	x	y	ani_set_id	item
+#id type	x	y	ani_set_id	item
 # ARMY
-10	50	70	39	5
+14	10	50	70	39	5
 
 # BAT
-12	48	52	37	0
+15	12	48	52	37	0
 
 # ZOMBIE
 #11	162	120	38	0

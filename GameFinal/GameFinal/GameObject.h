@@ -71,6 +71,9 @@ public:
 	bool isBoss;
 	int bloodBoss;
 
+	// id
+	int id = 0;
+
 public: 
 	void SetPosition(float x, float y) { this->x = x, this->y = y; }
 	void SetSpeed(float vx, float vy) { this->vx = vx, this->vy = vy; }
@@ -113,6 +116,10 @@ public:
 	bool IsBoss() { return this->isBoss; }
 	void SetBloodBoss(int blood) { this->bloodBoss = blood; }
 	int GetBloodBoss() { return this->bloodBoss; }
+
+	// id
+	int GetID() { return this->id; }
+	void SetID(int _id) { this->id = _id; }
 
 	~CGameObject();
 };
