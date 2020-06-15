@@ -565,8 +565,8 @@
 
 # ==== Top Stair ====
 #id type	x	y	ani_set_id	direction
-4	2	135	64	0	-1
-5	2	420	82	0	-1
+4	2	135	52	0	-1
+5	2	420	84	0	-1
 6	2	560	52	0	1
 
 # ==== SCENE PORTAL ====
