@@ -26,6 +26,7 @@ class CGrid
 public:
 	CGrid();
 	void Add(LPGAMEOBJECT object, float x, float y);
+	void Add(LPGAMEOBJECT object, int xCell, int yCell);
 	vector<LPGAMEOBJECT> GetList();
 	void Unload();
 };

@@ -33,6 +33,7 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 #define SCENE_SECTION_ANIMATION_SETS	5
 #define SCENE_SECTION_OBJECTS	6
 #define SCENE_SECTION_MAP	7
+#define SCENE_SECTION_GRID	8
 
 #define OBJECT_TYPE_SIMON	0
 #define OBJECT_TYPE_BOTTOM_STAIR	1
@@ -282,9 +283,6 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 	obj->SetAnimationSet(ani_set);
 	objects.push_back(obj);
-
-	// add objects to grid
-	grid->Add(obj, x, y);
 }
 
 void CPlayScene::_ParseSection_MAP(string line)
@@ -320,6 +318,31 @@ void CPlayScene::_ParseSection_MAP(string line)
 	}
 }
 
+void CPlayScene::_ParseSection_GRID(string line)
+{
+	vector<string> tokens = split(line);
+
+	if (tokens.size() < 2) return; // skip invalid lines
+	else
+	{
+		int cellX = atoi(tokens[0].c_str());
+		int cellY = atoi(tokens[1].c_str());
+
+		for (int i = 2; i < tokens.size(); i++)
+		{
+			int object_id = atoi(tokens[i].c_str());
+			for (int j = 0; j < objects.size(); j++)
+			{
+				LPGAMEOBJECT object = objects.at(j);
+				if (object->GetID() == object_id)
+				{
+					grid->Add(object, cellX, cellY);
+				}
+			}
+		}
+	}
+}
+
 void CPlayScene::Load(int _level, int _blood, int _heart, int _alive, int _scores, int _weapon)
 {
 	//DebugOut(L"[INFO] Start loading scene resources from : %s \n", sceneFilePath);
@@ -349,6 +372,9 @@ void CPlayScene::Load(int _level, int _blood, int _heart, int _alive, int _score
 		if (line == "[MAP]") {
 			section = SCENE_SECTION_MAP; continue;
 		}
+		if (line == "[GRID]") {
+			section = SCENE_SECTION_GRID; continue;
+		}
 		if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }	
 
 		//
@@ -362,6 +388,7 @@ void CPlayScene::Load(int _level, int _blood, int _heart, int _alive, int _score
 			case SCENE_SECTION_ANIMATION_SETS: _ParseSection_ANIMATION_SETS(line); break;
 			case SCENE_SECTION_OBJECTS: _ParseSection_OBJECTS(line); break;
 			case SCENE_SECTION_MAP: _ParseSection_MAP(line); break;
+			case SCENE_SECTION_GRID: _ParseSection_GRID(line); break;
 		}
 	}
 

@@ -2,13 +2,8 @@
 
 CGrid::CGrid()
 {
-	if (792 % CELL_WIDTH == 0)
-		numCol = 792 / CELL_WIDTH;
-	else numCol = 792 / CELL_WIDTH + 1;
-
-	if (192 % CELL_HEIGHT == 0)
-		numRow = 192 / CELL_HEIGHT;
-	else numRow = 192 / CELL_HEIGHT + 1;
+	this->numCol = 5;
+	this->numRow = 2;
 
 	cells = new CCell*[numCol];
 	for (int i = 0; i < numCol; i++)
@@ -33,6 +28,11 @@ void CGrid::Add(LPGAMEOBJECT object, float x, float y)
 		cells[i][startY].Add(object);
 	}
 	//cells[startX][startY].Add(object);
+}
+
+void CGrid::Add(LPGAMEOBJECT object, int xCell, int yCell)
+{
+	cells[xCell][yCell].Add(object);
 }
 
 vector<LPGAMEOBJECT> CGrid::GetList()
