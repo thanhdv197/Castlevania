@@ -560,7 +560,7 @@
 
 # ==== Bottom Stair ====
 #id type	x	y	ani_set_id	direction
-1	1	161	90	0	-1
+1	1	161	52	0	-1
 
 # ==== SCENE PORTAL ====
 #id type	l	t	ani_set_id	r	b	scene_id

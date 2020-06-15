@@ -410,6 +410,14 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				this->isStairUp = true;
 				this->isStairDown = false;
+
+				if (this->isGoUp)
+				{
+					if (this->y > yStair + 30)
+					{
+						(stairDirection > 0) ? this->x = xStair + 4 : this->x = xStair - 4;
+					}
+				}
 			}
 		}
 		else if (dynamic_cast<CTopStair*>(coObjects->at(i))) {

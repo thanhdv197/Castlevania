@@ -542,8 +542,8 @@
 
 # ==== Bottom Stair ====
 #id type	x	y	ani_set_id	direction
-1	1	100	160	0	1
-2	1	71	52	0	1
+1	1	100	133	0	1
+2	1	68	37	0	1
 
 # ==== Top Stair ====
 #id type	x	y	ani_set_id	direction
