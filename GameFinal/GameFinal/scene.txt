@@ -570,6 +570,8 @@
 #id type	x	y	ani_set_id	item
 # TOAD
 #8	14	150	140	35	5
+# BAT
+#8	12	150	100	37	5
 # BIRD
 #8	15	150	100	34	5
 # SKELETON
