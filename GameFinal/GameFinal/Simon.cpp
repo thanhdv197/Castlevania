@@ -832,6 +832,7 @@ void CSimon::SetState(int state)
 	case SIMON_STATE_HURT:
 		isHurt = true;
 		LostBlood(1);
+		y -= 1;
 		break;
 	}
 	

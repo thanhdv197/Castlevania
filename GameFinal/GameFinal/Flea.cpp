@@ -37,7 +37,7 @@ void CFlea::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	CGameObject::Update(dt, coObjects);
 
 	// check simon position and change state bat
-	if ((this->x - this->xSimon) > DISTANCE_CHANGE_STATE && this->x > this->xSimon)
+	if (abs(this->x - this->xSimon) > DISTANCE_CHANGE_STATE && this->x > this->xSimon)
 	{
 		SetState(STATE_FLEA_FLY);
 
