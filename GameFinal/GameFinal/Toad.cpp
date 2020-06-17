@@ -8,8 +8,6 @@ CToad::CToad(int _item)
 
 	this->blood = 1;
 
-	this->nx = 1;
-
 	whipEffect = new CWhipEffect();
 
 	dieEffect = new CDieEffect();
@@ -38,6 +36,7 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	// set state of toad
 	if (this->state == STATE_TOAD_STAND)
 	{
+		(this->x < this->xSimon) ? nx = 1 : nx = -1;
 		if (abs(this->xSimon - this->x) < DISTANC_CHANGE_STATE_JUMP)
 		{
 			SetState(STATE_TOAD_JUMP);
@@ -50,7 +49,6 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		if (this->ySimon > this->y + 55)
 		{
 			SetState(STATE_TOAD_DOWN);
-			(this->x < this->xSimon) ? nx = 1 : nx = -1;
 		}
 	}
 	
@@ -169,6 +167,7 @@ void CToad::SetState(int state)
 		vy = 0.1f;
 		break;
 	case STATE_TOAD_JUMP:
+		(this->x < this->xSimon) ? nx = 1 : nx = -1;
 		if (nx > 0)
 			vx = 0.05f;
 		else vx = -0.05f;

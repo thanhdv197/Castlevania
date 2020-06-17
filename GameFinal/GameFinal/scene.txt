@@ -567,13 +567,15 @@
 7	99	0	180	0	768	320
 
 # ==== ENEMIES ====
-# type	x	y	ani_set_id	item
+#id type	x	y	ani_set_id	item
 # TOAD
-#14	150	148	35	5
+#8	14	150	140	35	5
+# BIRD
+#8	15	150	100	34	5
 # SKELETON
-#16	150	128	33	5
+#8	16	150	140	33	5
 # BOSS
-#17	150	50	32
+#8	17	150	50	32
 
 [MAP]
 # WIDTH HEIGHT	NAME
@@ -589,8 +591,8 @@
 
 [GRID]
 #X	Y	object_id...
-#0	0
-0	1	1	7
+#0	0	8
+0	1	1	7	
 #1	0
 1	1	2	7
 #2	0
