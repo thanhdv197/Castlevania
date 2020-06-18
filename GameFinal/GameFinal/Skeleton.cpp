@@ -53,26 +53,28 @@ void CSkeleton::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	CGameObject::Update(dt, coObjects);
 
 	// set direction of skeleton
-	if (this->x < this->xSimon)
-		nx = 1;
-	else nx = -1;
+	(this->x < this->xSimon) ? nx = 1 : nx = -1;
+
+	// set bone
+	if (this->state != STATE_THROW)
+	{
+		bone->SetState(STATE_NONE);
+		bone->ResetTimeThrow();
+	}
 
 	// set state of skeleton
 	if (abs(this->x - this->xSimon) < 70)
 	{
 		SetState(STATE_SKELETON_WALK);
 
+		bone->SetPosition(x, y);
+		bone->SetNx(nx);
+
 		if (abs(this->x - this->xSimon) < 50 && abs(this->ySimon - this->y) < 20)
 		{
 			SetState(STATE_THROW);
 			bone->Update(dt, coObjects);
 		}
-	}
-	// set bone position again
-	if (bone->state == STATE_NONE)
-	{
-		bone->SetPosition(x, y);
-		bone->SetNx(nx);
 	}
 
 	// check whip attack
@@ -186,13 +188,11 @@ void CSkeleton::SetState(int state)
 	{
 	case STATE_SKELETON_STAND:
 		bone->isEnable = false;
-		bone->SetPosition(x, y);
 		vx = 0;
 		vy = 0.1f;
 		break;
 	case STATE_SKELETON_WALK:
 		bone->isEnable = false;
-		bone->SetPosition(x, y);
 		if (nx > 0) vx = 0.05f;
 		else vx = -0.05f;
 		vy = 0.1f;

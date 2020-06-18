@@ -32,5 +32,6 @@ public:
 
 	void SetPosition(float x, float y);
 	void SetNx(int _nx) { this->nx = _nx; }
+	void ResetTimeThrow() { this->timeThrow = 0; }
 };
 
