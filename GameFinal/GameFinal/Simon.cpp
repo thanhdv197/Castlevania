@@ -525,6 +525,19 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				AddScores(10000);
 			}
 		}
+		else if (dynamic_cast<CBricks*>(coObjects->at(i)))
+		{
+			CBricks* bricks = dynamic_cast<CBricks*>(coObjects->at(i));
+
+			float l1, t1, r1, b1, l2, t2, r2, b2;
+			GetBoundingBox(l1, t1, r1, b1);
+			bricks->GetBoundingBox(l2, t2, r2, b2);
+
+			if (CGame::GetInstance()->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
+			{
+				y -= 3;
+			}
+		}
 	}
 
 }
@@ -683,17 +696,17 @@ void CSimon::Render()
 			whip->SetDirection(nx);
 			if (whip->GetDirection() > 0)
 			{
-				whip->SetPosition(x - 15, y + 10);
+				whip->SetPosition(x - 14, y + 5);
 			}
 			else
 			{
 				if (whip->GetLevel() > 1)
 				{
-					whip->SetPosition(x - 40, y + 10);
+					whip->SetPosition(x - 40, y + 5);
 				}
 				else
 				{
-					whip->SetPosition(x - 20, y + 10);
+					whip->SetPosition(x - 20, y + 5);
 				}
 			}
 		}
@@ -846,13 +859,10 @@ void CSimon::GetBoundingBox(float &left, float &top, float &right, float &bottom
 	right = x + SIMON_BBOX_WIDTH;
 	bottom = y + SIMON_BBOX_HEIGHT;
 
-	if (state == SIMON_STATE_JUMP)
+	if (state == SIMON_STATE_JUMP || state == SIMON_STATE_SIT)
 	{
-		left = x;
-		top = y+7;
-
 		right = x + SIMON_BBOX_WIDTH;
-		bottom = y + 23;
+		bottom = y + SIMON_BBOX_HEIGHT_SIT;
 	}
 
 }

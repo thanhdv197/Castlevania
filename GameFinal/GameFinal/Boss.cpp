@@ -222,14 +222,14 @@ void CBoss::SetState(int state)
 	case STATE_BOSS_FLY:
 		if (nx > 0)
 		{
-			vx = 0.05f;
+			vx = 0.1f;
 		}
-		else vx = -0.05f;
+		else vx = -0.1f;
 
 		if (ny > 0)
-			vy = 0.03f;
+			vy = 0.1f;
 		else
-			vy = -0.03f;
+			vy = -0.1f;
 		break;
 	case STATE_BOSS_FLY_WAIT:
 		vx = 0;

@@ -185,10 +185,14 @@ void CSkeleton::SetState(int state)
 	switch (state)
 	{
 	case STATE_SKELETON_STAND:
+		bone->isEnable = false;
+		bone->SetPosition(x, y);
 		vx = 0;
 		vy = 0.1f;
 		break;
 	case STATE_SKELETON_WALK:
+		bone->isEnable = false;
+		bone->SetPosition(x, y);
 		if (nx > 0) vx = 0.05f;
 		else vx = -0.05f;
 		vy = 0.1f;
