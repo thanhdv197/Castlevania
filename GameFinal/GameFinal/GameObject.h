@@ -121,6 +121,8 @@ public:
 	int GetID() { return this->id; }
 	void SetID(int _id) { this->id = _id; }
 
+	virtual bool CollisionPlayer(CGameObject * player) = 0;
+
 	~CGameObject();
 };
 

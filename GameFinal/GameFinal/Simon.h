@@ -167,4 +167,6 @@ public:
 	void LostBlood(int _blood);
 
 	void TotalScores(int _heart, DWORD _time);
+
+	virtual bool CollisionPlayer(CGameObject * player) { return false; }
 };

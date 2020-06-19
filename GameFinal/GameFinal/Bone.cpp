@@ -89,5 +89,20 @@ void CBone::SetPosition(float x, float y)
 	{
 		this->x = x;
 		this->y = y;
+		isAttacking = true;
 	}
+}
+
+bool CBone::CollisionPlayer(CGameObject * player)
+{
+	float l1, t1, r1, b1, l2, t2, r2, b2;
+	GetBoundingBox(l1, t1, r1, b1);
+	player->GetBoundingBox(l2, t2, r2, b2);
+
+	if (CGame::GetInstance()->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true && isAttacking == true)
+	{
+		isAttacking = false;
+		return true;
+	}
+	else return false;
 }

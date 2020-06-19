@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "bricks.h"
+#include "Game.h"
 
 #define STATE_NONE	0
 #define STATE_THROW	1
@@ -20,7 +21,7 @@ class CBone : public CGameObject
 	int ny;
 
 public:
-
+	bool isAttacking;
 	bool isEnable;
 
 	CBone();
@@ -33,5 +34,7 @@ public:
 	void SetPosition(float x, float y);
 	void SetNx(int _nx) { this->nx = _nx; }
 	void ResetTimeThrow() { this->timeThrow = 0; }
+
+	virtual bool CollisionPlayer(CGameObject * player);
 };
 

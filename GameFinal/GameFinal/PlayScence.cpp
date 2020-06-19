@@ -432,8 +432,19 @@ void CPlayScene::Update(DWORD dt)
 		player->GetPosition(xSimon, ySimon);
 		objects[i]->SetPositionSimon(xSimon, ySimon);
 
-		// set blood of boss
+		// update object
 		objects[i]->Update(dt, &coObjects);
+
+		// check enemy attack. EX: bone of skeleton
+		if (player != NULL)
+		{
+			if (objects[i]->CollisionPlayer(player) == true)
+			{
+				player->SetState(SIMON_STATE_HURT);
+			}
+		}
+
+		// set blood of boss
 		if (objects[i]->IsBoss())
 		{
 			bloodBoss = objects[i]->GetBloodBoss();

@@ -68,5 +68,7 @@ public:
 
 	void LostBlood(int _blood) { this->blood -= _blood; }
 	int GetBlood() { return this->blood; }
+
+	virtual bool CollisionPlayer(CGameObject * player) { return false; }
 };
 

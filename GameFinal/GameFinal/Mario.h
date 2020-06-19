@@ -58,4 +58,5 @@ public:
 	void Reset();
 
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
+	virtual bool CollisionPlayer(CGameObject * player) { return false; }
 };

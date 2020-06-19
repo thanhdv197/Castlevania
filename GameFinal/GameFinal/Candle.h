@@ -47,6 +47,7 @@ public:
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects);
 	virtual void Render();
 	virtual void SetState(int state);
+	virtual bool CollisionPlayer(CGameObject * player) { return false; }
 
 	int GetItem() { return this->item; }
 

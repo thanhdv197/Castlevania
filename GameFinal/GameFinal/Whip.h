@@ -55,5 +55,6 @@ public:
 
 	int GetDame() { return this->dame; }
 
+	virtual bool CollisionPlayer(CGameObject * player) { return false; }
 };
 

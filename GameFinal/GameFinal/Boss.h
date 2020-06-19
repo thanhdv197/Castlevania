@@ -60,5 +60,7 @@ public:
 	int GetBlood() { return this->blood; }
 
 	void Reset() { x = start_x; y = start_y; }
+
+	virtual bool CollisionPlayer(CGameObject * player) { return false; }
 };
 
