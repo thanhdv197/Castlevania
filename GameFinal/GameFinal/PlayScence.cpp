@@ -322,7 +322,7 @@ void CPlayScene::_ParseSection_GRID(string line)
 {
 	vector<string> tokens = split(line);
 
-	if (tokens.size() < 2) return; // skip invalid lines
+	if (tokens.size() < 3) return; // skip invalid lines
 	else
 	{
 		int cellX = atoi(tokens[0].c_str());
