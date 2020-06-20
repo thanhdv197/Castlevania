@@ -73,8 +73,8 @@ void CBone::SetState(int state)
 		break;
 	case STATE_THROW:
 		isEnable = true;
-		if (nx > 0) vx = 0.05f;
-		else vx = -0.05f;
+		if (nx > 0) vx = 0.02f;
+		else vx = -0.02f;
 		if (ny > 0) vy = 0.05f;
 		else vy = -0.05f;
 		break;

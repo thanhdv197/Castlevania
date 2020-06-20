@@ -7,7 +7,7 @@
 #include "Game.h"
 
 #define STATE_SKELETON_STAND	100
-#define STATE_SKELETON_WALK	300
+#define STATE_SKELETON_JUMP	300
 #define STATE_ITEM	200
 
 #define ANI_ITEM_WHIP	0
@@ -27,6 +27,10 @@
 #define	ITEM_WIDTH	16
 #define	ITEM_HEIGHT	16
 
+#define DISTANCE_STATE_JUMP	200
+#define DISTANCE_Y_JUMP_DOWN	50
+#define DISTANCE_STATE_THROW	70
+
 class CSkeleton : public CGameObject
 {
 	int ani;
@@ -35,15 +39,16 @@ class CSkeleton : public CGameObject
 
 	int blood;
 
-	DWORD timeChangeDirection;
-
 	CWhipEffect * whipEffect;
 
 	CDieEffect * dieEffect;
 
 	CBone* bone;
-public:
 
+	int start_y;
+public:
+	bool isJump;
+	bool isOpposite;
 	bool isEnable;
 	bool isDisplay;
 	bool isAttacked;

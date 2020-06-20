@@ -5,6 +5,7 @@ CSkeleton::CSkeleton(int _item)
 	this->isEnable = true;
 	this->isDisplay = true;
 	this->isAttacked = false;
+	this->isJump = false;
 
 	this->width = SKELETON_WIDTH;
 	this->height = SKELETON_HEIGHT;
@@ -12,8 +13,6 @@ CSkeleton::CSkeleton(int _item)
 	this->blood = 2;
 
 	this->nx = 1;
-
-	this->timeChangeDirection = 0;
 
 	whipEffect = new CWhipEffect();
 
@@ -52,6 +51,9 @@ void CSkeleton::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	CGameObject::Update(dt, coObjects);
 
+	if (this->state == STATE_SKELETON_STAND)
+		start_y = y;
+
 	// set direction of skeleton
 	(this->x < this->xSimon) ? nx = 1 : nx = -1;
 
@@ -61,21 +63,35 @@ void CSkeleton::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		bone->SetState(STATE_NONE);
 		bone->ResetTimeThrow();
 	}
+	
+	// set jump
+	if (this->state == STATE_SKELETON_JUMP)
+	{	
+		if (abs(y-start_y) > DISTANCE_Y_JUMP_DOWN)
+		{
+			isJump = false;
+			SetState(STATE_SKELETON_JUMP);
+		}
+			
+	}
 
 	// set state of skeleton
-	if (abs(this->x - this->xSimon) < 70)
+	if (abs(this->x - this->xSimon) < DISTANCE_STATE_JUMP)
 	{
-		SetState(STATE_SKELETON_WALK);
+		SetState(STATE_SKELETON_JUMP);
 
 		bone->SetPosition(x, y);
 		bone->SetNx(nx);
 
-		if (abs(this->x - this->xSimon) < 50 && abs(this->ySimon - this->y) < 20)
+		if (abs(this->x - this->xSimon) < DISTANCE_STATE_THROW)
 		{
 			SetState(STATE_THROW);
 			bone->Update(dt, coObjects);
 		}
 	}
+
+	// jump opposite
+	if (isOpposite) vx = -vx;
 
 	// check whip attack
 	if (isAttacked)
@@ -122,18 +138,21 @@ void CSkeleton::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			LPCOLLISIONEVENT e = coEventsResult[i];
 			if (dynamic_cast<CBricks*>(e->obj))
 			{
-				if (e->ny < 0)
-				{
-					x += min_tx * dx + nx * 0.4f;
-					y += min_ty * dy + ny * 0.4f;
+				x += min_tx * dx + nx * 0.4f;
+				y += min_ty * dy + ny * 0.4f;
 
-					if (nx != 0) vx = 0;
-					if (ny != 0) vy = 0;
-				}
+				if (nx != 0) vx = 0;
+				if (ny != 0) vy = 0;
+
+				isJump = true;
+
+				if (this->state == STATE_SKELETON_JUMP)
+					isOpposite = !isOpposite;
 			}
 			else
 			{
 				x += dx;
+				y += dy;
 			}
 		}
 	}
@@ -188,14 +207,14 @@ void CSkeleton::SetState(int state)
 	{
 	case STATE_SKELETON_STAND:
 		bone->isEnable = false;
+		isOpposite = false;
 		vx = 0;
 		vy = 0.1f;
 		break;
-	case STATE_SKELETON_WALK:
+	case STATE_SKELETON_JUMP:
 		bone->isEnable = false;
-		if (nx > 0) vx = 0.05f;
-		else vx = -0.05f;
-		vy = 0.1f;
+		(nx > 0) ? vx = 0.06f : vx = -0.06f;
+		(isJump==true) ? vy = -0.1f : vy = 0.1f;
 		break;
 	case STATE_ITEM:
 		bone->isEnable = false;

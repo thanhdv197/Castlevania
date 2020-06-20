@@ -546,7 +546,7 @@
 # type: 10 = army, 11 = zombie, 12 = bat, 13 = flea, 14 = toad, 15 = bird, 16 = skeleton, 17 = boss
 # ==== SIMON ====
 #id type	x	y	ani_set_id
-0	0	17	100	1
+0	0	17	167	1
 
 # ==== Bottom Stair ====
 #id type	x	y	ani_set_id	direction

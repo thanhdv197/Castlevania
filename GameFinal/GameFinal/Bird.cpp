@@ -131,6 +131,10 @@ void CBird::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 						if (ny != 0) vy = 0;
 					}
 				}
+				else
+				{
+					x += dx;
+				}
 
 			}
 		}
