@@ -147,6 +147,8 @@ void CScores::Render()
 			CSprites::GetInstance()->Get(30017)->Draw(camX + 163, 19);
 		else if(stateWeapon == WEAPON_STATE_BOMERANG)
 			CSprites::GetInstance()->Get(30011)->Draw(camX + 163, 19);
+		else if (stateWeapon == WEAPON_STATE_FIRE)
+			CSprites::GetInstance()->Get(30016)->Draw(camX + 163, 19);
 	}
 
 }

@@ -18,7 +18,7 @@ CWeapon::CWeapon(float x, float y, int nx, int state) : CGameObject()
 	this->nx = nx;
 
 	this->isEnable = true;
-
+	this->isBurning = false;
 	this->state = state;
 
 	SetAnimationSet(CAnimationSets::GetInstance()->Get(48));
@@ -36,7 +36,7 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 		if (this->state == WEAPON_STATE_BOMERANG)
 		{
-			if (timeAttack > 2000)
+			if (timeAttack > TIME_ENABLE_BOMERANG_FIRE)
 			{
 				this->isEnable = false;
 				this->isAttack = false;
@@ -45,18 +45,15 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			{
 				SetState(state);
 
-				if (timeAttack > 1000)
+				if (timeAttack > TIME_CHANGE_DIRECTION_BOMERANG)
 				{
 					vx = -vx;
 				}
-
-				x += dx;
-				y += dy;
 			}
 		}
-		else
+		else if (this->state == WEAPON_STATE_FIRE)
 		{
-			if (timeAttack > 1000)
+			if (timeAttack > TIME_ENABLE_BOMERANG_FIRE)
 			{
 				this->isEnable = false;
 				this->isAttack = false;
@@ -65,16 +62,34 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			{
 				SetState(state);
 
-				if (timeAttack < 500)
+				if (timeAttack < TIME_DOWN_FIRE)
 				{
 					vy = -vy;
 				}
 				else vy += vy;
-
-				x += dx;
-				y += dy;
 			}
 		}
+		else
+		{
+			if (timeAttack > TIME_ENABLE_KNIFE_AXE)
+			{
+				this->isEnable = false;
+				this->isAttack = false;
+			}
+			else
+			{
+				SetState(state);
+
+				if (timeAttack < TIME_DOWN_AXE)
+				{
+					vy = -vy;
+				}
+				else vy += vy;
+			}
+		}
+
+		x += dx;
+		y += dy;
 		
 	}
 
@@ -222,6 +237,18 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 					isAttack = false;
 				}
 			}
+			else if (dynamic_cast<CBricks*>(coObjects->at(i))) {
+				CBricks* bricks = dynamic_cast<CBricks*>(coObjects->at(i));
+
+				float l1, t1, r1, b1, l2, t2, r2, b2;
+				GetBoundingBox(l1, t1, r1, b1);
+				bricks->GetBoundingBox(l2, t2, r2, b2);
+
+				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
+				{
+					isBurning = true;
+				}
+			}
 		}
 	}
 	
@@ -251,6 +278,10 @@ void CWeapon::Render()
 			else if (this->state == WEAPON_STATE_BOMERANG)
 			{
 				ani = WEAPON_ANI_BOMERANG;
+			}
+			else if (this->state == WEAPON_STATE_FIRE)
+			{
+				(isBurning) ? ani = WEAPON_ANI_FIRE_BURN : ani = WEAPON_ANI_FIRE;
 			}
 
 			animation_set->at(ani)->Render(x, y);
@@ -300,31 +331,27 @@ void CWeapon::SetState(int state)
 	switch (state)
 	{
 	case WEAPON_STATE_KNIFE:
-		if (nx > 0)
-		{
-			vx = WEAPON_FLY_SPEED;
-		}
-		else vx = -WEAPON_FLY_SPEED;
+		(nx > 0) ? vx = WEAPON_FLY_SPEED : vx = -WEAPON_FLY_SPEED;
 		vy = 0;
 		this->dame = 1;
 		break;
 	case WEAPON_STATE_AXE:
-		if (nx > 0)
-		{
-			vx = WEAPON_FLY_SPEED;
-		}
-		else vx = -WEAPON_FLY_SPEED;
+		(nx > 0) ? vx = WEAPON_FLY_SPEED : vx = -WEAPON_FLY_SPEED;
 		vy = 0.04f;
 		this->dame = 2;
 		break;
 	case WEAPON_STATE_BOMERANG:
-		if (nx > 0)
-		{
-			vx = WEAPON_FLY_SPEED;
-		}
-		else vx = -WEAPON_FLY_SPEED;
+		(nx > 0) ? vx = WEAPON_FLY_SPEED : vx = -WEAPON_FLY_SPEED;
 		vy = 0;
 		this->dame = 2;
+		break;
+	case WEAPON_STATE_FIRE:
+		if (isBurning)
+			vx = 0;
+		else
+			(nx > 0) ? vx = WEAPON_FLY_SPEED : vx = -WEAPON_FLY_SPEED;
+		(isBurning) ? vy = 0 : vy = 0.05f;
+		this->dame = 1;
 		break;
 	default:
 		break;
