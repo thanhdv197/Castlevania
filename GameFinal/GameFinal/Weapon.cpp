@@ -106,9 +106,21 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
-					torch->isAttacked = true;
-					torch->SetBlood(GetDame());
-					this->isAttack = false;
+					if (this->state != WEAPON_STATE_FIRE)
+					{
+						torch->isAttacked = true;
+						torch->SetBlood(GetDame());
+						this->isAttack = false;
+					}
+					else
+					{
+						if (isBurning)
+						{
+							torch->isAttacked = true;
+							torch->SetBlood(GetDame());
+							this->isAttack = false;
+						}
+					}
 				}
 			}
 			else if (dynamic_cast<CCandle*>(coObjects->at(i))) {
@@ -120,9 +132,21 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
-					candle->isAttacked = true;
-					candle->SetBlood(GetDame());
-					isAttack = false;
+					if (this->state != WEAPON_STATE_FIRE)
+					{
+						candle->isAttacked = true;
+						candle->SetBlood(GetDame());
+						this->isAttack = false;
+					}
+					else
+					{
+						if (isBurning)
+						{
+							candle->isAttacked = true;
+							candle->SetBlood(GetDame());
+							this->isAttack = false;
+						}
+					}
 				}
 			}
 			else if (dynamic_cast<CArmy*>(coObjects->at(i))) {
@@ -134,9 +158,21 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
-					army->isAttacked = true;
-					army->LostBlood(GetDame());
-					this->isAttack = false;
+					if (this->state != WEAPON_STATE_FIRE)
+					{
+						army->isAttacked = true;
+						army->LostBlood(GetDame());
+						this->isAttack = false;
+					}
+					else
+					{
+						if (isBurning)
+						{
+							army->isAttacked = true;
+							army->LostBlood(GetDame());
+							this->isAttack = false;
+						}
+					}
 				}
 			}
 			else if (dynamic_cast<CZombie*>(coObjects->at(i))) {
@@ -148,9 +184,21 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
-					zombie->isAttacked = true;
-					zombie->LostBlood(GetDame());
-					this->isAttack = false;
+					if (this->state != WEAPON_STATE_FIRE)
+					{
+						zombie->isAttacked = true;
+						zombie->LostBlood(GetDame());
+						this->isAttack = false;
+					}
+					else
+					{
+						if (isBurning)
+						{
+							zombie->isAttacked = true;
+							zombie->LostBlood(GetDame());
+							this->isAttack = false;
+						}
+					}
 				}
 			}
 			else if (dynamic_cast<CBat*>(coObjects->at(i))) {
@@ -162,9 +210,21 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
-					bat->isAttacked = true;
-					bat->LostBlood(GetDame());
-					isAttack = false;
+					if (this->state != WEAPON_STATE_FIRE)
+					{
+						bat->isAttacked = true;
+						bat->LostBlood(GetDame());
+						isAttack = false;
+					}
+					else
+					{
+						if (isBurning)
+						{
+							bat->isAttacked = true;
+							bat->LostBlood(GetDame());
+							isAttack = false;
+						}
+					}
 				}
 			}
 			else if (dynamic_cast<CFlea*>(coObjects->at(i))) {
@@ -176,9 +236,21 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
-					flea->isAttacked = true;
-					flea->LostBlood(GetDame());
-					isAttack = false;
+					if (this->state != WEAPON_STATE_FIRE)
+					{
+						flea->isAttacked = true;
+						flea->LostBlood(GetDame());
+						isAttack = false;
+					}
+					else
+					{
+						if (isBurning)
+						{
+							flea->isAttacked = true;
+							flea->LostBlood(GetDame());
+							isAttack = false;
+						}
+					}
 				}
 			}
 			else if (dynamic_cast<CBird*>(coObjects->at(i))) {
@@ -190,9 +262,21 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
-					bird->isAttacked = true;
-					bird->LostBlood(GetDame());
-					isAttack = false;
+					if (this->state != WEAPON_STATE_FIRE)
+					{
+						bird->isAttacked = true;
+						bird->LostBlood(GetDame());
+						isAttack = false;
+					}
+					else
+					{
+						if (isBurning)
+						{
+							bird->isAttacked = true;
+							bird->LostBlood(GetDame());
+							isAttack = false;
+						}
+					}
 				}
 			}
 			else if (dynamic_cast<CToad*>(coObjects->at(i))) {
@@ -204,9 +288,21 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
-					toad->isAttacked = true;
-					toad->LostBlood(GetDame());
-					isAttack = false;
+					if (this->state != WEAPON_STATE_FIRE)
+					{
+						toad->isAttacked = true;
+						toad->LostBlood(GetDame());
+						isAttack = false;
+					}
+					else
+					{
+						if (isBurning)
+						{
+							toad->isAttacked = true;
+							toad->LostBlood(GetDame());
+							isAttack = false;
+						}
+					}
 				}
 			}
 			else if (dynamic_cast<CSkeleton*>(coObjects->at(i))) {
@@ -218,9 +314,21 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
-					skeleton->isAttacked = true;
-					skeleton->LostBlood(GetDame());
-					isAttack = false;
+					if (this->state != WEAPON_STATE_FIRE)
+					{
+						skeleton->isAttacked = true;
+						skeleton->LostBlood(GetDame());
+						isAttack = false;
+					}
+					else
+					{
+						if (isBurning)
+						{
+							skeleton->isAttacked = true;
+							skeleton->LostBlood(GetDame());
+							isAttack = false;
+						}
+					}
 				}
 			}
 			else if (dynamic_cast<CBoss*>(coObjects->at(i))) {
@@ -232,9 +340,21 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 				if (game->CheckCollision(l1, t1, r1, b1, l2, t2, r2, b2) == true)
 				{
-					boss->isAttacked = true;
-					boss->LostBlood(GetDame());
-					isAttack = false;
+					if (this->state != WEAPON_STATE_FIRE)
+					{
+						boss->isAttacked = true;
+						boss->LostBlood(GetDame());
+						isAttack = false;
+					}
+					else
+					{
+						if (isBurning)
+						{
+							boss->isAttacked = true;
+							boss->LostBlood(GetDame());
+							isAttack = false;
+						}
+					}
 				}
 			}
 			else if (dynamic_cast<CBricks*>(coObjects->at(i))) {
