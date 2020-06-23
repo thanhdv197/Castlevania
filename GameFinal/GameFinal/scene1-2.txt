@@ -6,6 +6,7 @@
 10	textures\item.png	116	116	116
 40	textures\scores.png	176	224	248
 50	textures\blood.png	176	224	248
+60	textures\bricks.png	176	224	248
 
 # id	left	top	right	bottom	texture_id
 [SPRITES]
@@ -317,6 +318,24 @@
 20013	32	64	64	96	30
 20014	64	64	96	96	30
 
+# ==== Stair ====
+# -- left 2
+20050	0	42	32	72	60
+# -- left 1
+20051	89	42	121	72	60
+# -- left 1 end
+20052	187	42	219	72	60
+# -- left 3 
+20053	0	85	32	117	60
+
+# -- right 2
+20054	45	42	77	72	60
+# -- right 1
+20055	138	42	170	72	60
+# -- right 1 end
+20056	236	42	268	72	60
+# -- right 3
+20057	45	85	77	117	60
 						
 # ==== SCORES ====
 20099	0	0	320	40	40

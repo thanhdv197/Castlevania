@@ -5,11 +5,12 @@
 #include "Game.h"
 
 #define STATE_BOSS_STAND	100
-#define STATE_BOSS_FLY	200
-#define STATE_BOSS_FLY_WAIT	300
-#define STATE_BOSS_DIE	400
+#define STATE_BOSS_FLY_1	200
+#define STATE_BOSS_FLY_2	700
+#define STATE_BOSS_WAIT		300
+#define STATE_BOSS_DIE		400
 #define STATE_BOSS_ATTACK	500
-#define STATE_GLOBULAR	600
+#define STATE_GLOBULAR		600
 
 #define ANI_BOSS_STAND	0
 #define ANI_BOSS_FLY	1
@@ -43,6 +44,8 @@ class CBoss : public CGameObject
 	DWORD timeDead;
 
 	CWhipEffect * whipEffect;
+
+	int oldState;
 public:
 
 	bool isEnable;
