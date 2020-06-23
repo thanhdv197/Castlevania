@@ -64,8 +64,6 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	}
 	else 
 	{
-		timeChangeState += dt;
-
 		if (this->state != STATE_BOSS_WAIT)
 		{
 			this->oldState = this->state;
@@ -73,28 +71,32 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 		if (this->state == STATE_BOSS_FLY_1)
 		{
-			if (timeChangeState > TIME_CHANGE_STATE)
+			if (this->ySimon - this->y < DISTANCE_Y_CHANGE_FLY)
 			{
-				timeChangeState = 0;
-				SetState(STATE_BOSS_WAIT);
+				if (this->x > this->xSimon)
+				{
+					SetState(STATE_BOSS_FLY_2);
+				}
+				else
+					SetState(STATE_BOSS_WAIT);
 			}
 		}
 		else if (this->state == STATE_BOSS_FLY_2)
 		{
-			if (timeChangeState > TIME_CHANGE_NY)
+			if (this->y - this->ySimon > DISTANCE_Y_CHANGE_FLY)
 			{
 				ny = -1;
 				SetState(STATE_BOSS_FLY_2);
 			}
 
-			if (timeChangeState > TIME_CHANGE_STATE)
+			if (this->ySimon - this->y > DISTANCE_Y_FINISH_FLY_2)
 			{
-				timeChangeState = 0;
 				SetState(STATE_BOSS_WAIT);
 			}
 		}
 		else if (this->state == STATE_BOSS_WAIT)
 		{
+			timeChangeState += dt;
 			if (timeChangeState > TIME_WAIT)
 			{
 				timeChangeState = 0;
@@ -122,13 +124,16 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	if (x + 48 >= LIMIT_X)
 	{
 		SetState(STATE_BOSS_WAIT);
+		x -= 10;
+		y -= 10;
 	}
-	
+
 	// change direction when boss touch limit height map
-	/*if (y >= ySimon && y + 48 >= CGame::GetInstance()->GetScreenHeight())
+	if (this->y < 40)
 	{
 		SetState(STATE_BOSS_WAIT);
-	}*/
+		y += 1;
+	}
 		
 	// check whip attack
 	if (isAttacked)
@@ -244,12 +249,12 @@ void CBoss::SetState(int state)
 		ny = 1;
 		break;
 	case STATE_BOSS_FLY_1:
-		vx = -0.1f;
-		(ny > 0) ? vy = 0.09f : vy = -0.09f;
+		vx = -0.05f;
+		(ny > 0) ? vy = 0.05f : vy = -0.05f;
 		break;
 	case STATE_BOSS_FLY_2:
 		vx = 0.2f;
-		(ny > 0) ? vy = 0.05f : vy = -0.05f;
+		(ny > 0) ? vy = 0.07f : vy = -0.07f;
 		break;
 	case STATE_BOSS_WAIT:
 		vx = 0;
