@@ -45,7 +45,7 @@ class CSkeleton : public CGameObject
 
 	CBone* bone;
 
-	int start_y;
+	int start_y, start_x;
 public:
 	bool isJump;
 	bool isOpposite;

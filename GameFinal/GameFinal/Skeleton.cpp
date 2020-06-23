@@ -52,7 +52,10 @@ void CSkeleton::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	CGameObject::Update(dt, coObjects);
 
 	if (this->state == STATE_SKELETON_STAND)
+	{
+		start_x = x;
 		start_y = y;
+	}
 
 	// set direction of skeleton
 	(this->x < this->xSimon) ? nx = 1 : nx = -1;
@@ -146,8 +149,11 @@ void CSkeleton::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				isJump = true;
 
-				if (this->state == STATE_SKELETON_JUMP)
-					isOpposite = !isOpposite;
+				/*if (this->state == STATE_SKELETON_JUMP)
+					isOpposite = !isOpposite;*/
+				if (abs(this->x - this->start_x) > 30)
+					isOpposite = true;
+				else isOpposite = false;
 			}
 			else
 			{
