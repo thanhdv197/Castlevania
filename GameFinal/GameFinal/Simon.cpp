@@ -390,6 +390,16 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				this->stairDirection = topStair->GetDirection();
 				topStair->GetPosition(xStair, yStair);
 			}
+			else if (dynamic_cast<CFlyBrick *>(e->obj))
+			{
+				CFlyBrick *flyBrick = dynamic_cast<CFlyBrick *>(e->obj);
+				
+				float vxBrick, vyBrick;
+				flyBrick->GetSpeed(vxBrick, vyBrick);
+
+				x += 2*vxBrick * dt;
+				y += 2*vyBrick * dt;
+			}
 		}
 	}
 

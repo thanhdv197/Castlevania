@@ -14,6 +14,7 @@
 #include "Boss.h"
 #include "BottomStair.h"
 #include "TopStair.h"
+#include "FlyBrick.h"
 
 #define SIMON_WALKING_SPEED		0.1f 
 //0.1f

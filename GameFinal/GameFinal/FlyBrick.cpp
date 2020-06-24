@@ -49,6 +49,10 @@ void CFlyBrick::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				vx = -vx;
 			}
+			else
+			{
+				x += dx;
+			}
 
 		}
 	}
