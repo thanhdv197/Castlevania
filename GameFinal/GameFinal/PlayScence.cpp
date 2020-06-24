@@ -182,7 +182,9 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	case OBJECT_TYPE_BOTTOM_STAIR:
 		{
 			int direction = atoi(tokens[5].c_str());
-			obj = new CBottomStair(x, y, direction); 
+			int state_stair = atoi(tokens[6].c_str());
+			int num_stair = atoi(tokens[7].c_str());
+			obj = new CBottomStair(x, y, direction, state_stair, num_stair); 
 			break;
 		}
 	case OBJECT_TYPE_TOP_STAIR:

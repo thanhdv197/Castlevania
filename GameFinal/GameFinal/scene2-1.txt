@@ -6,7 +6,7 @@
 10	textures\item.png	116	116	116
 40	textures\scores.png	176	224	248
 50	textures\blood.png	176	224	248
-60	textures\bricks.png	176	224	248
+60	textures\bricksEdit.png	176	224	248
 
 # id	left	top	right	bottom	texture_id
 [SPRITES]
@@ -335,22 +335,22 @@
 20030	96	96	128	128	30
 
 # ==== Stair ====
-# -- left 2
+# -- right 2
 20050	0	42	32	72	60
-# -- left 1
+# -- right 1
 20051	89	42	121	72	60
-# -- left 1 end
+# -- right 1 end
 20052	187	42	219	72	60
-# -- left 3 
+# -- right 3 
 20053	0	85	32	117	60
 
-# -- right 2
+# -- left 2
 20054	45	42	77	72	60
-# -- right 1
+# -- left 1
 20055	138	42	170	72	60
-# -- right 1 end
+# -- left 1 end
 20056	236	42	268	72	60
-# -- right 3
+# -- left 3
 20057	45	85	77	117	60
 						
 # ==== SCORES ====
@@ -551,6 +551,25 @@
 # --globular
 835	30079	100	30080	100
 
+# ==== Stair ====
+# -- right 2
+840	20050	100
+# -- right 1
+841	20051	100
+# -- right 1 end
+842	20052	100
+# -- right 3 
+843	20053	100
+
+# -- left 2
+844	20054	100
+# -- left 1
+845	20055	100
+# -- left 1 end
+846	20056	100
+# -- left 3
+847	20057	100
+
 
 #
 # id	ani1	ani2	ani3
@@ -572,6 +591,8 @@
 45	801	802	804	810	807	808	809	836
 # ==== FLY BRICKS ====
 44	813
+# ==== STAIR ====
+43	840	841	842	843	844	845	846	847
 # ==== ENEMIES ====
 # ARMY
 39	801	802	804	810	807	808	809	811	812
@@ -599,8 +620,8 @@
 0	0	704	116	1
 
 # ==== Bottom Stair ====
-#id type	x	y	ani_set_id	direction
-1	1	161	52	0	-1
+#id type	x	y	ani_set_id	direction	state_stair	num_stair
+1	1	161	52	0	-1	2	2
 
 # ==== SCENE PORTAL ====
 #id type	l	t	ani_set_id	r	b	scene_id

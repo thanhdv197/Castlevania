@@ -139,6 +139,9 @@
     <Filter Include="Objects\Stair\TopStair">
       <UniqueIdentifier>{2adda0e7-363e-4b06-b7a2-5607d14ec4e9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\Stair\Stair">
+      <UniqueIdentifier>{d43cc5ca-a3f9-41e0-9290-f287b4d43f34}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animations.cpp">
@@ -251,6 +254,9 @@
     </ClCompile>
     <ClCompile Include="Bone.cpp">
       <Filter>Objects\Enemies\Skeleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Stair.cpp">
+      <Filter>Objects\Stair\Stair</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -367,6 +373,9 @@
     </ClInclude>
     <ClInclude Include="Bone.h">
       <Filter>Objects\Enemies\Skeleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Stair.h">
+      <Filter>Objects\Stair\Stair</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
