@@ -49,7 +49,7 @@ void CMap::Render()
 			float x = 32 * (j - startCol) + xCam - (int)xCam % 32;
 			float y = 32 * i + 20;	// edit to fit scores bar
 
-			if (tileMap[j][i] != NULL)
+			if (tileMap[j][i] != ID_NOT_DRAW)
 			{
 				CSprites::GetInstance()->Get(tileMap[j][i])->Draw(x, y);
 			}

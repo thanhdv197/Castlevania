@@ -3,7 +3,8 @@
 #include "Animations.h"
 #include "Game.h"
 
-#define TILEMAP_ID_START	20000;
+#define TILEMAP_ID_START	20000
+#define ID_NOT_DRAW			20049
 
 class CMap
 {
