@@ -4,12 +4,9 @@
 #include "Game.h"
 
 #define TILEMAP_ID_START	20000
-#define ID_NOT_DRAW			20049
 
 class CMap
 {
-	//static CMap* __instance;
-
 	int width;
 	int height;
 
@@ -21,7 +18,6 @@ class CMap
 	int tileMap[500][500];
 
 public:
-	//static CMap* GetInstance();
 	CMap();
 	void Add(int col, int row, int idTile);
 	void Render();

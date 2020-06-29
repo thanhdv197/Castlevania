@@ -36,6 +36,7 @@ public:
 	void Add(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex);
 	LPSPRITE Get(int id);
 	void Clear();
+	bool CheckSprite(int _id) { if (sprites.find(_id) == sprites.end()) return false; return true; }
 
 	static CSprites * GetInstance();
 };
