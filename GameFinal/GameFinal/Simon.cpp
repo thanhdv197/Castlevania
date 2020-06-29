@@ -611,37 +611,11 @@ void CSimon::Render()
 	}
 	else if (state == SIMON_STATE_GO_UP && isGoUp == true)
 	{
-		if (nx > 0)
-		{
-			if (isAttack)
-				ani = SIMON_ANI_ATTACK_UP_RIGHT;
-			else
-				ani = SIMON_ANI_GO_UP_RIGHT;
-		}
-		else
-		{
-			if (isAttack)
-				ani = SIMON_ANI_ATTACK_UP_LEFT;
-			else
-				ani = SIMON_ANI_GO_UP_LEFT;
-		}
+		(nx > 0) ? ani = SIMON_ANI_GO_UP_RIGHT : ani = SIMON_ANI_GO_UP_LEFT;
 	}
 	else if (state == SIMON_STATE_GO_DOWN && isGoDown == true)
 	{
-		if (nx > 0)
-		{
-			if (isAttack)
-				ani = SIMON_ANI_ATTACK_DOWN_RIGHT;
-			else
-				ani = SIMON_ANI_GO_DOWN_RIGHT;
-		}
-		else
-		{
-			if (isAttack)
-				ani = SIMON_ANI_ATTACK_DOWN_LEFT;
-			else
-				ani = SIMON_ANI_GO_DOWN_LEFT;
-		}
+		(nx > 0) ? ani = SIMON_ANI_GO_DOWN_RIGHT : ani = SIMON_ANI_GO_DOWN_LEFT;
 	}
 	else
 	{
@@ -650,8 +624,17 @@ void CSimon::Render()
 			if (isAttack)
 			{
 				if (nx > 0)
+				{
 					ani = SIMON_ANI_ATTACK_RIGHT;
-				else ani = SIMON_ANI_ATTACK_LEFT;
+					if (isGoUp) ani = SIMON_ANI_ATTACK_UP_RIGHT;
+					if (isGoDown)ani = SIMON_ANI_ATTACK_DOWN_RIGHT;
+				}
+				else
+				{
+					ani = SIMON_ANI_ATTACK_LEFT;
+					if (isGoUp) ani = SIMON_ANI_ATTACK_UP_LEFT;
+					if (isGoDown)ani = SIMON_ANI_ATTACK_DOWN_LEFT;
+				}
 			}
 			else if (isLevelUp)
 			{
