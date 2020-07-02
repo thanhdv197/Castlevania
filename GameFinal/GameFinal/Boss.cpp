@@ -71,14 +71,9 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 		if (this->state == STATE_BOSS_FLY_1)
 		{
-			if (this->ySimon - this->y < DISTANCE_Y_CHANGE_FLY)
+			if (this->ySimon - this->y < DISTANCE_Y_CHANGE_WAIT && ny > 0)
 			{
-				if (this->x > this->xSimon)
-				{
-					SetState(STATE_BOSS_FLY_2);
-				}
-				else
-					SetState(STATE_BOSS_WAIT);
+				SetState(STATE_BOSS_WAIT);
 			}
 		}
 		else if (this->state == STATE_BOSS_FLY_2)
@@ -125,7 +120,7 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	{
 		SetState(STATE_BOSS_WAIT);
 		x -= 10;
-		y -= 10;
+		//y -= 10;
 	}
 
 	// change direction when boss touch limit height map
