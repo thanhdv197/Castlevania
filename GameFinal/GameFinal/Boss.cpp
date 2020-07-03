@@ -75,6 +75,12 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				SetState(STATE_BOSS_WAIT);
 			}
+
+			if (this->x <= CGame::GetInstance()->GetCamPosX())
+			{
+				x += 1;
+				y += 1;
+			}
 		}
 		else if (this->state == STATE_BOSS_FLY_2)
 		{
@@ -85,6 +91,11 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			}
 
 			if (this->ySimon - this->y > DISTANCE_Y_FINISH_FLY_2)
+			{
+				SetState(STATE_BOSS_WAIT);
+			}
+
+			if (this->x - this->xSimon > DISTANCE_X_FINISH_FLY_2)
 			{
 				SetState(STATE_BOSS_WAIT);
 			}
@@ -120,7 +131,7 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	{
 		SetState(STATE_BOSS_WAIT);
 		x -= 10;
-		//y -= 10;
+		y -= 2;
 	}
 
 	// change direction when boss touch limit height map
