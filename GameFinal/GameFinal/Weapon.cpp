@@ -451,7 +451,7 @@ void CWeapon::SetState(int state)
 	switch (state)
 	{
 	case WEAPON_STATE_KNIFE:
-		(nx > 0) ? vx = WEAPON_FLY_SPEED : vx = -WEAPON_FLY_SPEED;
+		(nx > 0) ? vx = 0.2f : vx = -0.2f;
 		vy = 0;
 		this->dame = 1;
 		break;

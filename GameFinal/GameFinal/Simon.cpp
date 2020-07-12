@@ -371,6 +371,8 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				this->isStairUp = true;
 				this->isStairDown = false;
 
+				this->isGoDown = false;
+
 				x += dx;
 
 				this->stairDirection = bottomStair->GetDirection();
@@ -382,6 +384,8 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				CTopStair *topStair = dynamic_cast<CTopStair *>(e->obj);
 				this->isStairDown = true;
 				this->isStairUp = false;
+
+				this->isGoUp = false;
 
 				x += dx;
 				/*if ( ny<0 )
