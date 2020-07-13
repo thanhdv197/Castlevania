@@ -77,11 +77,6 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	{
 		timeHurt += dt;
 
-		// set position when hurt
-		/*if (nx > 0)
-			x -= 1;
-		else x += 1;*/
-
 		if (timeHurt > 300)
 		{
 			SetState(SIMON_STATE_SIT);
@@ -109,10 +104,14 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		CalcPotentialCollisions(coObjects, coEvents);
 
 	// reset untouchable timer if untouchable time has passed
-	if (GetTickCount() - untouchable_start > SIMON_UNTOUCHABLE_TIME)
+	if (untouchable == 1)
 	{
-		untouchable_start = 0;
-		untouchable = 0;
+		untouchable_start += dt;
+		if (untouchable_start > SIMON_UNTOUCHABLE_TIME)
+		{
+			untouchable = 0;
+			untouchable_start = 0;
+		}
 	}
 
 	// level up finish
@@ -244,7 +243,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					candle->isDisplay = false;
 				}
 			}
-			else if (dynamic_cast<CArmy *>(e->obj))
+			else if (dynamic_cast<CArmy *>(e->obj) && untouchable == 0)
 			{
 				CArmy *army = dynamic_cast<CArmy *>(e->obj);
 
@@ -258,7 +257,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					army->isDisplay = false;
 				}
 			}
-			else if (dynamic_cast<CZombie *>(e->obj))
+			else if (dynamic_cast<CZombie *>(e->obj) && untouchable == 0)
 			{
 				CZombie *zombie = dynamic_cast<CZombie *>(e->obj);
 
@@ -272,7 +271,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					zombie->isDisplay = false;
 				}
 			}
-			else if (dynamic_cast<CBat *>(e->obj))
+			else if (dynamic_cast<CBat *>(e->obj) && untouchable == 0)
 			{
 				CBat *bat = dynamic_cast<CBat *>(e->obj);
 
@@ -286,7 +285,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					bat->isDisplay = false;
 				}
 			}
-			else if (dynamic_cast<CFlea *>(e->obj))
+			else if (dynamic_cast<CFlea *>(e->obj) && untouchable == 0)
 			{
 				CFlea *flea = dynamic_cast<CFlea *>(e->obj);
 
@@ -300,7 +299,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					flea->isDisplay = false;
 				}
 			}
-			else if (dynamic_cast<CBird *>(e->obj))
+			else if (dynamic_cast<CBird *>(e->obj) && untouchable == 0)
 			{
 				CBird *bird = dynamic_cast<CBird *>(e->obj);
 
@@ -314,7 +313,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					bird->isDisplay = false;
 				}
 			}
-			else if (dynamic_cast<CToad *>(e->obj))
+			else if (dynamic_cast<CToad *>(e->obj) && untouchable == 0)
 			{
 				CToad *toad = dynamic_cast<CToad *>(e->obj);
 
@@ -328,7 +327,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					toad->isDisplay = false;
 				}
 			}
-			else if (dynamic_cast<CSkeleton *>(e->obj))
+			else if (dynamic_cast<CSkeleton *>(e->obj) && untouchable == 0)
 			{
 				CSkeleton *skeleton = dynamic_cast<CSkeleton *>(e->obj);
 
@@ -342,16 +341,7 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					skeleton->isDisplay = false;
 				}
 			}
-			else if (dynamic_cast<CBone *>(e->obj))
-			{
-				CBone *bone = dynamic_cast<CBone *>(e->obj);
-
-				if (bone->GetState() == STATE_THROW)
-				{
-					SetState(SIMON_STATE_HURT);
-				}
-			}
-			else if (dynamic_cast<CBoss *>(e->obj))
+			else if (dynamic_cast<CBoss *>(e->obj) && untouchable == 0)
 			{
 				CBoss *boss = dynamic_cast<CBoss *>(e->obj);
 
@@ -842,6 +832,7 @@ void CSimon::SetState(int state)
 	case SIMON_STATE_HURT:
 		isHurt = true;
 		LostBlood(1);
+		(nx > 0) ? x -= 10 : x += 10;
 		y -= 1;
 		break;
 	}
@@ -914,6 +905,8 @@ void CSimon::CollisionItem(int item)
 
 void CSimon::LostBlood(int _blood)
 {
+	untouchable = 1;
+
 	if (this->alive > 0)
 	{
 		if (this->blood > 1)

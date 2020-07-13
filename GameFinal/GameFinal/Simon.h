@@ -82,7 +82,7 @@
 #define SIMON_BBOX_HEIGHT			30
 #define SIMON_BBOX_HEIGHT_SIT		23
 
-#define SIMON_UNTOUCHABLE_TIME		5000
+#define SIMON_UNTOUCHABLE_TIME		2000
 
 
 class CSimon : public CGameObject
