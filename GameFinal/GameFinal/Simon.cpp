@@ -832,7 +832,6 @@ void CSimon::SetState(int state)
 	case SIMON_STATE_HURT:
 		isHurt = true;
 		LostBlood(1);
-		(nx > 0) ? x -= 10 : x += 10;
 		y -= 1;
 		break;
 	}
@@ -906,6 +905,10 @@ void CSimon::CollisionItem(int item)
 void CSimon::LostBlood(int _blood)
 {
 	untouchable = 1;
+	if (isGoUp == false && isGoDown == false)
+	{
+		(nx > 0) ? x -= 10 : x += 10;
+	}
 
 	if (this->alive > 0)
 	{
