@@ -122,24 +122,6 @@ void CSimon::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			isLevelUp = false;
 	}
 
-	// stop with last frame of attack state
-	if (isAttack && animation_set->at(ani)->GetCurrentFrame() == 2)
-	{
-		if (usingWhip)
-		{
-			if (whip->GetCurrentFrame() == 2)
-			{
-				usingWhip = false;
-			}
-			else
-			{
-				whip->SetCurrentFrame(2);
-			}
-		}
-
-		isAttack = false;
-	}
-
 	// update whip
 	whip->Update(dt, coObjects);
 
@@ -672,7 +654,7 @@ void CSimon::Render()
 	}
 
 	int alpha = 255;
-	if (untouchable) alpha = 128;
+	if (untouchable) alpha = 150;
 	animation_set->at(ani)->Render(x, y, alpha);
 
 	// using whip for attack
@@ -735,6 +717,24 @@ void CSimon::Render()
 		{
 			weapon->Render();
 		}
+	}
+
+	// stop with last frame of attack state
+	if (isAttack && animation_set->at(ani)->GetCurrentFrame() == 2)
+	{
+		if (usingWhip)
+		{
+			if (whip->GetCurrentFrame() == 2)
+			{
+				usingWhip = false;
+			}
+			else
+			{
+				whip->SetCurrentFrame(2);
+			}
+		}
+
+		isAttack = false;
 	}
 
 	RenderBoundingBox();
