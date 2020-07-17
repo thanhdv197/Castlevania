@@ -148,6 +148,21 @@ void CSkeleton::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					SetState(STATE_THROW);
 					bone->Update(dt, coObjects);
+
+					if (this->state == STATE_THROW)
+					{
+						timeWalkThrow += dt;
+						if (timeWalkThrow > TIME_WALK_THROW)
+						{
+							vx = -vx;
+							if (timeWalkThrow > TIME_WALK_THROW_OPPOSITE)
+							{
+								timeWalkThrow = 0;
+								vx = -vx;
+							}
+
+						}
+					}
 				}
 				else
 				{
@@ -230,7 +245,7 @@ void CSkeleton::SetState(int state)
 		vx = 0;
 		break;
 	case STATE_THROW:
-		vx = 0;
+		(nx > 0) ? vx = 0.01f : vx = -0.01f;
 		vy = 0.1f;
 		bone->SetState(STATE_THROW);
 		break;

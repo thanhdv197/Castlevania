@@ -30,6 +30,8 @@
 #define DISTANCE_STATE_JUMP	200
 #define DISTANCE_Y_JUMP_DOWN	50
 #define DISTANCE_STATE_THROW	70
+#define TIME_WALK_THROW	300
+#define TIME_WALK_THROW_OPPOSITE	600
 
 class CSkeleton : public CGameObject
 {
@@ -46,6 +48,8 @@ class CSkeleton : public CGameObject
 	CBone* bone;
 
 	int start_y, start_x;
+
+	DWORD timeWalkThrow = 0;
 public:
 	bool isJump;
 	bool isOpposite;
