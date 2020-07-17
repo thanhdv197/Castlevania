@@ -908,6 +908,7 @@ void CSimon::LostBlood(int _blood)
 	if (isGoUp == false && isGoDown == false)
 	{
 		(nx > 0) ? x -= 10 : x += 10;
+		y -= 10;
 	}
 
 	if (this->alive > 0)
