@@ -31,9 +31,6 @@
 #define	ITEM_WIDTH	16
 #define	ITEM_HEIGHT	16
 
-#define START_X	580
-#define START_Y	60
-
 class CBoss : public CGameObject
 {
 	int ani;
@@ -56,7 +53,7 @@ public:
 	bool isAttacked;
 	bool isDisplay;
 
-	CBoss();
+	CBoss(float _x, float _y);
 
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects);

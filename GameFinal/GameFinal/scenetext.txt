@@ -610,7 +610,7 @@
 # type: 10 = army, 11 = zombie, 12 = bat, 13 = flea, 14 = toad, 15 = bird, 16 = skeleton, 17 = boss
 # ==== SIMON ====
 #id type	x	y	ani_set_id
-0	0	17	115	1
+0	0	17	140	1
 
 # ==== SCENE PORTAL ====
 #id type	l	t	ani_set_id	r	b	scene_id
@@ -619,9 +619,6 @@
 # ==== BRICKS ====
 #id type	l	t	ani_set_id	r	b
 7	99	0	180	0	768	320
-2	99	150	150	0	190	160
-
-1	16	220	110	33	100
 
 
 [MAP]
@@ -639,9 +636,9 @@
 [GRID]
 #X	Y	object_id...
 0	0	
-0	1	7	2	
-1	0
-1	1	7	1
+0	1	7	
+1	0	
+1	1	7	
 2	0
 2	1	7
 3	0

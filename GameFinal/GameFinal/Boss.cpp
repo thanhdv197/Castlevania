@@ -1,6 +1,6 @@
 #include "Boss.h"
 
-CBoss::CBoss()
+CBoss::CBoss(float _x, float _y)
 {
 	this->isEnable = true;
 	this->isAttacked = false;
@@ -11,8 +11,8 @@ CBoss::CBoss()
 
 	this->blood = 16;
 
-	this->start_x = START_X;
-	this->start_y = START_Y;
+	this->start_x = _x;
+	this->start_y = _y;
 
 	this->timeChangeState = 0;
 	this->timeDead = 0;

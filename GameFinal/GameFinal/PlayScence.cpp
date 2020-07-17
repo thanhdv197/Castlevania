@@ -254,7 +254,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		}
 	case OBJECT_TYPE_ENEMY_BOSS:
 		{
-			obj = new CBoss();
+			obj = new CBoss(x, y);
 			break;
 		}
 	case OBJECT_TYPE_PORTAL:
