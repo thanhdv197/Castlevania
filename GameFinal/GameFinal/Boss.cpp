@@ -71,10 +71,21 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 		if (this->state == STATE_BOSS_FLY_1)
 		{
-			if (this->ySimon - this->y < DISTANCE_Y_CHANGE_WAIT && ny > 0)
+			if (ny > 0)
 			{
-				SetState(STATE_BOSS_WAIT);
+				if (this->ySimon - this->y < DISTANCE_Y_CHANGE_WAIT)
+				{
+					SetState(STATE_BOSS_WAIT);
+				}
 			}
+			else
+			{
+				if (this->ySimon - this->y > DISTANCE_Y_CHANGE_WAIT_2)
+				{
+					SetState(STATE_BOSS_WAIT);
+				}
+			}
+			
 
 			if (this->x <= CGame::GetInstance()->GetCamPosX())
 			{
@@ -84,13 +95,13 @@ void CBoss::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		}
 		else if (this->state == STATE_BOSS_FLY_2)
 		{
-			if (this->y - this->ySimon > DISTANCE_Y_CHANGE_FLY)
+			if (this->y > this->ySimon )
 			{
 				ny = -1;
 				SetState(STATE_BOSS_FLY_2);
 			}
 
-			if (this->ySimon - this->y > DISTANCE_Y_FINISH_FLY_2)
+			if (this->ySimon - this->y > DISTANCE_Y_FINISH_FLY)
 			{
 				SetState(STATE_BOSS_WAIT);
 			}

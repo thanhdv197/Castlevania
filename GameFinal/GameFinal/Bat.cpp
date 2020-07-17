@@ -39,7 +39,7 @@ void CBat::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	CGameObject::Update(dt, coObjects);
 
 	// check simon position and change state bat
-	if (abs(this->x - this->xSimon) < DISTANCE_MAX && abs(this->y - this->ySimon) < DISTANCE_MIN)
+	if (abs(this->x - this->xSimon) < DISTANCE_X && abs(this->y - this->ySimon) < DISTANCE_Y)
 	{
 		if(this->state == STATE_BAT_STAND)
 			(this->x < this->xSimon) ? nx = 1 : nx = -1;
@@ -51,7 +51,7 @@ void CBat::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	if (this->state == STATE_BAT_DOWN)
 	{
 		timeDown += dt;
-		if (timeDown > 250)
+		if (timeDown > TIMEDOWN)
 			SetState(STATE_BAT_FLY);
 	}
 

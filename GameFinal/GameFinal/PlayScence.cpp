@@ -464,7 +464,7 @@ void CPlayScene::Update(DWORD dt)
 		player->Update(dt, &coObjects);
 		if (player->isFinish)
 		{
-			(scores->GetTime() > 0) ? time = 1000 : time = 0;
+			(scores->GetTime() > 0) ? time = 500 : time = 0;
 			
 			player->TotalScores(player->GetHeart(), time);
 		}	

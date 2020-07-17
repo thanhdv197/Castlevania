@@ -22,8 +22,10 @@
 #define ANI_BAT_FLY_LEFT	8
 #define ANI_BAT_FLY_RIGHT	9
 
-#define DISTANCE_MIN	30
-#define DISTANCE_MAX	80
+#define DISTANCE_Y	30
+#define DISTANCE_X	80
+
+#define TIMEDOWN	250
 
 #define BAT_WIDTH	16
 #define BAT_HEIGHT	16
