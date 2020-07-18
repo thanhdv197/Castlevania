@@ -19,7 +19,9 @@ CWeapon::CWeapon(float x, float y, int nx, int state) : CGameObject()
 
 	this->isEnable = true;
 	this->isBurning = false;
+
 	this->state = state;
+	SetState(state);
 
 	SetAnimationSet(CAnimationSets::GetInstance()->Get(48));
 }
@@ -43,12 +45,8 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			}
 			else
 			{
-				SetState(state);
-
 				if (timeAttack > TIME_CHANGE_DIRECTION_BOMERANG)
-				{
-					vx = -vx;
-				}
+					(nx > 0) ? vx = -BOMERANG_SPEED : vx = BOMERANG_SPEED;
 			}
 		}
 		else if (this->state == WEAPON_STATE_FIRE)
@@ -60,31 +58,31 @@ void CWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			}
 			else
 			{
-				SetState(state);
-
-				if (timeAttack < TIME_DOWN_FIRE)
+				if (!isBurning)
+					vy += FIRE_GRAVITY * dt;
+				else
 				{
-					vy = -vy;
+					vy = 0;
+					vx = 0;
 				}
-				else vy += vy;
 			}
 		}
-		else
+		else if(this->state == WEAPON_STATE_AXE)
 		{
 			if (timeAttack > TIME_ENABLE_KNIFE_AXE)
 			{
 				this->isEnable = false;
 				this->isAttack = false;
 			}
-			else
+			
+			vy += AXE_GRAVITY *dt;
+		}
+		else if (this->state == WEAPON_STATE_KNIFE)
+		{
+			if (timeAttack > TIME_ENABLE_KNIFE_AXE)
 			{
-				SetState(state);
-
-				if (timeAttack < TIME_DOWN_AXE)
-				{
-					vy = -vy;
-				}
-				else vy += vy;
+				this->isEnable = false;
+				this->isAttack = false;
 			}
 		}
 
@@ -451,26 +449,26 @@ void CWeapon::SetState(int state)
 	switch (state)
 	{
 	case WEAPON_STATE_KNIFE:
-		(nx > 0) ? vx = 0.2f : vx = -0.2f;
+		(nx > 0) ? vx = KNIFE_SPEED : vx = -KNIFE_SPEED;
 		vy = 0;
 		this->dame = 1;
 		break;
 	case WEAPON_STATE_AXE:
-		(nx > 0) ? vx = WEAPON_FLY_SPEED : vx = -WEAPON_FLY_SPEED;
-		vy = 0.04f;
+		(nx > 0) ? vx = AXE_SPEED : vx = -AXE_SPEED;
+		vy = -AXE_SPEED_Y;
 		this->dame = 2;
 		break;
 	case WEAPON_STATE_BOMERANG:
-		(nx > 0) ? vx = WEAPON_FLY_SPEED : vx = -WEAPON_FLY_SPEED;
+		(nx > 0) ? vx = BOMERANG_SPEED : vx = -BOMERANG_SPEED;
 		vy = 0;
 		this->dame = 2;
 		break;
 	case WEAPON_STATE_FIRE:
-		if (isBurning)
+		if (isBurning == true)
 			vx = 0;
 		else
-			(nx > 0) ? vx = WEAPON_FLY_SPEED : vx = -WEAPON_FLY_SPEED;
-		(isBurning) ? vy = 0 : vy = 0.05f;
+			(nx > 0) ? vx = BOMERANG_SPEED : vx = -BOMERANG_SPEED;
+		(isBurning) ? vy = 0 : vy = -FIRE_SPEED_Y;
 		this->dame = 1;
 		break;
 	default:

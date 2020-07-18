@@ -13,8 +13,6 @@
 #include "Boss.h"
 #include "Bricks.h"
 
-#define WEAPON_FLY_SPEED 0.1f
-
 #define WEAPON_STATE_NONE		0
 #define WEAPON_STATE_KNIFE		200
 #define WEAPON_STATE_AXE		300
@@ -32,10 +30,19 @@
 #define WEAPON_ANI_FIRE_BURN	5
 
 #define TIME_ENABLE_BOMERANG_FIRE		2000
-#define TIME_ENABLE_KNIFE_AXE			1000
+#define TIME_ENABLE_KNIFE_AXE			1500
 #define TIME_CHANGE_DIRECTION_BOMERANG	1000
-#define TIME_DOWN_FIRE					300
-#define TIME_DOWN_AXE					500
+
+#define AXE_GRAVITY	0.0005f
+#define AXE_SPEED	0.1f
+#define AXE_SPEED_Y	0.2f
+
+#define KNIFE_SPEED	0.2f
+
+#define BOMERANG_SPEED	0.1f
+
+#define FIRE_GRAVITY	0.001f
+#define FIRE_SPEED_Y	0.2f
 
 class CWeapon : public CGameObject
 {
