@@ -8,8 +8,8 @@
 
 #define ANI_THROW	9
 
-#define	TIME_UP	600
-#define TIME_DOWN	1500
+#define	TIME_UP	400
+#define TIME_DOWN	1200
 
 #define BONE_WIDTH	16
 #define BONE_HEIGHT	16

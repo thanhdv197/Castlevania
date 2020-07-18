@@ -43,14 +43,17 @@ vector<LPGAMEOBJECT> CGrid::GetList()
 	x = game->GetCamPosX();
 	y = game->GetCamPosY();
 
-	int start = x / CELL_WIDTH;
-	int end = (x + game->GetScreenWidth()) / CELL_WIDTH;
+	int startX = x / CELL_WIDTH;
+	int endX = (x + game->GetScreenWidth()) / CELL_WIDTH;
+
+	int startY = y / CELL_HEIGHT;
+	int endY = (y + game->GetScreenHeight()) / CELL_HEIGHT;
 
 	objects.clear();
 
-	for (int i = start; i <= end; i++)
+	for (int i = startX; i <= endX; i++)
 	{
-		for (int j = 0; j < 2; j++)
+		for (int j = startY; j <= endY; j++)
 		{
 			if (cells[i][j].GetObjects().size() > 0)
 			{
