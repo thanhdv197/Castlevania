@@ -665,13 +665,13 @@ void CSimon::Render()
 			whip->SetDirection(nx);
 			if (whip->GetDirection() > 0)
 			{
-				whip->SetPosition(x - 14, y + 5);
+				whip->SetPosition(x - 12, y + 2);
 			}
 			else
 			{
 				if (whip->GetLevel() > 1)
 				{
-					whip->SetPosition(x - 40, y + 5);
+					whip->SetPosition(x - 37, y + 4);
 				}
 				else
 				{
@@ -684,13 +684,20 @@ void CSimon::Render()
 			whip->SetDirection(nx);
 			if (whip->GetDirection() > 0)
 			{
-				whip->SetPosition(x - 15, y + 2);
+				if (whip->GetLevel() > 1)
+				{
+					whip->SetPosition(x - 11, y + 2);
+				}
+				else
+				{
+					whip->SetPosition(x - 15, y + 3);
+				}
 			}
 			else
 			{
 				if (whip->GetLevel() > 1)
 				{
-					whip->SetPosition(x - 40, y + 2);
+					whip->SetPosition(x - 38, y + 3);
 				}
 				else
 				{
@@ -719,22 +726,23 @@ void CSimon::Render()
 		}
 	}
 
-	// stop with last frame of attack state
-	if (isAttack && animation_set->at(ani)->GetCurrentFrame() == 2)
+	// stop repeat animation when attack 
+	if (isAttack)
 	{
-		if (usingWhip)
-		{
-			if (whip->GetCurrentFrame() == 2)
-			{
-				usingWhip = false;
-			}
-			else
-			{
-				whip->SetCurrentFrame(2);
-			}
-		}
+		animation_set->at(ani)->isRepeat = false;
+		whip->SetRepeatAnimation(false);
+	}
 
+	// turn on repeat animation 
+	if (animation_set->at(ani)->isFinish)
+	{
+		usingWhip = false;
 		isAttack = false;
+		animation_set->at(ani)->isFinish = false;
+		animation_set->at(ani)->isRepeat = true;
+		whip->SetRepeatAnimation(true);
+		whip->SetCurrentFrame(-1);
+		animation_set->at(ani)->SetCurrentFrame(-1);
 	}
 
 	RenderBoundingBox();

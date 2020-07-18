@@ -48,6 +48,8 @@ public:
 	int GetDirection();
 	int GetCurrentFrame() { return animation_set->at(ani)->GetCurrentFrame(); }
 	void SetCurrentFrame(int frame) { animation_set->at(ani)->SetCurrentFrame(frame); }
+	void SetRepeatAnimation(bool _isRepeat) { animation_set->at(ani)->isRepeat = _isRepeat; }
+	void SetFinishAnimation(bool _isFinish) { animation_set->at(ani)->isFinish = _isFinish; }
 
 	int GetLevel() { return this->level; }
 	void LevelUp();
