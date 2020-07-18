@@ -42,16 +42,9 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			SetState(STATE_TOAD_JUMP);
 		}
 	}
-
-	// set time jump
-	if (this->state == STATE_TOAD_JUMP)
-	{
-		if (this->ySimon > this->y + 55)
-		{
-			SetState(STATE_TOAD_DOWN);
-		}
-	}
 	
+	vy += TOAD_GRAVITY * dt;
+
 	// check whip attack
 	if (isAttacked)
 		whipEffect->Update(dt, coObjects);
@@ -96,15 +89,8 @@ void CToad::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			LPCOLLISIONEVENT e = coEventsResult[i];
 			if (dynamic_cast<CBricks*>(e->obj))
 			{
-				if (this->state == STATE_TOAD_DOWN)
-				{
+				if (this->state != STATE_TOAD_STAND && this->state != STATE_ITEM)
 					SetState(STATE_TOAD_JUMP);
-				}
-				if (vy < 0)
-				{
-					x += dx;
-					y += dy;
-				}
 			}
 			else
 			{
@@ -127,7 +113,7 @@ void CToad::Render()
 				ani = ANI_TOAD_STAND_RIGHT;
 			else ani = ANI_TOAD_STAND_LEFT;
 		}
-		else if (this->state == STATE_TOAD_JUMP || this->state == STATE_TOAD_DOWN)
+		else if (this->state == STATE_TOAD_JUMP)
 		{
 			if (nx > 0)
 				ani = ANI_TOAD_JUMP_RIGHT;
@@ -164,23 +150,14 @@ void CToad::SetState(int state)
 	{
 	case STATE_TOAD_STAND:
 		vx = 0;
-		vy = 0.1f;
 		break;
 	case STATE_TOAD_JUMP:
 		(this->x < this->xSimon) ? nx = 1 : nx = -1;
-		if (nx > 0)
-			vx = 0.05f;
-		else vx = -0.05f;
-		vy = -0.1f;
-		break;
-	case STATE_TOAD_DOWN:
-		if (nx > 0)
-			vx = 0.05f;
-		else vx = -0.05f;
-		vy = 0.1f;
+		(nx > 0) ? vx = TOAD_SPEED : vx = -TOAD_SPEED;
+		vy = -TOAD_JUMP_SPEED;
 		break;
 	case STATE_ITEM:
-		(!isEnable) ? vy = 0 : vy = 0.05f;
+		(!isEnable) ? vy = 0 : vy = ITEM_DROP;
 		vx = 0;
 		break;
 	default:

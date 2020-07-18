@@ -7,7 +7,6 @@
 
 #define STATE_TOAD_STAND	100
 #define STATE_TOAD_JUMP	300
-#define STATE_TOAD_DOWN	400
 #define STATE_ITEM	200
 
 #define ANI_ITEM_WHIP	0
@@ -24,6 +23,11 @@
 #define ANI_TOAD_JUMP_RIGHT	10
 
 #define DISTANC_CHANGE_STATE_JUMP	80
+
+#define TOAD_GRAVITY	0.001f
+#define TOAD_JUMP_SPEED	0.2f
+#define TOAD_SPEED	0.1f
+#define ITEM_DROP	0.05f
 
 #define TOAD_WIDTH	16
 #define TOAD_HEIGHT	16
