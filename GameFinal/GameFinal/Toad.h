@@ -25,8 +25,8 @@
 #define DISTANC_CHANGE_STATE_JUMP	100
 
 #define TOAD_GRAVITY	0.001f
-#define TOAD_JUMP_SPEED	0.2f
-#define TOAD_SPEED	0.09f
+#define TOAD_JUMP_SPEED	0.25f
+#define TOAD_SPEED	0.1f
 #define ITEM_DROP	0.05f
 
 #define TOAD_WIDTH	16
