@@ -553,17 +553,6 @@ void CSimon::Render()
 		
 		isSit = false;
 	}
-	else if (state == SIMON_STATE_HURT)
-	{
-		if (nx > 0)
-		{
-			ani = SIMON_ANI_HURT_RIGHT;
-		}
-		else
-		{
-			ani = SIMON_ANI_HURT_LEFT;
-		}
-	}
 	else if (state == SIMON_STATE_JUMP)
 	{
 		if (isJump)
@@ -715,7 +704,7 @@ void CSimon::Render()
 	// using weapon for attack
 	if (weapon)
 	{
-		if (isAttack && !usingWhip && animation_set->at(ani)->GetCurrentFrame() == 2)
+		if (isAttack && !usingWhip)
 		{
 			isFlyingWeapon = true;
 		}
@@ -916,7 +905,7 @@ void CSimon::LostBlood(int _blood)
 	if (isGoUp == false && isGoDown == false)
 	{
 		(nx > 0) ? x -= 10 : x += 10;
-		y -= 10;
+		y -= 15;
 	}
 
 	if (this->alive > 0)

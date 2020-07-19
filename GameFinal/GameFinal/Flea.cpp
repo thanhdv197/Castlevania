@@ -36,14 +36,16 @@ void CFlea::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	CGameObject::Update(dt, coObjects);
 
-	// check simon position and change state bat
+	(this->x > this->xSimon) ? nx = -1 : nx = 1;
+
+	// check simon position and change state flea
 	if (abs(this->x - this->xSimon) > DISTANCE_CHANGE_STATE && this->x > this->xSimon)
 	{
-		SetState(STATE_FLEA_FLY);
-
+		this->state = STATE_FLEA_FLY;
 		if (GetBlood() > 0)
 			isEnable = true;
 	}
+	SetState(this->state);
 
 	// check whip attack
 	if (isAttacked)
@@ -156,7 +158,7 @@ void CFlea::SetState(int state)
 			vx = 0.04f;
 		}
 		else vx = -0.04f;
-		vy = -0.01f;
+		vy = 0;
 		break;
 	case STATE_FLEA_WAIT:
 		vx = 0;
