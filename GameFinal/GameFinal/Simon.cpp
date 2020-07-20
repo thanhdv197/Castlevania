@@ -555,24 +555,14 @@ void CSimon::Render()
 	}
 	else if (state == SIMON_STATE_JUMP)
 	{
-		if (isJump)
+		if (nx > 0)
 		{
-			if (nx > 0)
-			{
-				if (isAttack)
-					ani = SIMON_ANI_ATTACK_RIGHT;
-				else
-					ani = SIMON_ANI_JUMP_RIGHT;
-			}
-			else
-			{
-				if (isAttack)
-					ani = SIMON_ANI_ATTACK_LEFT;
-				else
-					ani = SIMON_ANI_JUMP_LEFT;
-			}
+			ani = SIMON_ANI_JUMP_RIGHT;
 		}
-		else return;
+		else
+		{
+			ani = SIMON_ANI_JUMP_LEFT;
+		}
 	}
 	else if (state == SIMON_STATE_GO_UP && isGoUp == true)
 	{
@@ -593,12 +583,14 @@ void CSimon::Render()
 					ani = SIMON_ANI_ATTACK_RIGHT;
 					if (isGoUp) ani = SIMON_ANI_ATTACK_UP_RIGHT;
 					if (isGoDown)ani = SIMON_ANI_ATTACK_DOWN_RIGHT;
+					if (isJump) ani = SIMON_ANI_SIT_ATTACK_RIGHT;
 				}
 				else
 				{
 					ani = SIMON_ANI_ATTACK_LEFT;
 					if (isGoUp) ani = SIMON_ANI_ATTACK_UP_LEFT;
 					if (isGoDown)ani = SIMON_ANI_ATTACK_DOWN_LEFT;
+					if (isJump) ani = SIMON_ANI_SIT_ATTACK_LEFT;
 				}
 			}
 			else if (isLevelUp)
@@ -728,8 +720,6 @@ void CSimon::Render()
 		usingWhip = false;
 		isAttack = false;
 		animation_set->at(ani)->isFinish = false;
-		animation_set->at(ani)->isRepeat = true;
-		whip->SetRepeatAnimation(true);
 		whip->SetCurrentFrame(-1);
 		animation_set->at(ani)->SetCurrentFrame(-1);
 	}
