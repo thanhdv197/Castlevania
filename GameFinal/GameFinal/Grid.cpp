@@ -2,14 +2,14 @@
 
 CGrid::CGrid()
 {
-	this->numCol = 5;
-	this->numRow = 5;
+	objects.clear();
+}
 
+void CGrid::Init()
+{
 	cells = new CCell*[numCol];
 	for (int i = 0; i < numCol; i++)
 		cells[i] = new CCell[numRow];
-
-	objects.clear();
 }
 
 void CGrid::Add(LPGAMEOBJECT object, float x, float y)

@@ -49,6 +49,8 @@ protected:
 	void _ParseSection_GRID(string line);
 
 public: 
+	// flag init grid
+	bool flag;
 	CPlayScene(int id, LPCWSTR filePath);
 
 	virtual void Load(int _level = 1, int _blood = 16, int _heart = 0, int _alive = 4, int _scores = 0, int _weapon = 0);

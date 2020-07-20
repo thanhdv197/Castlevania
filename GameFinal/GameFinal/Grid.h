@@ -25,6 +25,9 @@ class CGrid
 
 public:
 	CGrid();
+	void Init();
+	void SetCol(int _numCol) { this->numCol = _numCol; }
+	void SetRow(int _numRow) { this->numRow = _numRow; }
 	void Add(LPGAMEOBJECT object, float x, float y);
 	void Add(LPGAMEOBJECT object, int xCell, int yCell);
 	vector<LPGAMEOBJECT> GetList();

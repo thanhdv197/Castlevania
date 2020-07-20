@@ -19,6 +19,7 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 	map = new CMap();
 
 	grid = new CGrid();
+	flag = true;
 }
 
 /*
@@ -322,6 +323,26 @@ void CPlayScene::_ParseSection_MAP(string line)
 
 void CPlayScene::_ParseSection_GRID(string line)
 {
+	// check flag to init grid
+	if (flag)
+	{
+		int width = map->GetWidth();
+		int height = map->GetHeight();
+
+		int numCol = ceil(width / CELL_WIDTH);
+		int numRow = ceil(height / CELL_HEIGHT);
+
+		(height % CELL_HEIGHT == 0) ? numRow = numRow : numRow = numRow += 1;
+		(width % CELL_HEIGHT == 0) ? numCol = numCol : numCol = numCol += 1;
+
+		grid->SetCol(numCol);
+		grid->SetRow(numRow);
+
+		grid->Init();
+
+		flag = false;
+	}
+
 	vector<string> tokens = split(line);
 
 	if (tokens.size() < 3) return; // skip invalid lines
@@ -542,16 +563,12 @@ void CPlayScene::Render()
 */
 void CPlayScene::Unload()
 {
-	/*for (int i = 0; i < objects.size(); i++)
-		delete objects[i];*/
-
 	objects.clear();
 	player = NULL;
 
 	// grid unload
-	grid->Unload();
-
-	//DebugOut(L"[INFO] Scene %s unloaded! \n", sceneFilePath);
+	if (grid)
+		grid->Unload();
 }
 
 void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
