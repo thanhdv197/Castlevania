@@ -329,8 +329,8 @@ void CPlayScene::_ParseSection_GRID(string line)
 		int width = map->GetWidth();
 		int height = map->GetHeight();
 
-		int numCol = ceil(width / CELL_WIDTH);
-		int numRow = ceil(height / CELL_HEIGHT);
+		int numCol = width / CELL_WIDTH;
+		int numRow = height / CELL_HEIGHT;
 
 		(height % CELL_HEIGHT == 0) ? numRow = numRow : numRow = numRow += 1;
 		(width % CELL_HEIGHT == 0) ? numCol = numCol : numCol = numCol += 1;

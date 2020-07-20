@@ -12,16 +12,8 @@ c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscen
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(271): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(272): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(315): warning C4018: '<': signed/unsigned mismatch
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(332): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(333): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(354): warning C4018: '<': signed/unsigned mismatch
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(357): warning C4018: '<': signed/unsigned mismatch
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(531): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\playscence.cpp(551): warning C4018: '<': signed/unsigned mismatch
-  Source.cpp
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(92): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\game.h(93): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\dieeffect.h(4): warning C4005: 'TIME_END': macro redefinition
-  c:\users\thanh\source\repos\castlevania\castlevania\gamefinal\gamefinal\whipeffect.h(4): note: see previous definition of 'TIME_END'
-  Generating Code...
   GameFinal.vcxproj -> C:\Users\Thanh\source\repos\Castlevania\Castlevania\GameFinal\Debug\GameFinal.exe
