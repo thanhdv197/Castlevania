@@ -61,10 +61,12 @@ void CSkeleton::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	(this->x < this->xSimon) ? nx = 1 : nx = -1;
 
 	// set bone
-	if (this->state != STATE_THROW)
+	if (!bone->isEnable)
 	{
 		bone->SetState(STATE_NONE);
 		bone->ResetTimeThrow();
+		bone->SetPosition(x, y);
+		bone->SetNx(nx);
 	}
 	
 	// set jump
@@ -81,10 +83,26 @@ void CSkeleton::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	// set state of skeleton
 	if (abs(this->x - this->xSimon) < DISTANCE_STATE_JUMP)
 	{
-		SetState(STATE_SKELETON_JUMP);
+		(this->y > this->ySimon) ? SetState(STATE_THROW) : SetState(STATE_SKELETON_JUMP);
+	}
 
-		bone->SetPosition(x, y);
-		bone->SetNx(nx);
+	if (this->state == STATE_THROW)
+	{
+		bone->Update(dt, coObjects);
+
+		if (this->state == STATE_THROW)
+		{
+			timeWalkThrow += dt;
+			if (timeWalkThrow > TIME_WALK_THROW)
+			{
+				vx = -vx;
+				if (timeWalkThrow > TIME_WALK_THROW_OPPOSITE)
+				{
+					timeWalkThrow = 0;
+					vx = -vx;
+				}
+			}
+		}
 	}
 
 	// jump opposite
@@ -143,33 +161,9 @@ void CSkeleton::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				isJump = true;
 
-				// consider change state to throw when collision with bricks
-				if (abs(this->x - this->xSimon) < DISTANCE_STATE_THROW && this->blood > 0)
-				{
-					SetState(STATE_THROW);
-					bone->Update(dt, coObjects);
-
-					if (this->state == STATE_THROW)
-					{
-						timeWalkThrow += dt;
-						if (timeWalkThrow > TIME_WALK_THROW)
-						{
-							vx = -vx;
-							if (timeWalkThrow > TIME_WALK_THROW_OPPOSITE)
-							{
-								timeWalkThrow = 0;
-								vx = -vx;
-							}
-
-						}
-					}
-				}
-				else
-				{
-					if (abs(this->x - this->start_x) > 20)
-						isOpposite = true;
-					else isOpposite = false;
-				}
+				if (abs(this->x - this->start_x) > 20)
+					isOpposite = true;
+				else isOpposite = false;
 				
 			}
 			else

@@ -789,10 +789,7 @@ void CSimon::SetState(int state)
 
 		if (!usingWhip)
 		{
-			float xSimon = 0, ySimon = 0;
-			//if(CSimon::GetInstance()!=NULL)
-			GetPosition(xSimon, ySimon);
-			weapon = new CWeapon(xSimon, ySimon, GetDirection(), this->stateWeapon);
+			weapon = new CWeapon(x, y, nx, this->stateWeapon);
 			weapon->isAttack = true;
 		}
 		vy = 0.05f;
