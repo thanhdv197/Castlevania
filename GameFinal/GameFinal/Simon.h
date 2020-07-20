@@ -122,7 +122,6 @@ public:
 
 	// check type attack
 	bool usingWhip;
-	bool isFlyingWeapon;
 
 	// check stair
 	bool isStairUp;

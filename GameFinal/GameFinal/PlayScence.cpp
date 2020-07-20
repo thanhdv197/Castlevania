@@ -567,11 +567,11 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 	case DIK_A: 
 		simon->Reset();
 		break;
-	case DIK_S:
+	case DIK_Q:
 		simon->usingWhip = true;
 		simon->SetState(SIMON_STATE_ATTACK);
 		break;
-	case DIK_D:
+	case DIK_W:
 		simon->usingWhip = false;
 		simon->SetState(SIMON_STATE_ATTACK);
 		break;

@@ -3,7 +3,7 @@
 CGrid::CGrid()
 {
 	this->numCol = 5;
-	this->numRow = 2;
+	this->numRow = 5;
 
 	cells = new CCell*[numCol];
 	for (int i = 0; i < numCol; i++)

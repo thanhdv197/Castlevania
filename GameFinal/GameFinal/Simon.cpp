@@ -32,7 +32,6 @@ CSimon::CSimon(float x, float y)
 	timeHurt = 0;
 
 	usingWhip = false;
-	isFlyingWeapon = false;
 
 	isStairUp = false;
 	isStairDown = false;
@@ -638,7 +637,7 @@ void CSimon::Render()
 	if (untouchable) alpha = 150;
 	animation_set->at(ani)->Render(x, y, alpha);
 
-	// using whip for attack
+	// render whip for attack
 	if (isAttack && usingWhip)
 	{
 		if (state == SIMON_STATE_SIT || state == SIMON_STATE_JUMP)
@@ -693,28 +692,20 @@ void CSimon::Render()
 		whip->isAttack = true;
 	}
 
-	// using weapon for attack
+	// render weapon for attack
 	if (weapon)
 	{
-		if (isAttack && !usingWhip)
-		{
-			isFlyingWeapon = true;
-		}
-
-		if (isFlyingWeapon)
-		{
-			weapon->Render();
-		}
+		weapon->Render();
 	}
 
-	// stop repeat animation when attack 
+	// stop repeat animation when attack
 	if (isAttack)
 	{
 		animation_set->at(ani)->isRepeat = false;
 		whip->SetRepeatAnimation(false);
 	}
 
-	// turn on repeat animation 
+	// turn off attack 
 	if (animation_set->at(ani)->isFinish)
 	{
 		usingWhip = false;
