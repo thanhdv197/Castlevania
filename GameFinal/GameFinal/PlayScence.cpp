@@ -588,6 +588,10 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 		simon->usingWhip = true;
 		simon->SetState(SIMON_STATE_ATTACK);
 		break;
+	case DIK_E:
+		simon->usingWhip = false;
+		simon->SetState(SIMON_STATE_ATTACK);
+		break;
 	case DIK_W:
 		simon->usingWhip = false;
 		simon->SetState(SIMON_STATE_ATTACK);
