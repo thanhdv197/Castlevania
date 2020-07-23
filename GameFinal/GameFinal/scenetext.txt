@@ -2,7 +2,7 @@
 [TEXTURES]
 0	textures\castlevaniaEdit.png	116	116	116
 20	textures\enemies.png	116	116	116
-30	textures\map\tilemap.png	176	224	248
+30	textures\map1\tilemap1.png	176	224	248
 10	textures\item.png	116	116	116
 40	textures\scores.png	176	224	248
 50	textures\blood.png	176	224	248
@@ -301,7 +301,6 @@
 30079	95	1	111	17	10
 30080	112	1	128	17	10
 
-
 # ==== TILEMAP ====
 #20000	0	0	32	32	30
 #20001	32	0	64	32	30
@@ -318,14 +317,6 @@
 #20012	0	64	32	96	30
 #20013	32	64	64	96	30
 #20014	64	64	96	96	30
-#20015	96	64	128	96	30
-#20016	128	64	160	96	30
-#20017	160	64	192	96	30
-#20018	0	96	32	128	30
-#20019	32	96	64	128	30
-#20020	64	96	96	128	30
-#20021	96	96	128	128	30
-#20022	128	96	160	128	30
 
 # ==== Stair ====
 # -- right 2
@@ -346,6 +337,7 @@
 # -- left 3
 20057	45	85	77	117	60
 
+						
 # ==== SCORES ====
 20099	0	0	320	40	40
 # blood simon
@@ -446,8 +438,8 @@
 # ==== ITEM ======
 # whip
 801	30006	100
-#knife
-#--right
+# knife
+# --right
 802	30007	100
 # --left
 803	30008	100
@@ -610,22 +602,17 @@
 # type: 10 = army, 11 = zombie, 12 = bat, 13 = flea, 14 = toad, 15 = bird, 16 = skeleton, 17 = boss
 # ==== SIMON ====
 #id type	x	y	ani_set_id
-0	0	17	140	1
-
-# ==== SCENE PORTAL ====
-#id type	l	t	ani_set_id	r	b	scene_id
-#6	50	685	140	0	710	180	1
+0	0	17	167	1
 
 # ==== BRICKS ====
 #id type	l	t	ani_set_id	r	b
-7	99	0	180	0	768	320
+1	99	0	197	0	320	220
 
-1	16	220	140	33	100
-
+2	17	150	100	32	
 
 [MAP]
 # WIDTH HEIGHT	NAME
-320	192	5
+320	192	2
 
 # TILE MAP
 0	3	4	4	13	8	3	5	5	5
@@ -637,14 +624,8 @@
 
 [GRID]
 #X	Y	object_id...
-0	0	
-0	1	7	
+0	0	3
+0	1	1	2	
 1	0	
-1	1	7	1
-2	0
-2	1	7
-3	0
-3	1	7	
-4	0
-4	1	7
+1	1	
 

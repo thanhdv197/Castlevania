@@ -15,7 +15,7 @@ class CMap
 
 	int rowCurrent;
 
-	int tileMap[500][500];
+	int tileMap[200][200];
 
 public:
 	CMap();
